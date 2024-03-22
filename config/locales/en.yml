@@ -29,3 +29,10 @@
 
 en:
   hello: "Hello world"
+  pundit:
+    default: 'You cannot perform this action.'
+    product_policy:
+      new?: 'You can only register a product if you have a category created.'
+      update?: 'You cannot edit this post!'
+      create?: 'You cannot create posts!'
+  
