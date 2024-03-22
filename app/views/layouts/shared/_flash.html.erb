@@ -1,0 +1,8 @@
+<div class="alert alert-info text-center">
+  <% flash.each do | type, msg | %> <%# esse flash para pegar as mensagem de erro nesse caso ele  é para usar com "render" ele é uma parcial que tem "_"%>
+    <%# isso é para as mensagem tbm do "notice: "user was successfully updated."" que você coloca no controller %>
+    <div>
+      <%= msg%>
+    </div>
+  <% end %>
+</div>
