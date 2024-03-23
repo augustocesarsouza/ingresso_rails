@@ -9,6 +9,7 @@ export default class extends Controller {
 
   click_modal(e){
     e.preventDefault();
+    
     this.url = this.element.getAttribute('href');
 
     fetch(this.url, {

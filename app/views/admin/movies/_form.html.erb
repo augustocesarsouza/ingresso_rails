@@ -1,0 +1,17 @@
+<%= simple_form_for([:admin, @movie]) do |f| %> <%# esse ':admin' com [] diz que ele é do namespace admin, assim 'admin_categories' %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :image %>
+    <%= f.input :description %>
+    <%= f.input :gender %>
+    <%= f.input :duration %>
+    <%= f.input :movie_rating %>
+    <%= f.input :status_movie %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, 'Salvar', class: 'btn btn-info' %>
+    <%# Normalmente por contexto o 'simple_form_for' já sabe qual é a função do botão aqui ele sabe que é um CREATE, mas tem como trocar igual vamos colocar 'Salvar'%>
+  </div>
+<% end %>

@@ -7,18 +7,18 @@
       <div class="card-body">
         <table class="table table-striped">
           <thead>
-            <th>Nome</th>
-            <th>Posição</th>
+            <th>Título</th>
+            <th>Descrição</th>
             <th>Ações</th>
           </thead>
           <tbody>
             <%@movies.each do | movie | %>
               <tr>
-                <td><%= movie.name %></td>
-                <td><%= movie.position %></td>
+                <td><%= movie.title %></td>
+                <td><%= movie.description %></td>
                 <td>
                   <%= link_to "Details", admin_movie_path(movie), class: 'btn btn-primary' %>
-                  <%= link_to "Edit", edit_admin_movie_path(movie), "data-controller": "admin-modal", class: 'btn btn-secondary' %>
+                  <%= link_to "Edit", edit_admin_movie_path(movie), class: 'btn btn-secondary' %>
                   <%= link_to "Delete", admin_movie_path(movie), class: 'btn btn-danger', method: :delete,  data: { turbo_method: :delete, turbo_confirm: 'Deseja realmente excluir?' } %>
                 </td>
               </tr>

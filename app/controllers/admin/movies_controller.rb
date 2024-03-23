@@ -1,5 +1,5 @@
 module Admin
-  class MoviesController < ApplicationController
+  class MoviesController < BaseController
     before_action :set_category, only: %i[ show edit update destroy]
 
     def index
@@ -50,7 +50,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.require(:movie).permit(:title, :description, :gender, :duration, :movie_rating, :status_movie)
+      params.require(:movie).permit(:title, :image, :description, :gender, :duration, :movie_rating, :status_movie)
     end
   end
 end
