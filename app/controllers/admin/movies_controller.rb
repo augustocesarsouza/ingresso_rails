@@ -6,18 +6,24 @@ module Admin
       @movies = Movie.all
     end
 
-    def show
-    end
+    def show; end
 
     def new
       @movie = Movie.new
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @movie = Movie.new(movie_params)
+
+      tempfile_name = movie_params[:images].tempfile
+
+      file_content1 = File.open(tempfile_name, 'rb')
+      file_content2 = File.open(tempfile_name, 'rb')
+
+      @movie.create_img_cloudinary(file_content1, @movie.image_main, 625, 919)
+      @movie.create_img_cloudinary(file_content2, @movie.image_background, 1400, 500)
 
       if @movie.save
         redirect_to admin_movies_path, notice: 'Movie was successfully created.'
@@ -50,7 +56,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.require(:movie).permit(:title, :image, :description, :gender, :duration, :movie_rating, :status_movie)
+      params.require(:movie).permit(:title, :images, :description, :gender, :duration, :movie_rating, :status_movie)
     end
   end
 end
