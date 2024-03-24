@@ -1,0 +1,2 @@
+class MovieTheater < ApplicationRecord
+end
