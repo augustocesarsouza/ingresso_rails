@@ -10,6 +10,8 @@ class Movie < ApplicationRecord
   has_one_attached :image_background
 
   attr_accessor :images
+  
+  has_many :movie_theaters
 
   def create_img_cloudinary(file_content, movie_attach, width, height)
     cloudinary_response = Cloudinary::Uploader.upload(file_content,
