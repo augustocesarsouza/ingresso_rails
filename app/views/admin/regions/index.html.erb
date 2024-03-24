@@ -18,7 +18,7 @@
                 <td><%= region.city %></td>
                 <td>
                   <%= link_to "Details", admin_region_path(region), class: 'btn btn-primary' %>
-                  <%= link_to "Edit", edit_admin_region_path(region), class: 'btn btn-secondary' %>
+                  <%= link_to "Edit", edit_admin_region_path(region), "data-controller": "admin-modal", class: 'btn btn-secondary' %>
                   <%= link_to "Delete", admin_region_path(region), class: 'btn btn-danger', method: :delete,  data: { turbo_method: :delete, turbo_confirm: 'Deseja realmente excluir?' } %>
                 </td>
               </tr>

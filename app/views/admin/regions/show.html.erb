@@ -1,10 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @region %>
-
-<div>
-  <%= link_to "Edit this region", edit_region_path(@region) %> |
-  <%= link_to "Back to regions", regions_path %>
-
-  <%= button_to "Destroy this region", @region, method: :delete %>
+<h1 class="h3 mb-4 text-gray-800">Details of the Region</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <%= render @region %>
+  </div>
 </div>
