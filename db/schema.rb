@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_23_212202) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_24_121028) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,12 +47,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_23_212202) do
   end
 
   create_table "movies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "title", limit: 100
-    t.string "description", limit: 1000
-    t.string "gender", limit: 50
-    t.string "duration", limit: 30
-    t.integer "movie_rating"
-    t.string "status_movie", limit: 30
+    t.string "title", limit: 100, null: false
+    t.string "description", limit: 1000, null: false
+    t.string "gender", limit: 50, null: false
+    t.string "duration", limit: 30, null: false
+    t.integer "movie_rating", null: false
+    t.string "status_movie", limit: 30, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "state", limit: 70, null: false
+    t.string "city", limit: 70, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
