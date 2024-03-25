@@ -16,7 +16,7 @@
               <tr>
                 <td><%= movie.title %></td>
                 <td><%= movie.description %></td>
-                <td>
+                <td class="col-lg-3">
                   <%= link_to "Details", admin_movie_path(movie), class: 'btn btn-primary' %>
                   <%= link_to "Edit", edit_admin_movie_path(movie), class: 'btn btn-secondary' %>
                   <%= link_to "Delete", admin_movie_path(movie), class: 'btn btn-danger', method: :delete,  data: { turbo_method: :delete, turbo_confirm: 'Deseja realmente excluir?' } %>

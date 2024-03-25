@@ -3,7 +3,8 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.input :images, as: :file %>
+    <%= f.input :image_main, as: :file %>
+    <%= f.input :image_background, as: :file %>
     <%= f.input :description %>
     <%= f.input :gender %>
     <%= f.input :duration %>

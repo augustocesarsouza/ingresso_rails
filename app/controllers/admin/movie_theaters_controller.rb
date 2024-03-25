@@ -9,15 +9,18 @@ module Admin
     def show; end
 
     def new
+      authorize MovieTheater
+
       @movie_theater = MovieTheater.new
     end
 
     def edit; end
 
     def create
-      @region = Region.new(movie_theater_params)
+      @movie_theater = MovieTheater.new(movie_theater_params)
+      puts @movie_theater.inspect
 
-      if @region.save
+      if @movie_theater.save
         redirect_to admin_movie_theaters_path, notice: 'Movie theater was successfully created.'
       else
         render :new, status: :unprocessable_entity
@@ -25,7 +28,7 @@ module Admin
     end
 
     def update
-      if @region.update(region_params)
+      if @movie_theater.update(region_params)
         redirect_to admin_movie_theaters_path, notice: 'Movie theater was successfully updated.'
       else
         render :edit, status: :unprocessable_entity

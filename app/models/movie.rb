@@ -11,14 +11,30 @@ class Movie < ApplicationRecord
 
   attr_accessor :images
 
-  has_many :movie_theaters
+  has_many :movie_theater, dependent: :destroy
 
-  def create_img_cloudinary(file_content, movie_attach, width, height)
+  def create_img_cloudinary_main(file_content, movie_attach, width, height)
+    cloudinary_response = Cloudinary::Uploader.upload(file_content,
+                                                      width:,
+                                                      height:,
+                                                      secure: true) # secure -> Garante que a URL retornado será segura (https)
+
+    image_url = cloudinary_response['secure_url']
+    tempfile = Down.download(image_url)
+    movie_attach.attach(io: tempfile, filename: File.basename(image_url))
+
+    public_id = cloudinary_response['public_id']
+    Cloudinary::Uploader.destroy(public_id) if public_id.present?
+  end
+
+  def create_img_cloudinary_background(file_content, movie_attach, width, height)
     cloudinary_response = Cloudinary::Uploader.upload(file_content,
                                                       width:,
                                                       height:,
                                                       crop: 'fill',
-                                                      secure: true) # secure -> Garante que a URL retornado será segura (https)
+                                                      gravity: 'face',
+                                                      quality: 100,
+                                                      secure: true)
 
     image_url = cloudinary_response['secure_url']
     tempfile = Down.download(image_url)

@@ -1,10 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @movie_theater %>
-
-<div>
-  <%= link_to "Edit this movie theater", edit_movie_theater_path(@movie_theater) %> |
-  <%= link_to "Back to movie theaters", movie_theaters_path %>
-
-  <%= button_to "Destroy this movie theater", @movie_theater, method: :delete %>
+<h1 class="h3 mb-4 text-gray-800">Details of the Movie_Theater</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <%= render @movie_theater %>
+  </div>
 </div>
