@@ -31,8 +31,8 @@ en:
   hello: "Hello world"
   pundit:
     default: 'You cannot perform this action.'
-    product_policy:
-      new?: 'You can only register a product if you have a category created.'
+    movie_theater_policy:
+      new?: 'You can only register a movie_theater if you have a region and movie created.'
       update?: 'You cannot edit this post!'
       create?: 'You cannot create posts!'
   

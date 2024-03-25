@@ -1,0 +1,23 @@
+<%= turbo_frame_tag :bootstrap_modal, target: :_top do %> <%# target: :_top -> não precisa disso %>
+  <div class="modal fade" id="staticBackdrop" data-controller="modal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button 
+        type="button" 
+        class="btn-close" 
+        data-bs-dismiss="modal" 
+        aria-label="Close"
+        style="background: none; border: none;"
+        >
+            x
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render "admin/movies/form", movie: @movie %>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end %>

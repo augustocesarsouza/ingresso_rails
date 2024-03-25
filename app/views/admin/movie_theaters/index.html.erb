@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+<h1 class="h3 mb-4 text-gray-800">Movie_theaters</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <!-- Circle Buttons -->
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <th>Movie_Id</th>
+            <th>Region_Id</th>
+            <th>Ações</th>
+          </thead>
+          <tbody>
+            <%@movie_theaters.each do | mt | %>
+              <tr>
+                <td><%= mt.movie_id %></td>
+                <td><%= mt.region_id %></td>
+                <td>
+                  <%= link_to "Details", admin_movie_theater_path(mt), class: 'btn btn-primary' %>
+                  <%= link_to "Edit", edit_admin_movie_theater_path(mt), "data-controller": "admin-modal", class: 'btn btn-secondary' %>
+                  <%= link_to "Delete", admin_movie_theaters_path(mt), class: 'btn btn-danger', method: :delete,  data: { turbo_method: :delete, turbo_confirm: 'Deseja realmente excluir?' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% if policy(MovieTheater).new? %>
+          <%= link_to "New movie_theater", new_admin_movie_theater_path, "data-controller": "admin-modal", class: 'btn btn-primary' %>
+        <% else %>
+          <%= link_to "New movie_theater", new_admin_movie_theater_path, class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+development:
+  cloud_name: "dyqsqg7pk"
+  api_key: "761272487963569"
+  api_secret: "7jhjINCueUwZuXhKRhrknwJG_C0"
+  secure: true
+
+production:
+  cloud_name: "dyqsqg7pk"
+  api_key: "761272487963569"
+  api_secret: "7jhjINCueUwZuXhKRhrknwJG_C0"
+  secure: true
