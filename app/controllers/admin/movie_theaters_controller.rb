@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module Admin
   class MovieTheatersController < BaseController
     before_action :set_movie_theater, only: %i[ show edit update destroy ]
@@ -11,14 +13,16 @@ module Admin
     def new
       authorize MovieTheater
 
-      @movie_theater = MovieTheater.new
+      # @movie_theater_dto = MovieTheaterDTO.new
     end
 
     def edit; end
 
     def create
-      movie_result = Movie.select(:id).where(title: movie_theater_params[:movie]).first
-      region_result = Region.select(:id).where(city: movie_theater_params[:city]).first
+      movie_result = Movie.select(:id).where(title: params[:movie]).first
+      region_result = Region.select(:id).where(city: params[:city]).first
+
+      puts params.inspect
 
       if movie_result.nil? || region_result.nil?
         @movie_theater = MovieTheater.new
@@ -27,8 +31,9 @@ module Admin
         return
       end
 
+      # uuid = SecureRandom.uuid
+
       @movie_theater = MovieTheater.new(movie_id: movie_result.id, region_id: region_result.id)
-      puts @movie_theater.inspect
 
       if @movie_theater.save
         redirect_to admin_movie_theaters_path, notice: 'Movie theater was successfully created.'
@@ -56,12 +61,25 @@ module Admin
 
     private
 
+    def validate_movie_region_exist(movie_result, region_result)
+      if movie_result.nil? || region_result.nil?
+        @movie_theater = MovieTheater.new
+        @movie_theater.errors.add(:base, 'Error when creating Junction, name of the movie, or region name not exist')
+        render :new
+        false
+      end
+    end
+
     def set_movie_theater
       @movie_theater = MovieTheater.find(params[:id])
     end
 
-    def movie_theater_params
-      params.require(:movie_theater).permit(:movie, :city)
+    def movie_theater_dto_params
+      params.require(:movie_theater_dto).permit(:movie, :city)
     end
+
+    # def movie_theater_params
+    #   params.require(:movie_theater).permit(:movie_id, :region_id)
+    # end
   end
 end

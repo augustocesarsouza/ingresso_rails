@@ -59,6 +59,8 @@ gem "image_processing", "~> 1.2"
 
 gem "down"
 
+gem 'securerandom'
+
 group :development, :test do
   gem 'awesome_print'
   gem 'bullet'

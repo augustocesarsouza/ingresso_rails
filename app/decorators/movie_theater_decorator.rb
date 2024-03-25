@@ -1,0 +1,3 @@
+class MovieTheaterDecorator < SimpleDelegator
+end
+
