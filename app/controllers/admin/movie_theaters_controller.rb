@@ -17,7 +17,17 @@ module Admin
     def edit; end
 
     def create
-      @movie_theater = MovieTheater.new(movie_theater_params)
+      movie_result = Movie.select(:id).where(title: movie_theater_params[:movie]).first
+      region_result = Region.select(:id).where(city: movie_theater_params[:city]).first
+
+      if movie_result.nil? || region_result.nil?
+        @movie_theater = MovieTheater.new
+        @movie_theater.errors.add(:base, 'Error when creating Junction, name of the movie, or region name not exist')
+        render :new
+        return
+      end
+
+      @movie_theater = MovieTheater.new(movie_id: movie_result.id, region_id: region_result.id)
       puts @movie_theater.inspect
 
       if @movie_theater.save
@@ -51,7 +61,7 @@ module Admin
     end
 
     def movie_theater_params
-      params.require(:movie_theater).permit(:movie_id, :region_id)
+      params.require(:movie_theater).permit(:movie, :city)
     end
   end
 end
