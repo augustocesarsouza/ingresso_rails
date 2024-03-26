@@ -1,12 +1,38 @@
-<%= simple_form_for([:admin, @movie_theater]) do |f| %> <%# esse ':admin' com [] diz que ele é do namespace admin, assim 'admin_categories' %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class="form-inputs">
-    <%= f.input :movie_id, label: 'Movie_Id' %>
-    <%= f.input :region_id, label: 'Region_Id' %>
+<%= form_tag(admin_movie_theaters_path, method: :post) do %>
+  <% if @movie_theater && @movie_theater.errors.any? %>
+    <div class="error-explanation">
+      <ul>
+        <% @movie_theater.errors.full_messages.each do |msg| %>
+          <li class="text-danger"><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= label_tag :movie, 'Movie Name' %>
+    <%= text_field_tag :movie, nil, class: "form-control" %>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, 'Salvar', class: 'btn btn-info' %>
-    <%# Normalmente por contexto o 'simple_form_for' já sabe qual é a função do botão aqui ele sabe que é um CREATE, mas tem como trocar igual vamos colocar 'Salvar'%>
+  <div class="mb-3">
+    <%= label_tag :city, 'City Name' %>
+    <%= text_field_tag :city, nil, class: "form-control" %>
   </div>
+  <%= submit_tag 'Salvar', class: 'btn btn-info' %>
 <% end %>
+<%# <div class="form-inputs"> %>
+<%# <%= label_tag :movie, 'Movie Name' %>
+<%# <%= text_field_tag :movie %>
+<%# <%= label_tag :city, 'City Name' %>
+<%# <%= text_field_tag :city %>
+<%# </div> %>
+<%# <div class="form-actions"> %>
+<%# <%= submit_tag 'Salvar', class: 'btn btn-info' %>
+<%# </div> %>
+<%# <% if @movie_theater && @movie_theater.errors.any? %>
+<%# <div class="error-explanation"> %>
+<%# <ul> %>
+<%# <% @movie_theater.errors.full_messages.each do |msg| %>
+  <%# <li><%= msg </li>%>
+  <%# <% end %>
+  <%# </ul> %>
+  <%# </div> %>
+  <%# <% end %> 
