@@ -34,13 +34,10 @@ buttonRight.addEventListener("click", () => {
 
 
 function verificIfScrollGreaterThan400() {
-  // console.log(scrollElement.scrollLeft);
   
   if(scrollElement.scrollLeft > 0){ 
-    // buttonLeft.classList.remove('hide-prev');
     containerLeft.style.display = 'flex';
   } else {
-    // buttonLeft.classList.add('hide-prev');
     containerLeft.style.display = 'none';
   }
 }

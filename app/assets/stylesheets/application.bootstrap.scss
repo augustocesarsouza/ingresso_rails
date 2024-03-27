@@ -91,9 +91,9 @@ body {
   // cursor: auto !important;
   position: absolute;
   left: 0px !important;
-  top: 380px !important;
+  top: 439px !important;
   width: 88px !important;
-  height: 275px !important;
+  height: 235px !important;
   // justify-content: flex-end !important;
   color: #00b0ff !important;
   display: none;
@@ -114,9 +114,9 @@ body {
   cursor: auto !important;
   position: absolute;
   right: 0px !important;
-  top: 382px !important;
+  top: 439px !important;
   width: 88px !important;
-  height: 275px !important;
+  height: 236px !important;
   color: #00b0ff !important;
   display: flex;
   align-items: center;
@@ -160,6 +160,47 @@ body {
   white-space: nowrap;
 }
 
+.container-main-header-section {
+  // padding-left: 70px !important;
+  // padding-right: 70px !important;
+  position: relative;
+}
+
+.header-custom {
+  // background-color: rgb(4, 18, 24) !important;
+  background-color: rgb(11 40 53 / 27%) !important;
+}
+
+.container-main-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(17 33 47) !important;
+}
+
+.container-linear-left {
+  position: absolute;
+  right: 206px;
+  top: 0px;
+  width: 174px;
+  height: 337px;
+  background-image: linear-gradient(to left, rgb(17, 33, 47), rgb(17 33 47 / 3%));
+}
+
+.container-linear-right {
+  position: absolute;
+  left: 206px;
+  top: 0px;
+  width: 174px;
+  height: 337px;
+  background-image: linear-gradient(to right, rgb(17, 33, 47), rgb(17 33 47 / 3%));
+}
+
+.container-img-highlight {
+  width: 59rem;
+  height: 100%;
+}
+
 .section-custom {
   padding-left: 70px !important;
   padding-right: 70px !important;
@@ -172,25 +213,24 @@ body {
 
 .carousel-inner {
   display: flex !important;
-  // justify-content: center !important;
   align-items: center !important;
-  // width: 85rem !important;
 }
 
 .carousel-item {
   position: relative !important;
-  // width: 85rem !important;
 }
 
+.h1-custom {
+  font-size: 26px;
+  color: white;
+  margin-left: 10px;
+}
 
 .carousel-custom {
-  // max-height: 260px !important;
   display: flex;
   overflow-x: auto !important;
   white-space: nowrap;
   scroll-behavior: smooth;
-  // gap: 88px !important;
-  // width: 48rem !important;
 }
 
 .carousel-custom::-webkit-scrollbar {
@@ -241,7 +281,13 @@ body {
   padding: 2px 3px;
   // overflow-wrap: break-word;
   width: 100%;
-  word-wrap: break-word;
+  // word-wrap: break-word;
+
+  >h2 {
+    font-size: 15px;
+    color: #c0c1c1;
+    white-space: pre-line;
+  }
 }
 
 .h5-custom {

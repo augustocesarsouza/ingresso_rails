@@ -1,15 +1,18 @@
-<header class="bg-dark py-5">
-  <div class="container px-4 px-lg-5 my-5">
-    <div class="text-center text-white">
-      <h1 class="display-4 fw-bolder">Sua loja virtual preferida</h1>
-      <p class="lead fw-normal text-white-50 mb-0">Aqui vai ser o slogan</p>
+<div class="container-main-header-section" >
+  <%# <header class="header-custom"></header> %>
+  <div class="container-linear-left"></div>
+  <div class="container-main-highlight">
+    <div class="container-img-highlight">
+      <%= image_tag @movie_highlight.image_background, class: "movie-image", alt: @movie_highlight.title %>
     </div>
   </div>
+  <div class="container-linear-right"></div>
 </header>
 <section class="py-5 section-custom">
   <div id="carouselExampleControls" class="carousel slide">
     <div class="carousel-inner">
       <div class="carousel-item active">
+        <h1 class="h1-custom" >Em Alta</h1>
         <div class="ms-2 me-2 carousel-custom">
           <% @movies.each do |movie| %>
             <div class="col-custom">
@@ -17,6 +20,7 @@
                 <%= image_tag movie.image_main, class: "movie-image", alt: movie.title %>
               </div>
               <div class="custom-card-body">
+                <h2><%= movie.title %></h2>
               </div>
             </div>
           <% end %>
@@ -24,8 +28,6 @@
       </div>
     </div>
   </div>
-  <%# <button class="carousel-control-prev hide-prev button-custom-previous" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-  </button> %>
   <div class="container-arrow-left" >
     <i class="fa-solid fa-angle-left i-arrow-custom-left"></i>
     <span class="visually-hidden">Previous</span>
@@ -34,6 +36,5 @@
     <i class="fa-solid fa-angle-right i-arrow-custom-right"></i>
     <span class="visually-hidden">Next</span>
   </div>
-  <%# <button class="carousel-control-next button-custom-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-  </button> %>
 </section>
+</div>
