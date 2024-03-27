@@ -1,6 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+body {
+  background-color: rgb(4 18 24) !important;
+}
+
 .menu-item-profile {
   text-decoration: none;
   font-weight: 600;
@@ -28,6 +32,226 @@
   border: 1px solid #0000002e;
 }
 
+.card-movie img {
+  transition: transform 0.3s ease;
+}
+
+.card-movie:hover img {
+  transform: scale(1.1);
+}
+
+.movie-image {
+  width: 100% !important;
+  height: auto !important;
+}
+
+// [type=button]:not(:disabled),
+// [type=reset]:not(:disabled),
+// [type=submit]:not(:disabled),
+// button:not(:disabled) {
+//   cursor: auto;
+// }
+
+.button-custom-next {
+  cursor: auto !important;
+  position: absolute;
+  right: 22px !important;
+  top: 485px !important;
+  width: 42px !important;
+  height: 51px !important;
+  justify-content: flex-end !important;
+  color: #00b0ff !important;
+
+  @media (min-width: 1451px) {
+    right: 90px !important;
+  }
+}
+
+.button-custom-previous,
+.button-custom-next::after {
+  background-color: red;
+}
+
+.button-custom-previous {
+  cursor: auto !important;
+  position: absolute;
+  left: 25px !important;
+  top: 485px !important;
+  width: 30px !important;
+  height: 51px !important;
+  justify-content: flex-end !important;
+  color: #00b0ff !important;
+
+  @media (min-width: 1451px) {
+    width: 120px !important;
+  }
+}
+
+.container-arrow-left {
+  // cursor: auto !important;
+  position: absolute;
+  left: 0px !important;
+  top: 380px !important;
+  width: 88px !important;
+  height: 275px !important;
+  // justify-content: flex-end !important;
+  color: #00b0ff !important;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  // background-color: rgb(4 18 24 / 51%);
+  background-image: linear-gradient(to right, rgb(5, 18, 24), rgb(0 0 0 / 0%));
+
+
+  @media (min-width: 1451px) {
+    width: 120px !important;
+    left: 78px !important;
+
+  }
+}
+
+.container-arrow-right {
+  cursor: auto !important;
+  position: absolute;
+  right: 0px !important;
+  top: 382px !important;
+  width: 88px !important;
+  height: 275px !important;
+  color: #00b0ff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to left, rgb(5, 18, 24), rgb(0 0 0 / 1%));
+
+  @media (min-width: 1451px) {
+    right: 78px !important;
+  }
+}
+
+.i-arrow-custom-left {
+  font-size: 50px !important;
+  cursor: pointer;
+}
+
+.i-arrow-custom-right {
+  font-size: 50px !important;
+  cursor: pointer;
+}
+
+.i-arrow-custom-right {
+  color: rgb(0, 174, 255) !important;
+}
+
+.button-custom-next {
+  cursor: none;
+}
+
+.container-button-shadow {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 22px !important;
+  top: 130px !important;
+}
+
+.overflow-x {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.section-custom {
+  padding-left: 70px !important;
+  padding-right: 70px !important;
+
+  @media (min-width: 992px) and (max-width: 1450px) {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+.carousel-inner {
+  display: flex !important;
+  // justify-content: center !important;
+  align-items: center !important;
+  // width: 85rem !important;
+}
+
+.carousel-item {
+  position: relative !important;
+  // width: 85rem !important;
+}
+
+
+.carousel-custom {
+  // max-height: 260px !important;
+  display: flex;
+  overflow-x: auto !important;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  // gap: 88px !important;
+  // width: 48rem !important;
+}
+
+.carousel-custom::-webkit-scrollbar {
+  width: 0;
+}
+
+.col-custom {
+  width: 12% !important;
+  padding: 0px 0px !important;
+  height: 300px !important;
+  margin-right: 10px;
+
+  //992 -> para cima
+  @media (min-width: 1450px) {
+    margin-right: 10px;
+  }
+
+  @media (max-width: 1449px) and (min-width: 1340px) {
+    margin-right: 10px;
+  }
+
+  @media (min-width: 1240px) and (max-width: 1339px) {
+    margin-right: 20px;
+  }
+
+  @media (min-width: 1140px) and (max-width: 1239px) {
+    margin-right: 32px;
+  }
+
+  @media (min-width: 1040px) and (max-width: 1139px) {
+    margin-right: 45px;
+  }
+
+  @media (min-width: 992px) and (max-width: 1039px) {
+    margin-right: 52px;
+  }
+}
+
+.card-movie {
+  // position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  width: 10rem !important;
+  background-color: rgb(4 18 24) !important;
+}
+
 .custom-card-body {
   padding: 2px 3px;
+  // overflow-wrap: break-word;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.h5-custom {
+  font-size: 1rem;
+}
+
+.show-button {
+  display: block !important;
+}
+
+.hidde-button {
+  display: none !important;
 }
