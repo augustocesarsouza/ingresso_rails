@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import './home/apllication.css';
 
 body {
   background-color: rgb(4 18 24) !important;
@@ -416,4 +417,110 @@ body {
 
 .hidde-button {
   display: none !important;
+}
+
+.nav-custom {
+  background-image: linear-gradient(to left, #202380, #3255e2);
+  color: white;
+
+  svg {
+    fill: white;
+    width: 36px;
+  }
+}
+
+.container-right {
+  width: 17rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.div-loupe {
+  cursor: pointer;
+
+  :hover {
+    fill: #c9c9c9;
+  }
+}
+
+.svg-loupe {
+  // width: 26px;
+}
+
+.container-svg-user-login-logout {
+  display: flex;
+  align-items: center;
+  width: 9rem;
+  gap: 10px;
+}
+
+.svg-user {
+  // width: 26px;
+}
+
+.container-login-logout {
+  width: 85px;
+  display: flex;
+  cursor: pointer;
+
+  >span {
+    font-size: 14px;
+    white-space: pre-line;
+    line-height: 1;
+    // letter-spacing: 0;
+    // word-spacing: 0;
+  }
+
+  :hover {
+    color: #c9c9c9;
+  }
+}
+
+.container-chose-region {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+
+  >p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+  }
+}
+
+.container-chose-region:hover {
+  color: #c9c9c9;
+
+  >svg {
+    fill: #c9c9c9;
+  }
+}
+
+.dashboard-main {
+  display: flex;
+  padding: 15px 70px;
+  background-color: rgb(32 35 128);
+}
+
+.ul-custom {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+
+  >li {
+    list-style: none;
+    color: #c9c9c9;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  :hover {
+    color: #b7b7b7;
+  }
 }

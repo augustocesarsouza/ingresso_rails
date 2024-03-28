@@ -1,17 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg nav-custom">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand" href="#!">Loja ProgShowzim</a>
+    <a class="navbar-brand" href="#!">
+      <img src="https://ingresso-a.akamaihd.net/catalog/img/ingresso-logo-v1-desktop-final.svg" alt="ingresso-img">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-        <li class="nav-item"><a class="nav-link" aria-current="page" href="<%= root_path %>">Home</a></li>
-        <%= render 'layouts/store/user_signed_in' %>
+        <%# <li class="nav-item"><a class="nav-link" aria-current="page" href="<%= root_path > ">Home</a></li> %>
+        <%# <%= render 'layouts/store/user_signed_in' %>
+        <%= render 'layouts/store/chose_region' %>
       </ul>
       <form class="d-flex">
-        <button class="btn btn-outline-dark" type="submit">
-          <i class="bi-cart-fill me-1"></i>
-          <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-        </button>
+        <div class="container-right">
+          <div class="div-loupe">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="mr-3 h-6 w-6 cursor-pointer md:h-9 md:w-9 md:hover:opacity-80 fill-ing-blue-200 svg-loupe"><path fill-rule="evenodd" d="M9.75 2.75a6.625 6.625 0 0 1 4.99 10.983q.059.041.113.095l5.569 5.57c.341.341.36.875.043 1.192-.317.318-.851.298-1.193-.043l-5.569-5.57a1 1 0 0 1-.142-.182A6.625 6.625 0 1 1 9.75 2.75m0 1.625a5 5 0 1 0 0 10 5 5 0 0 0 0-10m-3.417 3.74c.206.019.36.2.341.406-.184 2.152.69 3.352 2.703 3.727a.375.375 0 0 1-.138.737c-2.398-.447-3.529-1.998-3.312-4.528a.375.375 0 0 1 .406-.341z"></path></svg>
+          </div>
+          <div class="container-svg-user-login-logout">
+            <div class="div-loupe">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mr-3 h-6 w-6 cursor-pointer md:h-9 md:w-9 md:hover:opacity-80 fill-ing-blue-200 svg-user"><path fill-rule="evenodd" d="M32 6.667c13.991 0 25.333 11.342 25.333 25.333S45.991 57.333 32 57.333 6.667 45.991 6.667 32 18.009 6.667 32 6.667m0 14.75c-4.631 0-5.948 2.607-5.058 8.026.04.24.034.486-.014.724-.362 1.768.122 3.687 1.238 5.742.32.588 1.623 2.583 1.75 3.008a2 2 0 0 1-1.298 2.476c-5.486 1.784-10.476 3.566-12.52 4.555 3.883 4.52 9.642 7.385 16.069 7.385 6.318 0 11.99-2.768 15.868-7.158l-12.26-4.819a2 2 0 0 1-.986-2.907c1.344-2.202 2.24-4.029 2.688-5.451.367-1.164.395-1.915.238-2.246a2 2 0 0 1-.19-.966c.373-6.9-.518-8.37-5.525-8.37zM32.167 11C20.477 11 11 20.477 11 32.167c0 3.817 1.01 7.398 2.778 10.49 2.005-1.05 6.496-2.693 11.192-4.272q-.16-.274-.318-.566c-1.458-2.683-2.165-5.351-1.713-8.079-.47-3.134-.282-5.824.804-7.973 1.428-2.83 4.245-4.35 8.257-4.35 4.048 0 6.728 1.094 8.228 3.568 1.199 1.976 1.506 4.493 1.313 8.581.724 2.175-.053 5.075-2.141 8.902l11.056 4.36a21.05 21.05 0 0 0 2.877-10.661C53.333 20.477 43.857 11 32.167 11"></path></svg>
+            </div>
+            <div class="container-login-logout">
+              <span>Entre ou Cadastre-se</span>
+            </div>
+            <div class="container-choose-register-login">
+              <h1>aqui</h1>
+            </div>
+          </div>
+          <div class="div-loupe">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mr-3 h-6 w-6 cursor-pointer md:h-9 md:w-9 md:hover:opacity-80 fill-ing-blue-200"><path d="M32 6.667c13.991 0 25.333 11.342 25.333 25.333S45.991 57.333 32 57.333 6.667 45.991 6.667 32 18.009 6.667 32 6.667M32.167 11C20.477 11 11 20.477 11 32.167s9.477 21.166 21.167 21.166 21.166-9.476 21.166-21.166S43.857 11 32.167 11m0 31.667A2.853 2.853 0 0 1 35 45.5c0 1.519-1.298 2.833-2.833 2.833s-2.834-1.314-2.834-2.833a2.854 2.854 0 0 1 2.834-2.833M32 17.333c5.46 0 9.332 3.812 9.332 9.417 0 2.767-1.396 5.623-4.24 7.56a22.6 22.6 0 0 1-2.84 1.631l-.049.024v2.702a2 2 0 0 1-4 0v-4a2 2 0 0 1 1.278-1.865q.057-.022.257-.107.347-.148.768-.352a19 19 0 0 0 2.334-1.34c.691-.466 2.492-1.29 2.492-4.253s-1.559-5.416-5.25-5.416c-3.972 0-5.416 2.323-5.416 5.5 0 1.104-1.23 2-2.334 2s-2-.896-2-2c0-5.47 4.079-9.5 9.668-9.5z"></path></svg>
+          </div>
+        </div>
       </form>
     </div>
   </div>

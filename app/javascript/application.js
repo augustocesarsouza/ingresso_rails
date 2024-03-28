@@ -9,3 +9,4 @@ window.bootstrap = bootstrap
 import "./mask"
 
 import "./carouse_functionality"
+import "./click_open_create_or_register_user"
