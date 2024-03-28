@@ -1,13 +1,31 @@
 <div class="container-main-header-section" >
-  <%# <header class="header-custom"></header> %>
   <div class="container-linear-left"></div>
   <div class="container-main-highlight">
     <div class="container-img-highlight">
-      <%= image_tag @movie_highlight.image_background, class: "movie-image", alt: @movie_highlight.title %>
+      <%= image_tag @movie_highlight.image_background, class: "movie-image-highlight", alt: @movie_highlight.title %>
+    </div>
+    <div class="container-linear-right">
+    </div>
+    <div class="container-info-movie-highlight">
+      <div class="container-rating-gender-movie">
+        <div class="container-span-rating">
+          <span class="span-rating"><%= @movie_highlight.movie_rating %></span>
+        </div>
+        <span class="span-gender"><%= @movie_highlight.gender %></span>
+      </div>
+      <div class="container-title">
+        <h2 class="h2-custom"><%= @movie_highlight.title %></h2>
+      </div>
+      <div class="container-description" >
+        <span class="span-description" id="description"><%= @movie_highlight.description %></span>
+      </div>
+      <div class="container-buttons">
+        <button class="button-ticket">Ingressos</button>
+        <button class="button-watch-trailer">Assistir Trailer</button>
+      </div>
     </div>
   </div>
-  <div class="container-linear-right"></div>
-</header>
+</div>
 <section class="py-5 section-custom">
   <div id="carouselExampleControls" class="carousel slide">
     <div class="carousel-inner">

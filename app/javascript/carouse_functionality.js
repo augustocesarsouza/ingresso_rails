@@ -6,6 +6,14 @@ const containerRight = document.querySelector('.container-arrow-right');
 const buttonLeft = document.querySelector('.i-arrow-custom-left'); 
 const buttonRight = document.querySelector('.i-arrow-custom-right'); 
 
+const description = document.getElementById('description');
+const maxLength = 195;
+
+if(description.textContent.length > maxLength){
+  description.textContent = description.textContent.substring(0, maxLength) + '...';
+}
+
+
 function scrollLeft(){
   scrollElement.scrollLeft -= 600;
 }
