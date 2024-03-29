@@ -1,4 +1,80 @@
+.container-nav {
+  user-select: none;
+
+}
+
 .container-choose-register-login {
   display: none;
+  position: absolute;
+  right: -50px;
+  top: 49px;
+  width: 32rem;
+  height: 16rem;
+  z-index: 2;
   color: red;
+  background-color: rgb(22 27 34);
+}
+
+.svg-sort-up {
+  position: absolute;
+  right: 225px;
+  top: -17px;
+  width: 31px !important;
+  fill: rgb(22 27 34) !important;
+}
+
+.container-still-is-not-customer-login {
+  display: flex;
+  padding: 25px;
+  user-select: none;
+  color: white;
+}
+
+.container-still-is-not-customer {
+  width: 16rem;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.container-h1-span {
+  >h1 {
+    font-size: 1rem;
+  }
+}
+
+.link-create-new-account {
+  border: none;
+  padding: 8px 51px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  background-image: linear-gradient(to left, #ad33c2, rgb(34 113 177) 80%);
+  text-decoration: none;
+}
+
+.link-create-new-account:hover {
+  background-image: linear-gradient(to left, #9913b0, rgb(20 107 177) 80%);
+}
+
+.container-line-white {
+  border: 1px solid #5c5c5c;
+  margin: 0px 20px;
+  height: 194px;
+}
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  >h1 {
+    font-size: 1rem;
+  }
+}
+
+.link-login {
+  text-decoration: none;
+  color: rgb(152 170 236);
 }
