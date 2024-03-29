@@ -30,9 +30,15 @@
 }
 
 .h1-entry-with-client {
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 600;
   color: dimgrey;
+}
+
+.container-remember {
+  >fieldset {
+    margin-bottom: 5px !important;
+  }
 }
 
 .span-help-1 {

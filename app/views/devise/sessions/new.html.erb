@@ -21,7 +21,7 @@
                 input_html: { autocomplete: "current-password" } %>
   </div>
   <div class="form-group">
-    <div class="w-50">
+    <div class="w-50 container-remember">
       <%= f.input :remember_me, as: :boolean, input_html: { class: 'remember' } if devise_mapping.rememberable? %>
     </div>
     <div class="container-help-span" >
