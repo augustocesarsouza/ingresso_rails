@@ -1,0 +1,9 @@
+.form-enter {
+  display: flex;
+  justify-content: flex-end;
+
+  >input {
+    width: 25% !important;
+    padding: 10px 0px !important;
+  }
+}

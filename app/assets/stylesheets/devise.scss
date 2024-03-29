@@ -1,6 +1,8 @@
 @import 'devise/style.css';
 @import 'devise/ingresso_top.css';
 @import 'devise/footer_address.css';
+@import 'devise/new.css';
+@import 'devise/button_submit.css';
 
 .container-main {
   display: flex;
@@ -18,11 +20,11 @@
 .container-login-create {
   // width: 10rem !important;
   max-width: 100% !important;
-  margin-top: 70px;
 }
 
-.login-wrap {
+.container-login-create {
   gap: 50px;
   width: 42rem !important;
-  height: 30rem;
+  height: 100%;
+  padding: 5px 5px !important;
 }

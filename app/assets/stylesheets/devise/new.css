@@ -1,0 +1,54 @@
+.login-create-form {
+  width: 21rem;
+}
+
+.login-with-social-network {
+  margin-bottom: 30px;
+
+  >h1 {
+    font-size: 21px;
+    font-weight: 600;
+    color: dimgrey;
+  }
+}
+
+.container-google {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgb(66 133 244);
+  padding: 7px;
+  cursor: pointer;
+
+  >span {
+    color: white;
+  }
+}
+
+.container-help-span {
+  font-size: 13px;
+}
+
+.h1-entry-with-client {
+  font-size: 21px;
+  font-weight: 600;
+  color: dimgrey;
+}
+
+.span-help-1 {
+  color: rgb(102, 102, 102);
+  font-weight: 600;
+}
+
+.span-help-2 {
+  color: #2196F3;
+  font-weight: 600;
+}
+
+.container-help-span-2 {
+  font-size: 13px;
+}
+
+.span-help-3 {
+  color: #2196F3;
+}

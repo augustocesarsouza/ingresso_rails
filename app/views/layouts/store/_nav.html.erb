@@ -40,6 +40,7 @@
                   <%# <a href="#" class="link-login">Entrar na minha Conta</a> %>
                   <%= link_to "Entrar na minha Conta", new_user_session_path, method: :delete, class: "link-login"  %>
                 </div>
+                <%= render 'layouts/store/user_signed_in' %>
               </div>
             </div>
           </div>
