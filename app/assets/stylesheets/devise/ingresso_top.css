@@ -1,6 +1,7 @@
 .container-ingresso-main {
   background-color: rgb(48 48 48);
   height: 14rem;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

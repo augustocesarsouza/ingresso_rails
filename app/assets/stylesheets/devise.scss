@@ -5,4 +5,24 @@
 .container-main {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.container-top-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-login-create {
+  // width: 10rem !important;
+  max-width: 100% !important;
+  margin-top: 70px;
+}
+
+.login-wrap {
+  gap: 50px;
+  width: 42rem !important;
+  height: 30rem;
 }
