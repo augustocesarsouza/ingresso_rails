@@ -9,8 +9,40 @@ const CaptureEventClickLoginOrRegister = () => {
   }else{
     containerRegisterLogin.style.display = 'none';
   }
-
-  
 }
 
-divLoginOrRegister.addEventListener('click', CaptureEventClickLoginOrRegister);
+if(divLoginOrRegister){
+  divLoginOrRegister.addEventListener('click', CaptureEventClickLoginOrRegister);
+}
+
+const spanUserLogged = document.querySelector('.span-user-loggedin');
+const primeiraStringCompleta = spanUserLogged.textContent;
+
+const indicePrimeiraEspaço = primeiraStringCompleta.indexOf(' ');
+const stringSemSobreNome = primeiraStringCompleta.substring(0, indicePrimeiraEspaço + 1);
+
+const indiceDaPrimeiraVirgula = stringSemSobreNome.indexOf(',');
+
+const newTexto = stringSemSobreNome.substring(0, indiceDaPrimeiraVirgula + 1) + ' ' + stringSemSobreNome.substring(indiceDaPrimeiraVirgula + 1);
+
+spanUserLogged.textContent = newTexto
+
+//primeiraStringCompleta = Olá,augusto cesar
+//stringSemSobreNome = Olá,augusto
+
+const divUserLoggedin = document.querySelector('.container-user-loggedin');
+const containerLoggout = document.querySelector('.container-loggout');
+
+containerLoggout.style.display = 'none';
+
+const CaptureEventClickLogOut = () => {
+  if(containerLoggout.style.display === 'none') {
+    containerLoggout.style.display = 'flex';
+  }else{
+    containerLoggout.style.display = 'none';
+  }
+}
+
+if(divUserLoggedin){
+  divUserLoggedin.addEventListener('click', CaptureEventClickLogOut);
+}
