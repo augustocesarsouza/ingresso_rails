@@ -1,2 +1,8 @@
 @import 'devise/style.css';
 @import 'devise/ingresso_top.css';
+@import 'devise/footer_address.css';
+
+.container-main {
+  display: flex;
+  flex-direction: column;
+}
