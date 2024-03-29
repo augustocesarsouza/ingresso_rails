@@ -1,0 +1,11 @@
+.container-ingresso-main {
+  background-color: rgb(48 48 48);
+  height: 14rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  >svg {
+    width: 348px;
+  }
+}
