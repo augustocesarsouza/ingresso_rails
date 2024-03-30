@@ -1,42 +1,66 @@
-<h2>Sign up</h2>
-<%= simple_form_for(resource, html: { class: 'login-form' }, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <div class="text-center">
-    <%= f.error_notification %>
-    <%= render "devise/shared/error_messages" %>
+<div class="container-new-user-main">
+  <div class="container-info-register-buy-tecket">
+    <h2 class="h2-register">Cadastre-se</h2>
+    <p class="p-info-buy-ticket">Compre ingressos e combos de pipoca com conforto e comodidade.</p>
   </div>
-  <div class="form-inputs">
-    <%= f.input :name,
+  <%= simple_form_for(resource, html: { class: 'login-form' }, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <div class="container-name-cpf">
+        <%= f.input :name,
                 required: true,
                 autofocus: true,
                 label: false, #tira nome "email",
-                placeholder: 'Nome'%>
-    <%= f.input :phone,
+                placeholder: '*Como quer ser chamadado'%>
+        <%= f.input :cpf,
+                input_html: { class: "mask-cpf" },
+                required: true,
+                autofocus: true,
+                label: false, #tira nome "email",
+                placeholder: '*CPF'%>
+      </div>
+      <div class="container-password">
+        <%= f.input :password,
+                required: true,
+                label: false, #tira nome "email",
+                placeholder: '*Senha no mínimo 6 caracteres',
+                input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                required: true,
+                label: false, #tira nome "email",
+                placeholder: '*Confirmar senha',
+                input_html: { autocomplete: "new-password" } %>
+      </div>
+      <%= f.input :email,
+                required: true,
+                autofocus: true,
+                label: false, #tira nome "email",
+                placeholder: '*E-mail',
+                input_html: { autocomplete: "email" }%>
+      <div class="container-info-password-warn">
+        <span class="span-1">Sua senha precisa atender aos seguintes critérios:</span>
+        <span class="span-2">Mínimo uma letra minúscula *</span>
+        <span class="span-3">Mínimo uma letra maiúscula *</span>
+        <span class="span-4">Mínimo um número *</span>
+        <span class="span-5">Mínimo de 8 caracteres *</span>
+      </div>
+      <div class="form-check container-check">
+        <input class="form-check-input input-checkbox" type="checkbox" id="invalidCheck" required>
+        <label class="form-check-label label-receive-news" for="invalidCheck">
+          Quero receber novidades e mensagens da Ingresso.com.
+        </label>
+      </div>
+      <%# f.input :phone,
                 input_html: { class: "mask-phone" },
                 required: true,
                 autofocus: true,
                 label: false, #tira nome "email",
                 placeholder: 'Telefone'%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                label: false, #tira nome "email",
-                placeholder: 'E-mail',
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                label: false, #tira nome "email",
-                placeholder: 'senha no mínimo 6 caracteres',
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                label: false, #tira nome "email",
-                placeholder: 'Confirmar senha',
-                input_html: { autocomplete: "new-password" } %>
-  </div>
-  <%= render "devise/shared/button_submit", f: f, text: 'Cadastrar' %>
-<% end %>
-<div class="form-group d-md-flex">
-  <div class="w-100 text-md-right">
-    <%= render "devise/shared/links" %>
+    </div>
+    <%= render "devise/shared/button_submit", f: f, text: 'Cadastrar' %>
+  <% end %>
+  <div class="form-group d-md-flex">
+    <div class="w-100 text-md-right">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>

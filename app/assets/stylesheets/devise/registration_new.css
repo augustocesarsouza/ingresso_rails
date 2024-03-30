@@ -1,0 +1,91 @@
+.container-new-user-main {
+  width: 55rem;
+  /* width: 80%; */
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1000px) {
+  .container-new-user-main {
+    width: 80%;
+  }
+}
+
+.container-info-register-buy-tecket {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.h2-register {
+  font-size: 23px;
+  font-weight: 600;
+  color: rgb(107 107 107);
+}
+
+.p-info-buy-ticket {
+  font-size: 14px;
+}
+
+.container-name-cpf {
+  display: flex;
+  gap: 10px;
+}
+
+.user_name {
+  width: 50%;
+}
+
+.container-password {
+  display: flex;
+  gap: 10px;
+}
+
+.user_password {
+  width: 51%;
+}
+
+.user_password_confirmation {
+  width: 50%;
+}
+
+.user_email {
+  width: 50%;
+}
+
+.container-info-password-warn {
+  display: flex;
+  flex-direction: column;
+}
+
+.span-1 {
+  color: black;
+}
+
+.span-2,
+.span-3,
+.span-4,
+.span-5 {
+  color: #00000054;
+}
+
+.container-check {
+  display: flex;
+  align-items: center;
+  gap: 10px !important;
+  margin-top: 10px;
+}
+
+#invalidCheck {
+  width: 20px;
+  height: 20px;
+}
+
+.input-checkbox {
+  margin-top: 0.2rem !important;
+}
+
+.label-receive-news {
+  margin-left: 10px !important;
+  font-size: 14px;
+}

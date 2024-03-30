@@ -1,0 +1,44 @@
+ <% if user_signed_in? %>
+  <div class="container-user-loggedin">
+    <span class="span-user-loggedin">Olá,<%= current_user.name %></span>
+    <span class="my-orders">Meus Pedidos</span>
+  </div>
+<% else %>
+  <div class="container-login-logout">
+    <span>Entre ou Cadastre-se</span>
+  </div>
+<% end %>
+<div class="container-loggout">
+  <% if user_signed_in? %>
+    <div class="container-links">
+      <span class="span-name-user-complete">Olá, <%= current_user.name.capitalize %></span>
+      <%= link_to "Meus Pedidos", "#" %>
+      <%= link_to "Dados Pessoais", "#" %>
+      <%= link_to "Formas de Pagamento", "#" %>
+      <div class="container-risk"></div>
+      <div class="container-logout-account">
+        <%= link_to "Sair da Conta", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="container-choose-register-login">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-sort-up">
+    <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
+  </svg>
+  <div class="container-still-is-not-customer-login">
+    <div class="container-still-is-not-customer">
+      <div class="container-h1-span">
+        <h1>Ainda não é cliente Ingresso.com?</h1>
+        <span>Compre ingressos e combos de pipoca para ir ao cinema com segurança e mais comodidade!</span>
+      </div>
+      <a href="<%= new_user_registration_path %>" class="link-create-new-account">Criar uma nova conta</a>
+    </div>
+    <div class="container-line-white"></div>
+    <div class="container-login">
+      <h1>Cliente Ingresso.com</h1>
+      <%# <a href="#" class="link-login">Entrar na minha Conta</a> %>
+      <%= link_to "Entrar na minha Conta", new_user_session_path, method: :delete, class: "link-login"  %>
+    </div>
+  </div>
+</div>

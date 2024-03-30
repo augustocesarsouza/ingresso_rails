@@ -1,0 +1,162 @@
+.container-user-loggedin {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.span-user-loggedin {
+  font-size: 16px;
+  font-weight: 600;
+  color: transparent;
+  /* torna o texto transparente */
+  background-image: linear-gradient(to right, #ffce00, #ff8000);
+  /* degradê de fundo */
+  -webkit-background-clip: text;
+  /* permite o uso do degradê no texto */
+  background-clip: text;
+  /* permite o uso do degradê no texto */
+  /* text-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(0, 0, 255, 0.5); */
+  /* sombras do texto */
+  /* Outras propriedades de estilo podem ser adicionadas conforme necessário */
+}
+
+.my-orders {
+  font-size: 14px;
+}
+
+.container-loggout {
+  display: none;
+  position: absolute;
+  right: -50px;
+  top: 49px;
+  width: 32rem;
+  height: 20rem;
+  z-index: 2;
+  padding: 15px 20px;
+  color: red;
+  background-color: rgb(22 27 34);
+}
+
+.container-choose-register-login {
+  display: none;
+  position: absolute;
+  right: -50px;
+  top: 49px;
+  width: 32rem;
+  height: 16rem;
+  z-index: 2;
+  color: red;
+  background-color: rgb(22 27 34);
+}
+
+.svg-sort-up {
+  position: absolute;
+  right: 225px;
+  top: -17px;
+  width: 31px !important;
+  fill: rgb(22 27 34) !important;
+}
+
+.container-still-is-not-customer-login {
+  display: flex;
+  padding: 25px;
+  user-select: none;
+  color: white;
+}
+
+.container-still-is-not-customer {
+  width: 16rem;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.container-h1-span {
+  >h1 {
+    font-size: 1rem;
+  }
+}
+
+.link-create-new-account {
+  border: none;
+  padding: 8px 51px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  background-image: linear-gradient(to left, #ad33c2, rgb(34 113 177) 80%);
+  text-decoration: none;
+}
+
+.link-create-new-account:hover {
+  background-image: linear-gradient(to left, #9913b0, rgb(20 107 177) 80%);
+}
+
+.container-line-white {
+  border: 1px solid #5c5c5c;
+  margin: 0px 20px;
+  height: 194px;
+}
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  >h1 {
+    font-size: 1rem;
+  }
+}
+
+.link-login {
+  text-decoration: none;
+  color: rgb(152 170 236);
+}
+
+/* Parte para sair da conta */
+
+.container-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  >a {
+    color: rgb(152 170 236) !important;
+    text-decoration: none !important;
+    list-style: none !important;
+    font-size: 19px !important;
+    font-weight: 500;
+  }
+
+  >a:hover {
+    color: rgba(152, 170, 236, 0.801) !important;
+  }
+}
+
+.span-name-user-complete {
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.container-risk {
+  border-top: 1px solid rgb(102 102 102);
+}
+
+.container-logout-account {
+
+  >a {
+    color: rgb(152 170 236) !important;
+    text-decoration: none !important;
+    list-style: none !important;
+    font-size: 19px !important;
+    font-weight: 500;
+
+
+  }
+
+  >a:hover {
+    color: rgba(152, 170, 236, 0.801) !important;
+  }
+}
