@@ -18,6 +18,12 @@
                 autofocus: true,
                 label: false, #tira nome "email",
                 placeholder: 'Telefone'%>
+      <%= f.input :cpf,
+                input_html: { class: "mask-cpf" },
+                required: true,
+                autofocus: true,
+                label: false, #tira nome "email",
+                placeholder: 'Cpf'%>
       <%= f.input :email,
                 required: true,
                 autofocus: true,
