@@ -16,6 +16,9 @@ if(divLoginOrRegister){
 }
 
 const spanUserLogged = document.querySelector('.span-user-loggedin');
+
+if(spanUserLogged == null) return;
+
 const primeiraStringCompleta = spanUserLogged.textContent;
 
 const indicePrimeiraEspaço = primeiraStringCompleta.indexOf(' ');
