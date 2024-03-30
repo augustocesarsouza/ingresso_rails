@@ -68,3 +68,24 @@
 .span-5 {
   color: #00000054;
 }
+
+.container-check {
+  display: flex;
+  align-items: center;
+  gap: 10px !important;
+  margin-top: 10px;
+}
+
+#invalidCheck {
+  width: 20px;
+  height: 20px;
+}
+
+.input-checkbox {
+  margin-top: 0.2rem !important;
+}
+
+.label-receive-news {
+  margin-left: 10px !important;
+  font-size: 14px;
+}
