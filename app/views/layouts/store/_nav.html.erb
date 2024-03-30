@@ -19,43 +19,7 @@
             <div class="div-loupe">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mr-3 h-6 w-6 cursor-pointer md:h-9 md:w-9 md:hover:opacity-80 fill-ing-blue-200 svg-user"><path fill-rule="evenodd" d="M32 6.667c13.991 0 25.333 11.342 25.333 25.333S45.991 57.333 32 57.333 6.667 45.991 6.667 32 18.009 6.667 32 6.667m0 14.75c-4.631 0-5.948 2.607-5.058 8.026.04.24.034.486-.014.724-.362 1.768.122 3.687 1.238 5.742.32.588 1.623 2.583 1.75 3.008a2 2 0 0 1-1.298 2.476c-5.486 1.784-10.476 3.566-12.52 4.555 3.883 4.52 9.642 7.385 16.069 7.385 6.318 0 11.99-2.768 15.868-7.158l-12.26-4.819a2 2 0 0 1-.986-2.907c1.344-2.202 2.24-4.029 2.688-5.451.367-1.164.395-1.915.238-2.246a2 2 0 0 1-.19-.966c.373-6.9-.518-8.37-5.525-8.37zM32.167 11C20.477 11 11 20.477 11 32.167c0 3.817 1.01 7.398 2.778 10.49 2.005-1.05 6.496-2.693 11.192-4.272q-.16-.274-.318-.566c-1.458-2.683-2.165-5.351-1.713-8.079-.47-3.134-.282-5.824.804-7.973 1.428-2.83 4.245-4.35 8.257-4.35 4.048 0 6.728 1.094 8.228 3.568 1.199 1.976 1.506 4.493 1.313 8.581.724 2.175-.053 5.075-2.141 8.902l11.056 4.36a21.05 21.05 0 0 0 2.877-10.661C53.333 20.477 43.857 11 32.167 11"></path></svg>
             </div>
-            <% if user_signed_in? %>
-              <div class="container-user-loggedin">
-                <span class="span-user-loggedin">Olá,<%= current_user.name %></span>
-                <span class="my-orders">Meus Pedidos</span>
-              </div>
-            <% else %>
-              <div class="container-login-logout">
-                <span>Entre ou Cadastre-se</span>
-              </div>
-            <% end %>
-            <div class="container-loggout">
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link"  %>
-                </li>
-              <% end %>
-            </div>
-            <div class="container-choose-register-login">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-sort-up">
-                <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/>
-              </svg>
-              <div class="container-still-is-not-customer-login">
-                <div class="container-still-is-not-customer">
-                  <div class="container-h1-span">
-                    <h1>Ainda não é cliente Ingresso.com?</h1>
-                    <span>Compre ingressos e combos de pipoca para ir ao cinema com segurança e mais comodidade!</span>
-                  </div>
-                  <a href="#" class="link-create-new-account">Criar uma nova conta</a>
-                </div>
-                <div class="container-line-white"></div>
-                <div class="container-login">
-                  <h1>Cliente Ingresso.com</h1>
-                  <%# <a href="#" class="link-login">Entrar na minha Conta</a> %>
-                  <%= link_to "Entrar na minha Conta", new_user_session_path, method: :delete, class: "link-login"  %>
-                </div>
-              </div>
-            </div>
+            <%= render 'layouts/store/login_or_register' %>
           </div>
           <div class="div-loupe">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mr-3 h-6 w-6 cursor-pointer md:h-9 md:w-9 md:hover:opacity-80 fill-ing-blue-200"><path d="M32 6.667c13.991 0 25.333 11.342 25.333 25.333S45.991 57.333 32 57.333 6.667 45.991 6.667 32 18.009 6.667 32 6.667M32.167 11C20.477 11 11 20.477 11 32.167s9.477 21.166 21.167 21.166 21.166-9.476 21.166-21.166S43.857 11 32.167 11m0 31.667A2.853 2.853 0 0 1 35 45.5c0 1.519-1.298 2.833-2.833 2.833s-2.834-1.314-2.834-2.833a2.854 2.854 0 0 1 2.834-2.833M32 17.333c5.46 0 9.332 3.812 9.332 9.417 0 2.767-1.396 5.623-4.24 7.56a22.6 22.6 0 0 1-2.84 1.631l-.049.024v2.702a2 2 0 0 1-4 0v-4a2 2 0 0 1 1.278-1.865q.057-.022.257-.107.347-.148.768-.352a19 19 0 0 0 2.334-1.34c.691-.466 2.492-1.29 2.492-4.253s-1.559-5.416-5.25-5.416c-3.972 0-5.416 2.323-5.416 5.5 0 1.104-1.23 2-2.334 2s-2-.896-2-2c0-5.47 4.079-9.5 9.668-9.5z"></path></svg>
