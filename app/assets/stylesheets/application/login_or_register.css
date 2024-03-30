@@ -30,8 +30,9 @@
   right: -50px;
   top: 49px;
   width: 32rem;
-  height: 16rem;
+  height: 20rem;
   z-index: 2;
+  padding: 15px 20px;
   color: red;
   background-color: rgb(22 27 34);
 }
@@ -110,4 +111,52 @@
 .link-login {
   text-decoration: none;
   color: rgb(152 170 236);
+}
+
+/* Parte para sair da conta */
+
+.container-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  >a {
+    color: rgb(152 170 236) !important;
+    text-decoration: none !important;
+    list-style: none !important;
+    font-size: 19px !important;
+    font-weight: 500;
+  }
+
+  >a:hover {
+    color: rgba(152, 170, 236, 0.801) !important;
+  }
+}
+
+.span-name-user-complete {
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.container-risk {
+  border-top: 1px solid rgb(102 102 102);
+}
+
+.container-logout-account {
+
+  >a {
+    color: rgb(152 170 236) !important;
+    text-decoration: none !important;
+    list-style: none !important;
+    font-size: 19px !important;
+    font-weight: 500;
+
+
+  }
+
+  >a:hover {
+    color: rgba(152, 170, 236, 0.801) !important;
+  }
 }

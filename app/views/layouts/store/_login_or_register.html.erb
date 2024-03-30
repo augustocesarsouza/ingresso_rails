@@ -10,9 +10,16 @@
 <% end %>
 <div class="container-loggout">
   <% if user_signed_in? %>
-    <li class="nav-item">
-      <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link"  %>
-    </li>
+    <div class="container-links">
+      <span class="span-name-user-complete">Olá, <%= current_user.name.capitalize %></span>
+      <%= link_to "Meus Pedidos", "#" %>
+      <%= link_to "Dados Pessoais", "#" %>
+      <%= link_to "Formas de Pagamento", "#" %>
+      <div class="container-risk"></div>
+      <div class="container-logout-account">
+        <%= link_to "Sair da Conta", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
   <% end %>
 </div>
 <div class="container-choose-register-login">
