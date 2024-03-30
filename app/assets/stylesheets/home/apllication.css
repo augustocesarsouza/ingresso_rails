@@ -78,3 +78,41 @@
   text-decoration: none;
   color: rgb(152 170 236);
 }
+
+.container-user-loggedin {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.span-user-loggedin {
+  font-size: 16px;
+  font-weight: 600;
+  color: transparent;
+  /* torna o texto transparente */
+  background-image: linear-gradient(to right, #ffce00, #ff8000);
+  /* degradê de fundo */
+  -webkit-background-clip: text;
+  /* permite o uso do degradê no texto */
+  background-clip: text;
+  /* permite o uso do degradê no texto */
+  /* text-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(0, 0, 255, 0.5); */
+  /* sombras do texto */
+  /* Outras propriedades de estilo podem ser adicionadas conforme necessário */
+}
+
+.my-orders {
+  font-size: 14px;
+}
+
+.container-loggout {
+  display: none;
+  position: absolute;
+  right: -50px;
+  top: 49px;
+  width: 32rem;
+  height: 16rem;
+  z-index: 2;
+  color: red;
+  background-color: rgb(22 27 34);
+}

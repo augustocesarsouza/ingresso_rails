@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :regions
   devise_for :users
+  resources :regions
 
   # Defines the root path route ("/")
   root to: 'home#index'

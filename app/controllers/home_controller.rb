@@ -7,16 +7,5 @@ class HomeController < ApplicationController
     # aqui faz um join com a tabela 'movie_theater' e passa todos os 'movie_ids' para faz um get de uma vez só
     @movie_highlight = Movie.select(:id, :title, :description, :movie_rating, :gender).where(status_movie: 'Highlight').first
     # da para trocar esse 'status_movie' para uma role, que tenha os tipos que eu quero 'Highlight' 'em alta'
-
-    # create_table "movies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    #   t.string "title", limit: 100, null: false
-    #   t.string "description", limit: 1000, null: false
-    #   t.string "gender", limit: 100, null: false
-    #   t.string "duration", limit: 30, null: false
-    #   t.integer "movie_rating", null: false
-    #   t.string "status_movie", limit: 30, null: false
-    #   t.datetime "created_at", null: false
-    #   t.datetime "updated_at", null: false
-    # end
   end
 end
