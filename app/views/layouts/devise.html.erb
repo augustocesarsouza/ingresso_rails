@@ -12,9 +12,11 @@
   </head>
   <body>
     <div class="container-main">
-      <%= render 'layouts/devise/ingresso_top' %>
-      <%= render 'layouts/shared/flash' if flash.present? %>
-      <%= yield %>
+      <div class="container-ingresso-top-yield">
+        <%= render 'layouts/devise/ingresso_top' %>
+        <%= render 'layouts/shared/flash' if flash.present? %>
+        <%= yield %>
+      </div>
       <%= render 'layouts/devise/footer_address' %>
     </div>
     <%# <%= yield %> <%# esse yield parece ser a a propria view que vai carrgar aqui, e qualque coisa que eu colocar em volta dela vai carregar em todos %>

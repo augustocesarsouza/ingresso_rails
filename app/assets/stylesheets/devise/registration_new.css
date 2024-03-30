@@ -11,6 +11,12 @@
   }
 }
 
+.container-info-register-buy-tecket {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
 .h2-register {
   font-size: 23px;
   font-weight: 600;
@@ -27,5 +33,22 @@
 }
 
 .user_name {
-  width: 60%;
+  width: 50%;
+}
+
+.container-password {
+  display: flex;
+  gap: 10px;
+}
+
+.user_password {
+  width: 51%;
+}
+
+.user_password_confirmation {
+  width: 50%;
+}
+
+.user_email {
+  width: 50%;
 }

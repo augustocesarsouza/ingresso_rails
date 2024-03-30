@@ -1,6 +1,8 @@
 <div class="container-new-user-main">
-  <h2 class="h2-register">Cadastre-se</h2>
-  <p class="p-info-buy-ticket">Compre ingressos e combos de pipoca com conforto e comodidade.</p>
+  <div class="container-info-register-buy-tecket">
+    <h2 class="h2-register">Cadastre-se</h2>
+    <p class="p-info-buy-ticket">Compre ingressos e combos de pipoca com conforto e comodidade.</p>
+  </div>
   <%= simple_form_for(resource, html: { class: 'login-form' }, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <div class="container-name-cpf">
@@ -8,30 +10,32 @@
                 required: true,
                 autofocus: true,
                 label: false, #tira nome "email",
-                placeholder: 'Nome'%>
+                placeholder: '*Como quer ser chamadado'%>
         <%= f.input :cpf,
                 input_html: { class: "mask-cpf" },
                 required: true,
                 autofocus: true,
                 label: false, #tira nome "email",
-                placeholder: 'Cpf'%>
+                placeholder: '*CPF'%>
+      </div>
+      <div class="container-password">
+        <%= f.input :password,
+                required: true,
+                label: false, #tira nome "email",
+                placeholder: '*Senha no mínimo 6 caracteres',
+                input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                required: true,
+                label: false, #tira nome "email",
+                placeholder: '*Confirmar senha',
+                input_html: { autocomplete: "new-password" } %>
       </div>
       <%= f.input :email,
                 required: true,
                 autofocus: true,
                 label: false, #tira nome "email",
-                placeholder: 'E-mail',
+                placeholder: '*E-mail',
                 input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                required: true,
-                label: false, #tira nome "email",
-                placeholder: 'senha no mínimo 6 caracteres',
-                input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                required: true,
-                label: false, #tira nome "email",
-                placeholder: 'Confirmar senha',
-                input_html: { autocomplete: "new-password" } %>
       <%# f.input :phone,
                 input_html: { class: "mask-phone" },
                 required: true,
