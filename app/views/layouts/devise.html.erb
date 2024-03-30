@@ -14,12 +14,8 @@
     <div class="container-main">
       <%= render 'layouts/devise/ingresso_top' %>
       <section>
-        <div class="row justify-content-center mr-0 ml-0">
-          <div class="d-flex container-login-create">
-            <%= render 'layouts/shared/flash' if flash.present? %>
-            <%= yield %>
-          </div>
-        </div>
+        <%= render 'layouts/shared/flash' if flash.present? %>
+        <%= yield %>
       </section>
       <%= render 'layouts/devise/footer_address' %>
     </div>
