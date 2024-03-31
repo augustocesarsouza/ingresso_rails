@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Additional info users</h1>
+
+<div id="additional_info_users">
+  <% @additional_info_users.each do |additional_info_user| %>
+    <%= render additional_info_user %>
+    <p>
+      <%= link_to "Show this additional info user", additional_info_user %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New additional info user", new_additional_info_user_path %>
