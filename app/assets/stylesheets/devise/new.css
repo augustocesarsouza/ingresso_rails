@@ -45,6 +45,14 @@
   color: dimgrey;
 }
 
+.email-login-custom {
+  width: 100%;
+}
+
+.password-login-custom {
+  width: 100%;
+}
+
 .container-remember {
   >fieldset {
     margin-bottom: 5px !important;

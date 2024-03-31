@@ -14,12 +14,14 @@
                 autofocus: true,
                 label: false, #tira nome "email",
                 placeholder: 'E-mail',
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "email" },
+                wrapper_html: { class: "email-login-custom" } %>
       <%= f.input :password,
                 required: false,
                 label: false, #tira nome "password",
                 placeholder: 'Senha',
-                input_html: { autocomplete: "current-password" } %>
+                input_html: { autocomplete: "current-password" },
+                wrapper_html: { class: "password-login-custom" } %>
     </div>
     <div class="form-group">
       <div class="w-50 container-remember">

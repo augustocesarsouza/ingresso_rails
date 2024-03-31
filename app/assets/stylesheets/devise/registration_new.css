@@ -41,17 +41,17 @@
   gap: 10px;
 }
 
-.user_password {
-  width: 51%;
-}
+/* .user_password {
+  width: 50%;
+} */
 
 .user_password_confirmation {
   width: 50%;
 }
 
-.user_email {
+/* .user_email {
   width: 50%;
-}
+} */
 
 .container-info-password-warn {
   display: flex;
