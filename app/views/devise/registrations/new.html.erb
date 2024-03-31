@@ -23,7 +23,8 @@
                 required: true,
                 label: false, #tira nome "email",
                 placeholder: '*Senha no mínimo 6 caracteres',
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password" },
+                wrapper_html: { class: "password-register-user-custom" } %>
         <%= f.input :password_confirmation,
                 required: true,
                 label: false, #tira nome "email",
@@ -35,7 +36,8 @@
                 autofocus: true,
                 label: false, #tira nome "email",
                 placeholder: '*E-mail',
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email" },
+                wrapper_html: { class: "email-register-user-custom" } %>
       <div class="container-info-password-warn">
         <span class="span-1">Sua senha precisa atender aos seguintes critérios:</span>
         <span class="span-2">Mínimo uma letra minúscula *</span>
@@ -56,11 +58,18 @@
                 label: false, #tira nome "email",
                 placeholder: 'Telefone'%>
     </div>
-    <%= render "devise/shared/button_submit", f: f, text: 'Cadastrar' %>
-  <% end %>
-  <div class="form-group d-md-flex">
-    <div class="w-100 text-md-right">
-      <%= render "devise/shared/links" %>
+    <div class="container-create-backlogin">
+      <div class="container-back-the-login-link">
+        <%= render "devise/shared/links" %>
+      </div>
+      <div class="container-button">
+        <%= render "devise/shared/button_submit", f: f, text: 'CONTINUAR' %>
+      </div>
     </div>
-  </div>
+  <% end %>
+  <%# <div class="form-group d-md-flex"> %>
+  <%# <div class="w-100 text-md-right"> %>
+  <%# render "devise/shared/links" %>
+  <%# </div> %>
+  <%# </div> %>
 </div>
