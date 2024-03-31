@@ -8,5 +8,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  has_one :additional_info_user, dependent: :destroy
+
   enum role: { user: 'user', admin: 'admin'}
 end
