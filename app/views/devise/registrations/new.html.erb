@@ -15,26 +15,26 @@
                 input_html: { class: "mask-cpf" },
                 required: true,
                 autofocus: true,
-                label: false, #tira nome "email",
+                label: false,
                 placeholder: '*CPF'%>
       </div>
       <div class="container-password">
         <%= f.input :password,
                 required: true,
-                label: false, #tira nome "email",
+                label: false,
                 placeholder: '*Senha no mínimo 6 caracteres',
                 input_html: { autocomplete: "new-password" },
                 wrapper_html: { class: "password-register-user-custom" } %>
         <%= f.input :password_confirmation,
                 required: true,
-                label: false, #tira nome "email",
+                label: false, 
                 placeholder: '*Confirmar senha',
                 input_html: { autocomplete: "new-password" } %>
       </div>
       <%= f.input :email,
                 required: true,
                 autofocus: true,
-                label: false, #tira nome "email",
+                label: false,
                 placeholder: '*E-mail',
                 input_html: { autocomplete: "email" },
                 wrapper_html: { class: "email-register-user-custom" } %>
@@ -44,6 +44,17 @@
         <span class="span-3">Mínimo uma letra maiúscula *</span>
         <span class="span-4">Mínimo um número *</span>
         <span class="span-5">Mínimo de 8 caracteres *</span>
+      </div>
+      <div class="container-additional-info-user">
+        <div class="container-birth-date">
+          <div class="container-month">
+            <%= f.simple_fields_for :additional_info_user do |aiu| %>
+              <%= aiu.input :birth_date %>
+              <%= aiu.input :gender %>
+              <%= aiu.input :phone %>
+            <% end %>
+          </div>
+        </div>
       </div>
       <div class="form-check container-check">
         <input class="form-check-input input-checkbox" type="checkbox" id="invalidCheck" required>
@@ -67,9 +78,4 @@
       </div>
     </div>
   <% end %>
-  <%# <div class="form-group d-md-flex"> %>
-  <%# <div class="w-100 text-md-right"> %>
-  <%# render "devise/shared/links" %>
-  <%# </div> %>
-  <%# </div> %>
 </div>

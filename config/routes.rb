@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :additional_info_users
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   resources :regions
+  resources :additional_info_users
 
   # Defines the root path route ("/")
   root to: 'home#index'
