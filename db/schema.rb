@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_31_130239) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_31_135700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_31_130239) do
     t.uuid "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "additional_info_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.date "birth_date"
+    t.string "gender", limit: 50
+    t.string "phone", limit: 88
+    t.string "cep", limit: 40
+    t.string "logradouro", limit: 60
+    t.string "numero", limit: 30
+    t.string "complemento", limit: 40
+    t.string "referencia", limit: 40
+    t.string "bairro", limit: 50
+    t.string "estado", limit: 20
+    t.string "cidade", limit: 60
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_additional_info_users_on_user_id"
   end
 
   create_table "movie_theaters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -91,6 +109,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_31_130239) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "additional_info_users", "users"
   add_foreign_key "movie_theaters", "movies"
   add_foreign_key "movie_theaters", "regions"
 end
