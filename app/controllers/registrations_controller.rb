@@ -1,5 +1,3 @@
-require 'securerandom'
-
 class RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
 
@@ -14,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.persisted?
         resource.additional_info_user.user_id = resource.id
         if resource.additional_info_user.save
-          puts "User and additional info created successfully."
+          puts 'User and additional info created successfully.'
         else
           puts "Error creating additional info: #{resource.additional_info_user.errors.full_messages.join(', ')}"
         end
@@ -31,9 +29,5 @@ class RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :cpf, :password, :password_confirmation, additional_info_user_attributes: [:birth_date, :gender, :phone]])
     # devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :cpf, :password, :password_confirmation])
-  end
-
-  def additional_info_user_params
-    params.require(:user).require(:additional_info_user_attributes).permit(:birth_date, :gender, :phone)
   end
 end

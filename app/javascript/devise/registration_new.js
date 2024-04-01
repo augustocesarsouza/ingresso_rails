@@ -40,40 +40,29 @@ const functionGetClickKeyboard = (event) => {
   }, 10);
 }
 
-inputPassword.addEventListener('keydown', functionGetClickKeyboard);
+document.addEventListener('DOMContentLoaded', function() {
+  const birthYear = document.getElementById("user_additional_info_user_attributes_birth_date_1i");
+  const birthMonth = document.getElementById("user_additional_info_user_attributes_birth_date_2i");
+  const birthDay = document.getElementById("user_additional_info_user_attributes_birth_date_3i");
 
-const selectBirthdayMonth = document.querySelector('.select-birthday-month');
-const selectBirthday = document.querySelector('.select-birthday');
-
-const changeSelectedBirthday = (e) => {
-  const selectedMonth = e.target.value;
-  console.log(selectedMonth);
-  
-
-   // Obtenha o ano atual
-  const currentYear = new Date().getFullYear();
-   
-  // Crie uma string no formato "YYYY-MM" para representar o mês selecionado
-  const selectedMonthYear = `${currentYear}-${selectedMonth.padStart(2, '0')}`;
-  // esse 'padStart' vai colocar a esquerda da string 0 se a string for menor que 2, se for "1" vai ficar "01"
-  
-  // Parse a string do formato "YYYY-MM" para um objeto de data
-  const firstDayOfMonth = parseISO(`${selectedMonthYear}-01`);
-
-  // Obter o último dia do mês
-  const lastDay = lastDayOfMonth(firstDayOfMonth);
-   
-  // Obter todos os dias do intervalo entre o primeiro e o último dia do mês
-  const allDays = eachDayOfInterval({ start: firstDayOfMonth, end: lastDay });
- 
-  // Formatar os dias se necessário (opcional)
-  const formattedDays = allDays.map(day => format(day, 'dd'));
-
-  formattedDays.forEach((day) => {
-    const optionDay = document.createElement("option");
-    optionDay.text = day
-    selectBirthday.appendChild(optionDay);
+  birthMonth.addEventListener("change", function() {
+    updateDays();
   });
-}
 
-selectBirthdayMonth.addEventListener('change', changeSelectedBirthday);
+  function updateDays() {
+    var year = parseInt(birthYear.value);
+    var month = parseInt(birthMonth.value);
+
+    birthDay.innerHTML = '';
+
+    var lastDayOfMonth = new Date(year, month, 0).getDate();
+    console.log(lastDayOfMonth);
+    
+    for (var day = 1; day <= lastDayOfMonth; day++) {
+      var option = document.createElement("option");
+      option.text = day;
+      option.value = day;
+      birthDay.appendChild(option);
+    }
+  }
+});

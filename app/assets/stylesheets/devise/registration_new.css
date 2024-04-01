@@ -141,3 +141,14 @@
 .select-birthday {
   padding: 10px;
 }
+
+.container-birth-date-custom {
+  >label {
+    display: none !important;
+  }
+
+  >div {
+    display: flex !important;
+    justify-content: flex-start !important;
+  }
+}
