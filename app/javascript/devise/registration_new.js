@@ -104,3 +104,68 @@ const createOptionDayCustom = (birthDay) => {
 
   birthDay.insertBefore(optionDay, birthDay.firstChild);
 }
+
+import cep from 'cep-promise'
+
+document.addEventListener('DOMContentLoaded', function() {
+  const buttonRedirect = document.getElementById('redirectButton');
+  const inputCep = document.getElementById('user_additional_info_user_attributes_cep');
+
+  const spanCepError = document.querySelector('.span-error-cep');
+  const svgSortUp = document.querySelector('.svg-sort-up-new-user');
+
+  let cepInvalid = false;
+
+  buttonRedirect.addEventListener('click', () => {
+    cep(inputCep.value)
+    .then((resp) => {
+      cepInvalid = false;
+      console.log(resp);
+    })  
+    .catch(() => {
+      cepInvalid = true;
+      spanCepError.style.display = "flex";
+      svgSortUp.style.display = "flex";
+      inputCep.style.border = "1px solid rgb(217, 83, 79)";
+      inputCep.style.borderLeft = "4px solid rgb(217 83 79)";
+    })
+  });
+
+  inputCep.addEventListener('blur', () => {
+    inputCep.style.border = "1px solid #bdbdbd";
+    inputCep.style.borderLeft = "4px solid #bdbdbd";
+    cepInvalid = false;
+  });
+
+  inputCep.addEventListener('focus', () => {
+    if(cepInvalid){
+      inputCep.style.border = "1px solid rgb(217, 83, 79)";
+      inputCep.style.borderLeft = "4px solid rgb(217 83 79)";
+    }else{
+      inputCep.style.border = "1px solid rgb(5 118 202)";
+      inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
+    }
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  // const buttonRedirect = document.getElementById('redirectButton');
+
+  // if(e.code == "Enter"){
+  //   buttonRedirect.click()
+  // }
+  
+  if(e.code == "Backspace"){
+    const inputCep = document.getElementById('user_additional_info_user_attributes_cep');
+    const spanCepError = document.querySelector('.span-error-cep');
+    const svgSortUp = document.querySelector('.svg-sort-up-new-user');
+
+
+    if(inputCep.value.length == 0){
+      inputCep.style.border = "1px solid rgb(5 118 202)";
+      inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
+      spanCepError.style.display = "none";
+      svgSortUp.style.display = "none";
+    }
+  }
+});
