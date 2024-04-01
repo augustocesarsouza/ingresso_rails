@@ -40,40 +40,132 @@ const functionGetClickKeyboard = (event) => {
   }, 10);
 }
 
-inputPassword.addEventListener('keydown', functionGetClickKeyboard);
-
-const selectBirthdayMonth = document.querySelector('.select-birthday-month');
-const selectBirthday = document.querySelector('.select-birthday');
-
-const changeSelectedBirthday = (e) => {
-  const selectedMonth = e.target.value;
-  console.log(selectedMonth);
-  
-
-   // Obtenha o ano atual
-  const currentYear = new Date().getFullYear();
-   
-  // Crie uma string no formato "YYYY-MM" para representar o mês selecionado
-  const selectedMonthYear = `${currentYear}-${selectedMonth.padStart(2, '0')}`;
-  // esse 'padStart' vai colocar a esquerda da string 0 se a string for menor que 2, se for "1" vai ficar "01"
-  
-  // Parse a string do formato "YYYY-MM" para um objeto de data
-  const firstDayOfMonth = parseISO(`${selectedMonthYear}-01`);
-
-  // Obter o último dia do mês
-  const lastDay = lastDayOfMonth(firstDayOfMonth);
-   
-  // Obter todos os dias do intervalo entre o primeiro e o último dia do mês
-  const allDays = eachDayOfInterval({ start: firstDayOfMonth, end: lastDay });
- 
-  // Formatar os dias se necessário (opcional)
-  const formattedDays = allDays.map(day => format(day, 'dd'));
-
-  formattedDays.forEach((day) => {
-    const optionDay = document.createElement("option");
-    optionDay.text = day
-    selectBirthday.appendChild(optionDay);
-  });
+if(inputPassword){
+  inputPassword.addEventListener('keydown', functionGetClickKeyboard);
 }
 
-selectBirthdayMonth.addEventListener('change', changeSelectedBirthday);
+document.addEventListener('DOMContentLoaded', function() {
+  const birthYear = document.getElementById("user_additional_info_user_attributes_birth_date_1i");
+  const birthMonth = document.getElementById("user_additional_info_user_attributes_birth_date_2i");
+  const birthDay = document.getElementById("user_additional_info_user_attributes_birth_date_3i");
+
+  if(birthYear == null || birthMonth == null || birthDay == null) return;
+
+  createOptionYearCustom(birthYear);
+
+  createOptionMonthCustom(birthMonth);
+
+  createOptionDayCustom(birthDay);
+
+  birthMonth.addEventListener("change", function() {
+    updateDays();
+  });
+
+  function updateDays() {
+    var year = parseInt(birthYear.value);
+    var month = parseInt(birthMonth.value);
+
+    birthDay.innerHTML = '';
+
+    var lastDayOfMonth = new Date(year, month, 0).getDate();
+    
+    for (var day = 1; day <= lastDayOfMonth; day++) {
+      var option = document.createElement("option");
+      option.text = day;
+      option.value = day;
+      birthDay.appendChild(option);
+    }
+  }
+});
+
+const createOptionYearCustom = (birthYear) => {
+  const optionYear = document.createElement("option");
+  optionYear.text = 'Year of Birth';
+  optionYear.value = 0;
+  optionYear.selected = true;
+
+  birthYear.insertBefore(optionYear, birthYear.firstChild);
+}
+
+const createOptionMonthCustom = (birthMonth) => {
+  const optionMonth = document.createElement("option");
+  optionMonth.text = 'Month the of Birth';
+  optionMonth.value = 0;
+  optionMonth.selected = true;
+
+  birthMonth.insertBefore(optionMonth, birthMonth.firstChild);
+}
+
+const createOptionDayCustom = (birthDay) => {
+  const optionDay = document.createElement("option");
+  optionDay.text = 'Day the of Birth';
+  optionDay.value = 0;
+  optionDay.selected = true;
+
+  birthDay.insertBefore(optionDay, birthDay.firstChild);
+}
+
+import cep from 'cep-promise'
+
+document.addEventListener('DOMContentLoaded', function() {
+  const buttonRedirect = document.getElementById('redirectButton');
+  const inputCep = document.getElementById('user_additional_info_user_attributes_cep');
+
+  const spanCepError = document.querySelector('.span-error-cep');
+  const svgSortUp = document.querySelector('.svg-sort-up-new-user');
+
+  let cepInvalid = false;
+
+  buttonRedirect.addEventListener('click', () => {
+    cep(inputCep.value)
+    .then((resp) => {
+      cepInvalid = false;
+      console.log(resp);
+    })  
+    .catch(() => {
+      cepInvalid = true;
+      spanCepError.style.display = "flex";
+      svgSortUp.style.display = "flex";
+      inputCep.style.border = "1px solid rgb(217, 83, 79)";
+      inputCep.style.borderLeft = "4px solid rgb(217 83 79)";
+    })
+  });
+
+  inputCep.addEventListener('blur', () => {
+    inputCep.style.border = "1px solid #bdbdbd";
+    inputCep.style.borderLeft = "4px solid #bdbdbd";
+    cepInvalid = false;
+  });
+
+  inputCep.addEventListener('focus', () => {
+    if(cepInvalid){
+      inputCep.style.border = "1px solid rgb(217, 83, 79)";
+      inputCep.style.borderLeft = "4px solid rgb(217 83 79)";
+    }else{
+      inputCep.style.border = "1px solid rgb(5 118 202)";
+      inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
+    }
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  // const buttonRedirect = document.getElementById('redirectButton');
+
+  // if(e.code == "Enter"){
+  //   buttonRedirect.click()
+  // }
+  
+  if(e.code == "Backspace"){
+    const inputCep = document.getElementById('user_additional_info_user_attributes_cep');
+    const spanCepError = document.querySelector('.span-error-cep');
+    const svgSortUp = document.querySelector('.svg-sort-up-new-user');
+
+
+    if(inputCep.value.length == 0){
+      inputCep.style.border = "1px solid rgb(5 118 202)";
+      inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
+      spanCepError.style.display = "none";
+      svgSortUp.style.display = "none";
+    }
+  }
+});
