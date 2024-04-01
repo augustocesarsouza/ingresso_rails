@@ -143,6 +143,8 @@
 }
 
 .container-birth-date-custom {
+  margin-bottom: 0rem !important;
+
   >label {
     display: none !important;
   }
@@ -150,5 +152,67 @@
   >div {
     display: flex !important;
     justify-content: flex-start !important;
+    gap: 10px !important;
   }
+}
+
+.container-month {
+  display: flex;
+  gap: 10px;
+}
+
+.user_additional_info_user_gender {
+  margin-bottom: 0rem !important;
+
+  >label {
+    display: none !important;
+  }
+}
+
+#user_additional_info_user_attributes_gender {
+  padding: 9px 10px !important;
+  border: 1px solid #bdbdbd;
+  border-left: 4px solid #bdbdbd;
+  color: #494949 !important;
+  cursor: pointer !important;
+}
+
+#user_additional_info_user_attributes_gender:focus {
+  outline: none;
+}
+
+#user_additional_info_user_attributes_birth_date_1i {
+  padding: 9px 10px !important;
+  border: 1px solid #bdbdbd;
+  border-left: 4px solid #bdbdbd;
+  color: #494949 !important;
+  cursor: pointer !important;
+}
+
+#user_additional_info_user_attributes_birth_date_1i:hover {
+  outline: none;
+}
+
+#user_additional_info_user_attributes_birth_date_2i {
+  padding: 9px 20px 9px 5px !important;
+  border: 1px solid #bdbdbd;
+  border-left: 4px solid #bdbdbd;
+  color: #494949 !important;
+  cursor: pointer !important;
+}
+
+#user_additional_info_user_attributes_birth_date_2i:hover {
+  outline: none;
+}
+
+#user_additional_info_user_attributes_birth_date_3i {
+  padding: 9px 40px 9px 5px !important;
+  border: 1px solid #bdbdbd;
+  border-left: 4px solid #bdbdbd;
+  color: #494949 !important;
+  cursor: pointer !important;
+}
+
+#user_additional_info_user_attributes_birth_date_3i:hover {
+  outline: none;
 }
