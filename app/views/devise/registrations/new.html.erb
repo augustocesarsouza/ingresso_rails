@@ -73,7 +73,7 @@
             <div class="container-neighborhood-state-city">
               <%= aiu.input :bairro, placeholder: 'Bairro', label: false, input_html: { class: "input-bairro" } %>
               <%= aiu.input :estado, as: :select, label: false, collection: ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE',
-              'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'], prompt: "Estado" %>
+              'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'], prompt: "Estado", input_html: { class: "input-estado" } %>
               <%= aiu.input :cidade, placeholder: 'Cidade', label: false, input_html: { class: "input-cidade" } %>
             </div>
           <% end %>

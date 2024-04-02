@@ -111,23 +111,40 @@ document.addEventListener('DOMContentLoaded', function() {
   const buttonRedirect = document.getElementById('redirectButton');
   const inputCep = document.getElementById('user_additional_info_user_attributes_cep');
 
+  const inputLogradouro = document.querySelector('.input-logradouro');
+
   const spanCepError = document.querySelector('.span-error-cep');
   const svgSortUp = document.querySelector('.svg-sort-up-new-user');
 
   let cepInvalid = false;
+  let onlyGray = false;
+
+  const updateInputField = (inputElement, value) => {
+    inputElement.value = value;
+    inputElement.style.cursor = 'not-allowed';
+    inputElement.disabled = true;
+    inputElement.style.border = "none";
+    inputElement.style.borderLeft = "none";
+  }
 
   buttonRedirect.addEventListener('click', () => {
     cep(inputCep.value)
     .then((resp) => {
-      const inputLogradouro = document.querySelector('.input-logradouro');
+      const inputBairro = document.querySelector('.input-bairro');
+      const inputCidade = document.querySelector('.input-cidade');
+      const inputEstado = document.querySelector('.input-estado');
       cepInvalid = false;
-      console.log(inputLogradouro);
-      
-      inputLogradouro.value = resp.street;
-      console.log(resp.street);
-      console.log(resp);
+      onlyGray = true;
+
+      updateInputField(inputLogradouro, resp.street);
+      updateInputField(inputBairro, resp.neighborhood);
+      updateInputField(inputCidade, resp.city);
+      updateInputField(inputEstado, resp.state);
     })  
     .catch(() => {
+      const containerMainCep = document.querySelector('.container-cep-custom');
+      containerMainCep.style.marginBottom = "25px";
+
       cepInvalid = true;
       spanCepError.style.display = "flex";
       svgSortUp.style.display = "flex";
@@ -154,17 +171,50 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('keydown', (e) => {
+  
   // const buttonRedirect = document.getElementById('redirectButton');
 
   // if(e.code == "Enter"){
   //   buttonRedirect.click()
   // }
-  
-  if(e.code == "Backspace"){
-    const inputCep = document.getElementById('user_additional_info_user_attributes_cep');
-    const spanCepError = document.querySelector('.span-error-cep');
-    const svgSortUp = document.querySelector('.svg-sort-up-new-user');
+  const spanCepError = document.querySelector('.span-error-cep');
+  const svgSortUp = document.querySelector('.svg-sort-up-new-user');
+  const inputCep = document.getElementById('user_additional_info_user_attributes_cep');
+  const containerMainCep = document.querySelector('.container-cep-custom');
 
+  containerMainCep.style.marginBottom = "0px";
+  spanCepError.style.display = "none";
+  svgSortUp.style.display = "none";
+  inputCep.style.border = "1px solid rgb(5 118 202)";
+  inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
+  
+
+  const insertValueInput = (inputElement) => {
+    inputElement.style.cursor = 'auto';
+    inputElement.disabled = false;
+    inputElement.style.border = "1px solid #bdbdbd";
+    inputElement.style.borderLeft = "4px solid #bdbdbd";
+  }
+
+  if(e.code == "Backspace"){
+    
+    const cepValue = inputCep.value;
+    const numericCharacters = cepValue.replace(/[^0-9]/g, ''); // Remove todos os caracteres não numéricos
+
+    const inputLogradouro = document.querySelector('.input-logradouro');
+    const inputBairro = document.querySelector('.input-bairro');
+    const inputEstado = document.querySelector('.input-estado');
+    const inputCidade = document.querySelector('.input-cidade');
+
+    if(numericCharacters.length <= 7){
+      svgSortUp.style.display = "none";
+      spanCepError.style.display = "none";
+
+      insertValueInput(inputLogradouro);
+      insertValueInput(inputBairro);
+      insertValueInput(inputEstado);
+      insertValueInput(inputCidade);
+    }
 
     if(inputCep.value.length == 0){
       inputCep.style.border = "1px solid rgb(5 118 202)";
