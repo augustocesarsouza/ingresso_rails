@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const updateInputField = (inputElement, value) => {
     inputElement.value = value;
     inputElement.style.cursor = 'not-allowed';
-    inputElement.disabled = true;
+    inputElement.readOnly = true;
     inputElement.style.border = "none";
     inputElement.style.borderLeft = "none";
   }
@@ -168,15 +168,24 @@ document.addEventListener('DOMContentLoaded', function() {
       inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
     }
   });
+
+  const containerButtonContinue = document.querySelector('.container-button');
+
+  const recaptchaCallbackChangePassword = () => {
+    if(containerButtonContinue){
+      const buttonContinue = containerButtonContinue.firstChild;
+      // buttonContinue.nextSibling.disabled = true;
+      buttonContinue.nextSibling.style.pointerEvents = "visible";
+      // buttonContinue.nextSibling.style.background = "rgb(52 120 193)";
+      containerButtonContinue.style.background = "rgb(52 120 193)";
+    }
+  };
+
+  window.recaptchaCallbackChangePassword = recaptchaCallbackChangePassword;
+
 });
 
 document.addEventListener('keydown', (e) => {
-  
-  // const buttonRedirect = document.getElementById('redirectButton');
-
-  // if(e.code == "Enter"){
-  //   buttonRedirect.click()
-  // }
   const spanCepError = document.querySelector('.span-error-cep');
   const svgSortUp = document.querySelector('.svg-sort-up-new-user');
   const inputCep = document.getElementById('user_additional_info_user_attributes_cep');
@@ -224,3 +233,4 @@ document.addEventListener('keydown', (e) => {
     }
   }
 });
+
