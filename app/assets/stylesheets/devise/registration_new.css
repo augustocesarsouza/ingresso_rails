@@ -1,5 +1,5 @@
 .container-new-user-main {
-  width: 55rem;
+  width: 59rem;
   /* width: 80%; */
   display: flex;
   flex-direction: column;
@@ -200,7 +200,7 @@
   margin-left: 0px !important;
 }
 
-#user_additional_info_user_attributes_birth_date_1i:hover {
+#user_additional_info_user_attributes_birth_date_1i:focus {
   outline: none;
 }
 
@@ -212,7 +212,7 @@
   cursor: pointer !important;
 }
 
-#user_additional_info_user_attributes_birth_date_2i:hover {
+#user_additional_info_user_attributes_birth_date_2i:focus {
   outline: none;
 }
 
@@ -224,7 +224,7 @@
   cursor: pointer !important;
 }
 
-#user_additional_info_user_attributes_birth_date_3i:hover {
+#user_additional_info_user_attributes_birth_date_3i:focus {
   outline: none;
 }
 
@@ -237,7 +237,7 @@
   width: 40%;
   display: flex !important;
   align-items: center;
-  gap: 25px;
+  gap: 10px;
   position: relative;
 }
 
@@ -260,7 +260,7 @@
   background-color: rgb(52 120 193);
   color: #fff;
   position: absolute;
-  right: 130px;
+  right: 215px;
   top: 6px;
   width: 40px;
   height: 40px;
@@ -277,7 +277,7 @@
 
 .user_additional_info_user_cep {
   margin-bottom: 0px !important;
-  width: 65%;
+  width: 45%;
 }
 
 .link-dont-know-my-cep {
@@ -304,4 +304,124 @@
   padding: 2px 5px;
   color: rgb(163, 0, 1);
   background-color: rgb(250, 196, 196);
+}
+
+.container-logro-num-comple-refe {
+  display: flex;
+  gap: 24px;
+}
+
+.user_additional_info_user_logradouro,
+.user_additional_info_user_numero,
+.user_additional_info_user_complemento,
+.user_additional_info_user_referencia {
+  margin-bottom: 0px !important;
+}
+
+.user_additional_info_user_logradouro {
+  width: 35%;
+}
+
+.user_additional_info_user_numero {
+  width: 15%;
+}
+
+.input-logradouro,
+.input-numero,
+.input-complemento,
+.input-referencia {
+  border: 1px solid #bdbdbd;
+  border-left: 4px solid #bdbdbd;
+  /* border: 1px solid rgb(217, 83, 79);
+  border-left: 4px solid rgb(217 83 79); */
+  color: #494949 !important;
+  border-radius: 0px !important;
+}
+
+.input-logradouro:focus {
+  border-color: rgb(5 118 202) !important;
+  border-left: 4px solid rgb(5 118 202);
+}
+
+.input-numero:focus {
+  border-color: rgb(5 118 202) !important;
+  border-left: 4px solid rgb(5 118 202);
+}
+
+.input-complemento:focus {
+  border-color: rgb(5 118 202) !important;
+  border-left: 4px solid rgb(5 118 202);
+}
+
+.input-referencia:focus {
+  border-color: rgb(5 118 202) !important;
+  border-left: 4px solid rgb(5 118 202);
+}
+
+.input-logradouro {}
+
+.input-numero {}
+
+.input-complemento {}
+
+.input-referencia {}
+
+.container-neighborhood-state-city {
+  display: flex;
+  gap: 15px;
+}
+
+.user_additional_info_user_bairro,
+.user_additional_info_user_estado,
+.user_additional_info_user_cidade {
+  margin-bottom: 0px !important;
+}
+
+.user_additional_info_user_bairro {
+  width: 50%;
+}
+
+.user_additional_info_user_estado {
+  width: 10%;
+}
+
+.user_additional_info_user_cidade {
+  width: 40%;
+}
+
+.input-bairro,
+.input-cidade {
+  border: 1px solid #bdbdbd;
+  border-left: 4px solid #bdbdbd;
+  color: #494949 !important;
+  border-radius: 0px !important;
+}
+
+.input-bairro:focus {
+  border-color: rgb(5 118 202) !important;
+  border-left: 4px solid rgb(5 118 202);
+}
+
+.input-cidade:focus {
+  border-color: rgb(5 118 202) !important;
+  border-left: 4px solid rgb(5 118 202);
+}
+
+#user_additional_info_user_attributes_estado {
+  padding-left: 5px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  border-left: 4px solid #bdbdbd;
+  color: #494949 !important;
+  cursor: pointer !important;
+}
+
+#user_additional_info_user_attributes_estado:focus {
+  border-color: rgb(5 118 202) !important;
+  border-left: 4px solid rgb(5 118 202);
+}
+
+#user_additional_info_user_attributes_estado:focus {
+  outline: none;
 }

@@ -27,7 +27,8 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :cpf, :password, :password_confirmation, additional_info_user_attributes: [:birth_date, :gender, :phone]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :cpf, :password, :password_confirmation,
+    additional_info_user_attributes: [:birth_date, :gender, :phone, :logradouro, :numero, :complemento, :referencia]])
     # devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :cpf, :password, :password_confirmation])
   end
 end

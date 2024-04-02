@@ -119,7 +119,12 @@ document.addEventListener('DOMContentLoaded', function() {
   buttonRedirect.addEventListener('click', () => {
     cep(inputCep.value)
     .then((resp) => {
+      const inputLogradouro = document.querySelector('.input-logradouro');
       cepInvalid = false;
+      console.log(inputLogradouro);
+      
+      inputLogradouro.value = resp.street;
+      console.log(resp.street);
       console.log(resp);
     })  
     .catch(() => {

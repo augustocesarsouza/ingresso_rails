@@ -64,6 +64,18 @@
               </svg>
               <span class="span-error-cep">CEP inválido ou não encontrado</span>
             </div>
+            <div class="container-logro-num-comple-refe">
+              <%= aiu.input :logradouro, placeholder: 'Logradouro', label: false, input_html: { class: "input-logradouro" } %>
+              <%= aiu.input :numero, placeholder: 'Número', label: false, input_html: { class: "input-numero" } %>
+              <%= aiu.input :complemento, placeholder: 'Complemento', label: false, input_html: { class: "input-complemento" } %>
+              <%= aiu.input :referencia, placeholder: 'Referência', label: false, input_html: { class: "input-referencia" } %>
+            </div>
+            <div class="container-neighborhood-state-city">
+              <%= aiu.input :bairro, placeholder: 'Bairro', label: false, input_html: { class: "input-bairro" } %>
+              <%= aiu.input :estado, as: :select, label: false, collection: ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE',
+              'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'], prompt: "Estado" %>
+              <%= aiu.input :cidade, placeholder: 'Cidade', label: false, input_html: { class: "input-cidade" } %>
+            </div>
           <% end %>
         </div>
       </div>
