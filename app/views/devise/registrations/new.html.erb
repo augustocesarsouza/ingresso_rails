@@ -7,28 +7,7 @@
     <div class="form-inputs">
       <%= render "devise/partial_registrations/inputs_user_register", f: f %>
       <%= render "devise/partial_registrations/inputs_additional_info_user", f: f %>
-      <div class="form-check container-check">
-        <input class="form-check-input input-checkbox" type="checkbox" id="invalidCheck" required>
-        <label class="form-check-label label-receive-news" for="invalidCheck">
-          Quero receber novidades e mensagens da Ingresso.com.
-        </label>
-      </div>
-      <div class="container-main-recaptcha-and-spans">
-        <div class="container-span-regulated-use-site">
-          <span>O uso de nosso site e aplicativo é regulado por nossos <a class="span-color-blue-highlight">Termos de Uso.</a> Maiores informações sobre como usamos seus dados pessoais podem ser encontradas em nossa <a class="span-color-blue-highlight">Política de Privacidade</a> e <a class="span-color-blue-highlight">Política de Cookies.</a></span>
-        </div>
-        <div class="container-span-delete-account">
-          <span>Deseja excluir sua conta? Siga os <a class="span-color-blue-highlight">passos a seguir.</a></span>
-        </div>
-        <div class="container-reCAPTCHA">
-          <span>Este site é protegido pelo reCAPTCHA e pelo Google aplicando as seguintes <a class="span-color-blue-highlight">Políticas de Segurança</a> e <a class="span-color-blue-highlight">Termos de Serviço.</a></span>
-          <div 
-            class="g-recaptcha"
-            data-sitekey="6LfA6AUpAAAAAKuDPHeFgdUSz_dVtzPRrCTkPSbl"
-            data-callback="recaptchaCallbackChangePassword">
-          </div>
-        </div>
-      </div>
+      <%= render "devise/partial_registrations/use_site_info" %>
     </div>
     <div class="container-create-backlogin">
       <div class="container-back-the-login-link">
