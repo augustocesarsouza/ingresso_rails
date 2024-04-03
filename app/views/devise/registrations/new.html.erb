@@ -9,14 +9,6 @@
       <%= render "devise/partial_registrations/inputs_additional_info_user", f: f %>
       <%= render "devise/partial_registrations/use_site_info" %>
     </div>
-    <div class="container-create-backlogin">
-      <div class="container-back-the-login-link">
-        <%= render "devise/shared/links" %>
-      </div>
-      <div class="container-button">
-        <%= render "devise/shared/button_submit", f: f, text: 'CONTINUAR' %>
-      </div>
-    </div>
-    <%# AMANHAR COLOCAR VALIDAÇÃO OBRIGATORIO INFORMA DATA DE NASCIMENTO %>
+    <%= render "devise/partial_registrations/button_continue_back", f: f %>
   <% end %>
 </div>
