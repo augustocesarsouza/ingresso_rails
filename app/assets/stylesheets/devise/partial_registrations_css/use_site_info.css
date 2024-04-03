@@ -5,6 +5,15 @@
   margin-top: 0px !important;
 }
 
+.input-checkbox {
+  margin-top: 0.2rem !important;
+}
+
+.label-receive-news {
+  margin-left: 10px !important;
+  font-size: 14px;
+}
+
 #invalidCheck {
   width: 20px;
   height: 20px;
