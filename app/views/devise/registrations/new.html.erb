@@ -3,7 +3,7 @@
     <h2 class="h2-register">Cadastre-se</h2>
     <p class="p-info-buy-ticket">Compre ingressos e combos de pipoca com conforto e comodidade.</p>
   </div>
-  <%= simple_form_for(resource, html: { class: 'login-form' }, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= simple_form_for(resource, html: { class: 'login-form' }, as: resource_name, url: registration_path(resource_name), html: { method: :post }) do |f| %>
     <div class="form-inputs">
       <div class="container-name-cpf">
         <%= f.input :name,
@@ -48,13 +48,18 @@
       <div class="container-additional-info-user">
         <div class="container-birth-date">
           <div class="container-month">
+            <div class="span-birth-date">
+              <span>Data Nascimento: </span>
+            </div>
             <%= f.simple_fields_for :additional_info_user do |aiu| %>
               <%= aiu.input :birth_date, required: false, as: :date, start_year: Date.today.year, end_year: 1900, wrapper_html: { class: 'container-birth-date-custom' } %>
-              <%= aiu.input :gender, as: :select, collection: ['Male', 'Female'], prompt: "I'd rather not say" %>
             <% end %>
           </div>
           <%= f.simple_fields_for :additional_info_user do |aiu| %>
-            <%= aiu.input :phone, placeholder: 'Phone', label: false, input_html: { class: "mask-phone" } %>
+            <div class="container-gender-phone">
+              <%= aiu.input :phone, placeholder: 'Phone', label: false, input_html: { class: "mask-phone" } %>
+              <%= aiu.input :gender, as: :select, collection: ['Male', 'Female'], prompt: "I'd rather not say" %>
+            </div>
             <div class="container-cep-custom">
               <%= aiu.input :cep, placeholder: 'CEP', label: false, input_html: { class: "mask-cep" } %>
               <button type="button" id="redirectButton" class="button-cep-custom">OK</button>
@@ -85,19 +90,21 @@
           Quero receber novidades e mensagens da Ingresso.com.
         </label>
       </div>
-      <div class="container-span-regulated-use-site">
-        <span>O uso de nosso site e aplicativo é regulado por nossos <a class="span-color-blue-highlight">Termos de Uso.</a> Maiores informações sobre como usamos seus dados pessoais podem ser encontradas em nossa <a class="span-color-blue-highlight">Política de Privacidade</a> e <a class="span-color-blue-highlight">Política de Cookies.</a></span>
-      </div>
-      <div class="container-span-delete-account">
-        <span>Deseja excluir sua conta? Siga os <a class="span-color-blue-highlight">passos a seguir.</a></span>
-      </div>
-      <div class="container-reCAPTCHA">
-        <span>Este site é protegido pelo reCAPTCHA e pelo Google aplicando as seguintes <a class="span-color-blue-highlight">Políticas de Segurança</a> e <a class="span-color-blue-highlight">Termos de Serviço.</a></span>
-      </div>
-      <div 
-        class="g-recaptcha"
-        data-sitekey="6LfA6AUpAAAAAKuDPHeFgdUSz_dVtzPRrCTkPSbl"
-        data-callback="recaptchaCallbackChangePassword">
+      <div class="container-main-recaptcha-and-spans">
+        <div class="container-span-regulated-use-site">
+          <span>O uso de nosso site e aplicativo é regulado por nossos <a class="span-color-blue-highlight">Termos de Uso.</a> Maiores informações sobre como usamos seus dados pessoais podem ser encontradas em nossa <a class="span-color-blue-highlight">Política de Privacidade</a> e <a class="span-color-blue-highlight">Política de Cookies.</a></span>
+        </div>
+        <div class="container-span-delete-account">
+          <span>Deseja excluir sua conta? Siga os <a class="span-color-blue-highlight">passos a seguir.</a></span>
+        </div>
+        <div class="container-reCAPTCHA">
+          <span>Este site é protegido pelo reCAPTCHA e pelo Google aplicando as seguintes <a class="span-color-blue-highlight">Políticas de Segurança</a> e <a class="span-color-blue-highlight">Termos de Serviço.</a></span>
+          <div 
+            class="g-recaptcha"
+            data-sitekey="6LfA6AUpAAAAAKuDPHeFgdUSz_dVtzPRrCTkPSbl"
+            data-callback="recaptchaCallbackChangePassword">
+          </div>
+        </div>
       </div>
     </div>
     <div class="container-create-backlogin">
@@ -108,5 +115,6 @@
         <%= render "devise/shared/button_submit", f: f, text: 'CONTINUAR' %>
       </div>
     </div>
+    <%# AMANHAR COLOCAR VALIDAÇÃO OBRIGATORIO INFORMA DATA DE NASCIMENTO %>
   <% end %>
 </div>
