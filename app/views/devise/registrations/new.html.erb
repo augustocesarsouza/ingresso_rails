@@ -5,46 +5,7 @@
   </div>
   <%= simple_form_for(resource, html: { class: 'login-form' }, as: resource_name, url: registration_path(resource_name), html: { method: :post }) do |f| %>
     <div class="form-inputs">
-      <div class="container-name-cpf">
-        <%= f.input :name,
-                required: true,
-                autofocus: true,
-                label: false, #tira nome "email",
-                placeholder: '*Como quer ser chamadado'%>
-        <%= f.input :cpf,
-                input_html: { class: "mask-cpf" },
-                required: true,
-                autofocus: true,
-                label: false,
-                placeholder: '*CPF'%>
-      </div>
-      <div class="container-password">
-        <%= f.input :password,
-                required: true,
-                label: false,
-                placeholder: '*Senha no mínimo 6 caracteres',
-                input_html: { autocomplete: "new-password" },
-                wrapper_html: { class: "password-register-user-custom" } %>
-        <%= f.input :password_confirmation,
-                required: true,
-                label: false, 
-                placeholder: '*Confirmar senha',
-                input_html: { autocomplete: "new-password" } %>
-      </div>
-      <%= f.input :email,
-                required: true,
-                autofocus: true,
-                label: false,
-                placeholder: '*E-mail',
-                input_html: { autocomplete: "email" },
-                wrapper_html: { class: "email-register-user-custom" } %>
-      <div class="container-info-password-warn">
-        <span class="span-1">Sua senha precisa atender aos seguintes critérios:</span>
-        <span class="span-2">Mínimo uma letra minúscula *</span>
-        <span class="span-3">Mínimo uma letra maiúscula *</span>
-        <span class="span-4">Mínimo um número *</span>
-        <span class="span-5">Mínimo de 8 caracteres *</span>
-      </div>
+      <%= render "devise/partial_registrations/inputs_user_register", f: f %>
       <div class="container-additional-info-user">
         <div class="container-birth-date">
           <div class="container-month">
