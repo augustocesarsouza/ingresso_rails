@@ -1,0 +1,41 @@
+.container-name-cpf {
+  display: flex;
+  gap: 10px;
+}
+
+.user_name {
+  width: 50%;
+}
+
+.container-password {
+  display: flex;
+  gap: 10px;
+}
+
+.password-register-user-custom {
+  width: 51%;
+}
+
+.user_password_confirmation {
+  width: 50%;
+}
+
+.email-register-user-custom {
+  width: 50%;
+}
+
+.container-info-password-warn {
+  display: flex;
+  flex-direction: column;
+}
+
+.span-1 {
+  color: black;
+}
+
+.span-2,
+.span-3,
+.span-4,
+.span-5 {
+  color: #00000054;
+}
