@@ -79,30 +79,30 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const createOptionYearCustom = (birthYear) => {
-  const optionYear = document.createElement("option");
-  optionYear.text = 'Year of Birth';
-  optionYear.value = 0;
-  optionYear.selected = true;
+  // const optionYear = document.createElement("option");
+  // optionYear.text = '1900';
+  // optionYear.value = 0;
+  // optionYear.selected = true;
 
-  birthYear.insertBefore(optionYear, birthYear.firstChild);
+  // birthYear.insertBefore(optionYear, birthYear.firstChild);
 }
 
 const createOptionMonthCustom = (birthMonth) => {
-  const optionMonth = document.createElement("option");
-  optionMonth.text = 'Month the of Birth';
-  optionMonth.value = 0;
-  optionMonth.selected = true;
+  // const optionMonth = document.createElement("option");
+  // optionMonth.text = 'Month the of Birth';
+  // optionMonth.value = 0;
+  // optionMonth.selected = true;
 
-  birthMonth.insertBefore(optionMonth, birthMonth.firstChild);
+  // birthMonth.insertBefore(optionMonth, birthMonth.firstChild);
 }
 
 const createOptionDayCustom = (birthDay) => {
-  const optionDay = document.createElement("option");
-  optionDay.text = 'Day the of Birth';
-  optionDay.value = 0;
-  optionDay.selected = true;
+  // const optionDay = document.createElement("option");
+  // optionDay.text = 'Day the of Birth';
+  // optionDay.value = 0;
+  // optionDay.selected = true;
 
-  birthDay.insertBefore(optionDay, birthDay.firstChild);
+  // birthDay.insertBefore(optionDay, birthDay.firstChild);
 }
 
 import cep from 'cep-promise'
