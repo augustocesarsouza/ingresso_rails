@@ -1,0 +1,2 @@
+module ChoseMovieTheaterHelper
+end

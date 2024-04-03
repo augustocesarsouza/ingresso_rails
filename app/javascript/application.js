@@ -10,3 +10,17 @@ import "./mask"
 
 import "./carouse_functionality"
 import "./login_or_register"
+
+document.addEventListener("DOMContentLoaded", () => {
+  const colCustoms = document.querySelectorAll(".col-custom");
+  console.log(colCustoms);
+  if(colCustoms){
+    colCustoms.forEach((colCustom, index) => {
+      colCustom.addEventListener('click', () => {
+        const route = colCustom.getAttribute('data-route');
+        // Faça o que for necessário com o índice e a rota aqui
+        window.location.href = route; // Exemplo: Redirecionamento para a rota
+      });
+    });
+  }
+});
