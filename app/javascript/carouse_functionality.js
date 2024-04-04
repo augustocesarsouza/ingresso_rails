@@ -58,19 +58,27 @@ document.addEventListener("DOMContentLoaded", () => {
   if(scrollElement){
     scrollElement.addEventListener('scroll', () => {
       if(scrollElement.scrollLeft + scrollElement.clientWidth >= scrollElement.scrollWidth){
-        containerRight.style.display = 'none';
+        if(containerRight){
+          containerRight.style.display = 'none';
+        }
       }else{
-        containerRight.style.display = 'flex';
+        if(containerRight){
+          containerRight.style.display = 'flex';
+        }
       }
     });
   }
   
   window.addEventListener('resize', () => {
     //Cuidado isso aqui consome memoria ram, e usa muita CPU
-    if(scrollElement.scrollLeft + scrollElement.clientWidth >= scrollElement.scrollWidth){
-      containerRight.style.display = 'none';
+    if(scrollElement && scrollElement.scrollLeft + scrollElement.clientWidth >= scrollElement.scrollWidth){
+      if(containerRight){
+        containerRight.style.display = 'none';
+      }
     }else{
-      containerRight.style.display = 'flex';
+      if(containerRight){
+        containerRight.style.display = 'flex';
+      }
     }
   });
 });

@@ -2,6 +2,7 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import './home/apllication.css';
 @import './application/login_or_register.css';
+@import './chose_movie_theater/index.css';
 
 body {
   background-color: rgb(4 18 24) !important;
@@ -93,7 +94,7 @@ body {
   // cursor: auto !important;
   position: absolute;
   left: 0px !important;
-  top: 482px !important;
+  top: 542px !important;
   width: 88px !important;
   height: 235px !important;
   // justify-content: flex-end !important;
@@ -116,7 +117,7 @@ body {
   cursor: auto !important;
   position: absolute;
   right: 0px !important;
-  top: 482px !important;
+  top: 542px !important;
   width: 88px !important;
   height: 236px !important;
   color: #00b0ff !important;
