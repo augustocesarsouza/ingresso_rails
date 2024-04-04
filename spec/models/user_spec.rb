@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'Should valid the fields required' do
+    it 'Checks if the fields are present' do
+      user = build(:user)
+
+      expect(user.valid?).to be_truthy
+    end
+  end
 end
