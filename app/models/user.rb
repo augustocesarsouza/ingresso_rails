@@ -12,5 +12,5 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :additional_info_user
 
-  enum role: { user: 'user', admin: 'admin'}
+  enum role: { user: 'user', admin: 'admin' }
 end
