@@ -53,7 +53,10 @@ futureDates.forEach((date) => {
     containerDateElement.addEventListener('click', () => {
       functionClickDateChoseToday(containerDateElement);
     });
-    container.appendChild(containerDateElement);
+
+    if(container){
+      container.appendChild(containerDateElement);
+    }
   }else{
     const containerDateElement = document.createElement("div");
     containerDateElement.classList.add("container-date-chose-movie-theater");
@@ -62,7 +65,9 @@ futureDates.forEach((date) => {
     containerDateElement.addEventListener('click', () => {
       functionClickDateChose(containerDateElement);
     });
-    container.appendChild(containerDateElement);
+    if(container){
+      container.appendChild(containerDateElement);
+    }
   }
 });
 
