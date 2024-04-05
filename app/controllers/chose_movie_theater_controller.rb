@@ -6,7 +6,4 @@ class ChoseMovieTheaterController < ApplicationController
     print @movie.inspect
     print '****************************************************************'
   end
-
-  def show
-  end
 end

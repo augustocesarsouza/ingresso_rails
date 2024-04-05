@@ -91,3 +91,74 @@
     left: -125px;
   }
 }
+
+.container-chose-movie-theater {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 120px;
+}
+
+.ul-chose-sessions-aboutthefilm {
+  display: flex;
+  width: 90%;
+  margin: 0px !important;
+  padding: 0px !important;
+  margin-bottom: 25px !important;
+
+  >li {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding-bottom: 13px;
+  }
+}
+
+.li-chose-sessions {
+  color: #fff;
+  border-bottom: 3px solid rgb(50 85 226);
+  font-weight: 500;
+  font-size: 21px;
+}
+
+.li-chose-aboutthefilm {
+  color: rgb(173 182 194);
+  border-bottom: 2px solid rgb(80 98 122);
+  font-size: 19px;
+}
+
+.container-date-for-watch-film {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+  gap: 10px;
+  background: #343c46;
+  padding: 10px 0px;
+  border-radius: 5px;
+}
+
+.container-date-chose-movie-theater-today {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 17px;
+  color: #fff;
+  font-weight: 700;
+  width: 15%;
+  cursor: pointer;
+}
+
+.container-date-chose-movie-theater {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 15px;
+  color: #adb6c2;
+  font-weight: 600;
+  width: 15%;
+  cursor: pointer;
+}
