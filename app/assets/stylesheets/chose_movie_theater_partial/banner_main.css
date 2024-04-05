@@ -1,0 +1,10 @@
+.container-banner-main-chose-movie-theater {
+  width: 205px;
+  height: 300px;
+}
+
+.movie-banner-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

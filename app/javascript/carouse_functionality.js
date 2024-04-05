@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     description.textContent = description.textContent.substring(0, maxLength) + '...';
   }
   
-  
   function scrollLeft(){
     scrollElement.scrollLeft -= 600;
   }

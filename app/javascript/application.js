@@ -10,6 +10,7 @@ import "./mask"
 
 import "./carouse_functionality"
 import "./login_or_register"
+import "./chose_movie_theater/index.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   const colCustoms = document.querySelectorAll(".col-custom");
