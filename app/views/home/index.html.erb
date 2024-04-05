@@ -32,8 +32,8 @@
       <div class="carousel-item active">
         <h1 class="h1-custom" >Em Alta</h1>
         <div class="ms-2 me-2 carousel-custom">
-          <% @movies.each do |movie| %>
-            <div class="col-custom">
+          <% @movies.each_with_index do |movie, index| %>
+            <div class="col-custom col-custom<%= index + 1 %>" data-route="<%= chose_movie_theater_index_path(id: movie.id) %>">
               <div class="card card-movie">
                 <%= image_tag movie.image_main, class: "movie-image", alt: movie.title %>
               </div>

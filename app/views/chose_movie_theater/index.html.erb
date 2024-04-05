@@ -1,0 +1,35 @@
+<div class="container-banner-movie-and-chose-movie-theater">
+  <div class="container-movie-banner-and-more-info">
+    <div class="container-banner-background">
+      <%= image_tag @movie.image_background, class: "movie-banner-background-chose-movie-theater", alt: @movie.title %>
+      <div class="container-banner-info-movie">
+        <%= render 'chose_movie_theater_partial/banner_main' %>
+        <%= render 'chose_movie_theater_partial/info_movie' %>
+      </div>
+    </div>
+  </div>
+  <div class="container-chose-movie-theater">
+    <ul class="ul-chose-sessions-aboutthefilm">
+      <li class="li-chose-sessions">Sessões</li>
+      <li class="li-chose-aboutthefilm">Sobre o filme</li>
+    </ul>
+    <div class="container-date-for-watch-film" id="container-date-for-watch-film-id">
+      <%# <div class="container-date-chose-movie-theater">
+        <span class="span-day-month"></span>
+        <span class="span-name-day"></span>
+      </div> %>
+    </div>
+    <div class="container-category-main-chose-movie-theater" style="width: 100%; overflow-x: auto; overflow-y: hidden;">
+      <div class="container-category-movie-chose-movie-theater">
+        <div class="container-category-name">VIP</div>
+        <div class="container-category-name">DUBLADO</div>
+        <div class="container-category-name">TELAS GIGANTES/PLF</div>
+        <div class="container-category-name">NORMAL</div>
+        <div class="container-category-name">LEGENDADO</div>
+        <div class="container-category-name">XD</div>
+        <div class="container-category-name">D-BOX</div>
+        <div class="container-category-name">3D</div>
+      </div>
+    </div>
+  </div>
+</div>

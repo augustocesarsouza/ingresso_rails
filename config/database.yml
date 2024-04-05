@@ -3,23 +3,21 @@
 #   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 #   enconding: unicode
 #   host: localhost
+#   post: 5435
 #   username: postgres
 #   password: casa123456Mudar
 
 # development:
 #   <<: *default
-#   database: ecommerce_development
+#   database: ingresso_development
 
-# # Warning: The database defined as "test" will be erased and
-# # re-generated from your development database when you run "rake".
-# # Do not set this db to the same as development or production.
 # test:
 #   <<: *default
-#   database: ecommerce_test
+#   database: ingresso_test
 
 # production:
 #   <<: *default
-#   database: ecommerce_production
+#   database: ingresso_production
 
 default: &default
   adapter: postgresql

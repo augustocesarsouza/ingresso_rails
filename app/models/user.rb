@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, :cpf, presence: true
+  validates :name, :cpf, :email, presence: true
 
   has_one_attached :avatar
 
@@ -12,5 +12,5 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :additional_info_user
 
-  enum role: { user: 'user', admin: 'admin'}
+  enum role: { user: 'user', admin: 'admin' }
 end
