@@ -209,3 +209,47 @@
   color: #8190c8;
   border-color: #8190c8;
 }
+
+.container-other-cinemas-chose-movie-theater {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 90%;
+  gap: 10px;
+  margin: 20px 0px;
+}
+
+.span-other-cinemas {
+  font-size: 14px;
+  color: #999999;
+  width: 7rem;
+}
+
+.container-line-chose-movie-theater {
+  /* border: 1px solid red; */
+  background: #999999;
+  width: 92%;
+  height: 2px;
+  margin-top: 3px;
+}
+
+.container-top-location-movie-theater {
+  display: flex;
+}
+
+.container-namecinema-district {}
+
+.p-name-cinema {
+  color: #fff;
+}
+
+.span-district {
+  color: rgb(153 153 153);
+}
+
+.svg-heart {
+  >svg {
+    width: 40px;
+    fill: rgb(122 137 188);
+  }
+}

@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   # get 'chose_movie_theater/:movie_id', to: 'chose_movie_theater#index', as: 'chose_movie_theater_index'
 
-
   # Defines the root path route ("/")
   root to: 'home#index'
 
@@ -19,5 +18,7 @@ Rails.application.routes.draw do
     resources :movies
     resources :regions
     resources :movie_theaters
+    resources :cinemas
+    resources :cinema_movies
   end
 end

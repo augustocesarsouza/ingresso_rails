@@ -31,14 +31,26 @@
     </a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="<%= admin_cinemas_path %>">
+      <i class="fa-brands fa-product-hunt"></i>
+      <span>Cinemas</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= admin_cinema_movies_path %>">
+      <i class="fa-brands fa-product-hunt"></i>
+      <span>Cinema Movies</span>
+    </a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" data-method="delete" href="<%= destroy_user_session_path %>">
       <i class="fa-solid fa-right-from-bracket"></i>
       <span>Sair</span>
     </a>
   </li>
-  <li class="nav-item active">
-    <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link"  %>
-  </li>
+  <%# <li class="nav-item active"> %>
+  <%# <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link"  %>
+  <%# </li> %>
   <hr class="sidebar-divider d-none d-md-block">
   <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>

@@ -81,3 +81,29 @@ const functionCleanDays = () => {
     child.style.fontWeight = "600";
   }
 }
+
+const containerListCategory = document.querySelector(".container-category-movie-chose-movie-theater");
+
+if(containerListCategory && containerListCategory.children){
+  const listCategory = containerListCategory.children;
+
+  for (let i = 0; i < listCategory.length; i++) {
+    const element = listCategory.item(i);;
+    element.addEventListener('click', () => {
+      funcClickElementCategory(element);
+    });
+  }
+  
+  const funcClickElementCategory = (element) => {
+    if(element.style.borderColor === "transparent"){
+      element.style.color = "#98aaec";
+      element.style.borderColor = "#98aaec";
+      element.style.background = "transparent";
+    }else{
+      element.style.color = "#FFF";
+      element.style.borderColor = "transparent";
+      element.style.background = "rgb(50 85 226)";
+    }
+    // console.log(element.style.borderColor);
+  }
+}

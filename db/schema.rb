@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_04_114748) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_06_151042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_04_114748) do
     t.index ["user_id"], name: "index_additional_info_users_on_user_id"
   end
 
+  create_table "cinema_movies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "movie_id", null: false
+    t.uuid "cinema_id", null: false
+    t.uuid "region_id", null: false
+    t.string "screening_schedule", limit: 100, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cinema_id"], name: "index_cinema_movies_on_cinema_id"
+    t.index ["movie_id"], name: "index_cinema_movies_on_movie_id"
+    t.index ["region_id"], name: "index_cinema_movies_on_region_id"
+  end
+
+  create_table "cinemas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name_cinema", limit: 150, null: false
+    t.string "district", limit: 150, null: false
+    t.string "ranking", limit: 150, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "movie_theaters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "movie_id", null: false
     t.uuid "region_id", null: false
@@ -109,6 +129,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_04_114748) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "additional_info_users", "users"
+  add_foreign_key "cinema_movies", "cinemas"
+  add_foreign_key "cinema_movies", "movies"
+  add_foreign_key "cinema_movies", "regions"
   add_foreign_key "movie_theaters", "movies"
   add_foreign_key "movie_theaters", "regions"
 end
