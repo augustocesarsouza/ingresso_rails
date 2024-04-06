@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     resources :regions
     resources :movie_theaters
     resources :cinemas
+    resources :cinema_movies
   end
 end
