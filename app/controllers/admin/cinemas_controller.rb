@@ -23,10 +23,7 @@ module Admin
     # POST /cinemas or /cinemas.json
     def create
       @cinema = Cinema.new(cinema_params)
-
-      puts '************************************************************************************************'
-      puts @cinema.inspect
-
+      
       if @cinema.save
         redirect_to admin_cinemas_path, notice: 'Cinema was successfully created.'
       else
