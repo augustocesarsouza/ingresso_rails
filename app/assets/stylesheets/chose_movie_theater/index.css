@@ -233,6 +233,20 @@
   margin-top: 3px;
 }
 
+.container-top-location-movie-theater {
+  display: flex;
+}
+
+.container-namecinema-district {}
+
+.p-name-cinema {
+  color: #fff;
+}
+
+.span-district {
+  color: rgb(153 153 153);
+}
+
 .svg-heart {
   >svg {
     width: 40px;
