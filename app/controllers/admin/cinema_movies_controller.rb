@@ -13,6 +13,8 @@ module Admin
   
     # GET /cinema_movies/new
     def new
+      authorize CinemaMovie
+
       @cinema_movie = CinemaMovie.new
     end
   

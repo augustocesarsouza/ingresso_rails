@@ -30,7 +30,11 @@
             <%# validates :name_cinema, :district, :ranking, presence: true %>
           </tbody>
         </table>
-        <%= link_to "New cinema", new_admin_cinema_movie_path, "data-controller": "admin-modal", class: 'btn btn-primary' %>
+        <% if policy(CinemaMovie).new? %>
+          <%= link_to "New cinema", new_admin_cinema_movie_path, "data-controller": "admin-modal", class: 'btn btn-primary' %>
+        <% else %>
+          <%= link_to "New movie_theater", new_admin_cinema_movie_path, class: 'btn btn-primary' %>
+        <% end %>
       </div>
     </div>
   </div>

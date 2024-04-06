@@ -35,4 +35,8 @@ en:
       new?: 'You can only register a movie_theater if you have a region and movie created.'
       update?: 'You cannot edit this post!'
       create?: 'You cannot create posts!'
+    cinema_movie_policy:
+      new?: 'You can only register a cinema_movie if you have a region and movie and cinema created.'
+      update?: 'You cannot edit this post!'
+      create?: 'You cannot create posts!'
   

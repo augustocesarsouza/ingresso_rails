@@ -12,6 +12,7 @@ class Movie < ApplicationRecord
   attr_accessor :images
 
   has_many :movie_theater, dependent: :destroy
+  has_many :cinema_movie, dependent: :destroy
 
   def create_img_cloudinary_main(file_content, movie_attach, width, height)
     cloudinary_response = Cloudinary::Uploader.upload(file_content,
