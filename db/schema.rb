@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_06_101738) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_06_141739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,9 +65,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_101738) do
   end
 
   create_table "cinemas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "NameCinema", limit: 150
-    t.string "District", limit: 150
-    t.string "Ranking", limit: 150
+    t.string "name_cinema", limit: 150
+    t.string "district", limit: 150
+    t.string "ranking", limit: 150
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
