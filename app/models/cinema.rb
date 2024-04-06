@@ -1,4 +1,4 @@
 class Cinema < ApplicationRecord
 
-  validates :NameCinema, :District, :Ranking, presence: true
+  validates :name_cinema, :district, :ranking, presence: true
 end

@@ -15,8 +15,9 @@
           <tbody>
             <%  @cinemas.each do | cinema | %>
               <tr>
-                <td><%= cinema.title %></td>
-                <td><%= cinema.description %></td>
+                <td><%= cinema.name_cinema %></td>
+                <td><%= cinema.district %></td>
+                <td><%= cinema.ranking %></td>
                 <td class="col-lg-3">
                   <%= link_to "Details", admin_cinema_path(cinema), class: 'btn btn-primary' %>
                   <%= link_to "Edit", edit_admin_cinema_path(cinema), class: 'btn btn-secondary' %>
@@ -24,9 +25,12 @@
                 </td>
               </tr>
             <% end %>
+            <%# validates :name_cinema, :district, :ranking, presence: true %>
           </tbody>
         </table>
-        <%= link_to "New cinema", new_admin_cinema_path, "data-controller": "admin-modal", class: 'btn btn-primary' %>
+        <%= link_to "New cinema", new_admin_cinema_path, 
+        # "data-controller": "admin-modal", 
+        class: 'btn btn-primary' %>
       </div>
     </div>
   </div>

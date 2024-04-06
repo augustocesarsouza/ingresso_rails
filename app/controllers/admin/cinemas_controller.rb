@@ -24,6 +24,9 @@ module Admin
     def create
       @cinema = Cinema.new(cinema_params)
 
+      puts '************************************************************************************************'
+      puts @cinema.inspect
+
       if @cinema.save
         redirect_to admin_cinemas_path, notice: 'Cinema was successfully created.'
       else
@@ -55,7 +58,7 @@ module Admin
       # Only allow a list of trusted parameters through.
 
       def cinema_params
-        params.require(:cinema).permit(:NameCinema, :District, :Ranking)
+        params.require(:cinema).permit(:name_cinema, :district, :ranking)
       end
   end
 end
