@@ -1,10 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @cinema %>
-
-<div>
-  <%= link_to "Edit this cinema", edit_cinema_path(@cinema) %> |
-  <%= link_to "Back to cinemas", cinemas_path %>
-
-  <%= button_to "Destroy this cinema", @cinema, method: :delete %>
+<h1 class="h3 mb-4 text-gray-800">Details of the Cinema</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <%= render @cinema %>
+  </div>
 </div>
