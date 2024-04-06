@@ -1,2 +1,11 @@
-<div id="<%= dom_id cinema_movie %>">
+<div class="card shadow mb-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Movie Id: <%= cinema_movie.movie_id %></h5>
+      <p class="card-text">Cinema Id: <%= cinema_movie.cinema_id %></p>
+      <p class="card-text">Region Id: <%= cinema_movie.region_id %></p>
+      <p class="card-text">Screening Schedule: <%= cinema_movie.screening_schedule %></p>
+    </div>
+  </div>
 </div>
+<%# validates :movie_id, :cinema_id, :region_id, :screening_schedule, presence: true %>
