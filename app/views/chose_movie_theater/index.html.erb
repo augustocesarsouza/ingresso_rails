@@ -63,7 +63,38 @@
               </div>
             </div>
           </div>
+          <div class="container-line-between-svgs-schedule"></div>
+          <% cinema_movies = CinemaMovie.select(:screening_schedule).where(movie_id: @movie.id, cinema_id: cinema.id, region_id: @region_city_id.id) %>
           <div class="container-schedule-movie-theater">
+            <% cinema_movies.each do |cinema_movie| %>
+              <% schedule_parts = cinema_movie.screening_schedule.split(",") %>
+              <div class="container-vip-dublado">
+                <% schedule_parts.each do |schedule_part| %>
+                  <% schedule_part_split_spaces = schedule_part.split(" ") %>
+                  <% schedule_part_split_spaces.each_with_index do |schedule_part_split_space, index| %>
+                    <% if schedule_part_split_space == "v-d" %>
+                      <div class="container-span-vip-dublado">
+                        <span>VIP</span>
+                        <span>DUBLADO</span>
+                      </div>
+                      <div class="container-svg-ticket">
+                        <span><%= schedule_part_split_spaces[index - 1] %></span>
+                      </div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="container-telasgigantesplg-dublado">
+                <% schedule_parts.each do |schedule_part| %>
+                  <% schedule_part_split_spaces = schedule_part.split(" ") %>
+                  <% schedule_part_split_spaces.each_with_index do |schedule_part_split_space, index| %>
+                    <% if schedule_part_split_space == "tg-d" %>
+                      <p><%= schedule_part_split_spaces[index - 1] %></p>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>
