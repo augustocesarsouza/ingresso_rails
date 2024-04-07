@@ -273,5 +273,21 @@
 }
 
 .container-seats-price-details {
+  display: flex;
+  gap: 10px;
   color: #fff;
+}
+
+.container-seats,
+.container-price,
+.container-details {
+  display: flex;
+  align-items: center;
+  height: 50%;
+  gap: 5px;
+
+  >svg {
+    width: 25px;
+    fill: rgb(122 137 188);
+  }
 }
