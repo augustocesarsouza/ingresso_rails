@@ -39,12 +39,20 @@
       <% @cinemas.each do | cinema | %>
         <div class="container-location-movie-theater">
           <div class="container-top-location-movie-theater">
-            <div class="svg-heart">
-              <%= render "chose_movie_theater_svgs_partials/svg_heart" %>
+            <div class="container-svg-heart-info-location-movie">
+              <div class="svg-heart">
+                <%= render "chose_movie_theater_svgs_partials/svg_heart" %>
+              </div>
+              <div class="container-namecinema-district">
+                <p class="p-name-cinema"><%= cinema.name_cinema %></p>
+                <span class="span-district"><%= cinema.district %></span>
+              </div>
             </div>
-            <div class="container-namecinema-district">
-              <p class="p-name-cinema"><%= cinema.name_cinema %></p>
-              <span class="span-district"><%= cinema.district %></span>
+            <div class="container-seats-price-details">
+              <div class="container-seats">
+                <%= render "chose_movie_theater_svgs_partials/svg_seats" %>
+                <span>Assentos</span>
+              </div>
             </div>
           </div>
           <div class="container-schedule-movie-theater">

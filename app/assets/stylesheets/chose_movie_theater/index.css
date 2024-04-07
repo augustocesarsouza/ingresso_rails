@@ -233,14 +233,32 @@
   margin-top: 3px;
 }
 
+.container-location-movie-theater-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
+
+.container-location-movie-theater {
+  background: rgb(33 38 45);
+  padding: 15px 10px;
+}
+
 .container-top-location-movie-theater {
   display: flex;
+}
+
+.container-svg-heart-info-location-movie {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .container-namecinema-district {}
 
 .p-name-cinema {
   color: #fff;
+  margin-bottom: 0px;
 }
 
 .span-district {
@@ -249,7 +267,11 @@
 
 .svg-heart {
   >svg {
-    width: 40px;
+    width: 35px;
     fill: rgb(122 137 188);
   }
+}
+
+.container-seats-price-details {
+  color: #fff;
 }
