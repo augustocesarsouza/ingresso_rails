@@ -107,3 +107,38 @@ if(containerListCategory && containerListCategory.children){
     // console.log(element.style.borderColor);
   }
 }
+
+const containerSvgTicket = document.querySelector('.container-svg-ticket');
+const spanMovieTime = document.querySelector('.span-movie-times');
+const spanComprar = document.querySelector('.span-comprar');
+
+// amanha fazer um for each colocando esse "mouseenter" em todos os containerSvgTicket que tiver esse 'container-svg-ticket' class assim para span tbm
+
+if(containerSvgTicket){
+  containerSvgTicket.addEventListener('mouseenter', () => {
+    spanComprar.style.display = "block";
+  
+    setTimeout(() => {
+      spanMovieTime.style.top = "18px";
+    }, 50);
+   
+    setTimeout(() => {
+      spanComprar.style.top = "5px";
+      spanMovieTime.style.display = "none";
+    }, 60);
+  });
+  
+  containerSvgTicket.addEventListener('mouseleave', () => {
+    setTimeout(() => {
+      spanComprar.style.top = "-8px";
+    }, 50);
+  
+    setTimeout(() => {
+      spanMovieTime.style.top = "5px";
+      spanComprar.style.display = "none";
+    }, 60);
+  
+    spanMovieTime.style.display = "block";
+  });
+}
+

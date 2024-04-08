@@ -331,7 +331,26 @@
   justify-content: center;
   margin-top: 10px;
   position: relative;
+  cursor: pointer;
+  position: relative;
+  color: rgb(149 164 218);
+  transition: top 0.1s ease;
+}
 
+.container-svg-ticket:hover {
+  border-color: rgb(107 130 218);
+}
+
+.container-svg-ticket:hover::after {
+  border-left-color: rgb(107 130 218);
+  border-top-color: rgb(107 130 218);
+  border-bottom-color: rgb(107 130 218);
+}
+
+.container-svg-ticket:hover::before {
+  border-right-color: rgb(107 130 218);
+  border-top-color: rgb(107 130 218);
+  border-bottom-color: rgb(107 130 218);
 }
 
 .container-svg-ticket::before {
@@ -360,9 +379,47 @@
   right: -2px;
 }
 
+.span-movie-times {
+  position: absolute;
+  left: 53px;
+  top: 5px;
+  transition: top 0.1s ease;
 
+}
+
+.span-comprar {
+  position: absolute;
+  left: 42px;
+  top: -8px;
+  /* 5px */
+  display: none;
+  transition: top 0.1s ease;
+}
 
 .container-telasgigantesplg-dublado {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.container-span-telasgigantesplf-dublado {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+
+  >span {
+    color: #fff;
+    background: rgb(50 85 226);
+    border-radius: 5px;
+    padding: 2px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    height: 24px;
+  }
+}
+
+.container-p-schedule-all {
   display: flex;
   gap: 10px;
 }
