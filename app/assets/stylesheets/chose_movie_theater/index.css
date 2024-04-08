@@ -304,7 +304,7 @@
 
 .container-schedule-movie-theater {
   color: #fff;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 .container-span-vip-dublado {
@@ -329,7 +329,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 0px;
   position: relative;
   cursor: pointer;
   position: relative;
@@ -400,7 +400,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .container-span-telasgigantesplf-dublado {

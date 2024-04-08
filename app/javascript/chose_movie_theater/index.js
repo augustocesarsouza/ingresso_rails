@@ -50,6 +50,7 @@ futureDates.forEach((date) => {
     containerDateElement.appendChild(dayMonthElement);
     dayNameElement.textContent = "Hoje";
     containerDateElement.appendChild(dayNameElement);
+
     containerDateElement.addEventListener('click', () => {
       functionClickDateChoseToday(containerDateElement);
     });
@@ -62,9 +63,11 @@ futureDates.forEach((date) => {
     containerDateElement.classList.add("container-date-chose-movie-theater");
     containerDateElement.appendChild(dayMonthElement);
     containerDateElement.appendChild(dayNameElement);
+
     containerDateElement.addEventListener('click', () => {
       functionClickDateChose(containerDateElement);
     });
+
     if(container){
       container.appendChild(containerDateElement);
     }
@@ -108,37 +111,53 @@ if(containerListCategory && containerListCategory.children){
   }
 }
 
-const containerSvgTicket = document.querySelector('.container-svg-ticket');
-const spanMovieTime = document.querySelector('.span-movie-times');
-const spanComprar = document.querySelector('.span-comprar');
+const containerSvgTickets = document.querySelectorAll('.container-svg-ticket');
 
-// amanha fazer um for each colocando esse "mouseenter" em todos os containerSvgTicket que tiver esse 'container-svg-ticket' class assim para span tbm
+containerSvgTickets.forEach(containerSvgTicket => {
+  const spanMovieTime = containerSvgTicket.querySelector('.span-movie-times');
+  const spanComprar = containerSvgTicket.querySelector('.span-comprar');
+  
+  let timeoutEnter;
+  let timeoutLeave;
 
-if(containerSvgTicket){
-  containerSvgTicket.addEventListener('mouseenter', () => {
-    spanComprar.style.display = "block";
-  
-    setTimeout(() => {
-      spanMovieTime.style.top = "18px";
-    }, 50);
-   
-    setTimeout(() => {
-      spanComprar.style.top = "5px";
-      spanMovieTime.style.display = "none";
-    }, 60);
-  });
-  
-  containerSvgTicket.addEventListener('mouseleave', () => {
-    setTimeout(() => {
-      spanComprar.style.top = "-8px";
-    }, 50);
-  
-    setTimeout(() => {
-      spanMovieTime.style.top = "5px";
-      spanComprar.style.display = "none";
-    }, 60);
-  
-    spanMovieTime.style.display = "block";
-  });
-}
+  if(spanMovieTime){
+    const mouseEnterContainerSvgTicket = () => {
+      clearTimeout(timeoutEnter);
+      clearTimeout(timeoutLeave);
+      
+      timeoutEnter = setTimeout(() => {
+        spanMovieTime.style.top = "18px";
+        // spanComprar.style.top = "5px";
+      }, 10);
+      
+      timeoutLeave = setTimeout(() => {
+        spanComprar.style.top = "5px";
+        spanMovieTime.style.display = "none";
+      }, 30);
+
+      spanComprar.style.display = "block";
+    }
+
+    const mouseLeaveContainerSvgTicket = () => {
+      clearTimeout(timeoutEnter);
+      clearTimeout(timeoutLeave);
+      
+      timeoutEnter = setTimeout(() => {
+        spanComprar.style.top = "-8px";
+      }, 10);
+
+      timeoutLeave = setTimeout(() => {
+        spanMovieTime.style.top = "5px";
+        spanComprar.style.display = "none";
+      }, 30);
+
+      spanMovieTime.style.display = "block";
+    }
+    containerSvgTicket.addEventListener('mouseenter', mouseEnterContainerSvgTicket);
+    containerSvgTicket.addEventListener('mouseleave', mouseLeaveContainerSvgTicket);
+  }
+
+  // containerSvgTicket.removeEventListener('mouseenter', mouseEnterContainerSvgTicket);
+  // containerSvgTicket.removeEventListener('mouseleave', mouseLeaveContainerSvgTicket);
+});
 
