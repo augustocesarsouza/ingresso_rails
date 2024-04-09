@@ -91,21 +91,71 @@ if(containerListCategory && containerListCategory.children){
   const listCategory = containerListCategory.children;
 
   for (let i = 0; i < listCategory.length; i++) {
-    const element = listCategory.item(i);;
+    const element = listCategory.item(i);
+    
     element.addEventListener('click', () => {
       funcClickElementCategory(element);
     });
   }
   
+  let arrayElementClick = [];
+
+  let containerMainHourCategory = document.querySelectorAll(".container-schedule-movie-theater");
+
+  let containerForDelete = []; // tem que ver se vai ter que deixar dentro da função click ou nao
+
   const funcClickElementCategory = (element) => {
+    if(arrayElementClick.includes(element.textContent)){
+      arrayElementClick = arrayElementClick.filter((arrayEl) => arrayEl !== element.textContent);
+
+    }else {
+      arrayElementClick.push(element.textContent);
+    }
+
+    containerMainHourCategory.forEach((containerMain) => {
+      for (let i = 0; i < containerMain.children.length; i++) {
+        const element = containerMain.children[i]; // se o span nao tiver o valor dentro desse array "arrayElementClick" remover
+        
+        let containerSpan = element.querySelector(".container-span-telasgigantesplf-dublado");
+        
+        let valorRef = false;
+        
+        for (let j = 0; j < containerSpan.children.length; j++) {
+          let elementSpan = containerSpan.children[j];
+
+          if(arrayElementClick.includes(elementSpan.textContent)){
+            valorRef = true;
+          }
+
+          if (j === containerSpan.children.length - 1) {
+            if (!valorRef) {
+              containerForDelete.push(element);
+              valorRef = true;
+            }
+          }
+        }
+      }
+
+      containerForDelete.forEach((element) => {
+        element.remove();
+      });
+
+      if(containerMain.children.length === 0){
+        containerMain.parentElement.remove();
+      }
+      
+    });
+  
     if(element.style.borderColor === "transparent"){
       element.style.color = "#98aaec";
       element.style.borderColor = "#98aaec";
       element.style.background = "transparent";
+      
     }else{
       element.style.color = "#FFF";
       element.style.borderColor = "transparent";
       element.style.background = "rgb(50 85 226)";
+
     }
     // console.log(element.style.borderColor);
   }
@@ -170,3 +220,4 @@ if(containerTelasGigantesDublado){
     }
   });
 }
+
