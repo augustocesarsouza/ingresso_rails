@@ -161,3 +161,12 @@ containerSvgTickets.forEach(containerSvgTicket => {
   // containerSvgTicket.removeEventListener('mouseleave', mouseLeaveContainerSvgTicket);
 });
 
+const containerTelasGigantesDublado = document.querySelectorAll('.container-telasgigantesplg-dublado');
+
+if(containerTelasGigantesDublado){
+  containerTelasGigantesDublado.forEach((el) => {
+    if(el.clientHeight == 0){
+      el.remove();
+    }
+  });
+}

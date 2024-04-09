@@ -77,77 +77,25 @@
               <div class="container-telasgigantesplg-dublado">
                 <%= render_vip_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <% schedule_parts.each do |schedule_part| %>
-                    <% schedule_part_split_spaces = schedule_part.split(" ") %>
-                    <% schedule_part_split_spaces.each_with_index do |schedule_part_split_space, index| %>
-                      <% if schedule_part_split_space == "v-d" %>
-                        <div class="container-svg-ticket">
-                          <span class="span-movie-times"><%= schedule_part_split_spaces[index - 1] %></span>
-                          <span class="span-comprar">Comprar</span>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  <% end %>
+                  <%= render_time_buy_vip_dublado_container(schedule_parts) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_vip_3d_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <% schedule_parts.each do |schedule_part| %>
-                    <% schedule_part_split_spaces = schedule_part.split(" ") %>
-                    <% schedule_part_split_spaces.each_with_index do |schedule_part_split_space, index| %>
-                      <% if schedule_part_split_space == "v-3d-d" %>
-                        <div class="container-svg-ticket">
-                          <span class="span-movie-times"><%= schedule_part_split_spaces[index - 1] %></span>
-                          <span class="span-comprar">Comprar</span>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  <% end %>
+                  <%= render_time_buy_vip_3d_dublado_container(schedule_parts) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_3d_dbox_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <% schedule_parts.each do |schedule_part| %>
-                    <% schedule_part_split_spaces = schedule_part.split(" ") %>
-                    <% schedule_part_split_spaces.each_with_index do |schedule_part_split_space, index| %>
-                      <% if schedule_part_split_space == "3d-db-d" %>
-                        <div class="container-svg-ticket">
-                          <span class="span-movie-times"><%= schedule_part_split_spaces[index - 1] %></span>
-                          <span class="span-comprar">Comprar</span>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  <% end %>
+                  <%= render_time_buy_3d_dbox_dublado_container(schedule_parts) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
-                <% rendered_once = false %>
-                <% schedule_parts.each do |schedule_part| %>
-                  <% schedule_part_split_spaces1 = schedule_part.split(" ") %>
-                  <% if schedule_part_split_spaces1.include?("tg-d")  %>
-                    <% if !rendered_once %>
-                      <% rendered_once = true %>
-                      <div class="container-span-telasgigantesplf-dublado">
-                        <span>TELAS GIGANTES/PLF</span>
-                        <span>DUBLADO</span>
-                      </div>
-                    <% end %>
-                  <% end %>
-                <% end %>
+                <%= render_telasgigantes_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <% schedule_parts.each do |schedule_part| %>
-                    <% schedule_part_split_spaces = schedule_part.split(" ") %>
-                    <% schedule_part_split_spaces.each_with_index do |schedule_part_split_space, index| %>
-                      <% if schedule_part_split_space == "tg-d" %>
-                        <div class="container-svg-ticket">
-                          <span class="span-movie-times"><%= schedule_part_split_spaces[index - 1] %></span>
-                          <span class="span-comprar">Comprar</span>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  <% end %>
+                  <%= render_time_buy_telasgigantes_dublado_container(schedule_parts) %>
                 </div>
               </div>
             <% end %>
