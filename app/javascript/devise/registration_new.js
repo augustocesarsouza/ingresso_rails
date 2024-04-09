@@ -10,7 +10,6 @@ const regLowercase = /[a-z]/
 const regNumber = /\d/
 
 const functionGetClickKeyboard = (event) => {
-  
   setTimeout(() => {
     const textInputPassword = event.target.value;
     
@@ -38,6 +37,11 @@ const functionGetClickKeyboard = (event) => {
       spanMinimumEightCharacter.style.color = '#00000054';
     }
   }, 10);
+
+  if(inputPassword){
+    inputPassword.removeEventListener('keydown', functionGetClickKeyboard);
+  }
+  
 }
 
 if(inputPassword){
@@ -155,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   window.recaptchaCallbackChangePassword = recaptchaCallbackChangePassword;
-
 });
 
 document.addEventListener('keydown', (e) => {

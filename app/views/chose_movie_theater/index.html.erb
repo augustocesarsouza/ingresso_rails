@@ -39,15 +39,66 @@
       <% @cinemas.each do | cinema | %>
         <div class="container-location-movie-theater">
           <div class="container-top-location-movie-theater">
-            <div class="svg-heart">
-              <%= render "chose_movie_theater_svgs_partials/svg_heart" %>
+            <div class="container-svg-heart-info-location-movie">
+              <div class="svg-heart">
+                <%= render "chose_movie_theater_svgs_partials/svg_heart" %>
+              </div>
+              <div class="container-namecinema-district">
+                <p class="p-name-cinema"><%= cinema.name_cinema %></p>
+                <span class="span-district"><%= cinema.district %></span>
+              </div>
             </div>
-            <div class="container-namecinema-district">
-              <p class="p-name-cinema"><%= cinema.name_cinema %></p>
-              <span class="span-district"><%= cinema.district %></span>
+            <div class="container-seats-price-details">
+              <div class="container-seats">
+                <%= render "chose_movie_theater_svgs_partials/svg_seats" %>
+                <span>Assentos</span>
+              </div>
+              <div class="container-price">
+                <%= render "chose_movie_theater_svgs_partials/svg_price" %>
+                <span>Preços</span>
+              </div>
+              <div class="container-details">
+                <%= render "chose_movie_theater_svgs_partials/svg_details" %>
+                <span>Preços</span>
+              </div>
             </div>
           </div>
+          <div class="container-line-between-svgs-schedule"></div>
+          <% cinema_movies = CinemaMovie.select(:screening_schedule).where(movie_id: @movie.id, cinema_id: cinema.id, region_id: @region_city_id.id) %>
           <div class="container-schedule-movie-theater">
+            <% cinema_movies.each do |cinema_movie| %>
+              <% schedule_parts = cinema_movie.screening_schedule.split(",") %>
+              <div class="container-telasgigantesplg-dublado">
+                <%= render_dublado_container(schedule_parts) %>
+                <div class="container-p-schedule-all">
+                  <%= render_time_buy_container(schedule_parts) %>
+                </div>
+              </div>
+              <div class="container-telasgigantesplg-dublado">
+                <%= render_vip_dublado_container(schedule_parts) %>
+                <div class="container-p-schedule-all">
+                  <%= render_time_buy_vip_dublado_container(schedule_parts) %>
+                </div>
+              </div>
+              <div class="container-telasgigantesplg-dublado">
+                <%= render_vip_3d_dublado_container(schedule_parts) %>
+                <div class="container-p-schedule-all">
+                  <%= render_time_buy_vip_3d_dublado_container(schedule_parts) %>
+                </div>
+              </div>
+              <div class="container-telasgigantesplg-dublado">
+                <%= render_3d_dbox_dublado_container(schedule_parts) %>
+                <div class="container-p-schedule-all">
+                  <%= render_time_buy_3d_dbox_dublado_container(schedule_parts) %>
+                </div>
+              </div>
+              <div class="container-telasgigantesplg-dublado">
+                <%= render_telasgigantes_dublado_container(schedule_parts) %>
+                <div class="container-p-schedule-all">
+                  <%= render_time_buy_telasgigantes_dublado_container(schedule_parts) %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>

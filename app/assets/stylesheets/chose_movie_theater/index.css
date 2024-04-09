@@ -233,23 +233,194 @@
   margin-top: 3px;
 }
 
+.container-location-movie-theater-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 90%;
+}
+
+.container-location-movie-theater {
+  background: rgb(33 38 45);
+  padding: 15px 20px;
+  border-radius: 15px;
+}
+
 .container-top-location-movie-theater {
   display: flex;
+  justify-content: space-between;
+}
+
+.container-svg-heart-info-location-movie {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .container-namecinema-district {}
 
 .p-name-cinema {
   color: #fff;
+  margin-bottom: 0px;
+  font-size: 17px;
+  font-weight: 700;
 }
 
 .span-district {
+  font-size: 15px;
   color: rgb(153 153 153);
 }
 
 .svg-heart {
   >svg {
-    width: 40px;
+    width: 35px;
     fill: rgb(122 137 188);
   }
+}
+
+.container-seats-price-details {
+  display: flex;
+  gap: 10px;
+  color: #fff;
+}
+
+.container-seats,
+.container-price,
+.container-details {
+  display: flex;
+  align-items: center;
+  height: 50%;
+  gap: 5px;
+
+  >svg {
+    width: 25px;
+    fill: rgb(122 137 188);
+  }
+}
+
+.container-line-between-svgs-schedule {
+  border: 1px solid rgb(122 137 188 / 18%);
+}
+
+.container-schedule-movie-theater {
+  color: #fff;
+  margin-top: 0px;
+}
+
+.container-span-vip-dublado {
+  display: flex;
+  gap: 10px;
+
+  >span {
+    color: #fff;
+    background: rgb(50 85 226);
+    border-radius: 5px;
+    padding: 2px 15px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
+.container-svg-ticket {
+  border: 2px solid rgb(152 170 236);
+  border-radius: 10px;
+  width: 17%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+  position: relative;
+  cursor: pointer;
+  position: relative;
+  color: rgb(149 164 218);
+  transition: top 0.1s ease;
+}
+
+.container-svg-ticket:hover {
+  border-color: rgb(107 130 218);
+}
+
+.container-svg-ticket:hover::after {
+  border-left-color: rgb(107 130 218);
+  border-top-color: rgb(107 130 218);
+  border-bottom-color: rgb(107 130 218);
+}
+
+.container-svg-ticket:hover::before {
+  border-right-color: rgb(107 130 218);
+  border-top-color: rgb(107 130 218);
+  border-bottom-color: rgb(107 130 218);
+}
+
+.container-svg-ticket::before {
+  content: "";
+  width: 7px;
+  height: 14px;
+  border: 2px solid rgb(152 170 236);
+  border-left: 1px solid transparent;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: rgb(33 38 45);
+  position: absolute;
+  left: -2px;
+}
+
+.container-svg-ticket::after {
+  content: "";
+  width: 7px;
+  height: 14px;
+  border: 2px solid rgb(152 170 236);
+  border-right: 1px solid transparent;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  background-color: rgb(33 38 45);
+  position: absolute;
+  right: -2px;
+}
+
+.span-movie-times {
+  position: absolute;
+  left: 53px;
+  top: 5px;
+  transition: top 0.1s ease;
+
+}
+
+.span-comprar {
+  position: absolute;
+  left: 42px;
+  top: -8px;
+  /* 5px */
+  display: none;
+  transition: top 0.1s ease;
+}
+
+.container-telasgigantesplg-dublado {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* margin-top: 15px; */
+}
+
+.container-span-telasgigantesplf-dublado {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+  margin-top: 15px;
+
+  >span {
+    color: #fff;
+    background: rgb(50 85 226);
+    border-radius: 5px;
+    padding: 2px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    height: 24px;
+  }
+}
+
+.container-p-schedule-all {
+  display: flex;
+  gap: 10px;
 }

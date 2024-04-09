@@ -9,6 +9,10 @@ const CaptureEventClickLoginOrRegister = () => {
   }else{
     containerRegisterLogin.style.display = 'none';
   }
+
+  if(divLoginOrRegister){
+    divLoginOrRegister.removeEventListener('click', CaptureEventClickLoginOrRegister);
+  }
 }
 
 if(divLoginOrRegister){
@@ -43,6 +47,10 @@ const CaptureEventClickLogOut = () => {
     containerLoggout.style.display = 'flex';
   }else{
     containerLoggout.style.display = 'none';
+  }
+
+  if(divUserLoggedin){
+    divUserLoggedin.removeEventListener('click', CaptureEventClickLogOut);
   }
 }
 

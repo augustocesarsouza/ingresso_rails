@@ -50,6 +50,7 @@ futureDates.forEach((date) => {
     containerDateElement.appendChild(dayMonthElement);
     dayNameElement.textContent = "Hoje";
     containerDateElement.appendChild(dayNameElement);
+
     containerDateElement.addEventListener('click', () => {
       functionClickDateChoseToday(containerDateElement);
     });
@@ -62,9 +63,11 @@ futureDates.forEach((date) => {
     containerDateElement.classList.add("container-date-chose-movie-theater");
     containerDateElement.appendChild(dayMonthElement);
     containerDateElement.appendChild(dayNameElement);
+
     containerDateElement.addEventListener('click', () => {
       functionClickDateChose(containerDateElement);
     });
+
     if(container){
       container.appendChild(containerDateElement);
     }
@@ -106,4 +109,64 @@ if(containerListCategory && containerListCategory.children){
     }
     // console.log(element.style.borderColor);
   }
+}
+
+const containerSvgTickets = document.querySelectorAll('.container-svg-ticket');
+
+containerSvgTickets.forEach(containerSvgTicket => {
+  const spanMovieTime = containerSvgTicket.querySelector('.span-movie-times');
+  const spanComprar = containerSvgTicket.querySelector('.span-comprar');
+  
+  let timeoutEnter;
+  let timeoutLeave;
+
+  if(spanMovieTime){
+    const mouseEnterContainerSvgTicket = () => {
+      clearTimeout(timeoutEnter);
+      clearTimeout(timeoutLeave);
+      
+      timeoutEnter = setTimeout(() => {
+        spanMovieTime.style.top = "18px";
+        // spanComprar.style.top = "5px";
+      }, 10);
+      
+      timeoutLeave = setTimeout(() => {
+        spanComprar.style.top = "5px";
+        spanMovieTime.style.display = "none";
+      }, 30);
+
+      spanComprar.style.display = "block";
+    }
+
+    const mouseLeaveContainerSvgTicket = () => {
+      clearTimeout(timeoutEnter);
+      clearTimeout(timeoutLeave);
+      
+      timeoutEnter = setTimeout(() => {
+        spanComprar.style.top = "-8px";
+      }, 10);
+
+      timeoutLeave = setTimeout(() => {
+        spanMovieTime.style.top = "5px";
+        spanComprar.style.display = "none";
+      }, 30);
+
+      spanMovieTime.style.display = "block";
+    }
+    containerSvgTicket.addEventListener('mouseenter', mouseEnterContainerSvgTicket);
+    containerSvgTicket.addEventListener('mouseleave', mouseLeaveContainerSvgTicket);
+  }
+
+  // containerSvgTicket.removeEventListener('mouseenter', mouseEnterContainerSvgTicket);
+  // containerSvgTicket.removeEventListener('mouseleave', mouseLeaveContainerSvgTicket);
+});
+
+const containerTelasGigantesDublado = document.querySelectorAll('.container-telasgigantesplg-dublado');
+
+if(containerTelasGigantesDublado){
+  containerTelasGigantesDublado.forEach((el) => {
+    if(el.clientHeight == 0){
+      el.remove();
+    }
+  });
 }
