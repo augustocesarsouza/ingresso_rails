@@ -1,0 +1,24 @@
+ <% if user_signed_in? %>
+  <div class="container-user-loggedin">
+    <span class="span-user-loggedin">Olá,<%= current_user.name %></span>
+    <span class="my-orders">Meus Pedidos</span>
+  </div>
+<% else %>
+  <div class="container-login-logout-chose-seats-and-more-partial">
+    <span>Olá, visitante</span>
+  </div>
+<% end %>
+<% if user_signed_in? %>
+  <div class="container-loggout">
+    <div class="container-links">
+      <span class="span-name-user-complete">Olá, <%= current_user.name.capitalize %></span>
+      <%= link_to "Meus Pedidos", "#" %>
+      <%= link_to "Dados Pessoais", "#" %>
+      <%= link_to "Formas de Pagamento", "#" %>
+      <div class="container-risk"></div>
+      <div class="container-logout-account">
+        <%= link_to "Sair da Conta", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+.div-svg-seats-type-tickets-bomboniere-payment {
+  display: flex;
+  /* width: 100%; */
+
+  >svg {
+    fill: rgb(152, 170, 236);
+    width: 25px;
+  }
+}
