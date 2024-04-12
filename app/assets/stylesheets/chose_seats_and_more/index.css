@@ -95,6 +95,9 @@
   gap: 10px;
   height: 40rem;
   background: rgb(33 38 45);
+
+  position: relative;
+  z-index: 10;
 }
 
 .container-letter-ofthe-seats {
@@ -109,11 +112,19 @@
   font-size: 12px;
 }
 
+.container-seats-chose-seats-and-more-1 {
+  /* width: 95%; */
+  height: 92%;
+  user-select: none;
+}
+
 .container-seats-chose-seats-and-more-2 {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 13px;
+  height: 100%;
+  transform: translate(0px, 0px) scale(1);
 }
 
 .container-span-number-chose-seats-and-more-main {

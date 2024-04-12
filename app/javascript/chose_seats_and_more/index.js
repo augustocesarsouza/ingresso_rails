@@ -238,5 +238,61 @@ document.addEventListener("DOMContentLoaded", () => {
     containerSpanScreen.appendChild(spanScreen);
 
     containerSeats.appendChild(containerSpanScreen);
+
+    const containerSeatsChoseAndMore1 = document.querySelector(".container-seats-chose-seats-and-more-1");
+    const containerSeatsChoseAndMore2 = document.querySelector(".container-seats-chose-seats-and-more-2");
+    
+
+    let isDragging = false;
+    let lastX = 0;
+    let seatsMoveX = 0;
+    const valueToSumAndSubtractXRef = 0.3;
+    const valueToSumAndSubtractYRef = 0.7;
+
+
+    containerSeatsChoseAndMore1.addEventListener("mousedown", (e) => {
+      lastX = e.clientX;
+      console.log(lastX + " CLICK do X");
+      
+      isDragging = true;
+    });
+
+    containerSeatsChoseAndMore1.addEventListener("mouseup", (e) => {
+      isDragging = false;
+    });
+
+    containerSeatsChoseAndMore1.addEventListener("mousemove", (e) => {
+      if(isDragging){
+        console.log(e.clientX);
+        console.log(lastX + " ultima posição do X");
+        
+        if(e.clientX < lastX){
+          if(seatsMoveX <= -100){
+            seatsMoveX = seatsMoveX;
+          }else {
+            seatsMoveX = seatsMoveX - valueToSumAndSubtractXRef;
+          }
+
+          containerSeatsChoseAndMore2.style.transform = `translate(${seatsMoveX}px, 0px) scale(1)`;
+
+          lastX = e.clientX;
+          console.log(lastX + " ultima posição ATT do X");
+        }else if(e.clientX > lastX){
+          if(seatsMoveX <= 100){
+            seatsMoveX = seatsMoveX + valueToSumAndSubtractXRef;
+          }else {
+            seatsMoveX = seatsMoveX;
+          }
+
+          containerSeatsChoseAndMore2.style.transform = `translate(${seatsMoveX}px, 0px) scale(1)`;
+
+          lastX = e.clientX;
+        }
+
+        
+        // console.log(e.clientX);
+      }
+    });
+
   }
 });
