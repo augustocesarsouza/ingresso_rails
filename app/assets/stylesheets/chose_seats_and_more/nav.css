@@ -1,0 +1,25 @@
+.nav-custom-chose-seats-and-more {
+  background: rgb(33, 38, 45);
+}
+
+.container-user-body-name-user-chose-seats-and-more {
+  justify-content: flex-end;
+  color: #fff;
+}
+
+.div-svg-chose-seats-and-more {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  /* width: 100%; */
+
+  >svg {
+    fill: rgb(152, 170, 236);
+    width: 25px;
+  }
+}
+
+.span-service-chose-seats-and-more {
+  font-size: 15px;
+}

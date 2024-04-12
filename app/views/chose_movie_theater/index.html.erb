@@ -71,31 +71,31 @@
               <div class="container-telasgigantesplg-dublado">
                 <%= render_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_container(schedule_parts) %>
+                  <%= render_time_buy_container(schedule_parts, @movie) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_vip_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_vip_dublado_container(schedule_parts) %>
+                  <%= render_time_buy_vip_dublado_container(schedule_parts, @movie) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_vip_3d_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_vip_3d_dublado_container(schedule_parts) %>
+                  <%= render_time_buy_vip_3d_dublado_container(schedule_parts, @movie) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_3d_dbox_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_3d_dbox_dublado_container(schedule_parts) %>
+                  <%= render_time_buy_3d_dbox_dublado_container(schedule_parts, @movie) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_telasgigantes_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_telasgigantes_dublado_container(schedule_parts) %>
+                  <%= render_time_buy_telasgigantes_dublado_container(schedule_parts, @movie) %>
                 </div>
               </div>
             <% end %>

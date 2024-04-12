@@ -11,6 +11,10 @@ import "./mask"
 import "./carouse_functionality"
 import "./login_or_register"
 import "./chose_movie_theater/index.js"
+import "./chose_movie_theater/date_movie_theater.js"
+import "./chose_movie_theater/filtre_location_by_click_category.js"
+import "./chose_movie_theater/event_mouse_enter_leave_for_hour_buy.js"
+import "./chose_seats_and_more/index.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   const colCustoms = document.querySelectorAll(".col-custom");

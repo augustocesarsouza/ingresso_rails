@@ -1,0 +1,8 @@
+.container-login-logout-chose-seats-and-more-partial {
+  display: flex;
+  cursor: pointer;
+
+  >span {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,200 @@
+.container-body-chose-seats-and-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-seats-type-tickets-bomboniere-payment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+}
+
+.div-svg-seats-type-tickets-bomboniere-payment {
+  display: flex;
+  border: 1px solid rgb(130 147 204);
+  border-radius: 50%;
+  padding: 3px;
+
+  >svg {
+    fill: rgb(152, 170, 236);
+    width: 19px;
+  }
+}
+
+.line-white-seats-type-tickets-bomboniere-payment {
+  /* border: 1px solid rgb(152, 170, 236); */
+  background: rgb(152, 170, 236);
+  width: 100%;
+  height: 1px;
+}
+
+.container-chose-seat-number-resume-order-main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 30px 40px;
+}
+
+.container-chose-seat-number {
+  /* width: 80%; */
+  width: 59rem;
+}
+
+.container-location-date-hour-movie {
+  color: #fff;
+  background: rgb(52, 60, 70);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 110px;
+  padding: 7px 0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.container-svg-name,
+.container-svg-time-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  >svg {
+    fill: #fff;
+  }
+}
+
+.container-svg-name {
+  >svg {
+    width: 24px;
+  }
+}
+
+.span-location-chose-seats-and-more {
+  font-size: 14px;
+}
+
+.container-svg-time-name {
+  >svg {
+    width: 20px;
+  }
+}
+
+.container-order-summary {
+  color: #fff;
+}
+
+.container-seats-chose-seats-and-more-main {
+  display: flex;
+  padding-top: 35px;
+  padding-left: 40px;
+  gap: 10px;
+  height: 40rem;
+  background: rgb(33 38 45);
+
+  position: relative;
+  z-index: 10;
+}
+
+.container-letter-ofthe-seats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.span-letter-seats {
+  color: #fff;
+  font-size: 12px;
+}
+
+.container-seats-chose-seats-and-more-1 {
+  /* width: 95%; */
+  height: 92%;
+  user-select: none;
+}
+
+.container-seats-chose-seats-and-more-2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 13px;
+  height: 100%;
+  transform: translate(0px, 0px) scale(1);
+}
+
+.container-span-number-chose-seats-and-more-main {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.container-span-number-chose-seats-and-more {
+  background: rgb(152 170 236);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.span-letter {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+  padding-right: 40px;
+}
+
+.span-letter-right {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+  margin-left: 30px;
+}
+
+.container-screen {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(173 182 194);
+  position: relative;
+  margin-top: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.container-screen::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  border-left: 0.7em solid transparent;
+
+  top: 0px;
+  width: 0px;
+  height: 0px;
+  border-top: 18px solid rgb(33, 38, 45);
+}
+
+.container-screen::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  width: 0px;
+  height: 0px;
+  border-top: 18px solid rgb(33, 38, 45);
+  left: 0px;
+  border-right: 0.7em solid transparent;
+}
+
+.span-screen {
+  color: rgb(33, 38, 50);
+  font-size: 12px;
+  font-weight: 700;
+}
