@@ -38,10 +38,39 @@
           <div class="container-seats-chose-seats-and-more-2">
           </div>
         </div>
+        <div class="container-show-number-seats">
+          <span class="span-show-number-seats">Exibir números dos assentos</span>
+          <div class="toggle-switch">
+            <input type="checkbox" id="toggle" class="toggle-checkbox">
+            <label for="toggle" class="toggle-label"></label>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container-order-summary">
-      <span>Resumo do pedido</span>
+      <div class="container-header-order-sumarry">
+        <span class="span-oder-summary">Resumo do pedido</span>
+        <div class="container-svg-trash">
+          <%= render "chose_seats_and_more_svg_partial/svg_trash" %>
+        </div>
+      </div>
+      <div class="container-body-order-sumarry">
+        <div class="container-img-banner-movie">
+          <%= image_tag @movie.image_main, class: "img-banner-movie-order-sumarry", alt: @movie.title %>
+        </div>
+        <div class="container-info-movie-order-sumarry">
+          <div class="container-movie-title-movierating">
+            <span class="span-title-order-sumarry"><%= @movie.title %></span>
+            <div class="container-movierating">
+              <span><%= @movie.movie_rating %></span>
+            </div>
+          </div>
+          <div class="container-region-room">
+            <span class="span-name-cinema"></span>
+            <span class="span-room">SALA 1</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

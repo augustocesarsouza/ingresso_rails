@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const spanLocationChoseSeats = document.querySelector(".span-location-chose-seats-and-more");
     const spanCalendarChoseSeats = document.querySelector(".span-calendar-chose-seats-and-more");
     const spanTimeChoseSeats = document.querySelector(".span-time-chose-seats-and-more");
-        
+    
     if (storedValue) {
       parentContainerLocationMovieTheater = JSON.parse(storedValue);
       
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const date = parse(parentContainerLocationMovieTheater.day, 'dd/MM', new Date());
 
         const diaDaSemana = format(date, 'EEE', { locale: ptBR });
-        let week = diaDaSemana.slice(0, 3);
+        let week = diaDaSemana.slice(0, 3).toUpperCase();
 
         let nameCinemaHalf = parentContainerLocationMovieTheater.nameCinema.split(' ');
         let nameCinemaJoin = `${nameCinemaHalf[0]} ${nameCinemaHalf[1]} ${nameCinemaHalf[2]}`;
@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         spanLocationChoseSeats.textContent = nameCinemaJoin;
         spanCalendarChoseSeats.textContent = `${week} ${parentContainerLocationMovieTheater.day}`;
         spanTimeChoseSeats.textContent = parentContainerLocationMovieTheater.hourChose;
+        spanTimeChoseSeats.style.fontWeight = "700";
       }else {
         let nameCinemaHalf2 = parentContainerLocationMovieTheater.nameCinema.split(' ');
         let nameCinemaJoin2 = `${nameCinemaHalf2[0]} ${nameCinemaHalf2[1]} ${nameCinemaHalf2[2]}`;

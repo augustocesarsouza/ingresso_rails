@@ -85,11 +85,17 @@
 }
 
 .container-order-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   color: #fff;
+  background: rgb(33 38 45);
+  width: 19rem;
 }
 
 .container-seats-chose-seats-and-more-main {
   display: flex;
+  flex-direction: column;
   padding-top: 35px;
   padding-left: 40px;
   gap: 10px;
@@ -198,4 +204,158 @@
   color: rgb(33, 38, 50);
   font-size: 12px;
   font-weight: 700;
+}
+
+.container-show-number-seats {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 80px;
+  gap: 10px;
+}
+
+.span-show-number-seats {
+  color: #a7a7a7;
+  font-size: 14px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+.toggle-checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-label {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 25px;
+  background-color: gray;
+  border-radius: 25px;
+  transition: 0.4s;
+}
+
+.toggle-label::before {
+  position: absolute;
+  content: "";
+  height: 21px;
+  width: 21px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.toggle-checkbox:checked+.toggle-label {
+  background-color: green;
+}
+
+.toggle-checkbox:checked+.toggle-label::before {
+  transform: translateX(25px);
+}
+
+.container-header-order-sumarry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 19px;
+}
+
+.span-oder-summary {
+  font-size: 14px;
+}
+
+.container-svg-trash {
+  width: 18px;
+
+  >svg {
+    fill: rgb(152, 170, 236);
+  }
+}
+
+.container-body-order-sumarry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0px 19px;
+}
+
+.container-img-banner-movie {
+  width: 85px;
+  height: 118px;
+}
+
+.img-banner-movie-order-sumarry {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container-info-movie-order-sumarry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 11rem;
+  height: 100%;
+}
+
+.container-movie-title-movierating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.span-title-order-sumarry {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgb(136, 153, 170);
+}
+
+.container-movierating {
+  background: rgb(251, 193, 21);
+  color: black;
+  font-weight: 600;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+}
+
+.container-region-room {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  white-space: pre-line;
+  line-height: 1.2;
+}
+
+.span-name-cinema {
+  font-size: 13px;
+  color: rgb(136, 153, 170);
+}
+
+.span-room {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgb(136, 153, 170);
+}
+
+.span-region-name-order-summary {
+  font-size: 13px;
+  color: rgb(136, 153, 170);
 }
