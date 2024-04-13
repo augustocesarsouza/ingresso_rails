@@ -116,6 +116,7 @@
   /* width: 95%; */
   height: 92%;
   user-select: none;
+  overflow: hidden !important;
 }
 
 .container-seats-chose-seats-and-more-2 {
