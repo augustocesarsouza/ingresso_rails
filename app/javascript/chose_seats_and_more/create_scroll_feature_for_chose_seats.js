@@ -76,6 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let scrollDownOrScrollUp = false;
     let valueScaleAlreadyEnter80 = false;
+
+    let svgZoomIn = document.querySelector(".svg-zoom-in");
+    let svgZoomOut = document.querySelector(".svg-zoom-out");
     
     containerSeatsChoseAndMore1.addEventListener("wheel", (e) => {
       e.preventDefault();
@@ -177,6 +180,15 @@ document.addEventListener("DOMContentLoaded", () => {
           seatsMoveY = offsetY * (valueForScale / 100);
           valueScaleAlreadyEnter80 = true;
         }
+      }
+
+      if(containerBallProgressBard.style.bottom === "0px"){
+        svgZoomOut.style.fill = "rgb(255 214 51)";
+      }else if(containerBallProgressBard.style.bottom === "75px"){
+        svgZoomIn.style.fill = "rgb(255 214 51)";
+      }else {
+        svgZoomIn.style.fill = "rgb(204, 204, 204)";
+        svgZoomOut.style.fill = "rgb(204, 204, 204)";
       }
 
       containerSeatsChoseAndMore2.style.transform = `translate(${seatsMoveX}px, ${seatsMoveY}px) scale(1.${valueForScale})`;

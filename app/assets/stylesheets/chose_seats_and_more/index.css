@@ -286,6 +286,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 2px;
 }
 
 .container-progress-bar {
@@ -368,6 +369,12 @@
   gap: 8px;
   width: 65%;
   height: 100%;
+}
+
+.container-seats-chosen-summary-order {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgb(102, 102, 102);
 }
 
 .container-movie-title-movierating {

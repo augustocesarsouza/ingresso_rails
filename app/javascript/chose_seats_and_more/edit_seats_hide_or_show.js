@@ -157,7 +157,72 @@ document.addEventListener("DOMContentLoaded", () => {
       return letterNow;
     }
 
+    let containerOrderSummaryAndDetailMovie = document.querySelector(".container-order-summary-and-detail-movie");
+    const containerSeatsChosen = document.createElement('div');
+    containerSeatsChosen.classList.add('container-seats-chosen-summary-order');
+
+    const spanSeatsName = document.createElement('span');
+    spanSeatsName.textContent = "Assentos";
+
+    containerSeatsChosen.appendChild(spanSeatsName);
+    containerOrderSummaryAndDetailMovie.appendChild(containerSeatsChosen);
+
+    let arrayAllSeats = [];
+    let arrayAlreadySet = [];
+    let stringSeats = "";
+    const spanSeatsAll = document.createElement('span');
+
+    if(arrayAllSeats.length === 0){
+      containerSeatsChosen.style.display = "none";
+    }
+    
     const functionClickContainerSpanNumber = (containerSpanNumber) => {
+      if(arrayAllSeats.includes(containerSpanNumber.firstChild.textContent)){
+        arrayAllSeats = arrayAllSeats.filter((el) => el !== containerSpanNumber.firstChild.textContent);
+
+        let positionDelete2 = stringSeats.indexOf(containerSpanNumber.firstChild.textContent);
+
+        let indexOfFirstCommaAfterPositionDelete2 = stringSeats.indexOf(',', positionDelete2 + 1);
+
+        if(indexOfFirstCommaAfterPositionDelete2 !== -1){
+          let firstPart = stringSeats.slice(0, positionDelete2);
+          let secondPart = stringSeats.slice(indexOfFirstCommaAfterPositionDelete2 + 1);
+
+          stringSeats = firstPart + secondPart;
+        }else {
+          stringSeats = stringSeats.slice(0, positionDelete2 - 1);
+        }
+        
+        arrayAlreadySet = arrayAlreadySet.filter((el) => el !== containerSpanNumber.firstChild.textContent);
+      }else {
+      
+        arrayAllSeats.push(containerSpanNumber.firstChild.textContent);
+      }
+
+      arrayAllSeats.forEach((elSeats, index) => {
+        if(!arrayAlreadySet.includes(elSeats)){
+          arrayAlreadySet.push(elSeats);
+          if(index > 0){
+            stringSeats += ",";
+          }
+
+          stringSeats += elSeats;
+        }else {
+
+        }
+      });
+
+      if(arrayAllSeats.length === 0){
+        containerSeatsChosen.style.display = "none";
+        stringSeats = ""
+      }else {
+        containerSeatsChosen.style.display = "flex";
+      }
+      
+      spanSeatsAll.textContent = stringSeats;
+
+      containerSeatsChosen.appendChild(spanSeatsAll);
+
       if(containerSpanNumber.style.color === "black"){
         containerSpanNumber.style.color = "transparent";
         containerSpanNumber.style.background = "rgb(152 170 236)";
