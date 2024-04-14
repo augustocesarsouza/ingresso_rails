@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggleCheckbox.addEventListener('change', function() {
       if (this.checked) {
-          console.log('Ligado');
+          // console.log('Ligado');
       } else {
-          console.log('Desligado');
+          // console.log('Desligado');
       }
     });
 
@@ -35,8 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       containerInfoMovieOrderSumarry.appendChild(spanRegionName);
 
-      console.log(parentContainerLocationMovieTheater);
-      
+      // console.log(parentContainerLocationMovieTheater);
 
       const date = parse(parentContainerLocationMovieTheater.day, 'dd/MM', new Date());
 
@@ -44,8 +43,23 @@ document.addEventListener("DOMContentLoaded", () => {
       let week = diaDaSemana.slice(0, 3).toUpperCase();
 
       let conjuntoStringData = `${week}-${parentContainerLocationMovieTheater.day}`;
-      console.log(conjuntoStringData);
-      console.log(parentContainerLocationMovieTheater.hourChose);
+
+      const containerDayWeekHourMovie = document.createElement("div");
+      containerDayWeekHourMovie.classList.add("container-day-week-hour-order-summary");
+
+      const spanDayWeekData = document.createElement("span");
+      spanDayWeekData.classList.add("span-day-week-hour-order-summary");
+      spanDayWeekData.textContent = conjuntoStringData;
+
+      containerDayWeekHourMovie.appendChild(spanDayWeekData);
+
+      const spanHourMovie = document.createElement("span");
+      spanHourMovie.classList.add("span-hour-movie-order-summary");
+      spanHourMovie.textContent = parentContainerLocationMovieTheater.hourChose;
+
+      containerDayWeekHourMovie.appendChild(spanHourMovie);
+
+      containerInfoMovieOrderSumarry.appendChild(containerDayWeekHourMovie);
     }
     
   }

@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const valueToSumAndSubtractXRef = 0.7;
     const valueToSumAndSubtractYRef = 0.7;
 
+    let containerBallProgressBard = document.querySelector(".container-ball-progress-bard");
+
     containerSeatsChoseAndMore1.addEventListener("mousedown", (e) => {
       lastX = e.clientX;
       
@@ -71,19 +73,26 @@ document.addEventListener("DOMContentLoaded", () => {
         containerSeatsChoseAndMore2.style.transform = `translate(${seatsMoveX}px, ${seatsMoveY}px) scale(1.${valueForScale})`;
       }
     });
+
+    let scrollDownOrScrollUp = false;
+    let valueScaleAlreadyEnter80 = false;
     
     containerSeatsChoseAndMore1.addEventListener("wheel", (e) => {
       e.preventDefault();
+      let computedStyle = window.getComputedStyle(containerBallProgressBard);
+      let bottomValue = Number.parseInt(computedStyle.bottom);
 
       if(e.deltaY > 0){
         // Scroll down
+        scrollDownOrScrollUp = false;
         if(valueForScale >= 1){
           valueForScale -= 16;
         }
         containerSeatsChoseAndMore2.style.transform = `translate(${seatsMoveX}px, ${seatsMoveY}px) scale(1.${valueForScale})`;
       }else if(e.deltaY < 0) {
         // Scroll up
-        if(valueForScale < 96){
+        scrollDownOrScrollUp = true;
+        if(valueForScale < 80){
           valueForScale += 16;
         }
         containerSeatsChoseAndMore2.style.transform = `translate(${seatsMoveX}px, ${seatsMoveY}px) scale(1.${valueForScale})`;
@@ -91,16 +100,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if(valueForScale == 0){
         valueForXandY = 100;
+
+        if(!scrollDownOrScrollUp){
+          if(bottomValue > 0){
+            containerBallProgressBard.style.bottom = bottomValue - 15 + "px";
+          }
+        }
+      }else if(valueForScale === 16){
+        valueForXandY = 100;
+
+        if(scrollDownOrScrollUp){
+          containerBallProgressBard.style.bottom = bottomValue + 15 + "px";
+        }else {
+          containerBallProgressBard.style.bottom = bottomValue - 15 + "px";
+        }
+
       } else if(valueForScale === 32){
         valueForXandY = 150;
+        
+        if(scrollDownOrScrollUp){
+          containerBallProgressBard.style.bottom = bottomValue + 15 + "px";
+        }else {
+          containerBallProgressBard.style.bottom = bottomValue - 15 + "px";
+        }
       }else if(valueForScale === 48){
         valueForXandY = 220;
+        
+        if(scrollDownOrScrollUp){
+          containerBallProgressBard.style.bottom = bottomValue + 15 + "px";
+        }else {
+          containerBallProgressBard.style.bottom = bottomValue - 15 + "px";
+        }
       }else if(valueForScale === 64){
         valueForXandY = 300;
+        
+        if(scrollDownOrScrollUp){
+          containerBallProgressBard.style.bottom = bottomValue + 15 + "px";
+        }else {
+          containerBallProgressBard.style.bottom = bottomValue - 15 + "px";
+        }
       }else if(valueForScale === 80){
         valueForXandY = 350;
-      }else if(valueForScale === 96){
-        valueForXandY = 410;
+        
+        if(scrollDownOrScrollUp){
+          if(bottomValue < 75){
+            containerBallProgressBard.style.bottom = bottomValue + 15 + "px";
+          }
+        }else {
+          containerBallProgressBard.style.bottom = bottomValue - 15 + "px";
+        }
       }
 
       const rect = containerSeatsChoseAndMore1.getBoundingClientRect();
@@ -115,8 +163,20 @@ document.addEventListener("DOMContentLoaded", () => {
         seatsMoveX = 0;
         seatsMoveY = 0;
       }else {
-        seatsMoveX = offsetX * (valueForScale / 100);
-        seatsMoveY = offsetY * (valueForScale / 100);
+        if(valueForScale < 80 && scrollDownOrScrollUp){
+          seatsMoveX = offsetX * (valueForScale / 100);
+          seatsMoveY = offsetY * (valueForScale / 100);
+        }
+
+        if(valueForScale < 80){
+          valueScaleAlreadyEnter80 = false;
+        }
+
+        if(valueForScale === 80 && scrollDownOrScrollUp && !valueScaleAlreadyEnter80){
+          seatsMoveX = offsetX * (valueForScale / 100);
+          seatsMoveY = offsetY * (valueForScale / 100);
+          valueScaleAlreadyEnter80 = true;
+        }
       }
 
       containerSeatsChoseAndMore2.style.transform = `translate(${seatsMoveX}px, ${seatsMoveY}px) scale(1.${valueForScale})`;

@@ -324,7 +324,7 @@
 .container-svg-ticket {
   border: 2px solid rgb(152 170 236);
   border-radius: 10px;
-  width: 17%;
+  width: 11rem;
   height: 40px;
   display: flex;
   align-items: center;
@@ -381,7 +381,6 @@
 
 .span-movie-times {
   position: absolute;
-  left: 53px;
   top: 5px;
   transition: top 0.1s ease;
 
@@ -389,9 +388,7 @@
 
 .span-comprar {
   position: absolute;
-  left: 42px;
   top: -8px;
-  /* 5px */
   display: none;
   transition: top 0.1s ease;
 }
@@ -400,7 +397,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* margin-top: 15px; */
 }
 
 .container-span-telasgigantesplf-dublado {

@@ -71,27 +71,34 @@ document.addEventListener("DOMContentLoaded", () => {
       if(numberJ === 14 || numberJ === 15) {
         containerSpanNumber.style.background = "transparent";
         containerSpanNumber.style.cursor = "auto";
+        containerSpanNumber.style.color = "transparent";
       }
 
       if(numberJ > 1 && numberI === 5 || numberJ > 1 && numberI === 6){
         containerSpanNumber.style.background = "transparent";
         containerSpanNumber.style.cursor = "auto";
+        containerSpanNumber.style.color = "transparent";
       }
 
       if(numberJ > 1 && numberI === 23 || numberJ > 1 && numberI === 24){
         containerSpanNumber.style.background = "transparent";
         containerSpanNumber.style.cursor = "auto";
+        containerSpanNumber.style.color = "transparent";
+
       }
 
       if(numberJ === 1 && numberI === 13 || numberJ === 1 && numberI === 14){
         containerSpanNumber.style.background = "transparent";
         containerSpanNumber.style.cursor = "auto";
+        containerSpanNumber.style.color = "transparent";
+
       }
 
       if(numberJ >= 8 && numberJ <= 11){
         if(numberI === 25 || numberI === 26){
           containerSpanNumber.style.background = "transparent";
           containerSpanNumber.style.cursor = "auto";
+          containerSpanNumber.style.color = "transparent";
         }
       }
 
@@ -99,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if(numberI >= 1 && numberI <= 4){
           containerSpanNumber.style.background = "transparent";
           containerSpanNumber.style.cursor = "auto";
+          containerSpanNumber.style.color = "transparent";
         }
       }
 
@@ -106,7 +114,61 @@ document.addEventListener("DOMContentLoaded", () => {
         if(numberI === 7 || numberI === 8 || numberI === 21 || numberI === 22){
           containerSpanNumber.style.background = "transparent";
           containerSpanNumber.style.cursor = "auto";
+          containerSpanNumber.style.color = "transparent";
         }
+      }
+    }
+
+    const functionLetterNow = (j) => {
+      let letterNow = "";
+
+      if(j === 1){
+        letterNow = 'O';
+      }else if(j === 2){
+        letterNow = 'N';
+      }else if(j === 3){
+        letterNow = 'M';
+      }else if(j === 4){
+        letterNow = 'L';
+      }else if(j === 5){
+        letterNow = 'K';
+      }else if(j === 6){
+        letterNow = 'J';
+      }else if(j === 7){
+        letterNow = 'I';
+      }else if(j === 8){
+        letterNow = 'H';
+      }else if(j === 9){
+        letterNow = 'G';
+      }else if(j === 10){
+        letterNow = 'F';
+      }else if(j === 11){
+        letterNow = 'E';
+      }else if(j === 12){
+        letterNow = 'D';
+      }else if(j === 13){
+        letterNow = 'C';
+      }else if(j === 16){
+        letterNow = 'B';
+      }else if(j === 17){
+        letterNow = 'A';
+      }
+
+      return letterNow;
+    }
+
+    const functionClickContainerSpanNumber = (containerSpanNumber) => {
+      if(containerSpanNumber.style.color === "black"){
+        containerSpanNumber.style.color = "transparent";
+        containerSpanNumber.style.background = "rgb(152 170 236)";
+      }else {
+        containerSpanNumber.style.transform = "scale(1.7)";
+        containerSpanNumber.style.color = "black";
+        containerSpanNumber.style.background = "rgb(255 214 51)";
+        
+        setTimeout(() => {
+          containerSpanNumber.style.transform = "scale(1.0)";
+        }, 100);
       }
     }
 
@@ -119,9 +181,17 @@ document.addEventListener("DOMContentLoaded", () => {
         containerSpanNumber.classList.add('container-span-number-chose-seats-and-more');
 
         functionDefineWetherSpanAppearsOrNot(containerSpanNumber, j, i);
-        
+
+        let letterNow = functionLetterNow(j);
+
         const spanNumber = document.createElement('span');
+        spanNumber.textContent = `${letterNow}${String(i)}`;
         containerSpanNumber.appendChild(spanNumber);
+        containerSpanNumber.style.color = "transparent";
+
+        containerSpanNumber.addEventListener("click", () => {
+          functionClickContainerSpanNumber(containerSpanNumber);
+        });
 
         containerSpanNumberMain.appendChild(containerSpanNumber);
       }

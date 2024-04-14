@@ -33,6 +33,7 @@
 
 .container-chose-seat-number-resume-order-main {
   width: 100%;
+  height: 64rem;
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -87,10 +88,12 @@
 .container-order-summary {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 15px;
   color: #fff;
   background: rgb(33 38 45);
   width: 19rem;
+  padding: 10px 0px;
 }
 
 .container-seats-chose-seats-and-more-main {
@@ -119,7 +122,7 @@
 }
 
 .container-seats-chose-seats-and-more-1 {
-  /* width: 95%; */
+  width: 84%;
   height: 92%;
   user-select: none;
   overflow: hidden !important;
@@ -131,6 +134,7 @@
   flex-direction: column;
   gap: 13px;
   height: 100%;
+  width: 100%;
   transform: translate(0px, 0px) scale(1);
 }
 
@@ -146,6 +150,15 @@
   height: 20px;
   border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-weight: 700;
+  color: black;
+
+  transition: 0.2s;
+
 }
 
 .span-letter {
@@ -212,6 +225,7 @@
   align-items: center;
   padding-right: 80px;
   gap: 10px;
+  width: 84%;
 }
 
 .span-show-number-seats {
@@ -264,15 +278,63 @@
   transform: translateX(25px);
 }
 
+.container-zoomin-zoomout {
+  position: absolute;
+  right: 100px;
+  top: 200px;
+  height: 9.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container-progress-bar {
+  background: gray;
+  width: 18%;
+  height: 60%;
+  position: relative;
+}
+
+.container-ball-progress-bard {
+  background: rgb(152 170 236);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+  right: -7px;
+  bottom: 0px;
+}
+
+.container-svg-zoom-more {
+  >svg {
+    width: 25px;
+    fill: rgb(204, 204, 204);
+  }
+}
+
+.container-svg-zoom-less {
+  >svg {
+    width: 25px;
+    fill: rgb(204, 204, 204);
+  }
+}
+
+.container-order-summary-and-detail-movie {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0px 14px;
+}
+
 .container-header-order-sumarry {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 19px;
 }
 
 .span-oder-summary {
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .container-svg-trash {
@@ -286,9 +348,7 @@
 .container-body-order-sumarry {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5px;
-  padding: 0px 19px;
+  gap: 8px;
 }
 
 .container-img-banner-movie {
@@ -299,14 +359,14 @@
 .img-banner-movie-order-sumarry {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .container-info-movie-order-sumarry {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 11rem;
+  width: 65%;
   height: 100%;
 }
 
@@ -358,4 +418,50 @@
 .span-region-name-order-summary {
   font-size: 13px;
   color: rgb(136, 153, 170);
+}
+
+.container-day-week-hour-order-summary {
+  display: flex;
+  justify-content: space-between;
+
+  >span {
+    font-weight: 600;
+  }
+}
+
+.container-payment-order-sumarry {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 14px;
+}
+
+.container-items-order-sumarry,
+.container-total-rate-order-sumarry {
+  color: rgb(153, 153, 153);
+}
+
+.container-items-order-sumarry {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgb(153 153 153 / 50%);
+  padding-top: 4px;
+}
+
+.container-total-rate-order-sumarry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-total-order-sumarry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.span-total-order-sumarry {
+  font-weight: 600;
+}
+
+.span-total-value-order-sumarry {
+  font-weight: 700;
+  color: rgb(255, 206, 0);
 }
