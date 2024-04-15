@@ -170,11 +170,15 @@ document.addEventListener("DOMContentLoaded", () => {
     let arrayAllSeats = [];
     let arrayAlreadySet = [];
     let stringSeats = "";
+    let seatsItems = document.querySelector(".span-itens-values-seats");
+    let containerSvgTickets = document.querySelector(".div-svg-tickets");
     const spanSeatsAll = document.createElement('span');
 
     if(arrayAllSeats.length === 0){
       containerSeatsChosen.style.display = "none";
     }
+
+    let containerLineWhite1 = document.querySelector(".line-white-1");
     
     const functionClickContainerSpanNumber = (containerSpanNumber) => {
       if(arrayAllSeats.includes(containerSpanNumber.firstChild.textContent)){
@@ -209,11 +213,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
+      seatsItems.textContent = arrayAllSeats.length;
+
       if(arrayAllSeats.length === 0){
         containerSeatsChosen.style.display = "none";
+        containerSvgTickets.style.borderColor = "rgb(52, 60, 70)";
+        containerSvgTickets.style.background =  "transparent";
+        containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+        containerLineWhite1.style.background =  "rgb(52, 60, 70)";
         stringSeats = ""
       }else {
         containerSeatsChosen.style.display = "flex";
+        containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
+        containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
       }
       
       spanSeatsAll.textContent = stringSeats;
