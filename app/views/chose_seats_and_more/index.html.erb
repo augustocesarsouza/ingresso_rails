@@ -1,19 +1,20 @@
 <%= render 'chose_seats_and_more_partial/nav' %>
 <div class="container-body-chose-seats-and-more">
   <div class="container-seats-type-tickets-bomboniere-payment">
-    <div class="div-svg-seats-type-tickets-bomboniere-payment">
+    <div class="div-svg-chose-of-seats">
       <%= render "chose_seats_and_more_svg_partial/svg_seats" %>
     </div>
-    <div class="line-white-seats-type-tickets-bomboniere-payment"></div>
-    <div class="div-svg-seats-type-tickets-bomboniere-payment">
+    <div class="line-white-1"></div>
+    <span class="span-chose-ofseats">ESCOLHA DE ASSENTOS</span>
+    <div class="div-svg-tickets">
       <%= render "chose_seats_and_more_svg_partial/svg_tickets" %>
     </div>
-    <div class="line-white-seats-type-tickets-bomboniere-payment"></div>
-    <div class="div-svg-seats-type-tickets-bomboniere-payment">
+    <div class="line-white-1"></div>
+    <div class="div-svg-bomboniere">
       <%= render "chose_seats_and_more_svg_partial/svg_bomboniere" %>
     </div>
-    <div class="line-white-seats-type-tickets-bomboniere-payment"></div>
-    <div class="div-svg-seats-type-tickets-bomboniere-payment">
+    <div class="line-white-1"></div>
+    <div class="div-svg-payment">
       <%= render "chose_seats_and_more_svg_partial/svg_payment" %>
     </div>
   </div>
@@ -32,16 +33,111 @@
           <%= render "chose_seats_and_more_svg_partial/svg_time" %>
           <span class="span-time-chose-seats-and-more"></span>
         </div>
+        <div class="container-name-movie-location-hour-date">
+        </div>
       </div>
       <div class="container-seats-chose-seats-and-more-main">
         <div class="container-seats-chose-seats-and-more-1">
           <div class="container-seats-chose-seats-and-more-2">
           </div>
         </div>
+        <div class="container-show-number-seats">
+          <span class="span-show-number-seats">Exibir números dos assentos</span>
+          <div class="toggle-switch">
+            <input type="checkbox" id="toggle" class="toggle-checkbox">
+            <label for="toggle" class="toggle-label"></label>
+          </div>
+        </div>
+        <div class="container-zoomin-zoomout">
+          <div class="container-svg-zoom-more">
+            <%= render "chose_seats_and_more_svg_partial/svg_zoom_in" %>
+          </div>
+          <div class="container-progress-bar">
+            <div class="container-ball-progress-bard"></div>
+          </div>
+          <div class="container-svg-zoom-less">
+            <%= render "chose_seats_and_more_svg_partial/svg_zoom_out" %>
+          </div>
+        </div>
+      </div>
+      <div class="container-caption-info">
+        <span class="span-caption">Legenda</span>
+        <div class="container-all-caption">
+          <div class="container-circle-span-main">
+            <div class="container-available"></div>
+            <span>Disponível</span>
+          </div>
+          <div class="container-circle-span-main">
+            <div class="container-selected"></div>
+            <span>Selecionado</span>
+          </div>
+          <div class="container-circle-span-main">
+            <div class="container-busy">
+              <%= render "chose_seats_and_more_svg_partial/svg_body_user_caption" %>
+            </div>
+            <span>Ocupado</span>
+          </div>
+          <div class="container-circle-span-main">
+            <div class="container-blocked">
+              <%= render "chose_seats_and_more_svg_partial/svg_blocked" %>
+            </div>
+            <span>Bloqueado</span>
+          </div>
+          <div class="container-circle-span-main">
+            <div class="container-wheelchair">
+              <%= render "chose_seats_and_more_svg_partial/svg_wheelchair" %>
+            </div>
+            <span>Cadeirante</span>
+          </div>
+          <div class="container-circle-span-main">
+            <div class="container-flirt">
+              <%= render "chose_seats_and_more_svg_partial/svg_flirt" %>
+            </div>
+            <span>Namoradeira</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container-order-summary">
-      <span>Resumo do pedido</span>
+      <div class="container-order-summary-and-detail-movie">
+        <div class="container-header-order-sumarry">
+          <span class="span-oder-summary">Resumo do pedido</span>
+          <div class="container-svg-trash">
+            <%= render "chose_seats_and_more_svg_partial/svg_trash" %>
+          </div>
+        </div>
+        <div class="container-body-order-sumarry">
+          <div class="container-img-banner-movie">
+            <%= image_tag @movie.image_main, class: "img-banner-movie-order-sumarry", alt: @movie.title %>
+          </div>
+          <div class="container-info-movie-order-sumarry">
+            <div class="container-movie-title-movierating">
+              <span class="span-title-order-sumarry"><%= @movie.title %></span>
+              <div class="container-movierating">
+                <span><%= @movie.movie_rating %></span>
+              </div>
+            </div>
+            <div class="container-region-room">
+              <span class="span-name-cinema"></span>
+              <span class="span-room">SALA 1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-payment-order-sumarry">
+        <div class="container-items-order-sumarry">
+          <span>Itens</span>
+          <span class="span-itens-values-seats">0</span>
+        </div>
+        <div class="container-total-rate-order-sumarry">
+          <span>Total taxa</span>
+          <span>R$ 0,00</span>
+        </div>
+        <div class="container-total-order-sumarry">
+          <span class="span-total-order-sumarry">Total</span>
+          <span class="span-total-value-order-sumarry">R$ 0,00</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
