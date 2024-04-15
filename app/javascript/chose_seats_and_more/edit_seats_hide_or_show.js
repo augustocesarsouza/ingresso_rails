@@ -195,7 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         arrayAlreadySet = arrayAlreadySet.filter((el) => el !== containerSpanNumber.firstChild.textContent);
       }else {
-      
         arrayAllSeats.push(containerSpanNumber.firstChild.textContent);
       }
 
@@ -207,8 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           stringSeats += elSeats;
-        }else {
-
         }
       });
 
