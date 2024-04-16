@@ -7,12 +7,12 @@
   background: rgb(33 38 45);
   width: 19rem;
   padding: 10px 0px;
+  margin-bottom: 30px;
 }
 
 @media (max-width: 1400px) {
   .container-order-summary {
     display: none;
-
   }
 }
 

@@ -1,7 +1,8 @@
 import { parse, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
-document.body.style.position = "relative";
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   if(window.location.pathname == "/chose_seats_and_more"){
@@ -136,6 +137,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const containerSvgChoseOfSeats = document.querySelector('.div-svg-chose-of-seats'); 
     const buttonBack = document.querySelector('.button-back'); 
+    const containerChoseSeatNumber = document.querySelector('.container-chose-seat-number');
+    const containerChoseSeatNumberResumeOrderMain = document.querySelector('.container-chose-seat-number-resume-order-main');
+
+    const containerTypesTickets = document.querySelector('.container-types-tickets');
+    containerTypesTickets.remove();
 
     let isReleasedForHoverMouseButtonBack = false;
 
@@ -157,6 +163,15 @@ document.addEventListener("DOMContentLoaded", () => {
         isReleasedForHoverMouseButtonBack = true;
       }else {
         isReleasedForHoverMouseButtonBack = false;
+      }
+
+      if(isReleasedForHoverMouseButtonBack){
+        console.log("click tickets");
+        // containerChoseSeatNumber.style.display = "none";
+        containerChoseSeatNumber.remove();
+        console.log(containerChoseSeatNumber);
+
+        containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
       }
     });
     
@@ -195,6 +210,9 @@ document.addEventListener("DOMContentLoaded", () => {
         containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "#fff";
         containerLineWhite1.style.background =  "rgb(52, 60, 70)";
       }
+
+      containerChoseSeatNumberResumeOrderMain.insertBefore(containerChoseSeatNumber, containerChoseSeatNumberResumeOrderMain.firstChild);
+      containerTypesTickets.remove();
     });
   }
 });
