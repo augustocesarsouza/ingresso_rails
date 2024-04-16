@@ -145,8 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
         containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
         containerSvgChoseOfSeats.style.borderColor = "rgb(152, 170, 236)";
       }
-
-      // rgb(152, 170, 236)
     });
 
     // const containerSvgChoseOfSeats = document.querySelector('.div-svg-chose-of-seats');
