@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* position: relative; */
 }
 
 .container-seats-type-tickets-bomboniere-payment {
@@ -60,12 +61,6 @@
   }
 }
 
-.div-svg-tickets {}
-
-.div-svg-bomboniere {}
-
-.div-svg-payment {}
-
 .span-chose-ofseats {
   font-size: 12px;
   color: rgb(173, 182, 194);
@@ -75,7 +70,6 @@
 }
 
 .line-white-seats-type-tickets-bomboniere-payment {
-  /* border: 1px solid rgb(152, 170, 236); */
   background: rgb(152, 170, 236);
   width: 100%;
   height: 1px;
@@ -88,12 +82,6 @@
   width: 100%;
   height: 1px;
 }
-
-.line-white-1 {}
-
-.line-white-2 {}
-
-.line-white-3 {}
 
 .container-chose-seat-number-resume-order-main {
   width: 100%;
@@ -216,24 +204,6 @@
 
   .container-name-movie-location-hour-date {
     display: none !important;
-  }
-}
-
-.container-order-summary {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 15px;
-  color: #fff;
-  background: rgb(33 38 45);
-  width: 19rem;
-  padding: 10px 0px;
-}
-
-@media (max-width: 1400px) {
-  .container-order-summary {
-    display: none;
-
   }
 }
 
@@ -469,205 +439,18 @@
   }
 }
 
-.container-caption-info {
-  display: flex;
-  flex-direction: column;
-  margin: 0px 10px;
-  margin-top: 30px;
-  color: rgb(136, 153, 170);
-  border-top: 1px solid rgb(107 120 134);
-}
-
-.span-caption {
-  font-weight: 600;
-}
-
-.container-all-caption {
-  padding: 10px 0px;
-  padding-left: 10px;
-  font-size: 13px;
-  display: flex;
-  gap: 30px;
-}
-
-.container-circle-span-main {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.container-available,
-.container-selected,
-.container-busy {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  padding-top: 1px;
-
-}
-
-.container-available {
-  background: rgb(152, 170, 236);
-}
-
-.container-selected {
-  background: rgb(255, 214, 51);
-}
-
-.container-busy {
-  position: relative;
-  background: rgb(102 102 102);
-
-  >svg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    fill: transparent !important;
-  }
-}
-
-.container-blocked,
-.container-wheelchair,
-.container-flirt {
-  width: 15px;
-  height: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 1px;
-}
-
-.container-blocked {
-  >svg {
-    fill: rgb(102 102 102);
-  }
-}
-
-.container-wheelchair {
-  >svg {
-    fill: rgb(102 102 102);
-  }
-}
-
-.container-flirt {
-  >svg {
-    fill: rgb(102 102 102);
-  }
-}
-
-.container-order-summary-and-detail-movie {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 0px 14px;
-}
-
-.container-header-order-sumarry {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.span-oder-summary {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.container-svg-trash {
-  width: 18px;
-
-  >svg {
-    fill: rgb(152, 170, 236);
-  }
-}
-
-.container-body-order-sumarry {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.container-img-banner-movie {
-  width: 85px;
-  height: 118px;
-}
-
-.img-banner-movie-order-sumarry {
-  width: 100%;
-  height: 100%;
-  /* object-fit: cover; */
-}
-
-.container-info-movie-order-sumarry {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 65%;
-  height: 100%;
-}
-
-@media (max-width: 1400px) {
-  .container-info-movie-order-sumarry {
-    width: 100%;
-    gap: 4px;
-  }
-}
-
 .container-seats-chosen-summary-order {
   display: flex;
-  justify-content: space-between;
-  border-top: 1px solid rgb(102, 102, 102);
-}
-
-.container-movie-title-movierating {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5px;
-}
-
-@media (max-width: 1400px) {
-  .container-movie-title-movierating {
-    justify-content: flex-start;
-  }
-}
-
-.span-title-order-sumarry {
-  font-size: 13px;
-  font-weight: 700;
-  color: rgb(136, 153, 170);
-}
-
-.container-movierating {
-  background: rgb(251, 193, 21);
-  color: black;
-  font-weight: 600;
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 15px;
-  height: 15px;
-  border-radius: 5px;
-}
-
-.container-region-room {
-  display: flex;
   flex-direction: column;
-  gap: 5px;
-  white-space: pre-line;
-  line-height: 1.2;
+  border-top: 1px solid rgb(102, 102, 102);
+  gap: 0px;
 }
 
-.span-name-cinema {
-  font-size: 13px;
-  color: rgb(136, 153, 170);
-}
-
-.span-room {
-  font-size: 13px;
-  font-weight: 700;
-  color: rgb(136, 153, 170);
+.span-seats-name-summary-order {
+  display: flex;
+  flex-wrap: wrap;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .span-region-name-order-summary {
@@ -690,39 +473,72 @@
   }
 }
 
-.container-payment-order-sumarry {
-  display: flex;
-  flex-direction: column;
-  padding: 0px 14px;
+.container-img-clube-uol {
+  width: 103px;
+
+  >img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
-.container-items-order-sumarry,
-.container-total-rate-order-sumarry {
-  color: rgb(153, 153, 153);
-}
-
-.container-items-order-sumarry {
+.container-back-skip {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgb(153 153 153 / 50%);
-  padding-top: 4px;
+  position: fixed;
+  /* left: 0; */
+  bottom: 0;
+  width: 100%;
+  height: 4rem;
+  padding: 0px 5px;
+  background: rgb(52 60 70);
+  z-index: 10;
 }
 
-.container-total-rate-order-sumarry {
-  display: flex;
-  justify-content: space-between;
-}
-
-.container-total-order-sumarry {
-  display: flex;
-  justify-content: space-between;
-}
-
-.span-total-order-sumarry {
+.button-back {
+  border: 2px solid rgb(102, 102, 102);
+  /* border: 2px solid rgb(152, 170, 236); */
+  /* color: rgb(152, 170, 236); */
+  color: rgb(102, 102, 102);
+  background: transparent;
+  border-radius: 8px;
+  padding: 9px 30px;
   font-weight: 600;
+
+  /* solid rgb(152, 170, 236) color active */
 }
 
-.span-total-value-order-sumarry {
-  font-weight: 700;
-  color: rgb(255, 206, 0);
+.container-all-tickets-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50rem;
+  height: 100%;
+}
+
+.container-ticket-svg {
+  width: 3rem;
+  /* height: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  >svg {
+    fill: rgb(204 204 204);
+  }
+}
+
+.button-skip {
+  color: rgb(33, 38, 45);
+  background-image: linear-gradient(to right, rgb(255, 206, 0), rgb(255, 136, 0));
+  border-radius: 8px;
+  padding: 11px 30px;
+  font-weight: 600;
+  border: none;
+}
+
+.button-skip:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(to right, rgb(255, 206, 0), rgb(255, 136, 0));
 }

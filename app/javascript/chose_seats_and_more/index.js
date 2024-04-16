@@ -1,6 +1,9 @@
 import { parse, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+
 document.addEventListener("DOMContentLoaded", () => {
   if(window.location.pathname == "/chose_seats_and_more"){
     const toggleCheckbox = document.querySelector('.toggle-checkbox');
@@ -133,6 +136,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const containerLineWhite1 = document.querySelector(".line-white-1");
 
     const containerSvgChoseOfSeats = document.querySelector('.div-svg-chose-of-seats'); 
+    const buttonBack = document.querySelector('.button-back'); 
+    const containerChoseSeatNumber = document.querySelector('.container-chose-seat-number');
+    const containerChoseSeatNumberResumeOrderMain = document.querySelector('.container-chose-seat-number-resume-order-main');
+
+    const containerTypesTickets = document.querySelector('.container-types-tickets');
+    containerTypesTickets.remove();
+
+    let isReleasedForHoverMouseButtonBack = false;
 
     containerSvgTickets.addEventListener("click", () => {
       if(containerSvgTickets.style.borderColor === "rgb(152, 170, 236)" && Number(spanItensValuesSeats.textContent) > 0){
@@ -145,9 +156,48 @@ document.addEventListener("DOMContentLoaded", () => {
         containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
         containerSvgChoseOfSeats.style.borderColor = "rgb(152, 170, 236)";
       }
+
+      if(containerSvgTickets.style.background === "rgb(49, 85, 232)"){
+        buttonBack.style.border = "2px solid rgb(152, 170, 236)";
+        buttonBack.style.color = "rgb(152, 170, 236)";
+        isReleasedForHoverMouseButtonBack = true;
+      }else {
+        isReleasedForHoverMouseButtonBack = false;
+      }
+
+      if(isReleasedForHoverMouseButtonBack){
+        console.log("click tickets");
+        // containerChoseSeatNumber.style.display = "none";
+        containerChoseSeatNumber.remove();
+        console.log(containerChoseSeatNumber);
+
+        containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
+      }
+    });
+    
+    buttonBack.addEventListener("mouseover", () => {
+      if(buttonBack.style.color === "rgb(102, 102, 102)"){
+        isReleasedForHoverMouseButtonBack = false;
+      }
+
+      if(isReleasedForHoverMouseButtonBack){
+        buttonBack.style.borderColor = "rgb(164, 179, 235)";
+        buttonBack.style.color = "rgb(164, 179, 235)";
+      }
     });
 
-    // const containerSvgChoseOfSeats = document.querySelector('.div-svg-chose-of-seats');
+    buttonBack.addEventListener("mouseout", () => {
+      if(isReleasedForHoverMouseButtonBack){
+        buttonBack.style.borderColor = "rgb(152, 170, 236)";
+        buttonBack.style.color = "rgb(152, 170, 236)";
+      }
+    });
+
+    buttonBack.addEventListener("click", () => {
+      if(isReleasedForHoverMouseButtonBack){
+        console.log("click");
+      }
+    });
 
     containerSvgChoseOfSeats.addEventListener("click", () => {
       if(containerSvgTickets.style.background === "rgb(49, 85, 232)" && Number(spanItensValuesSeats.textContent) > 0){
@@ -160,9 +210,9 @@ document.addEventListener("DOMContentLoaded", () => {
         containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "#fff";
         containerLineWhite1.style.background =  "rgb(52, 60, 70)";
       }
-    })
 
+      containerChoseSeatNumberResumeOrderMain.insertBefore(containerChoseSeatNumber, containerChoseSeatNumberResumeOrderMain.firstChild);
+      containerTypesTickets.remove();
+    });
   }
 });
-
-// document.addEventListener("");

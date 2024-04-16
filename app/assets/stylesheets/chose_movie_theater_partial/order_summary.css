@@ -1,0 +1,162 @@
+.container-order-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  color: #fff;
+  background: rgb(33 38 45);
+  width: 19rem;
+  padding: 10px 0px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 1400px) {
+  .container-order-summary {
+    display: none;
+  }
+}
+
+.container-order-summary-and-detail-movie {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0px 14px;
+}
+
+.container-header-order-sumarry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.span-oder-summary {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.container-svg-trash {
+  width: 18px;
+
+  >svg {
+    fill: rgb(152, 170, 236);
+  }
+}
+
+.container-body-order-sumarry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.container-img-banner-movie {
+  width: 85px;
+  height: 118px;
+}
+
+.img-banner-movie-order-sumarry {
+  width: 100%;
+  height: 100%;
+}
+
+.container-info-movie-order-sumarry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 65%;
+  height: 100%;
+}
+
+@media (max-width: 1400px) {
+  .container-info-movie-order-sumarry {
+    width: 100%;
+    gap: 4px;
+  }
+}
+
+.container-movie-title-movierating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+@media (max-width: 1400px) {
+  .container-movie-title-movierating {
+    justify-content: flex-start;
+  }
+}
+
+.span-title-order-sumarry {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgb(136, 153, 170);
+}
+
+.container-movierating {
+  background: rgb(251, 193, 21);
+  color: black;
+  font-weight: 600;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+}
+
+.container-region-room {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  white-space: pre-line;
+  line-height: 1.2;
+}
+
+.span-name-cinema {
+  font-size: 13px;
+  color: rgb(136, 153, 170);
+}
+
+.span-room {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgb(136, 153, 170);
+}
+
+.container-payment-order-sumarry {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 14px;
+}
+
+.container-items-order-sumarry,
+.container-total-rate-order-sumarry {
+  color: rgb(153, 153, 153);
+}
+
+.container-items-order-sumarry {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgb(153 153 153 / 50%);
+  padding-top: 4px;
+}
+
+.container-total-rate-order-sumarry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-total-order-sumarry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.span-total-order-sumarry {
+  font-weight: 600;
+}
+
+.span-total-value-order-sumarry {
+  font-weight: 700;
+  color: rgb(255, 206, 0);
+}
