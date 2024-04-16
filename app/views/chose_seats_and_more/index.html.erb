@@ -62,46 +62,6 @@
       </div>
       <%= render "chose_seats_and_more_partial/caption_all_chose_seats" %>
     </div>
-    <div class="container-order-summary">
-      <div class="container-order-summary-and-detail-movie">
-        <div class="container-header-order-sumarry">
-          <span class="span-oder-summary">Resumo do pedido</span>
-          <div class="container-svg-trash">
-            <%= render "chose_seats_and_more_svg_partial/svg_trash" %>
-          </div>
-        </div>
-        <div class="container-body-order-sumarry">
-          <div class="container-img-banner-movie">
-            <%= image_tag @movie.image_main, class: "img-banner-movie-order-sumarry", alt: @movie.title %>
-          </div>
-          <div class="container-info-movie-order-sumarry">
-            <div class="container-movie-title-movierating">
-              <span class="span-title-order-sumarry"><%= @movie.title %></span>
-              <div class="container-movierating">
-                <span><%= @movie.movie_rating %></span>
-              </div>
-            </div>
-            <div class="container-region-room">
-              <span class="span-name-cinema"></span>
-              <span class="span-room">SALA 1</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container-payment-order-sumarry">
-        <div class="container-items-order-sumarry">
-          <span>Itens</span>
-          <span class="span-itens-values-seats">0</span>
-        </div>
-        <div class="container-total-rate-order-sumarry">
-          <span>Total taxa</span>
-          <span>R$ 0,00</span>
-        </div>
-        <div class="container-total-order-sumarry">
-          <span class="span-total-order-sumarry">Total</span>
-          <span class="span-total-value-order-sumarry">R$ 0,00</span>
-        </div>
-      </div>
-    </div>
+    <%= render "chose_seats_and_more_partial/order_summary" %>
   </div>
 </div>
