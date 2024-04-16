@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let containerLineWhite1 = document.querySelector(".line-white-1");
+    let buttonBack = document.querySelector('.button-back'); 
     
     const functionClickContainerSpanNumber = (containerSpanNumber) => {
       if(arrayAllSeats.includes(containerSpanNumber.firstChild.textContent)){
@@ -221,7 +222,11 @@ document.addEventListener("DOMContentLoaded", () => {
         containerSvgTickets.style.background =  "transparent";
         containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
         containerLineWhite1.style.background =  "rgb(52, 60, 70)";
-        stringSeats = ""
+        stringSeats = "";
+
+       
+        buttonBack.style.borderColor = "rgb(102, 102, 102)";
+        buttonBack.style.color = "rgb(102, 102, 102)";
       }else {
         containerSeatsChosen.style.display = "flex";
         containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
