@@ -506,6 +506,7 @@
   flex-direction: column;
   gap: 15px;
   width: 59rem;
+  user-select: none;
 }
 
 .container-tickets {
@@ -536,6 +537,33 @@
   display: flex;
   gap: 10px;
   color: #fff;
+}
+
+.container-less-inteira,
+.container-more-inteira,
+.container-less-meia-elo,
+.container-more-meia-elo {
+  width: 25px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  >svg {
+    width: 19px;
+  }
+}
+
+.container-less-inteira,
+.container-less-meia-elo {
+  background: rgb(63 71 93);
+}
+
+.container-more-inteira,
+.container-more-meia-elo {
+  background: rgb(152, 170, 236);
+  cursor: pointer;
 }
 
 .container-back-skip {
