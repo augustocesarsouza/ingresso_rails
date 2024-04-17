@@ -473,10 +473,6 @@
   }
 }
 
-.container-types-tickets {
-  width: 59rem;
-}
-
 .container-clube-uol {
   display: flex;
   flex-direction: column;
@@ -502,7 +498,44 @@
 }
 
 .span-clube-uol {
-  color: blue;
+  color: #03A9F4;
+}
+
+.container-types-tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 59rem;
+}
+
+.container-tickets {
+  padding: 19px 10px;
+  background: rgb(33 38 45);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-ticket-name-price {
+  display: flex;
+  gap: 8px;
+}
+
+.container-ticket {
+  width: 45px;
+}
+
+.container-paragraph-and-price {
+  display: flex;
+  flex-direction: column;
+  line-height: 20px;
+  color: #fff;
+}
+
+.container-more-less {
+  display: flex;
+  gap: 10px;
+  color: #fff;
 }
 
 .container-back-skip {
