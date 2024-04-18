@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const containerInfoMovieOrderSumarry2 = document.createElement("div");
     containerInfoMovieOrderSumarry2.classList.add("container-info-movie-order-sumarry");
 
+    let parentContainerLocationMovieTheater = null;
+
     if (storedValue) {
       parentContainerLocationMovieTheater = JSON.parse(storedValue);
 
@@ -34,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const paragraphRegionChose = document.querySelector(".paragraph-region-chose");
 
-    if(containerInfoMovieOrderSumarry){
+    if(containerInfoMovieOrderSumarry && parentContainerLocationMovieTheater){
       const spanRegionName = document.createElement("span");
       spanRegionName.classList.add("span-region-name-order-summary");
       spanRegionName.textContent = paragraphRegionChose.textContent;
@@ -44,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       spanRegionName2.textContent = paragraphRegionChose.textContent;
 
       containerInfoMovieOrderSumarry.appendChild(spanRegionName);
-
+      
       const date = parse(parentContainerLocationMovieTheater.day, 'dd/MM', new Date());
 
       const diaDaSemana = format(date, 'EEE', { locale: ptBR });

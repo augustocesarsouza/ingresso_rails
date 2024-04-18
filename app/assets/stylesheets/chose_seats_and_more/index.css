@@ -69,6 +69,14 @@
   top: 58px;
 }
 
+.span-types-tickets {
+  font-size: 12px;
+  color: rgb(173, 182, 194);
+  position: absolute;
+  left: 134px;
+  top: 58px;
+}
+
 .line-white-seats-type-tickets-bomboniere-payment {
   background: rgb(152, 170, 236);
   width: 100%;
@@ -539,10 +547,8 @@
   color: #fff;
 }
 
-.container-less-inteira,
-.container-more-inteira,
-.container-less-meia-elo,
-.container-more-meia-elo {
+.container-less-svg,
+.container-more-svg {
   width: 25px;
   height: 26px;
   border-radius: 50%;
@@ -555,13 +561,11 @@
   }
 }
 
-.container-less-inteira,
-.container-less-meia-elo {
+.container-less-svg {
   background: rgb(63 71 93);
 }
 
-.container-more-inteira,
-.container-more-meia-elo {
+.container-more-svg {
   background: rgb(152, 170, 236);
   cursor: pointer;
 }
