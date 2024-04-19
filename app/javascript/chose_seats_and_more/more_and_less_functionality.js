@@ -189,7 +189,13 @@ if(containerSvgTickets){
                 
                 if(elementPayment.quantity > 0){
                   elementPayment.quantity = elementPayment.quantity - 1;
-                  typePaymentAll[i] = elementPayment;
+
+                  if(elementPayment.quantity === 0){
+                    // typePaymentAll[i] = undefined;
+                    typePaymentAll.splice(i, 1);  
+                  }else {
+                    typePaymentAll[i] = elementPayment;
+                  }
                   break;
                 }
               }
@@ -203,6 +209,8 @@ if(containerSvgTickets){
           containerTicketsPaymentPriceAllIfExists.remove();
         }
 
+        //tem bug ainda olhar no localhost app
+
         const spanTicketsName = document.createElement("span");
         spanTicketsName.classList.add("span-tickets-name");
         spanTicketsName.textContent = "Ingressos";
@@ -210,7 +218,7 @@ if(containerSvgTickets){
         const containerTicketsPaymentPriceAll = document.createElement("div");
         containerTicketsPaymentPriceAll.classList.add("container-tickets-payment-price-all");
         containerTicketsPaymentPriceAll.appendChild(spanTicketsName);
-
+        console.log(typePaymentAll);
         typePaymentAll.forEach((elPayment) => {
           if(elPayment && elPayment.quantity > 0){
             let valueTotal = 29.44;
@@ -220,11 +228,8 @@ if(containerSvgTickets){
   
             const spanTicketsPayment = document.createElement("span");
             spanTicketsPayment.classList.add("span-tickets-payment");
-  
-            if(elPayment){
-              spanTicketsPayment.textContent = `${elPayment.quantity}x ${elPayment.payment}`;
-            }
-  
+            spanTicketsPayment.textContent = `${elPayment.quantity}x ${elPayment.payment}`;
+            
             const spanTicketsPrice = document.createElement("span");
             spanTicketsPrice.classList.add("span-tickets-price");
             spanTicketsPrice.textContent = `R$ ${valueTotal}`;
