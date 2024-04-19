@@ -4,8 +4,8 @@ const containerSvgTickets = document.querySelector('.div-svg-tickets');
 const spanItensValuesSeats = document.querySelector(".span-itens-values-seats");
 const containerLineWhite1 = document.querySelector(".line-white-1");
 
-const containerSvgChoseOfSeats = document.querySelector('.div-svg-chose-of-seats'); 
 const buttonBack = document.querySelector('.button-back'); 
+const containerSvgChoseOfSeats = document.querySelector('.div-svg-chose-of-seats'); 
 const containerChoseSeatNumber = document.querySelector('.container-chose-seat-number');
 const containerChoseSeatNumberResumeOrderMain = document.querySelector('.container-chose-seat-number-resume-order-main');
 const containerSeatsTypeTicketsBombonierePayment = document.querySelector(".container-seats-type-tickets-bomboniere-payment");
@@ -64,14 +64,45 @@ if(containerSvgTickets){
     let containerMoreAll = document.querySelectorAll(".container-more-svg");
     let containerLessAll = document.querySelectorAll(".container-less-svg");
 
+    const typePaymentAll = [];
+
     const functionClickMoreInteiro = (e) => {
-      const containerMoreLess = e.srcElement.parentElement.parentElement;
+      let containerMoreLess = e.srcElement.parentElement.parentElement;
+      let containerPaymentMethod = containerMoreLess.querySelector(".container-paragraph-and-price");
+
       const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
-      
+
       if(spanNumberTickets && varivelHelpForSumIfAlreadyTicketChose < Number(spanItensValuesSeats.textContent)){
         spanNumberTickets.textContent = Number(spanNumberTickets.textContent) + 1;
 
         varivelHelpForSumIfAlreadyTicketChose += 1;
+
+        if(containerPaymentMethod){
+          let spanFirstPaymentType = containerPaymentMethod.querySelector(".span-type-payment");
+
+          if(spanFirstPaymentType && typePaymentAll.some((el) => el.payment === spanFirstPaymentType.textContent)){
+            for (let i = 0; i < typePaymentAll.length; i++) {
+              const elementPayment = typePaymentAll[i];
+              
+              if(elementPayment.payment === spanFirstPaymentType.textContent){
+                elementPayment.quantity = elementPayment.quantity + 1;
+                typePaymentAll[i] = elementPayment;
+                break;
+              }
+            }
+          }else {
+            if(spanFirstPaymentType){
+              const typePayment = {
+                payment: spanFirstPaymentType.textContent,
+                quantity: 1,
+              }
+  
+              typePaymentAll.push(typePayment);
+            }
+          }
+        }
+
+        console.log(typePaymentAll);
       }
 
       allContainerLess.forEach((el) => {
@@ -100,13 +131,36 @@ if(containerSvgTickets){
     }
 
     const functionClickLessInteiro = (e) => {
-      const containerMoreLess = e.srcElement.parentElement.parentElement;
-      const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
+      let containerMoreLess = e.srcElement.parentElement.parentElement;
+      let containerPaymentMethod = containerMoreLess.querySelector(".container-paragraph-and-price");
 
+      const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
+    
       if(spanNumberTickets && Number(spanNumberTickets.textContent) > 0){
         spanNumberTickets.textContent = Number(spanNumberTickets.textContent) - 1;
 
         varivelHelpForSumIfAlreadyTicketChose -= 1;
+
+        if(containerPaymentMethod){
+          let spanFirstPaymentType = containerPaymentMethod.querySelector(".span-type-payment");
+
+          if(spanFirstPaymentType && typePaymentAll.some((el) => el.payment === spanFirstPaymentType.textContent)){
+            for (let i = 0; i < typePaymentAll.length; i++) {
+              const elementPayment = typePaymentAll[i];
+              
+              if(elementPayment.payment === spanFirstPaymentType.textContent){
+                
+                if(elementPayment.quantity > 0){
+                  elementPayment.quantity = elementPayment.quantity - 1;
+                  typePaymentAll[i] = elementPayment;
+                  break;
+                }
+              }
+            }
+          }
+        }
+
+        console.log(typePaymentAll);
       }
 
       if(spanItensValuesSeats && varivelHelpForSumIfAlreadyTicketChose < Number(spanItensValuesSeats.textContent)){

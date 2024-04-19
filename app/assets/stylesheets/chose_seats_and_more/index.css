@@ -447,18 +447,32 @@
   }
 }
 
-.container-seats-chosen-summary-order {
+.container-seats-chosen-and-tickets {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+}
+
+.container-seats-chosen-summary-order {
+  display: flex;
+  justify-content: space-between;
   border-top: 1px solid rgb(102, 102, 102);
   gap: 0px;
 }
 
+.span1-seats-name-summary-order {
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .span-seats-name-summary-order {
-  display: flex;
-  flex-wrap: wrap;
-  white-space: normal;
-  word-wrap: break-word;
+  width: 160px;
+  text-align: right;
+  line-height: 18px;
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  word-break: break-all;
 }
 
 .span-region-name-order-summary {
@@ -555,9 +569,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   >svg {
     width: 19px;
+    pointer-events: none;
   }
 }
 
@@ -567,7 +583,6 @@
 
 .container-more-svg {
   background: rgb(152, 170, 236);
-  cursor: pointer;
 }
 
 .container-back-skip {
