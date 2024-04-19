@@ -80,7 +80,7 @@ if(containerSvgTickets){
         if(containerPaymentMethod){
           let spanFirstPaymentType = containerPaymentMethod.querySelector(".span-type-payment");
 
-          if(spanFirstPaymentType && typePaymentAll.some((el) => el.payment === spanFirstPaymentType.textContent)){
+          if(spanFirstPaymentType && spanFirstPaymentType && typePaymentAll.some((el) => el.payment === spanFirstPaymentType.textContent)){
             for (let i = 0; i < typePaymentAll.length; i++) {
               const elementPayment = typePaymentAll[i];
               
@@ -101,9 +101,46 @@ if(containerSvgTickets){
             }
           }
         }
-
-        console.log(typePaymentAll);
       }
+
+      const containerTicketsPaymentPriceAllIfExists = document.querySelector(".container-tickets-payment-price-all");
+
+      if(containerTicketsPaymentPriceAllIfExists){
+        containerTicketsPaymentPriceAllIfExists.remove();
+      }
+
+      const spanTicketsName = document.createElement("span");
+      spanTicketsName.classList.add("span-tickets-name");
+      spanTicketsName.textContent = "Ingressos";
+
+      const containerTicketsPaymentPriceAll = document.createElement("div");
+      containerTicketsPaymentPriceAll.classList.add("container-tickets-payment-price-all");
+      containerTicketsPaymentPriceAll.appendChild(spanTicketsName);
+
+      typePaymentAll.forEach((elPayment) => {
+        let valueTotal = 29.44;
+        if(elPayment.payment === "Inteira"){
+          valueTotal = elPayment.quantity * 52.44;
+        }
+
+        const spanTicketsPayment = document.createElement("span");
+        spanTicketsPayment.classList.add("span-tickets-payment");
+        spanTicketsPayment.textContent = `${elPayment.quantity}x ${elPayment.payment}`;
+
+        const spanTicketsPrice = document.createElement("span");
+        spanTicketsPrice.classList.add("span-tickets-price");
+        spanTicketsPrice.textContent = `R$ ${valueTotal}`;
+
+        const containerTicketsPaymentPrice = document.createElement("div");
+        containerTicketsPaymentPrice.classList.add("container-tickets-payment-price");
+        containerTicketsPaymentPrice.appendChild(spanTicketsPayment);
+        containerTicketsPaymentPrice.appendChild(spanTicketsPrice);
+
+        containerTicketsPaymentPriceAll.appendChild(containerTicketsPaymentPrice);
+
+        const containerSeatsChosenAndTickets = document.querySelector(".container-seats-chosen-and-tickets"); 
+        containerSeatsChosenAndTickets.appendChild(containerTicketsPaymentPriceAll);
+      });
 
       allContainerLess.forEach((el) => {
         const containerMoreLessInner = el.parentElement;
@@ -160,7 +197,49 @@ if(containerSvgTickets){
           }
         }
 
-        console.log(typePaymentAll);
+        const containerTicketsPaymentPriceAllIfExists = document.querySelector(".container-tickets-payment-price-all");
+
+        if(containerTicketsPaymentPriceAllIfExists){
+          containerTicketsPaymentPriceAllIfExists.remove();
+        }
+
+        const spanTicketsName = document.createElement("span");
+        spanTicketsName.classList.add("span-tickets-name");
+        spanTicketsName.textContent = "Ingressos";
+
+        const containerTicketsPaymentPriceAll = document.createElement("div");
+        containerTicketsPaymentPriceAll.classList.add("container-tickets-payment-price-all");
+        containerTicketsPaymentPriceAll.appendChild(spanTicketsName);
+
+        typePaymentAll.forEach((elPayment) => {
+          if(elPayment && elPayment.quantity > 0){
+            let valueTotal = 29.44;
+            if(elPayment.payment === "Inteira"){
+              valueTotal = elPayment.quantity * 52.44;
+            }
+  
+            const spanTicketsPayment = document.createElement("span");
+            spanTicketsPayment.classList.add("span-tickets-payment");
+  
+            if(elPayment){
+              spanTicketsPayment.textContent = `${elPayment.quantity}x ${elPayment.payment}`;
+            }
+  
+            const spanTicketsPrice = document.createElement("span");
+            spanTicketsPrice.classList.add("span-tickets-price");
+            spanTicketsPrice.textContent = `R$ ${valueTotal}`;
+  
+            const containerTicketsPaymentPrice = document.createElement("div");
+            containerTicketsPaymentPrice.classList.add("container-tickets-payment-price");
+            containerTicketsPaymentPrice.appendChild(spanTicketsPayment);
+            containerTicketsPaymentPrice.appendChild(spanTicketsPrice);
+  
+            containerTicketsPaymentPriceAll.appendChild(containerTicketsPaymentPrice);
+  
+            const containerSeatsChosenAndTickets = document.querySelector(".container-seats-chosen-and-tickets"); 
+            containerSeatsChosenAndTickets.appendChild(containerTicketsPaymentPriceAll);
+          }
+        });
       }
 
       if(spanItensValuesSeats && varivelHelpForSumIfAlreadyTicketChose < Number(spanItensValuesSeats.textContent)){
@@ -296,6 +375,12 @@ if(containerSvgTickets){
 
       if(containerTypesTickets){
         containerTypesTickets.remove();
+      }
+
+      const containerTicketsPaymentPriceAll = document.querySelector(".container-tickets-payment-price-all");
+
+      if(containerTicketsPaymentPriceAll){
+        containerTicketsPaymentPriceAll.remove();
       }
     });
   });

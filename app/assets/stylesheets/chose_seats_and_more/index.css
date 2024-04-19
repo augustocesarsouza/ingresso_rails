@@ -455,9 +455,11 @@
 
 .container-seats-chosen-summary-order {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border-top: 1px solid rgb(102, 102, 102);
   gap: 0px;
+  padding: 5px 0px;
 }
 
 .span1-seats-name-summary-order {
@@ -469,10 +471,28 @@
   width: 160px;
   text-align: right;
   line-height: 18px;
-  margin-top: 5px;
   font-size: 13px;
   font-weight: 700;
   word-break: break-all;
+}
+
+.span-tickets-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.container-tickets-payment-price-all {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 2px;
+  border-top: 1px solid rgb(102, 102, 102);
+}
+
+.container-tickets-payment-price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
 .span-region-name-order-summary {
