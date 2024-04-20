@@ -74,6 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    let containerSeatsChoseMain = document.querySelector('.container-seats-chose-seats-and-more-main');
+
+    containerSeatsChoseMain.addEventListener("mouseover", (event) => {
+      document.body.style.overflowY = 'hidden';
+    });
+
+    containerSeatsChoseMain.addEventListener("mouseout", (event) => {
+      document.body.style.overflowY = 'auto';
+    });
+
     let scrollDownOrScrollUp = false;
     let valueScaleAlreadyEnter80 = false;
 
