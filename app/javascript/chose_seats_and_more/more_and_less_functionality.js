@@ -10,6 +10,10 @@ const containerChoseSeatNumber = document.querySelector('.container-chose-seat-n
 const containerChoseSeatNumberResumeOrderMain = document.querySelector('.container-chose-seat-number-resume-order-main');
 const containerSeatsTypeTicketsBombonierePayment = document.querySelector(".container-seats-type-tickets-bomboniere-payment");
 
+const containerBackSkipMain = document.querySelector('.container-back-skip');
+const containerTicketsSvg = document.querySelector(".container-all-tickets-svg");
+const containerButtonSkip = document.querySelector(".container-button-skip");
+
 const spanTypesTickets = document.querySelector(".span-types-tickets");
 const spanChoseOfSeats = document.querySelector('.span-chose-ofseats');
 
@@ -28,6 +32,10 @@ let isReleasedForHoverMouseButtonBack = false;
 if(containerSvgTickets){
   containerSvgTickets.addEventListener("click", () => {
     let allContainerMore = [];
+
+    if(containerTicketsSvg){
+      containerTicketsSvg.remove();
+    }
    
     if(containerSvgTickets.style.borderColor === "rgb(152, 170, 236)" && Number(spanItensValuesSeats.textContent) > 0){
       containerLineWhite1.style.background =  "rgb(152, 170, 236)";
@@ -217,7 +225,7 @@ if(containerSvgTickets){
         const containerTicketsPaymentPriceAll = document.createElement("div");
         containerTicketsPaymentPriceAll.classList.add("container-tickets-payment-price-all");
         containerTicketsPaymentPriceAll.appendChild(spanTicketsName);
-        console.log(typePaymentAll);
+
         typePaymentAll.forEach((elPayment) => {
           if(elPayment && elPayment.quantity > 0){
             let valueTotal = 29.44;
@@ -331,6 +339,8 @@ if(containerSvgTickets){
     }
 
     containerSvgChoseOfSeats.addEventListener("click", () => {
+      containerBackSkipMain.insertBefore(containerTicketsSvg, containerButtonSkip);
+
       containerMoreAll.forEach((containerMore) => {
         const containerMoreLess = containerMore.parentElement;
         const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
