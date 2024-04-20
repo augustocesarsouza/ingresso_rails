@@ -17,6 +17,8 @@ const containerButtonSkip = document.querySelector(".container-button-skip");
 const spanTypesTickets = document.querySelector(".span-types-tickets");
 const spanChoseOfSeats = document.querySelector('.span-chose-ofseats');
 
+const containerOrderSummary = document.querySelector('.container-order-summary');
+
 if(spanTypesTickets){
   spanTypesTickets.remove();
 }
@@ -32,6 +34,9 @@ let isReleasedForHoverMouseButtonBack = false;
 if(containerSvgTickets){
   containerSvgTickets.addEventListener("click", () => {
     let allContainerMore = [];
+
+    containerOrderSummary.style.height = "570px";
+    containerChoseSeatNumberResumeOrderMain.style.height = "100%";
 
     if(containerTicketsSvg){
       containerTicketsSvg.remove();
@@ -74,10 +79,25 @@ if(containerSvgTickets){
 
     const typePaymentAll = [];
 
+    let containerSvgPayment = document.createElement("div");
+    containerSvgPayment.classList.add("container-all-tickets-svg");
+
     const functionClickMoreInteiro = (e) => {
-      // AMANHA FAZER QUANDO A PESSOA ADICIONAR UM METODO DE PAGAMENTO PARA TICKETS MUDAR LA EM BAIXO O TIPO DO TICKETS
       let containerMoreLess = e.srcElement.parentElement.parentElement;
       let containerPaymentMethod = containerMoreLess.querySelector(".container-paragraph-and-price");
+
+      let containerSvgAndTypePaymentPrice = containerPaymentMethod.parentElement;
+      let containerTicketSvg = containerSvgAndTypePaymentPrice.querySelector(".container-ticket");
+      let ticketSvg = containerTicketSvg.firstChild.nextSibling;
+
+      let clonedTicketSvg = ticketSvg.cloneNode(true);
+
+      let containerTicketSvgNewClick = document.createElement("div");
+      containerTicketSvgNewClick.classList.add("container-ticket-svg");
+      containerTicketSvgNewClick.appendChild(clonedTicketSvg);
+
+      containerSvgPayment.appendChild(containerTicketSvgNewClick);
+      containerBackSkipMain.insertBefore(containerSvgPayment, containerButtonSkip);
 
       const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
 
@@ -179,6 +199,17 @@ if(containerSvgTickets){
     const functionClickLessInteiro = (e) => {
       let containerMoreLess = e.srcElement.parentElement.parentElement;
       let containerPaymentMethod = containerMoreLess.querySelector(".container-paragraph-and-price");
+
+      let containerSvgAndTypePaymentPrice = containerPaymentMethod.parentElement;
+      let spanTypePayment = containerSvgAndTypePaymentPrice.querySelector(".span-type-payment");
+
+      if(spanTypePayment.textContent === "Meia"){
+        let svgTicketHalf = containerSvgPayment.querySelector(".svg-ticket-half");
+        svgTicketHalf.parentElement.remove();
+      }else {
+        let svgTicket = containerSvgPayment.querySelector(".injected-svg");
+        svgTicket.parentElement.remove();
+      }
 
       const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
     
@@ -339,6 +370,9 @@ if(containerSvgTickets){
     }
 
     containerSvgChoseOfSeats.addEventListener("click", () => {
+      containerOrderSummary.style.height = "97%";
+      containerChoseSeatNumberResumeOrderMain.style.height = "64rem";
+
       containerBackSkipMain.insertBefore(containerTicketsSvg, containerButtonSkip);
 
       containerMoreAll.forEach((containerMore) => {
