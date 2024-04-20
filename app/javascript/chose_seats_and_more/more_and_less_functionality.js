@@ -67,6 +67,7 @@ if(containerSvgTickets){
     const typePaymentAll = [];
 
     const functionClickMoreInteiro = (e) => {
+      // AMANHA FAZER QUANDO A PESSOA ADICIONAR UM METODO DE PAGAMENTO PARA TICKETS MUDAR LA EM BAIXO O TIPO DO TICKETS
       let containerMoreLess = e.srcElement.parentElement.parentElement;
       let containerPaymentMethod = containerMoreLess.querySelector(".container-paragraph-and-price");
 
@@ -208,8 +209,6 @@ if(containerSvgTickets){
         if(containerTicketsPaymentPriceAllIfExists){
           containerTicketsPaymentPriceAllIfExists.remove();
         }
-
-        //tem bug ainda olhar no localhost app
 
         const spanTicketsName = document.createElement("span");
         spanTicketsName.classList.add("span-tickets-name");
