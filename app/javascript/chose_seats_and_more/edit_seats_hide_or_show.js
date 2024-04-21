@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let containerLineWhite1 = document.querySelector(".line-white-1");
     let buttonBack = document.querySelector('.button-back'); 
 
-    let containerAllTicketsSvg = document.querySelector(".container-all-tickets-svg");
+    let containerAllTicketsSvg = document.querySelector(".container-all-tickets-svg-1");
 
     const functionDeleteSpanNumberAlreadyClick = (containerSpanNumber) => {
       if(arrayAllSeats.includes(containerSpanNumber.firstChild.textContent)){

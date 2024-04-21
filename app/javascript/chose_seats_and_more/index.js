@@ -3,6 +3,8 @@ import { ptBR } from "date-fns/locale";
 
 document.body.scrollTop = 0;
 document.documentElement.scrollTop = 0;
+document.body.style.position = "relative";
+// document.body.style.height = "100vh";
 
 document.addEventListener("DOMContentLoaded", () => {
   if(window.location.pathname == "/chose_seats_and_more"){
