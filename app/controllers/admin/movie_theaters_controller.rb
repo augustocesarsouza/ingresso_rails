@@ -22,8 +22,6 @@ module Admin
       movie_result = Movie.select(:id).where(title: params[:movie]).first
       region_result = Region.select(:id).where(city: params[:city]).first
 
-      puts params.inspect
-
       if movie_result.nil? || region_result.nil?
         @movie_theater = MovieTheater.new
         @movie_theater.errors.add(:base, 'Error when creating Junction, name of the movie, or region name not exist')

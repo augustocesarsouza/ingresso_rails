@@ -696,25 +696,27 @@ if(containerSvgBomboniere){
   });
 }
 
-buttonBack.addEventListener("mouseover", () => {
-  if(buttonBack.style.color === "rgb(102, 102, 102)"){
-    isReleasedForHoverMouseButtonBack = false;
-  }
-
-  if(isReleasedForHoverMouseButtonBack){
-    buttonBack.style.borderColor = "rgb(164, 179, 235)";
-    buttonBack.style.color = "rgb(164, 179, 235)";
-  }
-});
-
-buttonBack.addEventListener("mouseout", () => {
-  if(isReleasedForHoverMouseButtonBack){
-    buttonBack.style.borderColor = "rgb(152, 170, 236)";
-    buttonBack.style.color = "rgb(152, 170, 236)";
-  }
-});
-
-buttonBack.addEventListener("click", () => {
-  if(isReleasedForHoverMouseButtonBack){
-  }
-});
+if(buttonBack){
+  buttonBack.addEventListener("mouseover", () => {
+    if(buttonBack.style.color === "rgb(102, 102, 102)"){
+      isReleasedForHoverMouseButtonBack = false;
+    }
+  
+    if(isReleasedForHoverMouseButtonBack){
+      buttonBack.style.borderColor = "rgb(164, 179, 235)";
+      buttonBack.style.color = "rgb(164, 179, 235)";
+    }
+  });
+  
+  buttonBack.addEventListener("mouseout", () => {
+    if(isReleasedForHoverMouseButtonBack){
+      buttonBack.style.borderColor = "rgb(152, 170, 236)";
+      buttonBack.style.color = "rgb(152, 170, 236)";
+    }
+  });
+  
+  buttonBack.addEventListener("click", () => {
+    if(isReleasedForHoverMouseButtonBack){
+    }
+  });
+}
