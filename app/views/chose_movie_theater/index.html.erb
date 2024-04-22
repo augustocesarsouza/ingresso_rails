@@ -14,10 +14,6 @@
       <li class="li-chose-aboutthefilm">Sobre o filme</li>
     </ul>
     <div class="container-date-for-watch-film" id="container-date-for-watch-film-id">
-      <%# <div class="container-date-chose-movie-theater">
-        <span class="span-day-month"></span>
-        <span class="span-name-day"></span>
-      </div> %>
     </div>
     <div class="container-category-main-chose-movie-theater" style="width: 100%; overflow-x: auto; overflow-y: hidden;">
       <div class="container-category-movie-chose-movie-theater">
@@ -71,31 +67,31 @@
               <div class="container-telasgigantesplg-dublado">
                 <%= render_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_container(schedule_parts, @movie) %>
+                  <%= render_time_buy_container(schedule_parts, @movie, cinema) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_vip_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_vip_dublado_container(schedule_parts, @movie) %>
+                  <%= render_time_buy_vip_dublado_container(schedule_parts, @movie, cinema) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_vip_3d_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_vip_3d_dublado_container(schedule_parts, @movie) %>
+                  <%= render_time_buy_vip_3d_dublado_container(schedule_parts, @movie, cinema) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_3d_dbox_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_3d_dbox_dublado_container(schedule_parts, @movie) %>
+                  <%= render_time_buy_3d_dbox_dublado_container(schedule_parts, @movie, cinema) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_telasgigantes_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_telasgigantes_dublado_container(schedule_parts, @movie) %>
+                  <%= render_time_buy_telasgigantes_dublado_container(schedule_parts, @movie, cinema) %>
                 </div>
               </div>
             <% end %>

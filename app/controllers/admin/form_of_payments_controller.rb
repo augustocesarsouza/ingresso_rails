@@ -10,7 +10,6 @@ module Admin
   
     def new
       authorize FormOfPayment
-      puts '****************************************NEW********************************************************'
   
       @form_of_payment = FormOfPayment.new
     end
@@ -19,9 +18,7 @@ module Admin
   
     def create
       @form_of_payment = FormOfPayment.new(form_of_payment_params)
-      puts '****************************************CREATE********************************************************'
-      puts @form_of_payment.inspect
-  
+      
       if @form_of_payment.save
         redirect_to admin_form_of_payments_path, notice: 'FormOfPayment was successfully created.'
       else
