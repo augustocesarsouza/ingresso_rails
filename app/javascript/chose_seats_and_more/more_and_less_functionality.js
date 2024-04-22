@@ -12,7 +12,6 @@ const containerChoseSeatNumberResumeOrderMain = document.querySelector('.contain
 const containerSeatsTypeTicketsBombonierePayment = document.querySelector(".container-seats-type-tickets-bomboniere-payment");
 
 const containerBackSkipMain = document.querySelector('.container-back-skip');
-// const containerTicketsSvg = document.querySelector(".container-all-tickets-svg");
 const containerButtonSkip = document.querySelector(".container-button-skip");
 
 const spanTypesTickets = document.querySelector(".span-types-tickets");
@@ -29,7 +28,11 @@ let typePaymentAll = [];
 let containerMoreAll = document.querySelectorAll(".container-more-svg");
 let containerLessAll = document.querySelectorAll(".container-less-svg");
 
-let containerSvgPayment = document.querySelector(".container-all-tickets-svg-2");
+let containerSvgPayment2 = document.querySelector(".container-all-tickets-svg-2");
+
+if(containerSvgPayment2){
+  containerSvgPayment2.remove();
+}
 
 let spanTotalValueOrderSummary = document.querySelector(".span-total-value-order-sumarry");
 let allContainerLess = [];
@@ -50,17 +53,11 @@ let isReleasedForHoverMouseButtonBack = false;
 let containerAllTicketsOfTypeTicketsSelected = null;
 
 const functionClickMoreInteiro = (e) => {
-  console.log("teste more");
-  const containerTicketsSvg = document.querySelector(".container-all-tickets-svg-2");
-  containerAllTicketsOfTypeTicketsSelected = containerTicketsSvg;
-
-  if(containerAllTicketsOfTypeTicketsSelected){
-    containerSvgPayment = containerAllTicketsOfTypeTicketsSelected;
-  }else {
+  if(containerSvgPayment2 === null){
     varivelHelpForSumIfAlreadyTicketChose = 0;
     let containerTicketSvgNewClick = document.createElement("div");
     containerTicketSvgNewClick.classList.add("container-all-tickets-svg-2");
-    containerSvgPayment = containerTicketSvgNewClick;
+    containerSvgPayment2 = containerTicketSvgNewClick
   }
 
   let containerMoreLess = e.srcElement.parentElement.parentElement;
@@ -84,8 +81,11 @@ const functionClickMoreInteiro = (e) => {
     containerTicketSvgNewClick.classList.add("container-ticket-svg");
     containerTicketSvgNewClick.appendChild(clonedTicketSvg);
 
-    containerSvgPayment.appendChild(containerTicketSvgNewClick);
-    containerBackSkipMain.insertBefore(containerSvgPayment, containerButtonSkip);
+    containerSvgPayment2.appendChild(containerTicketSvgNewClick);
+
+    if(containerBackSkipMain){
+      containerBackSkipMain.insertBefore(containerSvgPayment2, containerButtonSkip);
+    }
 
     if(containerPaymentMethod){
       let spanFirstPaymentType = containerPaymentMethod.querySelector(".span-type-payment");
@@ -195,13 +195,6 @@ const functionClickMoreInteiro = (e) => {
 
 const functionClickLessInteiro = (e) => {
   let containerMoreLess = e.srcElement.parentElement.parentElement;
-  
-  const containerTicketsSvg = document.querySelector(".container-all-tickets-svg-2");
-  containerAllTicketsOfTypeTicketsSelected = containerTicketsSvg;
-
-  if(containerAllTicketsOfTypeTicketsSelected){
-    containerSvgPayment = containerAllTicketsOfTypeTicketsSelected;
-  }
 
   const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
 
@@ -216,10 +209,10 @@ const functionClickLessInteiro = (e) => {
     let spanTypePayment = containerSvgAndTypePaymentPrice.querySelector(".span-type-payment");
 
     if(spanTypePayment.textContent === "Meia"){
-      let svgTicketHalf = containerSvgPayment.querySelector(".svg-ticket-half");
+      let svgTicketHalf = containerSvgPayment2.querySelector(".svg-ticket-half");
       svgTicketHalf.parentElement.remove();
     }else {
-      let svgTicket = containerSvgPayment.querySelector(".injected-svg");
+      let svgTicket = containerSvgPayment2.querySelector(".injected-svg");
       svgTicket.parentElement.remove();
     }
 
@@ -424,31 +417,46 @@ const functionRemoveEventListernerContainerMoreAndLess = () => {
   });
 }
 
+const functionAddEventListernerContainerMoreAndLess = () => {
+  if(whatButtonClickedSeatsTickets === "tickets"){
+    containerMoreAll.forEach((containerMore) => {
+      allContainerMore.push(containerMore);
+
+      containerMore.addEventListener("click", functionClickMoreInteiro);
+      containerMore.addEventListener("mouseover", functionMouseOverMore);
+      containerMore.addEventListener("mouseout", functionMouseOutMore);
+    });
+
+    containerLessAll.forEach((containerLess) => {
+      allContainerLess.push(containerLess);
+      
+      containerLess.addEventListener("click", functionClickLessInteiro);
+      containerLess.addEventListener("mouseover", functionMouseOverLess);
+      containerLess.addEventListener("mouseout", functionMouseOutLess);
+    });
+  }
+}
+
+
 if(containerSvgTickets){
   containerSvgTickets.addEventListener("click", () => {
-    //rgb(152, 170, 236) -> disabled
-    //rgb(49, 85, 232) -> actived
-    const containerTicketsSvg = document.querySelector(".container-all-tickets-svg-1");
+    const containerTicketsSvg1 = document.querySelector(".container-all-tickets-svg-1");
 
-    if(containerAllTicketsOfTypeTicketsSelected){
-      containerBackSkipMain.insertBefore(containerAllTicketsOfTypeTicketsSelected, containerButtonSkip);
-      whatButtonClickedSeatsTickets = "tickets";
+    if(containerTicketsSvg1){
+      containerTicketsSvg1.remove();
+    }
 
-      if(containerTicketsSvg){
-        containerTicketsSvg.remove();
-      }
+    document.body.style.height = "100vh";
+    containerOrderSummary.style.height = "570px";
+    containerChoseSeatNumberResumeOrderMain.style.height = "100%";
+    whatButtonClickedSeatsTickets = "tickets";
+
+    if(containerSvgPayment2 && containerBackSkipMain){
+      containerBackSkipMain.insertBefore(containerSvgPayment2, containerButtonSkip);
     }else {
-      if(containerTicketsSvg && containerTicketsSvg.childNodes.length === 0){
-        whatButtonClickedSeatsTickets = "seats";
-      }else {
-        if(containerTicketsSvg){
-          containerTicketsSvg.remove();
-        }
-        document.body.style.height = "100vh";
-        containerOrderSummary.style.height = "570px";
-        containerChoseSeatNumberResumeOrderMain.style.height = "100%";
-        whatButtonClickedSeatsTickets = "tickets";
-      }
+      let containerTicketSvgNewClick = document.createElement("div");
+      containerTicketSvgNewClick.classList.add("container-all-tickets-svg-2");
+      containerSvgPayment2 = containerTicketSvgNewClick;
 
       setTimeout(() => {
         containerMoreAll.forEach((el) => {
@@ -458,7 +466,7 @@ if(containerSvgTickets){
           containerMore.style.background = "rgb(152, 170, 236)";
           containerMore.style.cursor = "pointer";
         });
-      }, 100);
+      }, 20);
     }
 
     if(whatButtonClickedSeatsTickets === "tickets" && Number(spanItensValuesSeats.textContent) > 0){
@@ -500,32 +508,14 @@ if(containerSvgTickets){
       containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
     }
 
-    // tem um problema quando eu nao marco todos os campo dos "TIPOS DE INGRESSO"
-    // E CLICO NA PIPOCA E FECHO O WARN, ELE NAO RECOLOCA O EVENTO CLICK ESSES DE BAIXO
-    // ENTÃO TEM QUE CRIAR UMA FUNÇÃO PARA NAO DUPLICAR ESSA LINHA PORQUE VOCÊ VAI USAR AQUI EM BAIXO
-    // E NO BOTÃO CLICK LÁ EM BAIXO AMBOS OS "containerSvgExitWarning" "buttonContinue" COLOCAR ESSA FUNÇÃO PARA REATIVAR OS EVENTOS
-
-    if(whatButtonClickedSeatsTickets === "tickets"){
-      containerMoreAll.forEach((containerMore) => {
-        allContainerMore.push(containerMore);
-
-        containerMore.addEventListener("click", functionClickMoreInteiro);
-        containerMore.addEventListener("mouseover", functionMouseOverMore);
-        containerMore.addEventListener("mouseout", functionMouseOutMore);
-      });
-
-      containerLessAll.forEach((containerLess) => {
-        allContainerLess.push(containerLess);
-        
-        containerLess.addEventListener("click", functionClickLessInteiro);
-        containerLess.addEventListener("mouseover", functionMouseOverLess);
-        containerLess.addEventListener("mouseout", functionMouseOutLess);
-      });
-    }
+    functionAddEventListernerContainerMoreAndLess();
 
     containerSvgChoseOfSeats.addEventListener("click", () => {
-      containerAllTicketsOfTypeTicketsSelected = null;
+      containerSvgPayment2 = null;
       typePaymentAll = [];
+      varivelHelpForSumIfAlreadyTicketChose = 0;
+      spanTotalValueOrderSummary.textContent = `R$ 0,00`;
+
       whatButtonClickedSeatsTickets = "seats";
       containerOrderSummary.style.height = "97%";
       document.body.style.height = "100%";
@@ -535,16 +525,14 @@ if(containerSvgTickets){
       containerSvgBomboniere.style.background = "transparent";
       containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
       
-      const containerTicketsSvgCurrent = document.querySelector(".container-all-tickets-svg-2");
+      const containerTicketsSvgCurrent2 = document.querySelector(".container-all-tickets-svg-2");
 
-      spanTotalValueOrderSummary.textContent = `R$ 0,00`;
-
-      if(containerTicketsSvgCurrent){
-        containerTicketsSvgCurrent.remove();
+      if(containerTicketsSvgCurrent2){
+        containerTicketsSvgCurrent2.remove();
       }
 
-      if(containerBackSkipMain){
-        containerBackSkipMain.insertBefore(containerTicketsSvg, containerButtonSkip);  
+      if(containerBackSkipMain && containerTicketsSvg1){
+        containerBackSkipMain.insertBefore(containerTicketsSvg1, containerButtonSkip);  
       }
 
       containerMoreAll.forEach((containerMore) => {
@@ -589,12 +577,6 @@ if(containerSvgTickets){
 
   containerSvgBomboniere.addEventListener("click", () => {
     let sumQuantityPaymentSelected = 0;
-    // let containerTicketsSvg = document.querySelector(".container-all-tickets-svg");
-    // containerTicketsSvgAll = containerTicketsSvg;
-
-    // if(containerTicketsSvg){
-    //   containerTicketsSvg.remove();
-    // }
 
     typePaymentAll.forEach((elPayment) => {
       sumQuantityPaymentSelected += Number(elPayment.quantity);
@@ -678,25 +660,21 @@ if(containerSvgTickets){
       
       containerBodyChoseSeatsAndMore.appendChild(containerWarnNotAllSeatsWereSelected);
 
-      // let containerSvgExitWarning = document.querySelector(".container-svg-exit-warning");
+      functionDefineColorForMoreAndLess();
 
       containerSvgExitWarning.addEventListener("click", () => {
+        functionDefineColorForMoreAndLess();
+        functionAddEventListernerContainerMoreAndLess();
         containerWarnNotAllSeatsWereSelected.remove();
       });
 
       buttonContinue.addEventListener("click", () => {
+        functionDefineColorForMoreAndLess();
+        functionAddEventListernerContainerMoreAndLess();
         containerWarnNotAllSeatsWereSelected.remove();
       });
-
-      // functionDefineColorForMoreAndLess();
     }else {
       console.log("foi tudo seleciondado para passar para pipocas");
-      // let containerTicketsSvg = document.querySelector(".container-all-tickets-svg");
-      // containerTicketsSvgAll = containerTicketsSvg;
-
-      // if(containerTicketsSvg){
-      //   containerTicketsSvg.remove();
-      // }
       
       containerSvgBomboniere.style.borderColor = "transparent";
       containerSvgBomboniere.style.background = "rgb(49, 85, 232)";
