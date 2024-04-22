@@ -3,6 +3,8 @@ import { ptBR } from "date-fns/locale";
 
 document.body.scrollTop = 0;
 document.documentElement.scrollTop = 0;
+document.body.style.position = "relative";
+// document.body.style.height = "100vh";
 
 document.addEventListener("DOMContentLoaded", () => {
   if(window.location.pathname == "/chose_seats_and_more"){
@@ -22,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const containerInfoMovieOrderSumarry2 = document.createElement("div");
     containerInfoMovieOrderSumarry2.classList.add("container-info-movie-order-sumarry");
 
+    let parentContainerLocationMovieTheater = null;
+
     if (storedValue) {
       parentContainerLocationMovieTheater = JSON.parse(storedValue);
 
@@ -34,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const paragraphRegionChose = document.querySelector(".paragraph-region-chose");
 
-    if(containerInfoMovieOrderSumarry){
+    if(containerInfoMovieOrderSumarry && parentContainerLocationMovieTheater){
       const spanRegionName = document.createElement("span");
       spanRegionName.classList.add("span-region-name-order-summary");
       spanRegionName.textContent = paragraphRegionChose.textContent;
@@ -44,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       spanRegionName2.textContent = paragraphRegionChose.textContent;
 
       containerInfoMovieOrderSumarry.appendChild(spanRegionName);
-
+      
       const date = parse(parentContainerLocationMovieTheater.day, 'dd/MM', new Date());
 
       const diaDaSemana = format(date, 'EEE', { locale: ptBR });
@@ -128,91 +132,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
       containerNameMovieLocationHourDate.appendChild(containerInfoMovieOrderSumarry2);
     }
-    
-    //click in chose seats / tickets / bomboniere / payment
-
-    const containerSvgTickets = document.querySelector('.div-svg-tickets');
-    const spanItensValuesSeats = document.querySelector(".span-itens-values-seats");
-    const containerLineWhite1 = document.querySelector(".line-white-1");
-
-    const containerSvgChoseOfSeats = document.querySelector('.div-svg-chose-of-seats'); 
-    const buttonBack = document.querySelector('.button-back'); 
-    const containerChoseSeatNumber = document.querySelector('.container-chose-seat-number');
-    const containerChoseSeatNumberResumeOrderMain = document.querySelector('.container-chose-seat-number-resume-order-main');
-
-    const containerTypesTickets = document.querySelector('.container-types-tickets');
-    containerTypesTickets.remove();
-
-    let isReleasedForHoverMouseButtonBack = false;
-
-    containerSvgTickets.addEventListener("click", () => {
-      if(containerSvgTickets.style.borderColor === "rgb(152, 170, 236)" && Number(spanItensValuesSeats.textContent) > 0){
-        containerLineWhite1.style.background =  "rgb(152, 170, 236)";
-        containerSvgTickets.style.borderColor = "transparent";
-        containerSvgTickets.style.background = "rgb(49, 85, 232)";
-        containerSvgTickets.firstChild.nextSibling.style.fill = "#fff";
-
-        containerSvgChoseOfSeats.style.background = "transparent";
-        containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
-        containerSvgChoseOfSeats.style.borderColor = "rgb(152, 170, 236)";
-      }
-
-      if(containerSvgTickets.style.background === "rgb(49, 85, 232)"){
-        buttonBack.style.border = "2px solid rgb(152, 170, 236)";
-        buttonBack.style.color = "rgb(152, 170, 236)";
-        isReleasedForHoverMouseButtonBack = true;
-      }else {
-        isReleasedForHoverMouseButtonBack = false;
-      }
-
-      if(isReleasedForHoverMouseButtonBack){
-        console.log("click tickets");
-        // containerChoseSeatNumber.style.display = "none";
-        containerChoseSeatNumber.remove();
-        console.log(containerChoseSeatNumber);
-
-        containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
-      }
-    });
-    
-    buttonBack.addEventListener("mouseover", () => {
-      if(buttonBack.style.color === "rgb(102, 102, 102)"){
-        isReleasedForHoverMouseButtonBack = false;
-      }
-
-      if(isReleasedForHoverMouseButtonBack){
-        buttonBack.style.borderColor = "rgb(164, 179, 235)";
-        buttonBack.style.color = "rgb(164, 179, 235)";
-      }
-    });
-
-    buttonBack.addEventListener("mouseout", () => {
-      if(isReleasedForHoverMouseButtonBack){
-        buttonBack.style.borderColor = "rgb(152, 170, 236)";
-        buttonBack.style.color = "rgb(152, 170, 236)";
-      }
-    });
-
-    buttonBack.addEventListener("click", () => {
-      if(isReleasedForHoverMouseButtonBack){
-        console.log("click");
-      }
-    });
-
-    containerSvgChoseOfSeats.addEventListener("click", () => {
-      if(containerSvgTickets.style.background === "rgb(49, 85, 232)" && Number(spanItensValuesSeats.textContent) > 0){
-        containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
-        containerSvgTickets.style.background = "transparent";
-        containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
-
-        containerSvgChoseOfSeats.style.borderColor = "transparent";
-        containerSvgChoseOfSeats.style.background = "rgb(49, 85, 232)";
-        containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "#fff";
-        containerLineWhite1.style.background =  "rgb(52, 60, 70)";
-      }
-
-      containerChoseSeatNumberResumeOrderMain.insertBefore(containerChoseSeatNumber, containerChoseSeatNumberResumeOrderMain.firstChild);
-      containerTypesTickets.remove();
-    });
   }
 });

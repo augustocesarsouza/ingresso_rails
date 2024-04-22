@@ -158,31 +158,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let containerOrderSummaryAndDetailMovie = document.querySelector(".container-order-summary-and-detail-movie");
+
+    const containerSeatsChosenAndTickets = document.createElement('div');
+    containerSeatsChosenAndTickets.classList.add("container-seats-chosen-and-tickets");;
+
     const containerSeatsChosen = document.createElement('div');
     containerSeatsChosen.classList.add('container-seats-chosen-summary-order');
 
     const spanSeatsName = document.createElement('span');
+    spanSeatsName.classList.add('span1-seats-name-summary-order');
     spanSeatsName.textContent = "Assentos";
 
     containerSeatsChosen.appendChild(spanSeatsName);
-    containerOrderSummaryAndDetailMovie.appendChild(containerSeatsChosen);
+    containerOrderSummaryAndDetailMovie.appendChild(containerSeatsChosenAndTickets);
 
     let arrayAllSeats = [];
     let arrayAlreadySet = [];
     let stringSeats = "";
     let seatsItems = document.querySelector(".span-itens-values-seats");
     let containerSvgTickets = document.querySelector(".div-svg-tickets");
+
     const spanSeatsAll = document.createElement('span');
     spanSeatsAll.classList.add('span-seats-name-summary-order');
 
     if(arrayAllSeats.length === 0){
-      containerSeatsChosen.style.display = "none";
+      containerSeatsChosenAndTickets.style.display = "none";
     }
 
     let containerLineWhite1 = document.querySelector(".line-white-1");
     let buttonBack = document.querySelector('.button-back'); 
 
-    let containerAllTicketsSvg = document.querySelector(".container-all-tickets-svg");
+    let containerAllTicketsSvg = document.querySelector(".container-all-tickets-svg-1");
 
     const functionDeleteSpanNumberAlreadyClick = (containerSpanNumber) => {
       if(arrayAllSeats.includes(containerSpanNumber.firstChild.textContent)){
@@ -218,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
         seatsItems.textContent = arrayAllSeats.length;
 
         if(arrayAllSeats.length === 0){
-          containerSeatsChosen.style.display = "none";
+          containerSeatsChosenAndTickets.style.display = "none";
           containerSvgTickets.style.borderColor = "rgb(52, 60, 70)";
           containerSvgTickets.style.background =  "transparent";
           containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
@@ -229,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
           buttonBack.style.borderColor = "rgb(102, 102, 102)";
           buttonBack.style.color = "rgb(102, 102, 102)";
         }else {
-          containerSeatsChosen.style.display = "flex";
+          containerSeatsChosenAndTickets.style.display = "flex";
           containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
           containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
         }
@@ -237,6 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
         spanSeatsAll.textContent = stringSeats;
 
         containerSeatsChosen.appendChild(spanSeatsAll);
+        containerSeatsChosenAndTickets.appendChild(containerSeatsChosen);
 
         if(containerSpanNumber.style.color === "black"){
           containerSpanNumber.style.color = "transparent";
@@ -309,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
       seatsItems.textContent = arrayAllSeats.length;
 
       if(arrayAllSeats.length === 0){
-        containerSeatsChosen.style.display = "none";
+        containerSeatsChosenAndTickets.style.display = "none";
         containerSvgTickets.style.borderColor = "rgb(52, 60, 70)";
         containerSvgTickets.style.background =  "transparent";
         containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
@@ -320,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
         buttonBack.style.borderColor = "rgb(102, 102, 102)";
         buttonBack.style.color = "rgb(102, 102, 102)";
       }else {
-        containerSeatsChosen.style.display = "flex";
+        containerSeatsChosenAndTickets.style.display = "flex";
         containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
         containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
       }
@@ -328,6 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
       spanSeatsAll.textContent = stringSeats;
 
       containerSeatsChosen.appendChild(spanSeatsAll);
+      containerSeatsChosenAndTickets.appendChild(containerSeatsChosen);
 
       if(containerSpanNumber.style.color === "black"){
         containerSpanNumber.style.color = "transparent";

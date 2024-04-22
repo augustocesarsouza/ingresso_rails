@@ -18,6 +18,7 @@ import "./chose_seats_and_more/index.js"
 import "./chose_seats_and_more/create_obj_session_storage_date_movie.js"
 import "./chose_seats_and_more/edit_seats_hide_or_show.js"
 import "./chose_seats_and_more/create_scroll_feature_for_chose_seats.js"
+import "./chose_seats_and_more/more_and_less_functionality.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   const colCustoms = document.querySelectorAll(".col-custom");

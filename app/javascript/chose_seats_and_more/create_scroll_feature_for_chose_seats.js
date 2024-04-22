@@ -74,6 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    let containerSeatsChoseMain = document.querySelector('.container-seats-chose-seats-and-more-main');
+
+    containerSeatsChoseMain.addEventListener("mouseover", (event) => {
+      document.body.style.overflowY = 'hidden';
+    });
+
+    containerSeatsChoseMain.addEventListener("mouseout", (event) => {
+      document.body.style.overflowY = 'auto';
+    });
+
     let scrollDownOrScrollUp = false;
     let valueScaleAlreadyEnter80 = false;
 
@@ -81,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let svgZoomOut = document.querySelector(".svg-zoom-out");
     
     containerSeatsChoseAndMore1.addEventListener("wheel", (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       let computedStyle = window.getComputedStyle(containerBallProgressBard);
       let bottomValue = Number.parseInt(computedStyle.bottom);
 
@@ -192,6 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       containerSeatsChoseAndMore2.style.transform = `translate(${seatsMoveX}px, ${seatsMoveY}px) scale(1.${valueForScale})`;
-    });
+    }, { passive: true });
   }
 });

@@ -69,6 +69,14 @@
   top: 58px;
 }
 
+.span-types-tickets {
+  font-size: 12px;
+  color: rgb(173, 182, 194);
+  position: absolute;
+  left: 134px;
+  top: 58px;
+}
+
 .line-white-seats-type-tickets-bomboniere-payment {
   background: rgb(152, 170, 236);
   width: 100%;
@@ -97,7 +105,6 @@
     padding: 30px 10px;
   }
 }
-
 
 .container-chose-seat-number {
   /* width: 80%; */
@@ -439,18 +446,52 @@
   }
 }
 
-.container-seats-chosen-summary-order {
+.container-seats-chosen-and-tickets {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+}
+
+.container-seats-chosen-summary-order {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-top: 1px solid rgb(102, 102, 102);
   gap: 0px;
+  padding: 5px 0px;
+}
+
+.span1-seats-name-summary-order {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .span-seats-name-summary-order {
+  width: 160px;
+  text-align: right;
+  line-height: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  word-break: break-all;
+}
+
+.span-tickets-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.container-tickets-payment-price-all {
   display: flex;
-  flex-wrap: wrap;
-  white-space: normal;
-  word-wrap: break-word;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 2px;
+  border-top: 1px solid rgb(102, 102, 102);
+}
+
+.container-tickets-payment-price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
 .span-region-name-order-summary {
@@ -473,13 +514,94 @@
   }
 }
 
+.container-clube-uol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 0px 10px;
+  height: 5rem;
+  background: #fff;
+  border-radius: 5px;
+}
+
 .container-img-clube-uol {
-  width: 103px;
+  width: 100px;
 
   >img {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
   }
+}
+
+.paragraph-clube-uol {
+  margin-bottom: 0px;
+}
+
+.span-clube-uol {
+  color: #03A9F4;
+}
+
+.container-types-tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 59rem;
+  user-select: none;
+}
+
+.container-tickets {
+  padding: 19px 10px;
+  background: rgb(33 38 45);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-ticket-name-price {
+  display: flex;
+  gap: 8px;
+}
+
+.container-ticket {
+  width: 45px;
+}
+
+.container-paragraph-and-price {
+  display: flex;
+  flex-direction: column;
+  line-height: 20px;
+  color: #fff;
+}
+
+.container-more-less {
+  display: flex;
+  gap: 10px;
+  color: #fff;
+}
+
+.container-less-svg,
+.container-more-svg {
+  width: 25px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  >svg {
+    width: 19px;
+    pointer-events: none;
+  }
+}
+
+.container-less-svg {
+  background: rgb(63 71 93);
+}
+
+.container-more-svg {
+  background: rgb(152, 170, 236);
 }
 
 .container-back-skip {
@@ -509,13 +631,15 @@
   /* solid rgb(152, 170, 236) color active */
 }
 
-.container-all-tickets-svg {
+.container-all-tickets-svg-1,
+.container-all-tickets-svg-2 {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50rem;
   height: 100%;
 }
+
 
 .container-ticket-svg {
   width: 3rem;
@@ -541,4 +665,110 @@
 .button-skip:hover {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     linear-gradient(to right, rgb(255, 206, 0), rgb(255, 136, 0));
+}
+
+.container-warn-not-all-seats-were-selected {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgb(21 24 25 / 63%);
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-warn {
+  display: flex;
+  flex-direction: column;
+  width: 19rem;
+  height: 23rem;
+}
+
+.container-img-background-dark {
+  background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1713697148/dark_cfnstp.jpg);
+  background-size: contain;
+  position: relative;
+  width: 100%;
+  height: 45%;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-cut-img {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  background-color: transparent;
+  background-image: -webkit-radial-gradient(50% -1px, circle cover, transparent 27px, rgb(4, 18, 24) 0px);
+}
+
+.container-svg-warn {
+  position: absolute;
+  left: 128px;
+  top: 25px;
+
+  >svg {
+    display: block;
+  }
+}
+
+.container-svg-exit-warning {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  width: 25px;
+  cursor: pointer;
+}
+
+.container-spans-and-warn-button-continue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 16px 16px;
+  background: rgb(4, 18, 24);
+}
+
+.container-span-ops-and-warn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.span-ops {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  color: rgb(255, 255, 255);
+}
+
+.span-warn {
+  font-size: 13px;
+}
+
+.button-continue {
+  color: rgb(33, 38, 45);
+  background-image: linear-gradient(to right, rgb(255, 206, 0), rgb(255, 136, 0));
+  border-radius: 8px;
+  padding: 9px 30px;
+  width: 9rem;
+  font-weight: 700;
+  border: none;
+  font-size: 13px;
+}
+
+.button-continue:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    linear-gradient(to right, rgb(255, 206, 0), rgb(255, 136, 0));
+}
+
+.svg-warning {
+  display: none;
 }
