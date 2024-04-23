@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+<h1 class="h3 mb-4 text-gray-800">Form Of Payment</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <!-- Circle Buttons -->
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <th>Form Name</th>
+            <th>Price</th>
+            <th>Movie Id</th>
+            <th>Cinema Id</th>
+          </thead>
+          <tbody>
+            <%@form_of_payments.each do | fp | %>
+              <tr>
+                <td><%= fp.form_name %></td>
+                <td><%= fp.price %></td>
+                <td><%= fp.movie_id %></td>
+                <td><%= fp.cinema_id %></td>
+                <td>
+                  <%= link_to "Details", admin_form_of_payment_path(fp), class: 'btn btn-primary' %>
+                  <% if policy(FormOfPayment).new? %>
+                    <%= link_to "Edit", edit_admin_form_of_payment_path(fp), "data-controller": "admin-modal", class: 'btn btn-secondary' %>
+                  <% else %>
+                    <%= link_to "Edit", edit_admin_form_of_payment_path(fp), class: 'btn btn-secondary' %>
+                  <% end %>
+                  <%= link_to "Delete", admin_form_of_payments_path(fp), class: 'btn btn-danger', method: :delete,  data: { turbo_method: :delete, turbo_confirm: 'Deseja realmente excluir?' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% if policy(FormOfPayment).new? %>
+          <%= link_to "New movie_theater", new_admin_form_of_payment_path, "data-controller": "admin-modal", class: 'btn btn-primary' %>
+        <% else %>
+          <%= link_to "New movie_theater", new_admin_form_of_payment_path, class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

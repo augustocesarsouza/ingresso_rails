@@ -16,6 +16,7 @@ const containerButtonSkip = document.querySelector(".container-button-skip");
 
 const spanTypesTickets = document.querySelector(".span-types-tickets");
 const spanChoseOfSeats = document.querySelector('.span-chose-ofseats');
+const spanBomboniere = document.querySelector('.span-bomboniere');
 
 const containerOrderSummary = document.querySelector('.container-order-summary');
 const containerSvgBomboniere = document.querySelector('.div-svg-bomboniere');
@@ -47,6 +48,16 @@ const containerTypesTickets = document.querySelector('.container-types-tickets')
 
 if(containerTypesTickets){
   containerTypesTickets.remove();
+}
+
+if(spanBomboniere){
+  spanBomboniere.remove();
+}
+
+const containerBomboniere = document.querySelector('.container-bomboniere');
+
+if(containerBomboniere){
+  containerBomboniere.remove();
 }
 
 let isReleasedForHoverMouseButtonBack = false;
@@ -447,6 +458,18 @@ if(containerSvgTickets){
       containerTicketsSvg1.remove();
     }
 
+    if(spanBomboniere){
+      spanBomboniere.remove();
+    }
+
+    if(whatButtonClickedSeatsTickets === "bomboniere"){
+      if(containerBomboniere){
+        containerBomboniere.remove();
+      }
+  
+      containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
+    }
+
     document.body.style.height = "100vh";
     containerOrderSummary.style.height = "570px";
     containerChoseSeatNumberResumeOrderMain.style.height = "100%";
@@ -520,6 +543,21 @@ if(containerSvgChoseOfSeats){
     varivelHelpForSumIfAlreadyTicketChose = 0;
     spanTotalValueOrderSummary.textContent = `R$ 0,00`;
 
+    if(whatButtonClickedSeatsTickets === "bomboniere"){
+      containerLineWhite2.style.background =  "rgb(52, 60, 70)";
+      containerSvgBomboniere.style.background = "transparent";
+      containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+      containerSvgBomboniere.style.borderColor = "rgb(52, 60, 70)";
+
+      if(containerBomboniere){
+        containerBomboniere.remove();
+      }
+
+      if(spanBomboniere){
+        spanBomboniere.remove();
+      }
+    }
+
     whatButtonClickedSeatsTickets = "seats";
     containerOrderSummary.style.height = "97%";
     document.body.style.height = "100%";
@@ -578,6 +616,8 @@ if(containerSvgChoseOfSeats){
 
 let containerBodyChoseSeatsAndMore = document.querySelector(".container-body-chose-seats-and-more");
 let svgWarn = document.querySelector(".svg-warning");
+
+let controllerQuantityProductClickedBomboniere = 0;
 
 if(containerSvgBomboniere){
   containerSvgBomboniere.addEventListener("click", () => {
@@ -680,6 +720,25 @@ if(containerSvgBomboniere){
       });
     }else {
       console.log("foi tudo seleciondado para passar para pipocas");
+      whatButtonClickedSeatsTickets = "bomboniere"
+
+      if(containerTypesTickets){
+        containerTypesTickets.remove();
+      }
+
+      if(containerSvgPayment2){
+        containerSvgPayment2.remove();
+      }
+
+      if(spanTypesTickets){
+        spanTypesTickets.remove();
+      }
+      
+      containerSeatsTypeTicketsBombonierePayment.appendChild(spanBomboniere);
+      containerChoseSeatNumberResumeOrderMain.insertBefore(containerBomboniere, containerChoseSeatNumberResumeOrderMain.firstChild);
+      
+      containerOrderSummary.style.height = "auto";
+      containerOrderSummary.style.marginBottom = "0px";
       
       containerSvgBomboniere.style.borderColor = "transparent";
       containerSvgBomboniere.style.background = "rgb(49, 85, 232)";
@@ -696,25 +755,27 @@ if(containerSvgBomboniere){
   });
 }
 
-buttonBack.addEventListener("mouseover", () => {
-  if(buttonBack.style.color === "rgb(102, 102, 102)"){
-    isReleasedForHoverMouseButtonBack = false;
-  }
-
-  if(isReleasedForHoverMouseButtonBack){
-    buttonBack.style.borderColor = "rgb(164, 179, 235)";
-    buttonBack.style.color = "rgb(164, 179, 235)";
-  }
-});
-
-buttonBack.addEventListener("mouseout", () => {
-  if(isReleasedForHoverMouseButtonBack){
-    buttonBack.style.borderColor = "rgb(152, 170, 236)";
-    buttonBack.style.color = "rgb(152, 170, 236)";
-  }
-});
-
-buttonBack.addEventListener("click", () => {
-  if(isReleasedForHoverMouseButtonBack){
-  }
-});
+if(buttonBack){
+  buttonBack.addEventListener("mouseover", () => {
+    if(buttonBack.style.color === "rgb(102, 102, 102)"){
+      isReleasedForHoverMouseButtonBack = false;
+    }
+  
+    if(isReleasedForHoverMouseButtonBack){
+      buttonBack.style.borderColor = "rgb(164, 179, 235)";
+      buttonBack.style.color = "rgb(164, 179, 235)";
+    }
+  });
+  
+  buttonBack.addEventListener("mouseout", () => {
+    if(isReleasedForHoverMouseButtonBack){
+      buttonBack.style.borderColor = "rgb(152, 170, 236)";
+      buttonBack.style.color = "rgb(152, 170, 236)";
+    }
+  });
+  
+  buttonBack.addEventListener("click", () => {
+    if(isReleasedForHoverMouseButtonBack){
+    }
+  });
+}

@@ -39,4 +39,8 @@ en:
       new?: 'You can only register a cinema_movie if you have a region and movie and cinema created.'
       update?: 'You cannot edit this post!'
       create?: 'You cannot create posts!'
+    form_of_payment_policy:
+      new?: 'You can only register a form_of_payment if you have a region and movie and cinema created.'
+      update?: 'You cannot edit this post!'
+      create?: 'You cannot create posts!'
   

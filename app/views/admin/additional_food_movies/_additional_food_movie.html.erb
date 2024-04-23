@@ -1,0 +1,13 @@
+<div class="card shadow mb-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Title: <%= additional_food_movie.title %></h5>
+      <p class="card-text">Price: <%= additional_food_movie.price %></p>
+    </div>
+    <div class="col-md-2">
+      <%# <img src="https://res.cloudinary.com/dyqsqg7pk/image/upload/v1709573390/lbdtdhqjudc0fkhyy5v5.webp" class="img-fluid" alt="..."> %>
+      <%# cl_image_tag(movie.img_main.key, width: 700, height: 300, crop: :scale) %>
+      <%= image_tag additional_food_movie.image_main, class: "img-fluid" %>
+    </div>
+  </div>
+</div>

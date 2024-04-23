@@ -6,105 +6,27 @@
     <p class="paragraph-clube-uol">Assinante UOL tem isenção de taxa de serviço em até 2 ingressos por mês. <span class="span-clube-uol">Saiba mais</span></p>
   </div>
   <div class="container-types-tickets">
-    <div class="container-tickets">
-      <div class="container-ticket-name-price">
-        <div class="container-ticket">
-          <%= render "chose_seats_and_more_partial/svg_tickets_full" %>
+    <% @form_of_payments.each do | dp | %>
+      <div class="container-tickets">
+        <div class="container-ticket-name-price">
+          <div class="container-ticket">
+            <%= render "chose_seats_and_more_partial/svg_tickets_full" %>
+          </div>
+          <div class="container-paragraph-and-price">
+            <span class="span-type-payment"><%= dp.form_name %></span>
+            <span>R$ <%= dp.price %></span>
+          </div>
         </div>
-        <div class="container-paragraph-and-price">
-          <span class="span-type-payment">Inteira</span>
-          <span>R$ 38,76</span>
-        </div>
-      </div>
-      <div class="container-more-less">
-        <div class="container-less-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_less" %>
-        </div>
-        <span class="count-number-tickets">0</span>
-        <div class="container-more-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_more" %>
-        </div>
-      </div>
-    </div>
-    <div class="container-tickets">
-      <div class="container-ticket-name-price">
-        <div class="container-ticket">
-          <%= render "chose_seats_and_more_partial/svg_tickets_full" %>
-        </div>
-        <div class="container-paragraph-and-price">
-          <span class="span-type-payment">Meia ELO</span>
-          <span>R$ 21,76</span>
+        <div class="container-more-less">
+          <div class="container-less-svg">
+            <%= render "chose_seats_and_more_svg_partial/svg_less" %>
+          </div>
+          <span class="count-number-tickets">0</span>
+          <div class="container-more-svg">
+            <%= render "chose_seats_and_more_svg_partial/svg_more" %>
+          </div>
         </div>
       </div>
-      <div class="container-more-less">
-        <div class="container-less-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_less" %>
-        </div>
-        <span class="count-number-tickets">0</span>
-        <div class="container-more-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_more" %>
-        </div>
-      </div>
-    </div>
-    <div class="container-tickets">
-      <div class="container-ticket-name-price">
-        <div class="container-ticket">
-          <%= render "chose_seats_and_more_svg_partial/svg_half" %>
-        </div>
-        <div class="container-paragraph-and-price">
-          <span class="span-type-payment">Meia</span>
-          <span>R$ 28,16</span>
-        </div>
-      </div>
-      <div class="container-more-less">
-        <div class="container-less-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_less" %>
-        </div>
-        <span class="count-number-tickets">0</span>
-        <div class="container-more-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_more" %>
-        </div>
-      </div>
-    </div>
-    <div class="container-tickets">
-      <div class="container-ticket-name-price">
-        <div class="container-ticket">
-          <%= render "chose_seats_and_more_partial/svg_tickets_full" %>
-        </div>
-        <div class="container-paragraph-and-price">
-          <span class="span-type-payment">Meia Bradesco</span>
-          <span>R$ 28,16</span>
-        </div>
-      </div>
-      <div class="container-more-less">
-        <div class="container-less-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_less" %>
-        </div>
-        <span class="count-number-tickets">0</span>
-        <div class="container-more-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_more" %>
-        </div>
-      </div>
-    </div>
-    <div class="container-tickets">
-      <div class="container-ticket-name-price">
-        <div class="container-ticket">
-          <%= render "chose_seats_and_more_partial/svg_tickets_full" %>
-        </div>
-        <div class="container-paragraph-and-price">
-          <span class="span-type-payment">Meia Vivo Valoriza</span>
-          <span>R$ 28,16</span>
-        </div>
-      </div>
-      <div class="container-more-less">
-        <div class="container-less-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_less" %>
-        </div>
-        <span class="count-number-tickets">0</span>
-        <div class="container-more-svg">
-          <%= render "chose_seats_and_more_svg_partial/svg_more" %>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
