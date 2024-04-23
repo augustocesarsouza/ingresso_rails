@@ -22,5 +22,6 @@ Rails.application.routes.draw do
     resources :cinemas
     resources :cinema_movies
     resources :form_of_payments
+    resources :additional_food_movies
   end
 end
