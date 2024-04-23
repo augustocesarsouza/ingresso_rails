@@ -604,6 +604,127 @@
   background: rgb(152, 170, 236);
 }
 
+.container-bomboniere {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 59rem;
+  user-select: none;
+  background: rgb(33 38 45);
+}
+
+.container-info-top {
+  color: #fff;
+}
+
+.container-all-bomboniere-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  padding: 0px 13px;
+}
+
+.container-item-bombienere {
+  display: flex;
+  height: 8rem;
+}
+
+.container-item-img {
+  width: 112px;
+  /* height: 120px; */
+  background: rgb(152, 170, 236);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+  >img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.container-item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: rgb(51, 51, 51);
+  width: 63%;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 0px 8px;
+}
+
+.span-title-1 {
+  color: #fff;
+  font-weight: 600;
+}
+
+.container-item-info-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.span-title-2 {
+  color: rgb(153, 153, 153);
+  font-size: 12px;
+}
+
+.container-price-fee-button-more-and-less {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.container-price-fee {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.span-price {
+  color: rgb(255, 153, 0);
+  font-weight: 600;
+}
+
+.span-fee {
+  font-size: 10px;
+  color: rgb(153, 153, 153);
+}
+
+.container-less-more-chose-bomboniere {
+  display: flex;
+  gap: 10px;
+  color: #fff;
+}
+
+.container-less-svg-chose-bomboniere,
+.container-more-svg-chose-bomboniere {
+  width: 25px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  >svg {
+    width: 19px;
+    pointer-events: none;
+  }
+}
+
+.container-more-svg-chose-bomboniere {
+  background: rgb(152, 170, 236);
+  cursor: pointer;
+}
+
+.container-less-svg-chose-bomboniere {
+  background: rgb(63 71 93);
+  cursor: auto;
+}
+
 .container-back-skip {
   display: flex;
   align-items: center;

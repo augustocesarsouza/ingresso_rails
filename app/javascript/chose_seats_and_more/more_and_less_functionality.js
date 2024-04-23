@@ -49,6 +49,12 @@ if(containerTypesTickets){
   containerTypesTickets.remove();
 }
 
+const containerBomboniere = document.querySelector('.container-bomboniere');
+
+if(containerBomboniere){
+  containerBomboniere.remove();
+}
+
 let isReleasedForHoverMouseButtonBack = false;
 let containerAllTicketsOfTypeTicketsSelected = null;
 
@@ -447,6 +453,14 @@ if(containerSvgTickets){
       containerTicketsSvg1.remove();
     }
 
+    if(whatButtonClickedSeatsTickets === "bomboniere"){
+      if(containerBomboniere){
+        containerBomboniere.remove();
+      }
+  
+      containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
+    }
+
     document.body.style.height = "100vh";
     containerOrderSummary.style.height = "570px";
     containerChoseSeatNumberResumeOrderMain.style.height = "100%";
@@ -680,6 +694,18 @@ if(containerSvgBomboniere){
       });
     }else {
       console.log("foi tudo seleciondado para passar para pipocas");
+      whatButtonClickedSeatsTickets = "bomboniere"
+
+      if(containerTypesTickets){
+        containerTypesTickets.remove();
+      }
+
+      if(containerSvgPayment2){
+        containerSvgPayment2.remove();
+      }
+
+      containerChoseSeatNumberResumeOrderMain.insertBefore(containerBomboniere, containerChoseSeatNumberResumeOrderMain.firstChild);
+
       
       containerSvgBomboniere.style.borderColor = "transparent";
       containerSvgBomboniere.style.background = "rgb(49, 85, 232)";
