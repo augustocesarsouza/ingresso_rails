@@ -1,7 +1,7 @@
 //click in chose seats / tickets / bomboniere / payment
 
 const containerSvgTickets = document.querySelector('.div-svg-tickets');
-const spanItensValuesSeats = document.querySelector(".span-itens-values-seats");
+let spanItensValuesSeats = document.querySelector(".span-itens-values-seats");
 const containerLineWhite1 = document.querySelector(".line-white-1");
 const containerLineWhite2 = document.querySelector(".line-white-2");
 
@@ -74,7 +74,7 @@ const functionClickMoreInteiro = (e) => {
   let containerMoreLess = e.srcElement.parentElement.parentElement;
 
   const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
-  
+
   if(spanNumberTickets && varivelHelpForSumIfAlreadyTicketChose < Number(spanItensValuesSeats.textContent)){
     spanNumberTickets.textContent = Number(spanNumberTickets.textContent) + 1;
 
@@ -453,6 +453,7 @@ let containerTicketsSvg1 = null;
 if(containerSvgTickets){
   containerSvgTickets.addEventListener("click", () => {
     containerTicketsSvg1 = document.querySelector(".container-all-tickets-svg-1");
+    const spanItensValuesSeatsAtt = document.querySelector(".span-itens-values-seats");
 
     if(containerTicketsSvg1){
       containerTicketsSvg1.remove();
@@ -470,10 +471,14 @@ if(containerSvgTickets){
       containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
     }
 
-    document.body.style.height = "100vh";
-    containerOrderSummary.style.height = "570px";
-    containerChoseSeatNumberResumeOrderMain.style.height = "100%";
-    whatButtonClickedSeatsTickets = "tickets";
+    if(Number(spanItensValuesSeatsAtt.textContent) > 0){
+      document.body.style.height = "100vh";
+      containerOrderSummary.style.height = "570px";
+      containerChoseSeatNumberResumeOrderMain.style.height = "100%";
+      whatButtonClickedSeatsTickets = "tickets";
+    }
+
+    spanItensValuesSeats = spanItensValuesSeatsAtt;
 
     if(containerSvgPayment2 && containerBackSkipMain){
       containerBackSkipMain.insertBefore(containerSvgPayment2, containerButtonSkip);
@@ -617,8 +622,6 @@ if(containerSvgChoseOfSeats){
 let containerBodyChoseSeatsAndMore = document.querySelector(".container-body-chose-seats-and-more");
 let svgWarn = document.querySelector(".svg-warning");
 
-let controllerQuantityProductClickedBomboniere = 0;
-
 if(containerSvgBomboniere){
   containerSvgBomboniere.addEventListener("click", () => {
     let sumQuantityPaymentSelected = 0;
@@ -749,11 +752,210 @@ if(containerSvgBomboniere){
       containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
   
       containerLineWhite2.style.background =  "rgb(152, 170, 236)";
+
+      eventosMoreAndLessBomboniere();
     }
   
     functionRemoveEventListernerContainerMoreAndLess();
   });
 }
+
+let containerMoreSvgBomboniereAll = null;
+let containerLessSvgBomboniereAll = null;
+let controllerQuantityProductClickedBomboniere = 0;
+let containerLessMoreBomboniere = document.querySelectorAll(".container-less-more-chose-bomboniere");
+
+const clickMoreBomboniere = (e) => {
+  containerLessMoreBomboniere = document.querySelectorAll(".container-less-more-chose-bomboniere");
+  if(controllerQuantityProductClickedBomboniere < 10){
+    controllerQuantityProductClickedBomboniere++;
+
+    const containerMoreLess = e.srcElement.parentElement.parentElement;
+    let spanValueBomboniere = containerMoreLess.querySelector(".count-number-tickets-chose-bomboniere");
+    spanValueBomboniere.textContent = Number(spanValueBomboniere.textContent) + 1;
+
+    let containerLess = containerMoreLess.querySelector(".container-less-svg-chose-bomboniere");
+    containerLess.style.background = "rgb(152, 170, 236)";
+    containerLess.style.cursor = "pointer";
+  }
+
+  if(controllerQuantityProductClickedBomboniere === 10){
+    containerMoreSvgBomboniereAll.forEach((elMore) => {
+      elMore.style.background = "rgb(63 71 93)";
+      elMore.style.cursor = "auto";
+    });
+  }
+}
+
+const clickLessBomboniere = (e) => {
+  containerLessMoreBomboniere = document.querySelectorAll(".container-less-more-chose-bomboniere");
+  if(controllerQuantityProductClickedBomboniere > 0){
+    controllerQuantityProductClickedBomboniere--;
+
+    if(controllerQuantityProductClickedBomboniere < 10){
+      containerMoreSvgBomboniereAll.forEach((elMore) => {
+        elMore.style.background = "rgb(152, 170, 236)";
+        elMore.style.cursor = "pointer";
+      });
+    }
+  
+    if(controllerQuantityProductClickedBomboniere === 0){
+      containerLessSvgBomboniereAll.forEach((elLess) => {
+        elLess.style.background = "rgb(63 71 93)";
+        elLess.style.cursor = "auto";
+      });
+    }
+
+    const containerMoreLess = e.srcElement.parentElement.parentElement;
+    let spanValueBomboniere = containerMoreLess.querySelector(".count-number-tickets-chose-bomboniere");
+  
+    let containerLess = containerMoreLess.querySelector(".container-less-svg-chose-bomboniere"); 
+
+    if(Number(spanValueBomboniere.textContent) > 0){
+      spanValueBomboniere.textContent = Number(spanValueBomboniere.textContent) - 1;
+      containerLess.style.background = "rgb(152, 170, 236)";
+      containerLess.style.cursor = "pointer";
+    }
+
+    if(Number(spanValueBomboniere.textContent) === 0){
+      containerLess.style.background = "rgb(63 71 93)";
+      containerLess.style.cursor = "auto";
+    }
+  }
+}
+
+const mouseOverMoreBomboniere = (e) => {
+  const containerMoreLess = e.srcElement.parentElement.parentElement;
+  const containerMoreOver = containerMoreLess.querySelector(".container-more-svg-chose-bomboniere");
+
+  if(controllerQuantityProductClickedBomboniere < 10){
+    if(containerMoreOver){
+      containerMoreOver.style.background = "rgb(117 131 182)";
+    }
+  }
+}
+
+const mouseOutMoreBomboniere = (e) => {
+  const containerMoreLess = e.srcElement.parentElement.parentElement;
+  const containerMoreOver = containerMoreLess.querySelector(".container-more-svg-chose-bomboniere");
+
+  if(controllerQuantityProductClickedBomboniere < 10){
+    if(containerMoreOver){
+      containerMoreOver.style.background = "rgb(152, 170, 236)";
+    }
+  }
+}
+
+const mouseOverLessBomboniere = (e) => {
+  const containerMoreLess = e.srcElement.parentElement.parentElement;
+  const containerLess = containerMoreLess.querySelector(".container-less-svg-chose-bomboniere");
+  let spanValueBomboniere = containerMoreLess.querySelector(".count-number-tickets-chose-bomboniere");
+
+  if(Number(spanValueBomboniere.textContent) > 0){
+    if(containerLess){
+      containerLess.style.background = "rgb(117 131 182)";
+    }
+  }
+}
+
+const mouseOutLessBomboniere = (e) => {
+  const containerMoreLess = e.srcElement.parentElement.parentElement;
+  const containerLess = containerMoreLess.querySelector(".container-less-svg-chose-bomboniere");
+  let spanValueBomboniere = containerMoreLess.querySelector(".count-number-tickets-chose-bomboniere");
+
+  if(Number(spanValueBomboniere.textContent) > 0){
+    if(containerLess){
+      containerLess.style.background = "rgb(152, 170, 236)";
+    }
+  }
+}
+
+const addEventListenerContainerMoreBomboniere = (containerMoreSvgBomboniereAll) => {
+  containerMoreSvgBomboniereAll.forEach((containerMoreBomboniereEach) => {
+    containerMoreBomboniereEach.addEventListener("click", clickMoreBomboniere);
+    containerMoreBomboniereEach.addEventListener("mouseover", mouseOverMoreBomboniere);
+    containerMoreBomboniereEach.addEventListener("mouseout", mouseOutMoreBomboniere);
+  });
+}
+
+const removeEventListenerContainerMoreBomboniere = (containerMoreSvgBomboniereAll) => {
+  containerMoreSvgBomboniereAll.forEach((containerMoreBomboniereEach) => {
+    containerMoreBomboniereEach.removeEventListener("click", clickMoreBomboniere);
+    containerMoreBomboniereEach.removeEventListener("mouseover", mouseOverMoreBomboniere);
+    containerMoreBomboniereEach.removeEventListener("mouseout", mouseOutMoreBomboniere);
+  });
+}
+
+const addEventListenerContainerLessBomboniere = (containerLessSvgBomboniereAll) => {
+  containerLessSvgBomboniereAll.forEach((containerLessBomboniereEach) => {
+    containerLessBomboniereEach.addEventListener("click", clickLessBomboniere);
+    containerLessBomboniereEach.addEventListener("mouseover", mouseOverLessBomboniere);
+    containerLessBomboniereEach.addEventListener("mouseout", mouseOutLessBomboniere);
+  });
+}
+
+const removeEventListenerContainerLessBomboniere = (containerLessSvgBomboniereAll) => {
+  containerLessSvgBomboniereAll.forEach((containerLessBomboniereEach) => {
+    containerLessBomboniereEach.removeEventListener("click", clickLessBomboniere);
+    containerLessBomboniereEach.removeEventListener("mouseover", mouseOverLessBomboniere);
+    containerLessBomboniereEach.removeEventListener("mouseout", mouseOutLessBomboniere);
+  });
+}
+
+const eventosMoreAndLessBomboniere = () => {
+  containerLessMoreBomboniere = document.querySelectorAll(".container-less-more-chose-bomboniere");
+  containerMoreSvgBomboniereAll = document.querySelectorAll(".container-more-svg-chose-bomboniere");
+  containerLessSvgBomboniereAll = document.querySelectorAll(".container-less-svg-chose-bomboniere");
+  
+  addEventListenerContainerMoreBomboniere(containerMoreSvgBomboniereAll);
+  addEventListenerContainerLessBomboniere(containerLessSvgBomboniereAll);
+}
+
+const eventClickTickets = () => {
+  controllerQuantityProductClickedBomboniere = 0
+  console.log(containerLessMoreBomboniere); // aqui ele já vai está atualizado
+  // a ideia é pegar se for o click no "SEATS" zerar todos os valor que foi selecionado pegar todos os
+  // containerMore e deixar ele com cursor e a cor que da para clicar em mais e os 
+  // containerLess desativo simples assim
+
+  if(containerMoreSvgBomboniereAll){
+    removeEventListenerContainerMoreBomboniere(containerMoreSvgBomboniereAll);
+  }
+
+  if(containerLessSvgBomboniereAll){
+    removeEventListenerContainerLessBomboniere(containerLessSvgBomboniereAll);
+  }
+}
+
+const eventClickSeats = () => {
+  if(containerMoreSvgBomboniereAll){
+    removeEventListenerContainerMoreBomboniere(containerMoreSvgBomboniereAll);
+  }
+
+  if(containerLessSvgBomboniereAll){
+    removeEventListenerContainerLessBomboniere(containerLessSvgBomboniereAll);
+  }
+}
+
+if(window.location.pathname === "/chose_seats_and_more"){
+  if(containerSvgTickets){
+    containerSvgTickets.addEventListener("click", eventClickTickets);
+  }
+  
+  if(containerSvgChoseOfSeats){
+    containerSvgChoseOfSeats.addEventListener("click", eventClickSeats);
+  }
+};
+
+if(window.location.pathname !== "/chose_seats_and_more"){
+  if(containerSvgTickets){
+    containerSvgTickets.removeEventListener("click", eventClickTickets);
+  }
+  
+  if(containerSvgChoseOfSeats){
+    containerSvgChoseOfSeats.removeEventListener("click", eventClickSeats);
+  }
+};
 
 if(buttonBack){
   buttonBack.addEventListener("mouseover", () => {

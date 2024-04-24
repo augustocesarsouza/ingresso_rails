@@ -1,0 +1,38 @@
+<div class="container-bomboniere">
+  <div class="container-info-top">
+    <span>Que tal uma pipoca, bebida ou doce pra acompanhar o filme?</span>
+  </div>
+  <div class="container-default">
+    <button>Padrão</button>
+  </div>
+  <div class="container-all-bomboniere-items">
+    <% @additional_food_movies.each do | afm | %>
+      <div class="container-item-bombienere">
+        <div class="container-item-img">
+          <%= image_tag afm.image_main %>
+        </div>
+        <div class="container-item-info">
+          <span class="span-title-1"><%= afm.title %></span>
+          <div class="container-item-info-inner">
+            <span class="span-title-2"><%= afm.title %></span>
+            <div class="container-price-fee-button-more-and-less">
+              <div class="container-price-fee">
+                <span class="span-price">R$ <%= afm.price %></span>
+                <span class="span-fee">+ taxa R$ <%= afm.fee %></span>
+              </div>
+              <div class="container-less-more-chose-bomboniere">
+                <div class="container-less-svg-chose-bomboniere">
+                  <%= render "chose_seats_and_more_svg_partial/svg_less" %>
+                </div>
+                <span class="count-number-tickets-chose-bomboniere">0</span>
+                <div class="container-more-svg-chose-bomboniere">
+                  <%= render "chose_seats_and_more_svg_partial/svg_more" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
