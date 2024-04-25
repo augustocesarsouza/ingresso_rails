@@ -5,14 +5,39 @@
 .container-user-body-name-user-chose-seats-and-more {
   justify-content: flex-end;
   color: #fff;
+
 }
 
-.div-svg-chose-seats-and-more {
+.container-right {
+  width: 19rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  user-select: none;
+}
+
+.container-svg-user-login-logout {
+  display: flex;
+  align-items: center;
+  width: 9rem;
+  gap: 10px;
+  position: relative;
+
+  >span {
+    font-size: 13px;
+  }
+}
+
+.div-svg-head-user-chose {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 5px;
   /* width: 100%; */
+  cursor: pointer;
+  z-index: 10;
 
   >svg {
     fill: rgb(152, 170, 236);
@@ -20,6 +45,75 @@
   }
 }
 
-.span-service-chose-seats-and-more {
+.container-login-logout-floating {
+  position: absolute;
+  left: 97px;
+  top: 44px;
+  width: 11rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid rgb(152, 170, 236);
+  border-radius: 5px;
+  padding: 10px 10px;
+  gap: 10px;
+  background: rgb(4, 18, 24);
+  user-select: text;
+}
+
+.container-login-logout-floating::before {
+  content: "";
+  position: absolute;
+  top: -26px;
+  left: 15px;
+  border-width: 13px;
+  border-style: solid;
+  border-color: transparent transparent rgb(4, 18, 24);
+  border-image: initial;
+  z-index: 2;
+}
+
+.container-login-logout-floating::after {
+  content: "";
+  position: absolute;
+  top: -29px;
+  left: 14px;
+  border-width: 14px;
+  border-style: solid;
+  border-color: transparent transparent rgb(152, 170, 236);
+  border-image: initial;
+}
+
+.span-hello-guest {
+  color: rgb(122 137 152);
   font-size: 15px;
+  text-align: center;
+}
+
+.span-login-register {
+  font-size: 15px;
+  color: rgb(152, 170, 236);
+  cursor: pointer;
+}
+
+.span-login-register:hover {
+  color: rgb(105 118 164);
+}
+
+.span-service-user {
+  font-size: 15px;
+}
+
+.div-svg-question-mark {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  /* width: 100%; */
+  cursor: pointer;
+
+  >svg {
+    fill: rgb(152, 170, 236);
+    width: 25px;
+  }
 }

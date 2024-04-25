@@ -6,23 +6,25 @@
         <%= render "chose_seats_and_more_svg_partial/svg_trash" %>
       </div>
     </div>
-    <div class="container-body-order-sumarry">
-      <div class="container-img-banner-movie">
-        <%= image_tag @movie.image_main, class: "img-banner-movie-order-sumarry", alt: @movie.title %>
-      </div>
-      <div class="container-info-movie-order-sumarry">
-        <div class="container-movie-title-movierating">
-          <span class="span-title-order-sumarry"><%= @movie.title %></span>
-          <div class="container-movierating">
-            <span><%= @movie.movie_rating %></span>
+    <% if @movie %>
+      <div class="container-body-order-sumarry">
+        <div class="container-img-banner-movie">
+          <%= image_tag @movie.image_main, class: "img-banner-movie-order-sumarry", alt: @movie.title %>
+        </div>
+        <div class="container-info-movie-order-sumarry">
+          <div class="container-movie-title-movierating">
+            <span class="span-title-order-sumarry"><%= @movie.title %></span>
+            <div class="container-movierating">
+              <span><%= @movie.movie_rating %></span>
+            </div>
+          </div>
+          <div class="container-region-room">
+            <span class="span-name-cinema"></span>
+            <span class="span-room">SALA 1</span>
           </div>
         </div>
-        <div class="container-region-room">
-          <span class="span-name-cinema"></span>
-          <span class="span-room">SALA 1</span>
-        </div>
       </div>
-    </div>
+    <% end %>
   </div>
   <div class="container-payment-order-sumarry">
     <div class="container-items-order-sumarry">
