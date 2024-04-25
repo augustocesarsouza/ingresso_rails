@@ -480,10 +480,6 @@
   word-break: break-all;
 }
 
-.span-tickets-name {
-  font-size: 14px;
-  font-weight: 600;
-}
 
 .container-tickets-payment-price-all {
   display: flex;
@@ -493,7 +489,30 @@
   border-top: 1px solid rgb(102, 102, 102);
 }
 
+.span-tickets-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .container-tickets-payment-price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.container-product-bomboniere {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  border-top: 1px solid rgb(102, 102, 102);
+}
+
+.span-product-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.container-to-product-name-and-price-total {
   display: flex;
   justify-content: space-between;
   font-size: 14px;

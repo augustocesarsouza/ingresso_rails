@@ -763,16 +763,179 @@ if(containerSvgBomboniere){
 let containerMoreSvgBomboniereAll = null;
 let containerLessSvgBomboniereAll = null;
 let controllerQuantityProductClickedBomboniere = 0;
+let arrayProductBomboniere = [];
 let containerLessMoreBomboniere = document.querySelectorAll(".container-less-more-chose-bomboniere");
+
+const deleteItemProductArray = (arrayProductBomboniere, nameProductDelete) => {
+  if(arrayProductBomboniere.some((el) => el.name === nameProductDelete)){
+    for (let i = 0; i < arrayProductBomboniere.length; i++) {
+      const element = arrayProductBomboniere[i];
+
+      if(element.name === nameProductDelete){
+        element.quantity =  element.quantity - 1;
+
+        if(element.quantity === 0){
+          arrayProductBomboniere.splice(i, 1);  
+        }else {
+          arrayProductBomboniere[i] = element;
+        }
+        break;
+      }
+    }
+  }
+
+  const containerProductBomboniereBefore = document.querySelector(".container-product-bomboniere");
+
+  if(containerProductBomboniereBefore){
+    containerProductBomboniereBefore.remove();
+  }
+
+  if(arrayProductBomboniere.length > 0){
+    let containerSeatsChosenAndTickets = document.querySelector(".container-seats-chosen-and-tickets");
+
+    const containerProductBomboniere = document.createElement('div');
+    containerProductBomboniere.classList.add("container-product-bomboniere");
+    const spanProduct = document.createElement('span');
+    spanProduct.textContent = "Produtos";
+    spanProduct.classList.add("span-product-name");
+
+    containerProductBomboniere.appendChild(spanProduct);
+
+    arrayProductBomboniere.forEach((elProduct) => {
+      const valueFinal = String(elProduct.priceTotal * elProduct.quantity);
+      let findIndexCommaTotal = valueFinal.indexOf(".");
+      let firstPartPriceTotal = valueFinal.slice(0, findIndexCommaTotal);
+      let secondPartPriceTotal = valueFinal.slice(findIndexCommaTotal + 1);
+
+      const newStringPriceWithDot = firstPartPriceTotal + "," + secondPartPriceTotal;
+      const valueRoundedIfStringForGreaterThan7 = newStringPriceWithDot.slice(0, 6);
+
+      const stringProductNameQuantity = `${elProduct.quantity}x ${elProduct.name}`;
+        const stringProductPriceTotal = `R$ ${valueRoundedIfStringForGreaterThan7}`;
+
+        const containerToProductNameAndPriceTotal = document.createElement("div");
+        containerToProductNameAndPriceTotal.classList.add("container-to-product-name-and-price-total");
+
+        const spanProducNameQuantity = document.createElement('span');
+        spanProducNameQuantity.textContent = stringProductNameQuantity;
+        spanProducNameQuantity.classList.add("span-product-name-quantity");
+
+        const spanProducPriceTotal = document.createElement('span');
+        spanProducPriceTotal.textContent = stringProductPriceTotal;
+        spanProducPriceTotal.classList.add("span-product-price-total");
+
+        containerToProductNameAndPriceTotal.appendChild(spanProducNameQuantity);
+        containerToProductNameAndPriceTotal.appendChild(spanProducPriceTotal);
+        containerProductBomboniere.appendChild(containerToProductNameAndPriceTotal);
+    });
+
+    if(containerSeatsChosenAndTickets && containerProductBomboniere){
+      containerSeatsChosenAndTickets.appendChild(containerProductBomboniere);
+    }
+  }
+}
 
 const clickMoreBomboniere = (e) => {
   containerLessMoreBomboniere = document.querySelectorAll(".container-less-more-chose-bomboniere");
+  let containerSeatsChosenAndTickets = document.querySelector(".container-seats-chosen-and-tickets");
+
   if(controllerQuantityProductClickedBomboniere < 10){
     controllerQuantityProductClickedBomboniere++;
 
     const containerMoreLess = e.srcElement.parentElement.parentElement;
-    let spanValueBomboniere = containerMoreLess.querySelector(".count-number-tickets-chose-bomboniere");
+    let spanValueBomboniere = containerMoreLess.querySelector(".count-number-chose-bomboniere");
     spanValueBomboniere.textContent = Number(spanValueBomboniere.textContent) + 1;
+
+    const containerItemInfoInner = e.srcElement.parentElement.parentElement.parentElement;
+    const spanTitle2 = containerItemInfoInner.querySelector(".span-title-2");
+    const spanPrice = containerItemInfoInner.querySelector(".span-price");
+    const spanFee = containerItemInfoInner.querySelector(".span-fee");
+    
+    let spanPriceNumber = spanPrice.textContent.slice(3);
+    let findIndexComma = spanPriceNumber.indexOf(",");
+    let firstPartPrice = spanPriceNumber.slice(0, findIndexComma);
+    let secondPartPrice = spanPriceNumber.slice(findIndexComma + 1);
+
+    const newStringPriceWithDot = firstPartPrice + "." + secondPartPrice;
+
+    let spanFeeSlice = spanFee.textContent.slice(10);
+    let findIndexCommaFee = spanFeeSlice.indexOf(",");
+    let firstPartFee = spanFeeSlice.slice(0, findIndexCommaFee);
+    let secondPartFee = spanFeeSlice.slice(findIndexCommaFee + 1);
+
+    const newStringFeeWithDot = firstPartFee + "." + secondPartFee;
+
+    const totalPriceFee = Number(newStringPriceWithDot) + Number(newStringFeeWithDot);
+    
+    let titleProduct = spanTitle2.textContent;
+
+    if(arrayProductBomboniere.some((el) => el.name === titleProduct)){
+      for (let i = 0; i < arrayProductBomboniere.length; i++) {
+        const element = arrayProductBomboniere[i];
+
+        if(element.name === titleProduct){
+          element.quantity =  element.quantity + 1;
+          arrayProductBomboniere[i] = element;
+          break;
+        }
+      }
+    }else {
+      const objProduct = {
+        name: titleProduct,
+        priceTotal: totalPriceFee,
+        quantity: 1
+      }
+
+      arrayProductBomboniere.push(objProduct);
+    }
+
+    const containerProductBomboniereBefore = document.querySelector(".container-product-bomboniere");
+
+    if(containerProductBomboniereBefore){
+      containerProductBomboniereBefore.remove();
+    }
+
+    const containerProductBomboniere = document.createElement('div');
+    containerProductBomboniere.classList.add("container-product-bomboniere");
+    const spanProduct = document.createElement('span');
+    spanProduct.textContent = "Produtos";
+    spanProduct.classList.add("span-product-name");
+
+    containerProductBomboniere.appendChild(spanProduct);
+    
+    if(arrayProductBomboniere.length > 0){
+      arrayProductBomboniere.forEach((elProduct) => {
+        const valueFinal = String(elProduct.priceTotal * elProduct.quantity);
+        let findIndexCommaTotal = valueFinal.indexOf(".");
+        let firstPartPriceTotal = valueFinal.slice(0, findIndexCommaTotal);
+        let secondPartPriceTotal = valueFinal.slice(findIndexCommaTotal + 1);
+
+        const newStringPriceWithDot = firstPartPriceTotal + "," + secondPartPriceTotal;
+        const valueRoundedIfStringForGreaterThan7 = newStringPriceWithDot.slice(0, 6);
+
+        const stringProductNameQuantity = `${elProduct.quantity}x ${elProduct.name}`;
+        const stringProductPriceTotal = `R$ ${valueRoundedIfStringForGreaterThan7}`;
+
+        const containerToProductNameAndPriceTotal = document.createElement("div");
+        containerToProductNameAndPriceTotal.classList.add("container-to-product-name-and-price-total");
+
+        const spanProducNameQuantity = document.createElement('span');
+        spanProducNameQuantity.textContent = stringProductNameQuantity;
+        spanProducNameQuantity.classList.add("span-product-name-quantity");
+
+        const spanProducPriceTotal = document.createElement('span');
+        spanProducPriceTotal.textContent = stringProductPriceTotal;
+        spanProducPriceTotal.classList.add("span-product-price-total");
+
+        containerToProductNameAndPriceTotal.appendChild(spanProducNameQuantity);
+        containerToProductNameAndPriceTotal.appendChild(spanProducPriceTotal);
+        containerProductBomboniere.appendChild(containerToProductNameAndPriceTotal);
+      });
+    }
+
+    if(containerSeatsChosenAndTickets && containerProductBomboniere){
+      containerSeatsChosenAndTickets.appendChild(containerProductBomboniere);
+    }
 
     let containerLess = containerMoreLess.querySelector(".container-less-svg-chose-bomboniere");
     containerLess.style.background = "rgb(152, 170, 236)";
@@ -789,8 +952,25 @@ const clickMoreBomboniere = (e) => {
 
 const clickLessBomboniere = (e) => {
   containerLessMoreBomboniere = document.querySelectorAll(".container-less-more-chose-bomboniere");
+
+  const containerMoreLess = e.srcElement.parentElement.parentElement;
+  let spanValueBomboniere = containerMoreLess.querySelector(".count-number-chose-bomboniere");
+  let containerLess = containerMoreLess.querySelector(".container-less-svg-chose-bomboniere"); 
+
   if(controllerQuantityProductClickedBomboniere > 0){
-    controllerQuantityProductClickedBomboniere--;
+    const containerItemInfoInner = e.srcElement.parentElement.parentElement.parentElement;
+    const spanTitle2 = containerItemInfoInner.querySelector(".span-title-2");
+    let titleProduct = spanTitle2.textContent;
+
+    deleteItemProductArray(arrayProductBomboniere, titleProduct);
+
+    if(Number(spanValueBomboniere.textContent) > 0){
+      spanValueBomboniere.textContent = Number(spanValueBomboniere.textContent) - 1;
+      containerLess.style.background = "rgb(152, 170, 236)";
+      containerLess.style.cursor = "pointer";
+
+      controllerQuantityProductClickedBomboniere--;
+    }
 
     if(controllerQuantityProductClickedBomboniere < 10){
       containerMoreSvgBomboniereAll.forEach((elMore) => {
@@ -798,23 +978,12 @@ const clickLessBomboniere = (e) => {
         elMore.style.cursor = "pointer";
       });
     }
-  
+
     if(controllerQuantityProductClickedBomboniere === 0){
       containerLessSvgBomboniereAll.forEach((elLess) => {
         elLess.style.background = "rgb(63 71 93)";
         elLess.style.cursor = "auto";
       });
-    }
-
-    const containerMoreLess = e.srcElement.parentElement.parentElement;
-    let spanValueBomboniere = containerMoreLess.querySelector(".count-number-tickets-chose-bomboniere");
-  
-    let containerLess = containerMoreLess.querySelector(".container-less-svg-chose-bomboniere"); 
-
-    if(Number(spanValueBomboniere.textContent) > 0){
-      spanValueBomboniere.textContent = Number(spanValueBomboniere.textContent) - 1;
-      containerLess.style.background = "rgb(152, 170, 236)";
-      containerLess.style.cursor = "pointer";
     }
 
     if(Number(spanValueBomboniere.textContent) === 0){
@@ -849,7 +1018,7 @@ const mouseOutMoreBomboniere = (e) => {
 const mouseOverLessBomboniere = (e) => {
   const containerMoreLess = e.srcElement.parentElement.parentElement;
   const containerLess = containerMoreLess.querySelector(".container-less-svg-chose-bomboniere");
-  let spanValueBomboniere = containerMoreLess.querySelector(".count-number-tickets-chose-bomboniere");
+  let spanValueBomboniere = containerMoreLess.querySelector(".count-number-chose-bomboniere");
 
   if(Number(spanValueBomboniere.textContent) > 0){
     if(containerLess){
@@ -861,7 +1030,7 @@ const mouseOverLessBomboniere = (e) => {
 const mouseOutLessBomboniere = (e) => {
   const containerMoreLess = e.srcElement.parentElement.parentElement;
   const containerLess = containerMoreLess.querySelector(".container-less-svg-chose-bomboniere");
-  let spanValueBomboniere = containerMoreLess.querySelector(".count-number-tickets-chose-bomboniere");
+  let spanValueBomboniere = containerMoreLess.querySelector(".count-number-chose-bomboniere");
 
   if(Number(spanValueBomboniere.textContent) > 0){
     if(containerLess){
@@ -912,12 +1081,6 @@ const eventosMoreAndLessBomboniere = () => {
 }
 
 const eventClickTickets = () => {
-  controllerQuantityProductClickedBomboniere = 0
-  console.log(containerLessMoreBomboniere); // aqui ele já vai está atualizado
-  // a ideia é pegar se for o click no "SEATS" zerar todos os valor que foi selecionado pegar todos os
-  // containerMore e deixar ele com cursor e a cor que da para clicar em mais e os 
-  // containerLess desativo simples assim
-
   if(containerMoreSvgBomboniereAll){
     removeEventListenerContainerMoreBomboniere(containerMoreSvgBomboniereAll);
   }
@@ -928,6 +1091,23 @@ const eventClickTickets = () => {
 }
 
 const eventClickSeats = () => {
+  controllerQuantityProductClickedBomboniere = 0
+
+  containerLessMoreBomboniere.forEach((elMoreLess) => {
+    let containerLessBomboniere = elMoreLess.querySelector(".container-less-svg-chose-bomboniere");
+    let containerMoreBomboniere = elMoreLess.querySelector(".container-more-svg-chose-bomboniere");
+
+    let spanNumberBomboniere = elMoreLess.querySelector(".count-number-chose-bomboniere");
+
+    spanNumberBomboniere.textContent = 0;
+  
+    containerMoreBomboniere.style.background = "rgb(152, 170, 236)";
+    containerMoreBomboniere.style.cursor = "pointer";
+  
+    containerLessBomboniere.style.background = "rgb(63 71 93)";
+    containerLessBomboniere.style.cursor = "auto";
+  });
+
   if(containerMoreSvgBomboniereAll){
     removeEventListenerContainerMoreBomboniere(containerMoreSvgBomboniereAll);
   }
