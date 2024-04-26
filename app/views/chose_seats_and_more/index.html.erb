@@ -68,29 +68,35 @@
     <%= render "chose_seats_and_more_partial/tickets" %>
     <%= render "chose_seats_and_more_partial/bomboniere" %>
     <div class="container-payment">
-      <div class="container-credit-card">
-        <div class="container-svg-credit-card">
-          <%= render "chose_seats_and_more_svg_partial/svg_credit_card" %>
+      <div class="container-method-payment">
+        <div class="container-credit-card">
+          <div class="container-svg-credit-card">
+            <%= render "chose_seats_and_more_svg_partial/svg_credit_card" %>
+          </div>
+          <span>Cartão de crédito</span>
         </div>
-        <span>Cartão de crédito</span>
+        <div class="container-debit-card">
+          <div class="container-svg-debit-card">
+            <%= render "chose_seats_and_more_svg_partial/svg_debit_card" %>
+          </div>
+          <span>Cartão de débito</span>
+        </div>
+        <div class="container-pix">
+          <div class="container-svg-pix">
+            <%= render "chose_seats_and_more_svg_partial/svg_pix" %>
+          </div>
+          <span>Pix</span>
+        </div>
+        <div class="container-google-pay">
+          <div class="container-svg-google-pay">
+            <%= render "chose_seats_and_more_svg_partial/svg_google_pay" %>
+          </div>
+          <span>Google Pay</span>
+        </div>
       </div>
-      <div class="container-debit-card">
-        <div class="container-svg-debit-card">
-          <%= render "chose_seats_and_more_svg_partial/svg_debit_card" %>
-        </div>
-        <span>Cartão de débito</span>
-      </div>
-      <div class="container-pix">
-        <div class="container-svg-pix">
-          <%= render "chose_seats_and_more_svg_partial/svg_pix" %>
-        </div>
-        <span>Pix</span>
-      </div>
-      <div class="container-google-pay">
-        <div class="container-svg-google-pay">
-          <%= render "chose_seats_and_more_svg_partial/svg_google_pay" %>
-        </div>
-        <span>Google Pay</span>
+      <div class="container-discount-line">
+        <span class="span-discount">Desconto</span>
+        <div class="container-line-white-discount"></div>
       </div>
     </div>
   </div>
