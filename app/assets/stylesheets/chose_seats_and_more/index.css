@@ -787,6 +787,7 @@
   color: #fff;
   gap: 10px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .container-credit-card,
@@ -831,6 +832,100 @@
   height: 1px;
   background: rgb(153, 153, 153);
   margin-top: 4px;
+}
+
+.container-clube-uol-payment {
+  background: rgb(33, 38, 45);
+  height: 101px;
+  border-radius: 5px;
+  padding: 18px 15px 0px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container-img-clube-uol-button-arrow-down-arrow-up {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.container-img-clube-uol-payment {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 3px;
+
+  >img {
+    width: 90%;
+    object-fit: cover;
+  }
+}
+
+.container-svg-arrow-down-up {
+  >svg {
+    width: 25px;
+    fill: rgb(152, 170, 236);
+    transform: rotate(180deg);
+  }
+}
+
+.span-subscriber-uol {
+  font-size: 13px;
+  color: #fff;
+}
+
+.span-know-more {
+  color: rgb(0, 153, 255);
+}
+
+.container-ticket-gift-card-and-arrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px 17px 15px;
+  background: rgb(33, 38, 45);
+  height: 70px;
+}
+
+.container-tickets-arrow {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.container-svg-tickets-gift-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgb(152, 170, 236);
+}
+
+.container-svg-tickets {
+  width: 25px;
+
+  >svg {
+    fill: rgb(152, 170, 236);
+    width: 100%;
+  }
+}
+
+.container-svg-arrow-down-up-tickets-gift-card {
+  width: 25px;
+
+  >svg {
+    fill: rgb(152, 170, 236);
+    width: 100%;
+  }
+}
+
+.span-tickers-gift-card {
+  font-size: 13px;
 }
 
 .container-back-skip {
