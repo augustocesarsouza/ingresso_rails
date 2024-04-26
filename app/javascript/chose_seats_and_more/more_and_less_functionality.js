@@ -4,6 +4,7 @@ const containerSvgTickets = document.querySelector('.div-svg-tickets');
 let spanItensValuesSeats = document.querySelector(".span-itens-values-seats");
 const containerLineWhite1 = document.querySelector(".line-white-1");
 const containerLineWhite2 = document.querySelector(".line-white-2");
+const containerLineWhite3 = document.querySelector(".line-white-3");
 
 const buttonBack = document.querySelector('.button-back'); 
 const containerSvgChoseOfSeats = document.querySelector('.div-svg-chose-of-seats'); 
@@ -20,6 +21,7 @@ const spanBomboniere = document.querySelector('.span-bomboniere');
 
 const containerOrderSummary = document.querySelector('.container-order-summary');
 const containerSvgBomboniere = document.querySelector('.div-svg-bomboniere');
+const containerSvgPayment = document.querySelector('.div-svg-payment');
 
 let containerTicketsSvgAll = null;
 
@@ -58,6 +60,12 @@ const containerBomboniere = document.querySelector('.container-bomboniere');
 
 if(containerBomboniere){
   containerBomboniere.remove();
+}
+
+const containerPayment = document.querySelector('.container-payment');
+
+if(containerPayment){
+  containerPayment.remove();
 }
 
 let isReleasedForHoverMouseButtonBack = false;
@@ -201,6 +209,10 @@ const functionClickMoreInteiro = (e) => {
     containerSvgBomboniere.style.background = "transparent";
     containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
     containerSvgBomboniere.style.borderColor = "rgb(152, 170, 236)";
+
+    containerSvgPayment.style.background = "transparent";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
   }
 }
 
@@ -331,6 +343,10 @@ const functionClickLessInteiro = (e) => {
     containerSvgBomboniere.style.borderColor = "rgb(52, 60, 70)";
     containerSvgBomboniere.style.background = "transparent";
     containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+  
+    containerSvgPayment.style.borderColor = "rgb(52, 60, 70)";
+    containerSvgPayment.style.background = "transparent";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
   }
 }
 
@@ -463,12 +479,33 @@ if(containerSvgTickets){
       spanBomboniere.remove();
     }
 
+    if(containerPayment){
+      containerPayment.remove();
+    }
+
     if(whatButtonClickedSeatsTickets === "bomboniere"){
       if(containerBomboniere){
         containerBomboniere.remove();
       }
   
       containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
+    }
+
+    if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
+      containerBomboniere.style.background = "transparent";
+      containerBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+      containerBomboniere.style.borderColor = "rgb(152, 170, 236)";
+
+      containerSvgPayment.style.background = "transparent";
+      containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+      containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
+
+      containerLineWhite2.style.background =  "rgb(52, 60, 70)";
+      containerLineWhite3.style.background =  "rgb(52, 60, 70)";
+
+      if(spanBomboniere){
+        spanBomboniere.remove();
+      }
     }
 
     if(Number(spanItensValuesSeatsAtt.textContent) > 0){
@@ -563,6 +600,10 @@ if(containerSvgChoseOfSeats){
       }
     }
 
+    if(containerPayment){
+      containerPayment.remove();
+    }
+
     whatButtonClickedSeatsTickets = "seats";
     containerOrderSummary.style.height = "97%";
     document.body.style.height = "100%";
@@ -571,6 +612,17 @@ if(containerSvgChoseOfSeats){
     containerSvgBomboniere.style.borderColor = "rgb(52, 60, 70)";
     containerSvgBomboniere.style.background = "transparent";
     containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+
+    containerSvgPayment.style.borderColor = "rgb(52, 60, 70)";
+    containerSvgPayment.style.background = "transparent";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+
+    containerLineWhite2.style.background =  "rgb(52, 60, 70)";
+    containerLineWhite3.style.background =  "rgb(52, 60, 70)";
+
+    if(containerBomboniere){
+      containerBomboniere.remove();
+    }
     
     const containerTicketsSvgCurrent2 = document.querySelector(".container-all-tickets-svg-2");
 
@@ -625,6 +677,18 @@ let svgWarn = document.querySelector(".svg-warning");
 if(containerSvgBomboniere){
   containerSvgBomboniere.addEventListener("click", () => {
     let sumQuantityPaymentSelected = 0;
+
+    if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
+      containerSvgPayment.style.background = "transparent";
+      containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+      containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
+
+      containerLineWhite3.style.background =  "rgb(52, 60, 70)";
+    }
+
+    if(containerPayment){
+      containerPayment.remove();
+    }
   
     typePaymentAll.forEach((elPayment) => {
       sumQuantityPaymentSelected += Number(elPayment.quantity);
@@ -722,7 +786,6 @@ if(containerSvgBomboniere){
         containerWarnNotAllSeatsWereSelected.remove();
       });
     }else {
-      console.log("foi tudo seleciondado para passar para pipocas");
       whatButtonClickedSeatsTickets = "bomboniere"
 
       if(containerTypesTickets){
@@ -1117,6 +1180,52 @@ const eventClickSeats = () => {
   }
 }
 
+const clickPayment = () => {
+  if(whatButtonClickedSeatsTickets === "tickets" && varivelHelpForSumIfAlreadyTicketChose > 0){
+    containerSvgTickets.style.background = "transparent";
+    containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
+    
+    containerSvgBomboniere.style.background = "transparent";
+    containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgBomboniere.style.borderColor = "rgb(152, 170, 236)";
+
+    containerLineWhite2.style.background =  "rgb(152, 170, 236)";
+    containerLineWhite3.style.background =  "rgb(152, 170, 236)";
+    
+    containerSvgPayment.style.borderColor = "transparent";
+    containerSvgPayment.style.background = "rgb(49, 85, 232)";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "#fff";
+  }
+
+  if(whatButtonClickedSeatsTickets === "bomboniere"){
+    containerSvgBomboniere.style.background = "transparent";
+    containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgBomboniere.style.borderColor = "rgb(152, 170, 236)";
+    
+    containerSvgPayment.style.borderColor = "transparent";
+    containerSvgPayment.style.background = "rgb(49, 85, 232)";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "#fff";
+
+    containerLineWhite3.style.background =  "rgb(152, 170, 236)";
+  }
+
+  whatButtonClickedSeatsTickets = "payment";
+
+  if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
+    if(containerTypesTickets){
+      containerTypesTickets.remove();
+    }
+
+    if(containerBomboniere){
+      containerBomboniere.remove();
+    }
+
+    containerChoseSeatNumberResumeOrderMain.insertBefore(containerPayment, containerChoseSeatNumberResumeOrderMain.firstChild);
+  }
+
+}
+
 if(window.location.pathname === "/chose_seats_and_more"){
   if(containerSvgTickets){
     containerSvgTickets.addEventListener("click", eventClickTickets);
@@ -1124,6 +1233,10 @@ if(window.location.pathname === "/chose_seats_and_more"){
   
   if(containerSvgChoseOfSeats){
     containerSvgChoseOfSeats.addEventListener("click", eventClickSeats);
+  }
+
+  if(containerSvgPayment){
+    containerSvgPayment.addEventListener("click", clickPayment);
   }
 };
 
@@ -1134,6 +1247,10 @@ if(window.location.pathname !== "/chose_seats_and_more"){
   
   if(containerSvgChoseOfSeats){
     containerSvgChoseOfSeats.removeEventListener("click", eventClickSeats);
+  }
+
+  if(containerSvgPayment){
+    containerSvgPayment.removeEventListener("click", clickPayment);
   }
 };
 

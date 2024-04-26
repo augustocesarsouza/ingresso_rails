@@ -763,6 +763,41 @@
   cursor: auto;
 }
 
+.container-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 59rem;
+  user-select: none;
+}
+
+.container-credit-card,
+.container-debit-card,
+.container-pix,
+.container-google-pay {
+  background: rgb(33, 38, 45);
+  color: #fff;
+  display: flex;
+  gap: 10px;
+}
+
+.container-svg-credit-card {
+  width: 40px;
+}
+
+.container-svg-debit-card {
+  width: 40px;
+}
+
+.container-svg-pix {
+  width: 40px;
+}
+
+.container-svg-google-pay {
+  width: 60px;
+
+}
+
 .container-back-skip {
   display: flex;
   align-items: center;
