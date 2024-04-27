@@ -787,7 +787,11 @@
   display: flex;
   flex-direction: column;
   color: #fff;
-  padding: 7px 10px
+  padding: 7px 10px;
+
+  /* Desloca 20px para baixo */
+  transition: ease 1s;
+  /* Transição suave */
 }
 
 .container-credit-card,
@@ -799,6 +803,12 @@
   color: #fff;
   gap: 10px;
   cursor: pointer;
+}
+
+.container-number-card-expiration-date-security-code {
+  overflow: hidden;
+  max-height: 0px;
+  transition: max-height 0.5s ease-in-out 0s;
 }
 
 .container-inputs-info-card-main {
