@@ -803,6 +803,107 @@
 
 .container-inputs-info-card-main {
   padding-left: 7px;
+  width: 98%;
+}
+
+.container-expiration-date-and-security-code {
+  display: flex;
+  gap: 15px;
+  width: 98%;
+  padding-left: 7px;
+  margin-top: 5px;
+
+  span {
+    font-size: 13px;
+  }
+}
+
+.container-expiration-date {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 50%;
+
+  >input {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 7px;
+  }
+
+  >input:focus {
+    outline: none;
+    border: 2px solid #007bff;
+  }
+}
+
+.container-svg-question-mark-blue-for-payment {
+  >svg {
+    width: 13px;
+    fill: #007bff;
+  }
+}
+
+.container-security-code {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  width: 50%;
+
+  >input {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 7px;
+  }
+
+  >input:focus {
+    outline: none;
+    border: 2px solid #007bff;
+  }
+}
+
+.container-name-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 98%;
+  padding-left: 7px;
+  margin-top: 12px;
+
+  >span {
+    font-size: 13px;
+  }
+
+  >input {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 7px;
+  }
+
+  >input:focus {
+    outline: none;
+    border: 2px solid #007bff;
+  }
+}
+
+.container-span-checkbox {
+  display: flex;
+  width: 90%;
+  gap: 5px;
+  padding-left: 7px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  >span {
+    font-size: 12px;
+  }
+}
+
+.container-span-security-code-and-svg-question-mask {
+  display: flex;
+  justify-content: space-between;
 }
 
 .container-number-card-main {
@@ -815,17 +916,28 @@
   }
 
   >input {
-    width: 90%;
     height: 40px;
     border-radius: 5px;
     border: none;
-    padding: 0px 5px;
+    padding: 0px 7px;
+  }
+
+  >input:focus {
+    outline: none;
+    border: 2px solid #007bff;
   }
 }
 
-.container-number-card-main>input:focus {
-  outline: none;
-  border: 2px solid #007bff;
+.container-type-of-card-for-payment {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.container-card-svg {
+  >svg {
+    width: 25px;
+  }
 }
 
 .container-pix {

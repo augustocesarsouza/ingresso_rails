@@ -1239,6 +1239,13 @@ const clickPayment = () => {
   }
 }
 
+// Parte da criação do "Cartão de crédiot" \\
+const containerTypeOfCardForPayment = document.querySelector(".container-type-of-card-for-payment");
+containerTypeOfCardForPayment.remove();
+
+const containerSvgQuestionMarkBlueForPayment = document.querySelector(".container-svg-question-mark-blue-for-payment");
+containerSvgQuestionMarkBlueForPayment.remove();
+
 let clickedContainerMethodPayment = "";
 let containerInputsInfoCardMain = document.createElement("div");
 containerInputsInfoCardMain.classList.add("container-inputs-info-card-main");
@@ -1254,22 +1261,109 @@ let inputNumberCard = document.createElement("input");
 inputNumberCard.classList.add("input-number-card");
 inputNumberCard.placeholder = "1234 5678 9012 3456";
 
+let containerExpirationDate = document.createElement("div");
+containerExpirationDate.classList.add("container-expiration-date");
+
+let spanExpirationDate = document.createElement("span");
+spanExpirationDate.classList.add("span-expiration-date");
+spanExpirationDate.textContent = "Data de validade";
+
+let inputExpirationDate = document.createElement("input");
+inputExpirationDate.classList.add("input-expiration-date");
+inputExpirationDate.placeholder = "MM/AA";
+
+containerExpirationDate.appendChild(spanExpirationDate);
+containerExpirationDate.appendChild(inputExpirationDate);
+
+let containerSecurityCode = document.createElement("div");
+containerSecurityCode.classList.add("container-security-code");
+
+let spanSecurityCode = document.createElement("span");
+spanSecurityCode.classList.add("span-security-code");
+spanSecurityCode.textContent = "Código de segurança";
+
+let containerSpanSecurityCodeAndSvgQuestionMark = document.createElement("div");
+containerSpanSecurityCodeAndSvgQuestionMark.classList.add("container-span-security-code-and-svg-question-mask");
+
+containerSpanSecurityCodeAndSvgQuestionMark.appendChild(spanSecurityCode);
+containerSpanSecurityCodeAndSvgQuestionMark.appendChild(containerSvgQuestionMarkBlueForPayment);
+
+let inputSecurityCode = document.createElement("input");
+inputSecurityCode.classList.add("input-security-code");
+inputSecurityCode.placeholder = "3 dígitos";
+
+containerSecurityCode.appendChild(containerSpanSecurityCodeAndSvgQuestionMark);
+containerSecurityCode.appendChild(inputSecurityCode);
+
+let containerExpirationDateAndSecurityCode = document.createElement("div");
+containerExpirationDateAndSecurityCode.classList.add("container-expiration-date-and-security-code");
+
+containerExpirationDateAndSecurityCode.appendChild(containerExpirationDate);
+containerExpirationDateAndSecurityCode.appendChild(containerSecurityCode);
+
+let containerNameCard = document.createElement("div");
+containerNameCard.classList.add("container-name-card");
+
+let spanNameCardPayment = document.createElement("span");
+spanNameCardPayment.classList.add("span-name-card");
+spanNameCardPayment.textContent = "Nome do cartão";
+
+let inputNameCardPayment = document.createElement("input");
+inputNameCardPayment.classList.add("input-name-card");
+inputNameCardPayment.placeholder = "Nome como está no cartão";
+
+containerNameCard.appendChild(spanNameCardPayment);
+containerNameCard.appendChild(inputNameCardPayment);
+
+let containerSpanCheckbox = document.createElement("div");
+containerSpanCheckbox.classList.add("container-span-checkbox");
+
+let inputCheckout = document.createElement("input");
+inputCheckout.setAttribute("type", "checkbox");
+inputCheckout.classList.add("input-checkout");
+
+let spanSaveForTheNextPayment = document.createElement("span");
+spanSaveForTheNextPayment.classList.add("span-save-for-the-next-payment");
+spanSaveForTheNextPayment.textContent = "Salvar para meu próximo pagamento";
+
+containerSpanCheckbox.appendChild(inputCheckout);
+containerSpanCheckbox.appendChild(spanSaveForTheNextPayment);
+
+// Parte da criação do "Cartão de crédiot" \\
+
+let alreadyClickCardCredit = 0;
+
 const clickCardCredit = () => {
   clickedContainerMethodPayment = "cardCredit";
-
-  containerCreditCardMain.style.border = "1px solid rgb(152, 170, 236)";
   containerDebitCardMain.style.border = "none";
   containerPixMain.style.border = "none";
   containerGooglePayMain.style.border = "none";
 
-  containerCreditCardMain.style.height = "20rem";
+  if(alreadyClickCardCredit === 0 && clickedContainerMethodPayment === "cardCredit"){
+    alreadyClickCardCredit = 1;
+    containerCreditCardMain.style.border = "1px solid rgb(152, 170, 236)";
+    
+    containerCreditCardMain.style.height = "auto";
+  
+    containerNumberCardMain.appendChild(spanNameCard);
+    containerNumberCardMain.appendChild(inputNumberCard);
+  
+    containerInputsInfoCardMain.appendChild(containerNumberCardMain);
+    containerInputsInfoCardMain.appendChild(containerTypeOfCardForPayment);
+  
+    containerCreditCardMain.appendChild(containerInputsInfoCardMain);
+    containerCreditCardMain.appendChild(containerExpirationDateAndSecurityCode);
+    containerCreditCardMain.appendChild(containerNameCard);
+    containerCreditCardMain.appendChild(containerSpanCheckbox);
+  }else if(alreadyClickCardCredit === 1 && clickedContainerMethodPayment === "cardCredit") {
+    alreadyClickCardCredit = 0;
+    containerCreditCardMain.style.border = "1px solid rgb(152, 170, 236)";
 
-  containerNumberCardMain.appendChild(spanNameCard);
-  containerNumberCardMain.appendChild(inputNumberCard);
-  containerInputsInfoCardMain.appendChild(containerNumberCardMain);
-  console.log(containerInputsInfoCardMain);
-
-  containerCreditCardMain.appendChild(containerInputsInfoCardMain);
+    containerInputsInfoCardMain.remove();
+    containerExpirationDateAndSecurityCode.remove();
+    containerNameCard.remove();
+    containerSpanCheckbox.remove();
+  }
 }
 
 const clickDebitCard = () => {
@@ -1283,6 +1377,9 @@ const clickDebitCard = () => {
   containerCreditCardMain.style.height = "auto";
   
   containerInputsInfoCardMain.remove();
+  containerExpirationDateAndSecurityCode.remove();
+  containerNameCard.remove();
+  containerSpanCheckbox.remove();
 }
 
 const clickPix = () => {
