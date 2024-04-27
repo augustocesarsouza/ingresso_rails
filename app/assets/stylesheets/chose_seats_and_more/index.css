@@ -630,6 +630,7 @@
 
 .container-bomboniere {
   display: flex;
+  /* display: none; */
   flex-direction: column;
   gap: 15px;
   width: 59rem;
@@ -777,23 +778,54 @@
   gap: 15px;
 }
 
+.container-credit-card-main,
+.container-debit-card-main,
+.container-pix-main,
+.container-google-pay-main {
+  background: rgb(33, 38, 45);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  padding: 7px 10px
+}
+
 .container-credit-card,
 .container-debit-card,
 .container-pix,
 .container-google-pay {
   display: flex;
   align-items: center;
-  background: rgb(33, 38, 45);
   color: #fff;
   gap: 10px;
-  border-radius: 5px;
   cursor: pointer;
 }
 
-.container-credit-card,
-.container-debit-card,
-.container-google-pay {
-  padding: 7px 10px;
+.container-inputs-info-card-main {
+  padding-left: 7px;
+}
+
+.container-number-card-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  >span {
+    font-size: 13px;
+  }
+
+  >input {
+    width: 90%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 5px;
+  }
+}
+
+.container-number-card-main>input:focus {
+  outline: none;
+  border: 2px solid #007bff;
 }
 
 .container-pix {

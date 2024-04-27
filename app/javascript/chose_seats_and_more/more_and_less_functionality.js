@@ -23,6 +23,16 @@ const containerOrderSummary = document.querySelector('.container-order-summary')
 const containerSvgBomboniere = document.querySelector('.div-svg-bomboniere');
 const containerSvgPayment = document.querySelector('.div-svg-payment');
 
+let containerCreditCardMain = null;
+let containerDebitCardMain = null;
+let containerPixMain = null;
+let containerGooglePayMain = null;
+
+const containerCardCredit = document.querySelector('.container-credit-card');
+const containerDebitCard = document.querySelector('.container-debit-card');
+const containerPix = document.querySelector('.container-pix');
+const containerGooglePay = document.querySelector('.container-google-pay');
+
 let containerTicketsSvgAll = null;
 
 let whatButtonClickedSeatsTickets = "seats";
@@ -815,7 +825,6 @@ if(containerSvgBomboniere){
       containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
   
       containerLineWhite2.style.background =  "rgb(152, 170, 236)";
-
       eventosMoreAndLessBomboniere();
     }
   
@@ -1222,8 +1231,76 @@ const clickPayment = () => {
     }
 
     containerChoseSeatNumberResumeOrderMain.insertBefore(containerPayment, containerChoseSeatNumberResumeOrderMain.firstChild);
-  }
 
+    containerCreditCardMain = document.querySelector(".container-credit-card-main");
+    containerDebitCardMain = document.querySelector(".container-debit-card-main");
+    containerPixMain = document.querySelector(".container-pix-main");
+    containerGooglePayMain = document.querySelector(".container-google-pay-main");
+  }
+}
+
+let clickedContainerMethodPayment = "";
+let containerInputsInfoCardMain = document.createElement("div");
+containerInputsInfoCardMain.classList.add("container-inputs-info-card-main");
+
+let containerNumberCardMain = document.createElement("div");
+containerNumberCardMain.classList.add("container-number-card-main");
+
+let spanNameCard = document.createElement("span");
+spanNameCard.classList.add("name-card");
+spanNameCard.textContent = "Número do cartão";
+
+let inputNumberCard = document.createElement("input");
+inputNumberCard.classList.add("input-number-card");
+inputNumberCard.placeholder = "1234 5678 9012 3456";
+
+const clickCardCredit = () => {
+  clickedContainerMethodPayment = "cardCredit";
+
+  containerCreditCardMain.style.border = "1px solid rgb(152, 170, 236)";
+  containerDebitCardMain.style.border = "none";
+  containerPixMain.style.border = "none";
+  containerGooglePayMain.style.border = "none";
+
+  containerCreditCardMain.style.height = "20rem";
+
+  containerNumberCardMain.appendChild(spanNameCard);
+  containerNumberCardMain.appendChild(inputNumberCard);
+  containerInputsInfoCardMain.appendChild(containerNumberCardMain);
+  console.log(containerInputsInfoCardMain);
+
+  containerCreditCardMain.appendChild(containerInputsInfoCardMain);
+}
+
+const clickDebitCard = () => {
+  clickedContainerMethodPayment = "debitCard";
+  
+  containerCreditCardMain.style.border = "none";
+  containerDebitCardMain.style.border = "1px solid rgb(152, 170, 236)";
+  containerPixMain.style.border = "none";
+  containerGooglePayMain.style.border = "none";
+
+  containerCreditCardMain.style.height = "auto";
+  
+  containerInputsInfoCardMain.remove();
+}
+
+const clickPix = () => {
+  clickedContainerMethodPayment = "pix";
+  
+  containerCreditCardMain.style.border = "none";
+  containerDebitCardMain.style.border = "none";
+  containerPixMain.style.border = "1px solid rgb(152, 170, 236)";
+  containerGooglePayMain.style.border = "none";
+}
+
+const clickGooglePay = () => {
+  clickedContainerMethodPayment = "googlePay";
+  
+  containerCreditCardMain.style.border = "none";
+  containerDebitCardMain.style.border = "none";
+  containerPixMain.style.border = "none";
+  containerGooglePayMain.style.border = "1px solid rgb(152, 170, 236)";
 }
 
 if(window.location.pathname === "/chose_seats_and_more"){
@@ -1238,6 +1315,22 @@ if(window.location.pathname === "/chose_seats_and_more"){
   if(containerSvgPayment){
     containerSvgPayment.addEventListener("click", clickPayment);
   }
+
+  if(containerCardCredit){
+    containerCardCredit.addEventListener("click", clickCardCredit);
+  }
+
+  if(containerDebitCard){
+    containerDebitCard.addEventListener("click", clickDebitCard);
+  }
+
+  if(containerPix){
+    containerPix.addEventListener("click", clickPix);
+  }
+
+  if(containerGooglePay){
+    containerGooglePay.addEventListener("click", clickGooglePay);
+  }
 };
 
 if(window.location.pathname !== "/chose_seats_and_more"){
@@ -1251,6 +1344,22 @@ if(window.location.pathname !== "/chose_seats_and_more"){
 
   if(containerSvgPayment){
     containerSvgPayment.removeEventListener("click", clickPayment);
+  }
+
+  if(containerCardCredit){
+    containerCardCredit.removeEventListener("click", clickCardCredit);
+  }
+
+  if(containerDebitCard){
+    containerDebitCard.removeEventListener("click", clickDebitCard);
+  }
+
+  if(containerPix){
+    containerPix.removeEventListener("click", clickPix);
+  }
+
+  if(containerGooglePay){
+    containerGooglePay.removeEventListener("click", clickGooglePay);
   }
 };
 

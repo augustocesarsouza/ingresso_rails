@@ -67,62 +67,7 @@
     <%= render "chose_seats_and_more_partial/order_summary" %>
     <%= render "chose_seats_and_more_partial/tickets" %>
     <%= render "chose_seats_and_more_partial/bomboniere" %>
-    <div class="container-payment">
-      <div class="container-method-payment">
-        <div class="container-credit-card">
-          <div class="container-svg-credit-card">
-            <%= render "chose_seats_and_more_svg_partial/svg_credit_card" %>
-          </div>
-          <span>Cartão de crédito</span>
-        </div>
-        <div class="container-debit-card">
-          <div class="container-svg-debit-card">
-            <%= render "chose_seats_and_more_svg_partial/svg_debit_card" %>
-          </div>
-          <span>Cartão de débito</span>
-        </div>
-        <div class="container-pix">
-          <div class="container-svg-pix">
-            <%= render "chose_seats_and_more_svg_partial/svg_pix" %>
-          </div>
-          <span>Pix</span>
-        </div>
-        <div class="container-google-pay">
-          <div class="container-svg-google-pay">
-            <%= render "chose_seats_and_more_svg_partial/svg_google_pay" %>
-          </div>
-          <span>Google Pay</span>
-        </div>
-      </div>
-      <div class="container-discount-line">
-        <span class="span-discount">Desconto</span>
-        <div class="container-line-white-discount"></div>
-      </div>
-      <div class="container-clube-uol-payment">
-        <div class="container-img-clube-uol-button-arrow-down-arrow-up">
-          <div class="container-img-clube-uol-payment">
-            <img src="https://res.cloudinary.com/dyqsqg7pk/image/upload/v1703514340/logo_header_hksemr.png" alt="clube-uol">
-          </div>
-          <div class="container-svg-arrow-down-up">
-            <%= render "chose_seats_and_more_svg_partial/svg_arrow_down" %>
-          </div>
-        </div>
-        <span class="span-subscriber-uol">Assinante UOL tem 2 ingressos por mês sem taxa de serviço. <span class="span-know-more">Saiba mais</span></span>
-      </div>
-      <div class="container-ticket-gift-card-and-arrow">
-        <div class="container-tickets-arrow">
-          <div class="container-svg-tickets-gift-card">
-            <div class="container-svg-tickets">
-              <%= render "chose_seats_and_more_svg_partial/svg_tickets_payment" %>
-            </div>
-            <span class="span-tickers-gift-card">Cupom e vale-presente</span>
-          </div>
-          <div class="container-svg-arrow-down-up-tickets-gift-card">
-            <%= render "chose_seats_and_more_svg_partial/svg_arrow_down" %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render "chose_seats_and_more_partial/credit_card" %>
   </div>
   <div class="container-back-skip">
     <div class="container-button-back"><button class="button-back">VOLTAR</button></div>
