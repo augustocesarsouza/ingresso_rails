@@ -1213,6 +1213,12 @@ if(containerSvgExclamationMarkForPayment){
   containerSvgExclamationMarkForPayment.remove();
 }
 
+let containerInfoBottomGooglePayForPayment = document.querySelector(".container-info-bottom-google-pay-for-payment");
+
+if(containerInfoBottomGooglePayForPayment){
+  containerInfoBottomGooglePayForPayment.remove();
+}
+
 const clickPayment = () => {
   alreadyClickCardCredit = 0
   if(whatButtonClickedSeatsTickets === "tickets" && varivelHelpForSumIfAlreadyTicketChose > 0){
@@ -1453,20 +1459,31 @@ const clickPayment = () => {
     containerInfoPixBottom.appendChild(spanInfoPixBottom2);
 
     containerPixMain.appendChild(containerInfoPixBottom);
-    // containerAllStufsForInfoPix
+    
+    // \\
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+    containerGooglePayMain.appendChild(containerInfoBottomGooglePayForPayment);
+
+    // \\
+
   }
 }
 
 const clickCardCredit = () => {
   if(clickedContainerMethodPayment !== "cardCredit") {
-    alreadyClickCardCredit = 0
+    alreadyClickCardCredit = 0;
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+
+    let timeoutId = setTimeout(() => {
+      containerInfoBottomGooglePayForPayment.style.paddingBottom = "0px";
+      containerInfoPixBottom.style.paddingBottom = "0px";
+    }, 400);
   }
 
   clickedContainerMethodPayment = "cardCredit";
   containerDebitCardMain.style.border = "none";
   containerPixMain.style.border = "none";
   containerGooglePayMain.style.border = "none";
-
   containerCreditCardMain.style.border = "1px solid rgb(152, 170, 236)";
 
   if(alreadyClickCardCredit === 0 && clickedContainerMethodPayment === "cardCredit"){
@@ -1487,13 +1504,18 @@ const clickCardCredit = () => {
 const clickDebitCard = () => {
   if(clickedContainerMethodPayment !== "debitCard") {
     alreadyClickCardCredit = 0;
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+    
+    let timeoutId = setTimeout(() => {
+      containerInfoBottomGooglePayForPayment.style.paddingBottom = "0px";
+      containerInfoPixBottom.style.paddingBottom = "0px";
+    }, 400);
   }
 
   clickedContainerMethodPayment = "debitCard";
   containerCreditCardMain.style.border = "none";
   containerPixMain.style.border = "none";
   containerGooglePayMain.style.border = "none";
-
   containerDebitCardMain.style.border = "1px solid rgb(152, 170, 236)";
 
   if(alreadyClickCardCredit === 0 && clickedContainerMethodPayment === "debitCard"){
@@ -1503,10 +1525,13 @@ const clickDebitCard = () => {
     containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "100vh";
     containerNumberCardExpirationDateSecurityCodeNameCard.style.maxHeight = "0px";
     containerInfoPixBottom.style.maxHeight = "0px";
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.paddingBottom = "10px";
   }else if(alreadyClickCardCredit === 1 && clickedContainerMethodPayment === "debitCard") {
     alreadyClickCardCredit = 0;
 
     containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "0px";
+
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.paddingBottom = "0px";
   }
 }
 
@@ -1515,13 +1540,19 @@ const clickPix = () => {
     alreadyClickCardCredit = 0;
     containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "0px";
     containerNumberCardExpirationDateSecurityCodeNameCard.style.maxHeight = "0px";
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+
+    let timeoutId = setTimeout(() => {
+      containerInfoBottomGooglePayForPayment.style.paddingBottom = "0px";
+      containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.paddingBottom = "0px";
+      containerNumberCardExpirationDateSecurityCodeNameCard.style.paddingBottom = "0px";
+    }, 400);
   }
 
   clickedContainerMethodPayment = "pix";
   containerCreditCardMain.style.border = "none";
   containerDebitCardMain.style.border = "none";
   containerGooglePayMain.style.border = "none";
-
   containerPixMain.style.border = "1px solid rgb(152, 170, 236)";
 
   if(alreadyClickCardCredit === 0 && clickedContainerMethodPayment === "pix"){
@@ -1529,20 +1560,124 @@ const clickPix = () => {
     
     containerPixMain.style.height = "auto";
     containerInfoPixBottom.style.maxHeight = "100vh";
+    containerInfoPixBottom.style.paddingBottom = "10px";
   }else if(alreadyClickCardCredit === 1 && clickedContainerMethodPayment === "pix") {
     alreadyClickCardCredit = 0;
 
     containerInfoPixBottom.style.maxHeight = "0px";
+
+    setTimeout(() => {
+      containerInfoPixBottom.style.paddingBottom = "0px";
+    }, 400);
   }
 }
 
-const clickGooglePay = () => {
-  clickedContainerMethodPayment = "googlePay";
+const putGooglePayForRun = () => {
+  const paymentDataRequest = {
+    // Informações do pagamento
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    merchantInfo: {
+        // Informações do comerciante
+        merchantName: 'Deo merchant',
+        // Informações do ambiente do Google Merchant Center
+        merchantId: '12345679533',
+    },
+    allowedPaymentMethods: [
+      {
+        type: 'CARD',
+        parameters: {
+          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+          allowedCardNetworks: ['MASTERCARD', 'VISA'],
+        },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            gateway: 'example',
+            gatewayMerchantId: 'exapleGateMerchantID',
+          },
+        },
+      },
+    ],
+    transactionInfo: {
+        totalPriceStatus: 'FINAL',
+        totalPriceLabel: 'Total',
+        totalPrice: '10',
+        currencyCode: 'USD',
+        countryCode: 'US',
+      },
+    // Opções adicionais
+    shippingAddressRequired: true,
+    shippingAddressParameters: {
+        allowedCountryCodes: ['BR'],
+        phoneNumberRequired: true,
+    },
+  };
   
+  const paymentsClient = new google.payments.api.PaymentsClient({ environment: 'TEST' });
+  
+  paymentsClient.isReadyToPay({ allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'] })
+  .then(function(response) {
+      if (response.result) {
+          const button = document.getElementById('google-pay-button');
+          button.addEventListener('click', () => {
+              paymentsClient.loadPaymentData(paymentDataRequest)
+                  .then(function(paymentData) {
+                      // Processar o pagamento
+                      console.log(paymentData);
+                  })
+                  .catch(function(error) {
+                      // console.error(error);
+                  });
+          });
+      } else {
+        console.error('Google Pay não está disponível para o usuário');
+      }
+  })
+  .catch(function(error) {
+    console.error('Erro ao verificar a disponibilidade do Google Pay', error);
+  });
+}
+
+const clickGooglePay = () => {
+  if(clickedContainerMethodPayment !== "googlePay"){
+    alreadyClickCardCredit = 0;
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "0px";
+    containerNumberCardExpirationDateSecurityCodeNameCard.style.maxHeight = "0px";
+    containerInfoPixBottom.style.maxHeight = "0px";
+
+    let timeoutId = setTimeout(() => {
+      containerInfoPixBottom.style.paddingBottom = "0px";
+      containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.paddingBottom = "0px";
+      containerNumberCardExpirationDateSecurityCodeNameCard.style.paddingBottom = "0px";
+    }, 400);
+  }
+
+  clickedContainerMethodPayment = "googlePay";
   containerCreditCardMain.style.border = "none";
   containerDebitCardMain.style.border = "none";
   containerPixMain.style.border = "none";
   containerGooglePayMain.style.border = "1px solid rgb(152, 170, 236)";
+
+  if(alreadyClickCardCredit === 0 && clickedContainerMethodPayment === "googlePay"){
+    alreadyClickCardCredit = 1;
+    
+    containerGooglePayMain.style.height = "auto";
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "100vh";
+    containerInfoBottomGooglePayForPayment.style.paddingBottom = "10px";
+  }else if(alreadyClickCardCredit === 1 && clickedContainerMethodPayment === "googlePay") {
+    alreadyClickCardCredit = 0;
+
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+
+    let timeoutId = setTimeout(() => {
+      containerInfoBottomGooglePayForPayment.style.paddingBottom = "0px";
+    }, 400);
+
+    // clearTimeout(timeoutId);
+  }
+
+  putGooglePayForRun();
 }
 
 if(window.location.pathname === "/chose_seats_and_more"){
@@ -1629,3 +1764,4 @@ if(buttonBack){
     }
   });
 }
+

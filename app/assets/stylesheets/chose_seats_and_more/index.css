@@ -807,10 +807,41 @@
 
 .container-number-card-expiration-date-security-code,
 .container-number-card-expiration-date-security-code-for-debit-card,
-.container-info-pix-bottom {
+.container-info-pix-bottom,
+.container-info-bottom-google-pay-for-payment {
   overflow: hidden;
   max-height: 0px;
   transition: max-height 0.5s ease-in-out 0s;
+}
+
+.container-info-bottom-google-pay-for-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
+  /* padding-bottom: 15px; */
+  font-size: 13px;
+}
+
+.container-pay-with-gpay {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#google-pay-button {
+  color: black;
+  font-weight: 500;
+  padding-top: 3px;
+  width: 25%;
+  border: none;
+  border-radius: 5px;
+
+  >img {
+    width: 17%;
+    object-fit: cover;
+  }
 }
 
 .container-span-two-top-part {
