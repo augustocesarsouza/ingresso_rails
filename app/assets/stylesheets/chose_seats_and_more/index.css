@@ -805,10 +805,44 @@
   cursor: pointer;
 }
 
-.container-number-card-expiration-date-security-code {
+.container-number-card-expiration-date-security-code,
+.container-number-card-expiration-date-security-code-for-debit-card,
+.container-info-pix-bottom {
   overflow: hidden;
   max-height: 0px;
   transition: max-height 0.5s ease-in-out 0s;
+}
+
+.container-span-two-top-part {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 7px;
+  width: 98%;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.span-first-top {
+  >a {
+    color: rgb(152, 170, 236);
+    text-decoration: none;
+    display: inline-block;
+  }
+}
+
+.container-svg-exclamation-mark-and-span-second {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+  color: rgb(255, 206, 0);
+}
+
+.container-svg-exclamation-mark-for-payment {
+  >svg {
+    width: 18px;
+    fill: rgb(255, 206, 0);
+  }
 }
 
 .container-inputs-info-card-main {
@@ -898,6 +932,17 @@
   }
 }
 
+.span-payment-policies {
+  font-size: 14px;
+  padding-left: 7px;
+
+  >a {
+    color: rgb(152, 170, 236);
+    text-decoration: none;
+    display: inline-block;
+  }
+}
+
 .container-span-checkbox {
   display: flex;
   width: 90%;
@@ -951,7 +996,16 @@
 }
 
 .container-pix {
-  padding: 20px 20px;
+  padding: 20px 7px;
+}
+
+.container-info-pix-bottom {
+  font-size: 14px;
+  padding-left: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
 }
 
 .container-svg-credit-card {
