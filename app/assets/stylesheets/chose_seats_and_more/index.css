@@ -630,6 +630,7 @@
 
 .container-bomboniere {
   display: flex;
+  /* display: none; */
   flex-direction: column;
   gap: 15px;
   width: 59rem;
@@ -761,6 +762,494 @@
 .container-less-svg-chose-bomboniere {
   background: rgb(63 71 93);
   cursor: auto;
+}
+
+.container-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 59rem;
+  user-select: none;
+}
+
+.container-method-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.container-credit-card-main,
+.container-debit-card-main,
+.container-pix-main,
+.container-google-pay-main {
+  background: rgb(33, 38, 45);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  padding: 7px 10px;
+
+  /* Desloca 20px para baixo */
+  transition: ease 1s;
+  /* Transição suave */
+}
+
+.container-credit-card,
+.container-debit-card,
+.container-pix,
+.container-google-pay {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.container-number-card-expiration-date-security-code,
+.container-number-card-expiration-date-security-code-for-debit-card,
+.container-info-pix-bottom,
+.container-info-bottom-google-pay-for-payment {
+  overflow: hidden;
+  max-height: 0px;
+  transition: max-height 0.5s ease-in-out 0s;
+}
+
+.container-info-bottom-google-pay-for-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
+  /* padding-bottom: 15px; */
+  font-size: 13px;
+}
+
+.container-pay-with-gpay {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#google-pay-button {
+  color: black;
+  font-weight: 500;
+  padding-top: 3px;
+  width: 25%;
+  border: none;
+  border-radius: 5px;
+
+  >img {
+    width: 17%;
+    object-fit: cover;
+  }
+}
+
+.container-clube-uol-to-payment {
+  overflow: hidden;
+  max-height: 0px;
+  transition: max-height 0.5s ease-in-out 0s;
+  color: #fff;
+  font-size: 14px;
+}
+
+.container-span-two-top-part {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 7px;
+  width: 98%;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.span-first-top {
+  >a {
+    color: rgb(152, 170, 236);
+    text-decoration: none;
+    display: inline-block;
+  }
+}
+
+.container-svg-exclamation-mark-and-span-second {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+  color: rgb(255, 206, 0);
+}
+
+.container-svg-exclamation-mark-for-payment {
+  >svg {
+    width: 18px;
+    fill: rgb(255, 206, 0);
+  }
+}
+
+.container-inputs-info-card-main {
+  padding-left: 7px;
+  width: 98%;
+}
+
+.container-expiration-date-and-security-code {
+  display: flex;
+  gap: 15px;
+  width: 98%;
+  padding-left: 7px;
+  margin-top: 5px;
+
+  span {
+    font-size: 13px;
+  }
+}
+
+.container-expiration-date {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 50%;
+
+  >input {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 7px;
+  }
+
+  >input:focus {
+    outline: none;
+    border: 2px solid #007bff;
+  }
+}
+
+.container-svg-question-mark-blue-for-payment {
+  >svg {
+    width: 13px;
+    fill: #007bff;
+  }
+}
+
+.container-security-code {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  width: 50%;
+
+  >input {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 7px;
+  }
+
+  >input:focus {
+    outline: none;
+    border: 2px solid #007bff;
+  }
+}
+
+.container-name-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 98%;
+  padding-left: 7px;
+  margin-top: 12px;
+
+  >span {
+    font-size: 13px;
+  }
+
+  >input {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 7px;
+  }
+
+  >input:focus {
+    outline: none;
+    border: 2px solid #007bff;
+  }
+}
+
+.span-payment-policies {
+  font-size: 14px;
+  padding-left: 7px;
+
+  >a {
+    color: rgb(152, 170, 236);
+    text-decoration: none;
+    display: inline-block;
+  }
+}
+
+.container-span-checkbox {
+  display: flex;
+  width: 90%;
+  gap: 5px;
+  padding-left: 7px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  >span {
+    font-size: 12px;
+  }
+}
+
+.container-span-security-code-and-svg-question-mask {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-number-card-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  >span {
+    font-size: 13px;
+  }
+
+  >input {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding: 0px 7px;
+  }
+
+  >input:focus {
+    outline: none;
+    border: 2px solid #007bff;
+  }
+}
+
+.container-type-of-card-for-payment {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.container-card-svg {
+  >svg {
+    width: 25px;
+  }
+}
+
+.container-pix {
+  padding: 20px 7px;
+}
+
+.container-info-pix-bottom {
+  font-size: 14px;
+  padding-left: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+}
+
+.container-svg-credit-card {
+  width: 40px;
+}
+
+.container-svg-debit-card {
+  width: 40px;
+}
+
+.container-svg-pix {
+  width: 40px;
+}
+
+.container-svg-google-pay {
+  width: 60px;
+}
+
+.container-discount-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.span-discount {
+  font-size: 13px;
+  color: rgb(153, 153, 153);
+}
+
+.container-line-white-discount {
+  width: 100%;
+  height: 1px;
+  background: rgb(153, 153, 153);
+  margin-top: 4px;
+}
+
+.container-clube-uol-payment {
+  background: rgb(33, 38, 45);
+  height: 101px;
+  border-radius: 5px;
+  padding: 18px 15px 0px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container-img-clube-uol-button-arrow-down-arrow-up {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.span-clube-uol-learn-more {
+  color: rgb(0, 153, 255);
+  cursor: pointer;
+}
+
+.container-subscriber-uol {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-top: 1px solid rgb(82, 82, 82);
+  position: relative;
+
+  >span {
+    padding-top: 10px;
+    line-height: 15px;
+  }
+}
+
+.container-input-cpf-cnpj-button-apply {
+  display: flex;
+  gap: 10px;
+
+  >input {
+    border: none;
+    padding: 5px 80px 5px 5px;
+    border-radius: 3px;
+  }
+
+  >input:focus {
+    outline: none;
+  }
+
+  >button {
+    border: none;
+    padding: 8px 38px;
+    border-radius: 11px;
+    border: 3px solid rgb(124 145 219);
+    background: transparent;
+    color: rgb(124 145 219);
+    font-weight: 700;
+  }
+
+  >button:hover {
+    border-color: rgb(107 132 219);
+    color: rgb(107 132 219);
+  }
+}
+
+.container-svg-warning-span-cpf-or-cnpj-clube-uol {
+  /* position: absolute; */
+  /* bottom: -24px; */
+  display: flex;
+  gap: 7px;
+  left: 1px;
+  padding-top: 0px;
+
+  >svg {
+    width: 16px;
+    fill: rgb(255, 0, 0);
+  }
+}
+
+.span-cpf-or-cnpj-invalid-clube-uol {
+  font-size: 12px;
+  color: #F44336;
+
+
+}
+
+.container-img-clube-uol-payment {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 3px;
+
+  >img {
+    width: 90%;
+    object-fit: cover;
+  }
+}
+
+.container-svg-arrow-down-up {
+  >svg {
+    width: 25px;
+    fill: rgb(152, 170, 236);
+    transform: rotate(180deg);
+    transition: transform 0.8s ease;
+  }
+}
+
+.span-subscriber-uol {
+  font-size: 13px;
+  color: #fff;
+}
+
+.span-know-more {
+  color: rgb(0, 153, 255);
+}
+
+.container-ticket-gift-card-and-arrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px 17px 15px;
+  background: rgb(33, 38, 45);
+  height: 70px;
+}
+
+.container-tickets-arrow {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.container-svg-tickets-gift-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgb(152, 170, 236);
+}
+
+.container-svg-tickets {
+  width: 25px;
+
+  >svg {
+    fill: rgb(152, 170, 236);
+    width: 100%;
+  }
+}
+
+.container-svg-arrow-down-up-tickets-gift-card {
+  width: 25px;
+
+  >svg {
+    fill: rgb(152, 170, 236);
+    width: 100%;
+    transform: rotate(180deg);
+  }
+}
+
+.container-clube-uol-to-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.span-tickers-gift-card {
+  font-size: 13px;
 }
 
 .container-back-skip {

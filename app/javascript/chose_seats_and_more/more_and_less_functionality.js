@@ -1,9 +1,12 @@
 //click in chose seats / tickets / bomboniere / payment
+import Inputmask from "inputmask";
+import { cpf, cnpj } from 'cpf-cnpj-validator'; 
 
 const containerSvgTickets = document.querySelector('.div-svg-tickets');
 let spanItensValuesSeats = document.querySelector(".span-itens-values-seats");
 const containerLineWhite1 = document.querySelector(".line-white-1");
 const containerLineWhite2 = document.querySelector(".line-white-2");
+const containerLineWhite3 = document.querySelector(".line-white-3");
 
 const buttonBack = document.querySelector('.button-back'); 
 const containerSvgChoseOfSeats = document.querySelector('.div-svg-chose-of-seats'); 
@@ -20,6 +23,14 @@ const spanBomboniere = document.querySelector('.span-bomboniere');
 
 const containerOrderSummary = document.querySelector('.container-order-summary');
 const containerSvgBomboniere = document.querySelector('.div-svg-bomboniere');
+const containerSvgPayment = document.querySelector('.div-svg-payment');
+
+const containerCardCredit = document.querySelector('.container-credit-card');
+const containerDebitCard = document.querySelector('.container-debit-card');
+const containerPix = document.querySelector('.container-pix');
+const containerGooglePay = document.querySelector('.container-google-pay');
+const containerClubeUol = document.querySelector('.container-img-clube-uol-button-arrow-down-arrow-up');
+const containerTicketGiftCard = document.querySelector('.container-tickets-arrow');
 
 let containerTicketsSvgAll = null;
 
@@ -58,6 +69,12 @@ const containerBomboniere = document.querySelector('.container-bomboniere');
 
 if(containerBomboniere){
   containerBomboniere.remove();
+}
+
+const containerPayment = document.querySelector('.container-payment');
+
+if(containerPayment){
+  containerPayment.remove();
 }
 
 let isReleasedForHoverMouseButtonBack = false;
@@ -201,6 +218,10 @@ const functionClickMoreInteiro = (e) => {
     containerSvgBomboniere.style.background = "transparent";
     containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
     containerSvgBomboniere.style.borderColor = "rgb(152, 170, 236)";
+
+    containerSvgPayment.style.background = "transparent";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
   }
 }
 
@@ -331,6 +352,10 @@ const functionClickLessInteiro = (e) => {
     containerSvgBomboniere.style.borderColor = "rgb(52, 60, 70)";
     containerSvgBomboniere.style.background = "transparent";
     containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+  
+    containerSvgPayment.style.borderColor = "rgb(52, 60, 70)";
+    containerSvgPayment.style.background = "transparent";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
   }
 }
 
@@ -463,12 +488,33 @@ if(containerSvgTickets){
       spanBomboniere.remove();
     }
 
+    if(containerPayment){
+      containerPayment.remove();
+    }
+
     if(whatButtonClickedSeatsTickets === "bomboniere"){
       if(containerBomboniere){
         containerBomboniere.remove();
       }
   
       containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
+    }
+
+    if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
+      containerBomboniere.style.background = "transparent";
+      containerBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+      containerBomboniere.style.borderColor = "rgb(152, 170, 236)";
+
+      containerSvgPayment.style.background = "transparent";
+      containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+      containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
+
+      containerLineWhite2.style.background =  "rgb(52, 60, 70)";
+      containerLineWhite3.style.background =  "rgb(52, 60, 70)";
+
+      if(spanBomboniere){
+        spanBomboniere.remove();
+      }
     }
 
     if(Number(spanItensValuesSeatsAtt.textContent) > 0){
@@ -563,6 +609,10 @@ if(containerSvgChoseOfSeats){
       }
     }
 
+    if(containerPayment){
+      containerPayment.remove();
+    }
+
     whatButtonClickedSeatsTickets = "seats";
     containerOrderSummary.style.height = "97%";
     document.body.style.height = "100%";
@@ -571,6 +621,17 @@ if(containerSvgChoseOfSeats){
     containerSvgBomboniere.style.borderColor = "rgb(52, 60, 70)";
     containerSvgBomboniere.style.background = "transparent";
     containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+
+    containerSvgPayment.style.borderColor = "rgb(52, 60, 70)";
+    containerSvgPayment.style.background = "transparent";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+
+    containerLineWhite2.style.background =  "rgb(52, 60, 70)";
+    containerLineWhite3.style.background =  "rgb(52, 60, 70)";
+
+    if(containerBomboniere){
+      containerBomboniere.remove();
+    }
     
     const containerTicketsSvgCurrent2 = document.querySelector(".container-all-tickets-svg-2");
 
@@ -625,6 +686,18 @@ let svgWarn = document.querySelector(".svg-warning");
 if(containerSvgBomboniere){
   containerSvgBomboniere.addEventListener("click", () => {
     let sumQuantityPaymentSelected = 0;
+
+    if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
+      containerSvgPayment.style.background = "transparent";
+      containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+      containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
+
+      containerLineWhite3.style.background =  "rgb(52, 60, 70)";
+    }
+
+    if(containerPayment){
+      containerPayment.remove();
+    }
   
     typePaymentAll.forEach((elPayment) => {
       sumQuantityPaymentSelected += Number(elPayment.quantity);
@@ -722,7 +795,6 @@ if(containerSvgBomboniere){
         containerWarnNotAllSeatsWereSelected.remove();
       });
     }else {
-      console.log("foi tudo seleciondado para passar para pipocas");
       whatButtonClickedSeatsTickets = "bomboniere"
 
       if(containerTypesTickets){
@@ -752,7 +824,6 @@ if(containerSvgBomboniere){
       containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
   
       containerLineWhite2.style.background =  "rgb(152, 170, 236)";
-
       eventosMoreAndLessBomboniere();
     }
   
@@ -1117,6 +1188,599 @@ const eventClickSeats = () => {
   }
 }
 
+let containerCreditCardMain = null;
+let containerDebitCardMain = null;
+let containerPixMain = null;
+let containerGooglePayMain = null;
+let containerClubeUolPayment = null;
+let containerLestChildSpanSubscriber = null;
+let element_cpf_cnpj = null;
+
+let containerNumberCardExpirationDateSecurityCodeNameCard;
+let containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard;
+let containerInfoPixBottom;
+let alreadyClickCardCredit = 0;
+let clickedContainerMethodPayment = "";
+
+const containerTypeOfCardForPayment = document.querySelector(".container-type-of-card-for-payment");
+
+if(containerTypeOfCardForPayment){
+  containerTypeOfCardForPayment.remove();
+}
+
+const containerSvgQuestionMarkBlueForPayment = document.querySelector(".container-svg-question-mark-blue-for-payment");
+
+if(containerSvgQuestionMarkBlueForPayment){
+  containerSvgQuestionMarkBlueForPayment.remove();
+}
+
+const containerSvgExclamationMarkForPayment = document.querySelector(".container-svg-exclamation-mark-for-payment");
+
+if(containerSvgExclamationMarkForPayment){
+  containerSvgExclamationMarkForPayment.remove();
+}
+
+let containerInfoBottomGooglePayForPayment = document.querySelector(".container-info-bottom-google-pay-for-payment");
+
+if(containerInfoBottomGooglePayForPayment){
+  containerInfoBottomGooglePayForPayment.remove();
+}
+
+let containerClubeUolToPayment = document.querySelector(".container-clube-uol-to-payment");
+
+if(containerClubeUolToPayment){
+  containerClubeUolToPayment.remove();
+}
+
+const clickPayment = () => {
+  alreadyClickCardCredit = 0
+  if(whatButtonClickedSeatsTickets === "tickets" && varivelHelpForSumIfAlreadyTicketChose > 0){
+    containerSvgTickets.style.background = "transparent";
+    containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
+    
+    containerSvgBomboniere.style.background = "transparent";
+    containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgBomboniere.style.borderColor = "rgb(152, 170, 236)";
+
+    containerLineWhite2.style.background =  "rgb(152, 170, 236)";
+    containerLineWhite3.style.background =  "rgb(152, 170, 236)";
+    
+    containerSvgPayment.style.borderColor = "transparent";
+    containerSvgPayment.style.background = "rgb(49, 85, 232)";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "#fff";
+  }
+
+  if(whatButtonClickedSeatsTickets === "bomboniere"){
+    containerSvgBomboniere.style.background = "transparent";
+    containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgBomboniere.style.borderColor = "rgb(152, 170, 236)";
+    
+    containerSvgPayment.style.borderColor = "transparent";
+    containerSvgPayment.style.background = "rgb(49, 85, 232)";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "#fff";
+
+    containerLineWhite3.style.background =  "rgb(152, 170, 236)";
+  }
+
+  whatButtonClickedSeatsTickets = "payment";
+
+  if(containerSvgPayment2){
+    containerSvgPayment2.remove();
+  }
+
+  if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
+    if(containerTypesTickets){
+      containerTypesTickets.remove();
+    }
+
+    if(containerBomboniere){
+      containerBomboniere.remove();
+    }
+
+    containerChoseSeatNumberResumeOrderMain.insertBefore(containerPayment, containerChoseSeatNumberResumeOrderMain.firstChild);
+
+    containerCreditCardMain = document.querySelector(".container-credit-card-main");
+    containerDebitCardMain = document.querySelector(".container-debit-card-main");
+    containerPixMain = document.querySelector(".container-pix-main");
+    containerGooglePayMain = document.querySelector(".container-google-pay-main");
+    containerClubeUolPayment = document.querySelector(".container-clube-uol-payment");
+
+    // ESSA PARTE DO CARTÃO DE CREDITO CRIAÇÃO DA DIV QUE DESCE PARA A PESSOA COLOCAR AS INFORMAÇÃO \\
+
+    containerNumberCardExpirationDateSecurityCodeNameCard = document.querySelector(".container-number-card-expiration-date-security-code");
+
+    if(containerNumberCardExpirationDateSecurityCodeNameCard){
+      containerNumberCardExpirationDateSecurityCodeNameCard.remove();
+    }
+
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard = document.querySelector(".container-number-card-expiration-date-security-code-for-debit-card");
+
+    if(containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard){
+      containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.remove();
+    }
+
+    containerInfoPixBottom = document.querySelector(".container-info-pix-bottom");
+
+    if(containerInfoPixBottom){
+      containerInfoPixBottom.remove();
+    }
+
+    containerNumberCardExpirationDateSecurityCodeNameCard = document.createElement("div");
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard = document.createElement("div");
+    containerInfoPixBottom = document.createElement("div")
+
+    let containerInputsInfoCardMain = document.createElement("div");
+    containerInputsInfoCardMain.classList.add("container-inputs-info-card-main");
+
+    let containerNumberCardMain = document.createElement("div");
+    containerNumberCardMain.classList.add("container-number-card-main");
+
+    let spanNameCard = document.createElement("span");
+    spanNameCard.classList.add("name-card");
+    spanNameCard.textContent = "Número do cartão";
+
+    let inputNumberCard = document.createElement("input");
+    inputNumberCard.classList.add("input-number-card");
+    inputNumberCard.placeholder = "1234 5678 9012 3456";
+
+    containerNumberCardMain.appendChild(spanNameCard);
+    containerNumberCardMain.appendChild(inputNumberCard);
+
+    let containerExpirationDate = document.createElement("div");
+    containerExpirationDate.classList.add("container-expiration-date");
+
+    let spanExpirationDate = document.createElement("span");
+    spanExpirationDate.classList.add("span-expiration-date");
+    spanExpirationDate.textContent = "Data de validade";
+
+    let inputExpirationDate = document.createElement("input");
+    inputExpirationDate.classList.add("input-expiration-date");
+    inputExpirationDate.placeholder = "MM/AA";
+
+    containerExpirationDate.appendChild(spanExpirationDate);
+    containerExpirationDate.appendChild(inputExpirationDate);
+
+    let containerSecurityCode = document.createElement("div");
+    containerSecurityCode.classList.add("container-security-code");
+
+    let spanSecurityCode = document.createElement("span");
+    spanSecurityCode.classList.add("span-security-code");
+    spanSecurityCode.textContent = "Código de segurança";
+
+    let inputSecurityCode = document.createElement("input");
+    inputSecurityCode.classList.add("input-security-code");
+    inputSecurityCode.placeholder = "3 dígitos";
+
+    let containerSpanSecurityCodeAndSvgQuestionMark = document.createElement("div");
+    containerSpanSecurityCodeAndSvgQuestionMark.classList.add("container-span-security-code-and-svg-question-mask");
+
+    containerSpanSecurityCodeAndSvgQuestionMark.appendChild(spanSecurityCode);
+    containerSpanSecurityCodeAndSvgQuestionMark.appendChild(containerSvgQuestionMarkBlueForPayment);
+
+    containerSecurityCode.appendChild(containerSpanSecurityCodeAndSvgQuestionMark);
+    containerSecurityCode.appendChild(inputSecurityCode);
+
+    let containerExpirationDateAndSecurityCode = document.createElement("div");
+    containerExpirationDateAndSecurityCode.classList.add("container-expiration-date-and-security-code");
+
+    containerExpirationDateAndSecurityCode.appendChild(containerExpirationDate);
+    containerExpirationDateAndSecurityCode.appendChild(containerSecurityCode);
+
+    let containerNameCard = document.createElement("div");
+    containerNameCard.classList.add("container-name-card");
+
+    let spanNameCardPayment = document.createElement("span");
+    spanNameCardPayment.classList.add("span-name-card");
+    spanNameCardPayment.textContent = "Nome do cartão";
+
+    let inputNameCardPayment = document.createElement("input");
+    inputNameCardPayment.classList.add("input-name-card");
+    inputNameCardPayment.placeholder = "Nome como está no cartão";
+
+    containerNameCard.appendChild(spanNameCardPayment);
+    containerNameCard.appendChild(inputNameCardPayment);
+
+    let containerSpanCheckbox = document.createElement("div");
+    containerSpanCheckbox.classList.add("container-span-checkbox");
+
+    let inputCheckout = document.createElement("input");
+    inputCheckout.setAttribute("type", "checkbox");
+    inputCheckout.classList.add("input-checkout");
+
+    let spanSaveForTheNextPayment = document.createElement("span");
+    spanSaveForTheNextPayment.classList.add("span-save-for-the-next-payment");
+    spanSaveForTheNextPayment.textContent = "Salvar para meu próximo pagamento";
+
+    containerSpanCheckbox.appendChild(inputCheckout);
+    containerSpanCheckbox.appendChild(spanSaveForTheNextPayment);
+
+    containerInputsInfoCardMain.appendChild(containerNumberCardMain);
+    containerInputsInfoCardMain.appendChild(containerTypeOfCardForPayment);
+
+    containerNumberCardExpirationDateSecurityCodeNameCard.classList.add("container-number-card-expiration-date-security-code");
+
+    containerNumberCardExpirationDateSecurityCodeNameCard.appendChild(containerInputsInfoCardMain);
+    containerNumberCardExpirationDateSecurityCodeNameCard.appendChild(containerExpirationDateAndSecurityCode);
+    containerNumberCardExpirationDateSecurityCodeNameCard.appendChild(containerNameCard);
+    containerNumberCardExpirationDateSecurityCodeNameCard.appendChild(containerSpanCheckbox);
+
+    containerCreditCardMain.appendChild(containerNumberCardExpirationDateSecurityCodeNameCard);
+
+    // END \\
+
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.classList.add("container-number-card-expiration-date-security-code-for-debit-card");
+
+    let containerInputsInfoCardMainClone = containerInputsInfoCardMain.cloneNode(true);
+    let containerExpirationDateAndSecurityCodeClone = containerExpirationDateAndSecurityCode.cloneNode(true);
+    let containerNameCardClone = containerNameCard.cloneNode(true);
+    // let containerSpanCheckboxClone = containerSpanCheckbox.cloneNode(true);
+
+    let containerSpanTwoTopPart = document.createElement("div");
+    containerSpanTwoTopPart.classList.add("container-span-two-top-part");
+
+    let spanFirstTop = document.createElement("span");
+    spanFirstTop.classList.add("span-first-top");
+
+    let link = document.createElement("a");
+    link.href = "#";
+    link.textContent = "Clique aqui ";
+
+    spanFirstTop.innerHTML = `${link.outerHTML} e descubra se o seu banco é aceito.`;
+
+    let containerSvgExclamationMarkAndSpanSecond = document.createElement("div");
+    containerSvgExclamationMarkAndSpanSecond.classList.add("container-svg-exclamation-mark-and-span-second");
+
+    let spanSecondTop = document.createElement("span");
+    spanSecondTop.classList.add("span-second-top");
+    spanSecondTop.textContent = "Alguns bancos requerem um cartão de Débito virtual. Verifique se o seu é um deles.";
+
+    containerSvgExclamationMarkAndSpanSecond.appendChild(containerSvgExclamationMarkForPayment);
+    containerSvgExclamationMarkAndSpanSecond.appendChild(spanSecondTop);
+
+    containerSpanTwoTopPart.appendChild(spanFirstTop);
+    containerSpanTwoTopPart.appendChild(containerSvgExclamationMarkAndSpanSecond);
+
+    let link2 = document.createElement("a");
+    link2.href = "#";
+    link2.textContent = "Políticas de Pagamento.";
+
+    let spanPaymentPolicies = document.createElement("span");
+    spanPaymentPolicies.classList.add("span-payment-policies");
+
+    spanPaymentPolicies.innerHTML = `Saiba mais sobre ${link2.outerHTML}`;
+
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.appendChild(containerSpanTwoTopPart);
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.appendChild(containerInputsInfoCardMainClone);
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.appendChild(containerExpirationDateAndSecurityCodeClone);
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.appendChild(containerNameCardClone);
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.appendChild(spanPaymentPolicies);
+    
+    containerDebitCardMain.appendChild(containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard);
+    // \\
+
+    containerInfoPixBottom.classList.add("container-info-pix-bottom");
+
+    let spanInfoPixBottom = document.createElement("span");
+    spanInfoPixBottom.classList.add("span-info-pix-bottom");
+    spanInfoPixBottom.textContent = "Antes de realizar o pagamento, confira se o CNPJ é 00860640*******.";
+
+    let spanInfoPixBottom2 = document.createElement("span");
+    spanInfoPixBottom2.classList.add("span-info-pix-bottom-2");
+    spanInfoPixBottom2.textContent = "Quando o pagamento for validado, você será automaticamente redirecionado para a tela com as informações de sua compra.";
+
+    containerInfoPixBottom.appendChild(spanInfoPixBottom);
+    containerInfoPixBottom.appendChild(spanInfoPixBottom2);
+
+    containerPixMain.appendChild(containerInfoPixBottom);
+    
+    // \\
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+    containerGooglePayMain.appendChild(containerInfoBottomGooglePayForPayment);
+
+    // \\
+    if(containerLestChildSpanSubscriber === null){
+      containerLestChildSpanSubscriber = containerClubeUolPayment.querySelector(".span-subscriber-uol");
+      containerClubeUolPayment.insertBefore(containerClubeUolToPayment, containerLestChildSpanSubscriber);
+    }
+
+    element_cpf_cnpj = document.getElementsByClassName("input-cpf-cnpj");
+    const im_cnpj = new Inputmask({
+      mask: ["999.999.999-99", "99.999.999/9999-99"],
+      greedy: false,
+      clearIncomplete: true,
+    });
+
+    im_cnpj.mask(element_cpf_cnpj);
+
+    containerOrderSummary.style.marginBottom = "0px";
+    containerOrderSummary.style.height = "auto";
+    containerPayment.style.justifyContent = "space-between";
+  }
+}
+
+const clickCardCredit = () => {
+  if(clickedContainerMethodPayment !== "cardCredit") {
+    alreadyClickCardCredit = 0;
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+
+    let timeoutId = setTimeout(() => {
+      containerInfoBottomGooglePayForPayment.style.paddingBottom = "0px";
+      containerInfoPixBottom.style.paddingBottom = "0px";
+    }, 400);
+  }
+
+  clickedContainerMethodPayment = "cardCredit";
+  containerDebitCardMain.style.border = "none";
+  containerPixMain.style.border = "none";
+  containerGooglePayMain.style.border = "none";
+  containerCreditCardMain.style.border = "1px solid rgb(152, 170, 236)";
+
+  if(alreadyClickCardCredit === 0 && clickedContainerMethodPayment === "cardCredit"){
+    alreadyClickCardCredit = 1;
+    
+    containerCreditCardMain.style.height = "auto";
+    containerNumberCardExpirationDateSecurityCodeNameCard.style.maxHeight = "100vh";
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "0px";
+    containerInfoPixBottom.style.maxHeight = "0px";
+
+  }else if(alreadyClickCardCredit === 1 && clickedContainerMethodPayment === "cardCredit") {
+    alreadyClickCardCredit = 0;
+
+    containerNumberCardExpirationDateSecurityCodeNameCard.style.maxHeight = "0px";
+  }
+}
+
+const clickDebitCard = () => {
+  if(clickedContainerMethodPayment !== "debitCard") {
+    alreadyClickCardCredit = 0;
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+    
+    let timeoutId = setTimeout(() => {
+      containerInfoBottomGooglePayForPayment.style.paddingBottom = "0px";
+      containerInfoPixBottom.style.paddingBottom = "0px";
+    }, 400);
+  }
+
+  clickedContainerMethodPayment = "debitCard";
+  containerCreditCardMain.style.border = "none";
+  containerPixMain.style.border = "none";
+  containerGooglePayMain.style.border = "none";
+  containerDebitCardMain.style.border = "1px solid rgb(152, 170, 236)";
+
+  if(alreadyClickCardCredit === 0 && clickedContainerMethodPayment === "debitCard"){
+    alreadyClickCardCredit = 1;
+    
+    containerDebitCardMain.style.height = "auto";
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "100vh";
+    containerNumberCardExpirationDateSecurityCodeNameCard.style.maxHeight = "0px";
+    containerInfoPixBottom.style.maxHeight = "0px";
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.paddingBottom = "10px";
+  }else if(alreadyClickCardCredit === 1 && clickedContainerMethodPayment === "debitCard") {
+    alreadyClickCardCredit = 0;
+
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "0px";
+
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.paddingBottom = "0px";
+  }
+}
+
+const clickPix = () => {
+  if(clickedContainerMethodPayment !== "pix"){
+    alreadyClickCardCredit = 0;
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "0px";
+    containerNumberCardExpirationDateSecurityCodeNameCard.style.maxHeight = "0px";
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+
+    let timeoutId = setTimeout(() => {
+      containerInfoBottomGooglePayForPayment.style.paddingBottom = "0px";
+      containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.paddingBottom = "0px";
+      containerNumberCardExpirationDateSecurityCodeNameCard.style.paddingBottom = "0px";
+    }, 400);
+  }
+
+  clickedContainerMethodPayment = "pix";
+  containerCreditCardMain.style.border = "none";
+  containerDebitCardMain.style.border = "none";
+  containerGooglePayMain.style.border = "none";
+  containerPixMain.style.border = "1px solid rgb(152, 170, 236)";
+
+  if(alreadyClickCardCredit === 0 && clickedContainerMethodPayment === "pix"){
+    alreadyClickCardCredit = 1;
+    
+    containerPixMain.style.height = "auto";
+    containerInfoPixBottom.style.maxHeight = "100vh";
+    containerInfoPixBottom.style.paddingBottom = "10px";
+  }else if(alreadyClickCardCredit === 1 && clickedContainerMethodPayment === "pix") {
+    alreadyClickCardCredit = 0;
+
+    containerInfoPixBottom.style.maxHeight = "0px";
+
+    setTimeout(() => {
+      containerInfoPixBottom.style.paddingBottom = "0px";
+    }, 400);
+  }
+}
+
+const putGooglePayForRun = () => {
+  const paymentDataRequest = {
+    // Informações do pagamento
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    merchantInfo: {
+        // Informações do comerciante
+        merchantName: 'Deo merchant',
+        // Informações do ambiente do Google Merchant Center
+        merchantId: '12345679533',
+    },
+    allowedPaymentMethods: [
+      {
+        type: 'CARD',
+        parameters: {
+          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+          allowedCardNetworks: ['MASTERCARD', 'VISA'],
+        },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            gateway: 'example',
+            gatewayMerchantId: 'exapleGateMerchantID',
+          },
+        },
+      },
+    ],
+    transactionInfo: {
+        totalPriceStatus: 'FINAL',
+        totalPriceLabel: 'Total',
+        totalPrice: '10',
+        currencyCode: 'USD',
+        countryCode: 'US',
+      },
+    // Opções adicionais
+    shippingAddressRequired: true,
+    shippingAddressParameters: {
+        allowedCountryCodes: ['BR'],
+        phoneNumberRequired: true,
+    },
+  };
+  
+  const paymentsClient = new google.payments.api.PaymentsClient({ environment: 'TEST' });
+  
+  paymentsClient.isReadyToPay({ allowedPaymentMethods: ['CARD', 'TOKENIZED_CARD'] })
+  .then(function(response) {
+      if (response.result) {
+          const button = document.getElementById('google-pay-button');
+          button.addEventListener('click', () => {
+              paymentsClient.loadPaymentData(paymentDataRequest)
+                  .then(function(paymentData) {
+                      // Processar o pagamento
+                      console.log(paymentData);
+                  })
+                  .catch(function(error) {
+                      // console.error(error);
+                  });
+          });
+      } else {
+        console.error('Google Pay não está disponível para o usuário');
+      }
+  })
+  .catch(function(error) {
+    console.error('Erro ao verificar a disponibilidade do Google Pay', error);
+  });
+}
+
+const clickGooglePay = () => {
+  if(clickedContainerMethodPayment !== "googlePay"){
+    alreadyClickCardCredit = 0;
+    containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "0px";
+    containerNumberCardExpirationDateSecurityCodeNameCard.style.maxHeight = "0px";
+    containerInfoPixBottom.style.maxHeight = "0px";
+
+    let timeoutId = setTimeout(() => {
+      containerInfoPixBottom.style.paddingBottom = "0px";
+      containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.paddingBottom = "0px";
+      containerNumberCardExpirationDateSecurityCodeNameCard.style.paddingBottom = "0px";
+    }, 400);
+  }
+
+  clickedContainerMethodPayment = "googlePay";
+  containerCreditCardMain.style.border = "none";
+  containerDebitCardMain.style.border = "none";
+  containerPixMain.style.border = "none";
+  containerGooglePayMain.style.border = "1px solid rgb(152, 170, 236)";
+
+  if(alreadyClickCardCredit === 0 && clickedContainerMethodPayment === "googlePay"){
+    alreadyClickCardCredit = 1;
+    
+    containerGooglePayMain.style.height = "auto";
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "100vh";
+    containerInfoBottomGooglePayForPayment.style.paddingBottom = "10px";
+  }else if(alreadyClickCardCredit === 1 && clickedContainerMethodPayment === "googlePay") {
+    alreadyClickCardCredit = 0;
+
+    containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
+
+    let timeoutId = setTimeout(() => {
+      containerInfoBottomGooglePayForPayment.style.paddingBottom = "0px";
+    }, 400);
+
+    // clearTimeout(timeoutId);
+  }
+
+  putGooglePayForRun();
+}
+
+let alreadyClickClubeUolAndTicketsGiftCard = 0;
+let clickedContainerClubeUolAndTicketsGiftCard = "";
+// let buttonApplyClubeUol = null;
+
+const clickClubeUol = (e) => {
+  const containerSvgArrowDownUp = e.srcElement.querySelector(".container-svg-arrow-down-up");
+  let svgArrowDownUp = containerSvgArrowDownUp.firstChild.nextSibling;
+  let containerSvgWarningSpanCpfOrCnpjClubeUol = document.querySelector(".container-svg-warning-span-cpf-or-cnpj-clube-uol");
+
+  if(containerSvgWarningSpanCpfOrCnpjClubeUol){
+    containerSvgWarningSpanCpfOrCnpjClubeUol.remove();
+  }
+
+  let buttonApplyClubeUol = document.querySelector(".button-apply-clube-uol");
+  
+  clickedContainerClubeUolAndTicketsGiftCard = "clubeUol";
+
+  if(alreadyClickClubeUolAndTicketsGiftCard === 0 && clickedContainerClubeUolAndTicketsGiftCard === "clubeUol"){
+    alreadyClickClubeUolAndTicketsGiftCard = 1;
+    svgArrowDownUp.style = "transform: rotate(0deg)";
+
+    element_cpf_cnpj[0].addEventListener("keydown", (e) => {
+      if(cpf.isValid(e.srcElement.value) || cnpj.isValid(e.srcElement.value)){
+        e.srcElement.style.borderLeft = "3px solid #4CAF50";
+        e.srcElement.style.borderBottom = "1px solid #4CAF50";
+        e.srcElement.style.borderTop = "1px solid #4CAF50";
+        e.srcElement.style.borderRight = "1px solid #4CAF50";
+
+        buttonApplyClubeUol.style.cursor = "pointer";
+        buttonApplyClubeUol.style.borderColor = "rgb(107 132 219)";
+        buttonApplyClubeUol.style.color = "rgb(107 132 219)";
+
+        if(containerSvgWarningSpanCpfOrCnpjClubeUol){
+          containerSvgWarningSpanCpfOrCnpjClubeUol.remove();
+        }
+      }else {
+        e.srcElement.style.borderLeft = "3px solid #F44336";
+        e.srcElement.style.borderBottom = "1px solid #F44336";
+        e.srcElement.style.borderTop = "1px solid #F44336";
+        e.srcElement.style.borderRight = "1px solid #F44336";
+        
+        buttonApplyClubeUol.style.cursor = "no-drop";
+        buttonApplyClubeUol.style.borderColor = "rgb(102 103 109)";
+        buttonApplyClubeUol.style.color = "rgb(102 103 109)";
+  
+        containerClubeUolToPayment.appendChild(containerSvgWarningSpanCpfOrCnpjClubeUol);
+      }
+    });
+      
+    containerClubeUolPayment.style.height = "auto";
+    containerClubeUolToPayment.style.maxHeight = "100vh"; 
+    containerClubeUolToPayment.style.paddingBottom = "15px";
+    containerLestChildSpanSubscriber.remove();
+  }else if(alreadyClickClubeUolAndTicketsGiftCard === 1 && clickedContainerClubeUolAndTicketsGiftCard === "clubeUol"){
+    alreadyClickClubeUolAndTicketsGiftCard = 0;
+    svgArrowDownUp.style = "transform: rotate(180deg)";
+    console.log(containerLestChildSpanSubscriber);
+    containerClubeUolPayment.appendChild(containerLestChildSpanSubscriber);
+
+    containerClubeUolToPayment.style.maxHeight = "0px";
+    containerClubeUolToPayment.style.paddingBottom = "0px";
+    containerClubeUolPayment.style.paddingBottom = "15px";
+  }
+}
+
+const clickTicketGiftCard = () => {
+  clickedContainerClubeUolAndTicketsGiftCard = "ticketGiftCard";
+  console.log("ticket gift card");
+}
+
+
 if(window.location.pathname === "/chose_seats_and_more"){
   if(containerSvgTickets){
     containerSvgTickets.addEventListener("click", eventClickTickets);
@@ -1124,6 +1788,34 @@ if(window.location.pathname === "/chose_seats_and_more"){
   
   if(containerSvgChoseOfSeats){
     containerSvgChoseOfSeats.addEventListener("click", eventClickSeats);
+  }
+
+  if(containerSvgPayment){
+    containerSvgPayment.addEventListener("click", clickPayment);
+  }
+
+  if(containerCardCredit){
+    containerCardCredit.addEventListener("click", clickCardCredit);
+  }
+
+  if(containerDebitCard){
+    containerDebitCard.addEventListener("click", clickDebitCard);
+  }
+
+  if(containerPix){
+    containerPix.addEventListener("click", clickPix);
+  }
+
+  if(containerGooglePay){
+    containerGooglePay.addEventListener("click", clickGooglePay);
+  }
+
+  if(containerClubeUol){
+    containerClubeUol.addEventListener("click", clickClubeUol);
+  }
+
+  if(containerTicketGiftCard){
+    containerTicketGiftCard.addEventListener("click", clickTicketGiftCard);
   }
 };
 
@@ -1134,6 +1826,34 @@ if(window.location.pathname !== "/chose_seats_and_more"){
   
   if(containerSvgChoseOfSeats){
     containerSvgChoseOfSeats.removeEventListener("click", eventClickSeats);
+  }
+
+  if(containerSvgPayment){
+    containerSvgPayment.removeEventListener("click", clickPayment);
+  }
+
+  if(containerCardCredit){
+    containerCardCredit.removeEventListener("click", clickCardCredit);
+  }
+
+  if(containerDebitCard){
+    containerDebitCard.removeEventListener("click", clickDebitCard);
+  }
+
+  if(containerPix){
+    containerPix.removeEventListener("click", clickPix);
+  }
+
+  if(containerGooglePay){
+    containerGooglePay.removeEventListener("click", clickGooglePay);
+  }
+
+  if(containerClubeUol){
+    containerClubeUol.removeEventListener("click", clickClubeUol);
+  }
+
+  if(containerTicketGiftCard){
+    containerTicketGiftCard.removeEventListener("click", clickTicketGiftCard);
   }
 };
 
@@ -1161,3 +1881,4 @@ if(buttonBack){
     }
   });
 }
+
