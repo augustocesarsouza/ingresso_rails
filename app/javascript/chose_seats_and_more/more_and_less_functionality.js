@@ -1479,8 +1479,10 @@ const clickPayment = () => {
     containerGooglePayMain.appendChild(containerInfoBottomGooglePayForPayment);
 
     // \\
-    containerLestChildSpanSubscriber = containerClubeUolPayment.querySelector(".span-subscriber-uol");
-    containerClubeUolPayment.insertBefore(containerClubeUolToPayment, containerLestChildSpanSubscriber);
+    if(containerLestChildSpanSubscriber === null){
+      containerLestChildSpanSubscriber = containerClubeUolPayment.querySelector(".span-subscriber-uol");
+      containerClubeUolPayment.insertBefore(containerClubeUolToPayment, containerLestChildSpanSubscriber);
+    }
 
     element_cpf_cnpj = document.getElementsByClassName("input-cpf-cnpj");
     const im_cnpj = new Inputmask({
@@ -1490,6 +1492,10 @@ const clickPayment = () => {
     });
 
     im_cnpj.mask(element_cpf_cnpj);
+
+    containerOrderSummary.style.marginBottom = "0px";
+    containerOrderSummary.style.height = "auto";
+    containerPayment.style.justifyContent = "space-between";
   }
 }
 
@@ -1706,7 +1712,7 @@ const clickGooglePay = () => {
 
 let alreadyClickClubeUolAndTicketsGiftCard = 0;
 let clickedContainerClubeUolAndTicketsGiftCard = "";
-let buttonApplyClubeUol = null;
+// let buttonApplyClubeUol = null;
 
 const clickClubeUol = (e) => {
   const containerSvgArrowDownUp = e.srcElement.querySelector(".container-svg-arrow-down-up");
@@ -1726,7 +1732,6 @@ const clickClubeUol = (e) => {
     svgArrowDownUp.style = "transform: rotate(0deg)";
 
     element_cpf_cnpj[0].addEventListener("keydown", (e) => {
-      console.log(e.srcElement.parentElement);
       if(cpf.isValid(e.srcElement.value) || cnpj.isValid(e.srcElement.value)){
         e.srcElement.style.borderLeft = "3px solid #4CAF50";
         e.srcElement.style.borderBottom = "1px solid #4CAF50";
@@ -1761,6 +1766,7 @@ const clickClubeUol = (e) => {
   }else if(alreadyClickClubeUolAndTicketsGiftCard === 1 && clickedContainerClubeUolAndTicketsGiftCard === "clubeUol"){
     alreadyClickClubeUolAndTicketsGiftCard = 0;
     svgArrowDownUp.style = "transform: rotate(180deg)";
+    console.log(containerLestChildSpanSubscriber);
     containerClubeUolPayment.appendChild(containerLestChildSpanSubscriber);
 
     containerClubeUolToPayment.style.maxHeight = "0px";
