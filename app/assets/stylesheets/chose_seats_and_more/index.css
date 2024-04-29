@@ -844,6 +844,14 @@
   }
 }
 
+.container-clube-uol-to-payment {
+  overflow: hidden;
+  max-height: 0px;
+  transition: max-height 0.5s ease-in-out 0s;
+  color: #fff;
+  font-size: 14px;
+}
+
 .container-span-two-top-part {
   display: flex;
   flex-direction: column;
@@ -1089,6 +1097,75 @@
   cursor: pointer;
 }
 
+.span-clube-uol-learn-more {
+  color: rgb(0, 153, 255);
+  cursor: pointer;
+}
+
+.container-subscriber-uol {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-top: 1px solid rgb(82, 82, 82);
+  position: relative;
+
+  >span {
+    padding-top: 10px;
+    line-height: 15px;
+  }
+}
+
+.container-input-cpf-cnpj-button-apply {
+  display: flex;
+  gap: 10px;
+
+  >input {
+    border: none;
+    padding: 5px 80px 5px 5px;
+    border-radius: 3px;
+  }
+
+  >input:focus {
+    outline: none;
+  }
+
+  >button {
+    border: none;
+    padding: 8px 38px;
+    border-radius: 11px;
+    border: 3px solid rgb(124 145 219);
+    background: transparent;
+    color: rgb(124 145 219);
+    font-weight: 700;
+  }
+
+  >button:hover {
+    border-color: rgb(107 132 219);
+    color: rgb(107 132 219);
+  }
+}
+
+.container-svg-warning-span-cpf-or-cnpj-clube-uol {
+  /* position: absolute; */
+  /* bottom: -24px; */
+  display: flex;
+  gap: 7px;
+  left: 1px;
+  padding-top: 0px;
+
+  >svg {
+    width: 16px;
+    fill: rgb(255, 0, 0);
+  }
+}
+
+.span-cpf-or-cnpj-invalid-clube-uol {
+  font-size: 12px;
+  color: #F44336;
+
+
+}
+
 .container-img-clube-uol-payment {
   width: 100px;
   display: flex;
@@ -1108,6 +1185,7 @@
     width: 25px;
     fill: rgb(152, 170, 236);
     transform: rotate(180deg);
+    transition: transform 0.8s ease;
   }
 }
 
@@ -1160,7 +1238,14 @@
   >svg {
     fill: rgb(152, 170, 236);
     width: 100%;
+    transform: rotate(180deg);
   }
+}
+
+.container-clube-uol-to-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .span-tickers-gift-card {

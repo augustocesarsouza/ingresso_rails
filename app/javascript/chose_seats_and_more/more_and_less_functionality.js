@@ -1,4 +1,6 @@
 //click in chose seats / tickets / bomboniere / payment
+import Inputmask from "inputmask";
+import { cpf, cnpj } from 'cpf-cnpj-validator'; 
 
 const containerSvgTickets = document.querySelector('.div-svg-tickets');
 let spanItensValuesSeats = document.querySelector(".span-itens-values-seats");
@@ -27,6 +29,8 @@ const containerCardCredit = document.querySelector('.container-credit-card');
 const containerDebitCard = document.querySelector('.container-debit-card');
 const containerPix = document.querySelector('.container-pix');
 const containerGooglePay = document.querySelector('.container-google-pay');
+const containerClubeUol = document.querySelector('.container-img-clube-uol-button-arrow-down-arrow-up');
+const containerTicketGiftCard = document.querySelector('.container-tickets-arrow');
 
 let containerTicketsSvgAll = null;
 
@@ -1188,6 +1192,9 @@ let containerCreditCardMain = null;
 let containerDebitCardMain = null;
 let containerPixMain = null;
 let containerGooglePayMain = null;
+let containerClubeUolPayment = null;
+let containerLestChildSpanSubscriber = null;
+let element_cpf_cnpj = null;
 
 let containerNumberCardExpirationDateSecurityCodeNameCard;
 let containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard;
@@ -1217,6 +1224,12 @@ let containerInfoBottomGooglePayForPayment = document.querySelector(".container-
 
 if(containerInfoBottomGooglePayForPayment){
   containerInfoBottomGooglePayForPayment.remove();
+}
+
+let containerClubeUolToPayment = document.querySelector(".container-clube-uol-to-payment");
+
+if(containerClubeUolToPayment){
+  containerClubeUolToPayment.remove();
 }
 
 const clickPayment = () => {
@@ -1271,6 +1284,7 @@ const clickPayment = () => {
     containerDebitCardMain = document.querySelector(".container-debit-card-main");
     containerPixMain = document.querySelector(".container-pix-main");
     containerGooglePayMain = document.querySelector(".container-google-pay-main");
+    containerClubeUolPayment = document.querySelector(".container-clube-uol-payment");
 
     // ESSA PARTE DO CARTÃO DE CREDITO CRIAÇÃO DA DIV QUE DESCE PARA A PESSOA COLOCAR AS INFORMAÇÃO \\
 
@@ -1465,7 +1479,17 @@ const clickPayment = () => {
     containerGooglePayMain.appendChild(containerInfoBottomGooglePayForPayment);
 
     // \\
+    containerLestChildSpanSubscriber = containerClubeUolPayment.querySelector(".span-subscriber-uol");
+    containerClubeUolPayment.insertBefore(containerClubeUolToPayment, containerLestChildSpanSubscriber);
 
+    element_cpf_cnpj = document.getElementsByClassName("input-cpf-cnpj");
+    const im_cnpj = new Inputmask({
+      mask: ["999.999.999-99", "99.999.999/9999-99"],
+      greedy: false,
+      clearIncomplete: true,
+    });
+
+    im_cnpj.mask(element_cpf_cnpj);
   }
 }
 
@@ -1680,6 +1704,77 @@ const clickGooglePay = () => {
   putGooglePayForRun();
 }
 
+let alreadyClickClubeUolAndTicketsGiftCard = 0;
+let clickedContainerClubeUolAndTicketsGiftCard = "";
+let buttonApplyClubeUol = null;
+
+const clickClubeUol = (e) => {
+  const containerSvgArrowDownUp = e.srcElement.querySelector(".container-svg-arrow-down-up");
+  let svgArrowDownUp = containerSvgArrowDownUp.firstChild.nextSibling;
+  let containerSvgWarningSpanCpfOrCnpjClubeUol = document.querySelector(".container-svg-warning-span-cpf-or-cnpj-clube-uol");
+
+  if(containerSvgWarningSpanCpfOrCnpjClubeUol){
+    containerSvgWarningSpanCpfOrCnpjClubeUol.remove();
+  }
+
+  let buttonApplyClubeUol = document.querySelector(".button-apply-clube-uol");
+  
+  clickedContainerClubeUolAndTicketsGiftCard = "clubeUol";
+
+  if(alreadyClickClubeUolAndTicketsGiftCard === 0 && clickedContainerClubeUolAndTicketsGiftCard === "clubeUol"){
+    alreadyClickClubeUolAndTicketsGiftCard = 1;
+    svgArrowDownUp.style = "transform: rotate(0deg)";
+
+    element_cpf_cnpj[0].addEventListener("keydown", (e) => {
+      console.log(e.srcElement.parentElement);
+      if(cpf.isValid(e.srcElement.value) || cnpj.isValid(e.srcElement.value)){
+        e.srcElement.style.borderLeft = "3px solid #4CAF50";
+        e.srcElement.style.borderBottom = "1px solid #4CAF50";
+        e.srcElement.style.borderTop = "1px solid #4CAF50";
+        e.srcElement.style.borderRight = "1px solid #4CAF50";
+
+        buttonApplyClubeUol.style.cursor = "pointer";
+        buttonApplyClubeUol.style.borderColor = "rgb(107 132 219)";
+        buttonApplyClubeUol.style.color = "rgb(107 132 219)";
+
+        if(containerSvgWarningSpanCpfOrCnpjClubeUol){
+          containerSvgWarningSpanCpfOrCnpjClubeUol.remove();
+        }
+      }else {
+        e.srcElement.style.borderLeft = "3px solid #F44336";
+        e.srcElement.style.borderBottom = "1px solid #F44336";
+        e.srcElement.style.borderTop = "1px solid #F44336";
+        e.srcElement.style.borderRight = "1px solid #F44336";
+        
+        buttonApplyClubeUol.style.cursor = "no-drop";
+        buttonApplyClubeUol.style.borderColor = "rgb(102 103 109)";
+        buttonApplyClubeUol.style.color = "rgb(102 103 109)";
+  
+        containerClubeUolToPayment.appendChild(containerSvgWarningSpanCpfOrCnpjClubeUol);
+      }
+    });
+      
+    containerClubeUolPayment.style.height = "auto";
+    containerClubeUolToPayment.style.maxHeight = "100vh"; 
+    containerClubeUolToPayment.style.paddingBottom = "15px";
+    containerLestChildSpanSubscriber.remove();
+  }else if(alreadyClickClubeUolAndTicketsGiftCard === 1 && clickedContainerClubeUolAndTicketsGiftCard === "clubeUol"){
+    alreadyClickClubeUolAndTicketsGiftCard = 0;
+    svgArrowDownUp.style = "transform: rotate(180deg)";
+    containerClubeUolPayment.appendChild(containerLestChildSpanSubscriber);
+
+    containerClubeUolToPayment.style.maxHeight = "0px";
+    containerClubeUolToPayment.style.paddingBottom = "0px";
+    containerClubeUolPayment.style.paddingBottom = "15px";
+  }
+}
+
+const clickTicketGiftCard = () => {
+  clickedContainerClubeUolAndTicketsGiftCard = "ticketGiftCard";
+  console.log("ticket gift card");
+}
+
+
 if(window.location.pathname === "/chose_seats_and_more"){
   if(containerSvgTickets){
     containerSvgTickets.addEventListener("click", eventClickTickets);
@@ -1707,6 +1802,14 @@ if(window.location.pathname === "/chose_seats_and_more"){
 
   if(containerGooglePay){
     containerGooglePay.addEventListener("click", clickGooglePay);
+  }
+
+  if(containerClubeUol){
+    containerClubeUol.addEventListener("click", clickClubeUol);
+  }
+
+  if(containerTicketGiftCard){
+    containerTicketGiftCard.addEventListener("click", clickTicketGiftCard);
   }
 };
 
@@ -1737,6 +1840,14 @@ if(window.location.pathname !== "/chose_seats_and_more"){
 
   if(containerGooglePay){
     containerGooglePay.removeEventListener("click", clickGooglePay);
+  }
+
+  if(containerClubeUol){
+    containerClubeUol.removeEventListener("click", clickClubeUol);
+  }
+
+  if(containerTicketGiftCard){
+    containerTicketGiftCard.removeEventListener("click", clickTicketGiftCard);
   }
 };
 

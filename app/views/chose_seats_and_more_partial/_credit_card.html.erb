@@ -63,10 +63,26 @@
   </div>
 </div>
 <%= render "chose_seats_and_more_partial/all_card_for_payment_svgs" %>
+<%# Google Play parte para pegar no javascript %>
 <div class="container-info-bottom-google-pay-for-payment">
   <span class="span-1-info-bottom-google-pay-for-payment">Com o Google Pay é muito rápido e fácil de pagar. Ele reúne tudo que você precisa para finalizar sua compra, com as mesmas vantagens e benefícios de seus cartões físicos. E sua informação fica protegida em uma das infraestruturas de segurança mais avançadas do mundo.</span>
   <span class="span-2-info-bottom-google-pay-for-payment">Prossiga clicando no botão Google Pay.</span>
   <div class="container-pay-with-gpay">
     <button id="google-pay-button">Pagar com o <img src="https://res.cloudinary.com/dyqsqg7pk/image/upload/v1714327470/GPAYFULLWHITE_gdrqhd.png" alt="gpay"></button>
+  </div>
+</div>
+<%# ClubeUol Para pegar no javascript %>
+<div class="container-clube-uol-to-payment">
+  <span class="span-clube-uol-1">Assinante UOL tem 2 ingressos por mês sem taxa de serviço. <span class="span-clube-uol-learn-more">Saiba mais</span></span>
+  <div class="container-subscriber-uol">
+    <span><span class="span-clube-uol-is-subscriber">É assinante UOL?</span> Digite seu CPF ou CNPJ para consultar e aplicar o seu benefício. Caso esteja disponível, a isenção da taxa será automaticamente aplicada no valor de sua compra.</span>
+    <div class="container-input-cpf-cnpj-button-apply">
+      <input type="text" placeholder="Digite o CPF ou CNPJ" class="input-cpf-cnpj">
+      <button class="button-apply-clube-uol">APLICAR</button>
+    </div>
+    <div class="container-svg-warning-span-cpf-or-cnpj-clube-uol">
+      <%= render "chose_seats_and_more_svg_partial/svg_exclamation_mark_for_warning_cpf_cnpj" %>
+      <span class="span-cpf-or-cnpj-invalid-clube-uol">CPF ou CNPJ inválido.</span>
+    </div>
   </div>
 </div>
