@@ -63,7 +63,8 @@
 
 .span-chose-ofseats,
 .span-types-tickets,
-.span-bomboniere {
+.span-bomboniere,
+.span-payment {
   font-size: 12px;
   color: rgb(173, 182, 194);
   position: absolute;
@@ -80,6 +81,10 @@
 
 .span-bomboniere {
   left: 332px;
+}
+
+.span-payment {
+  left: 511px;
 }
 
 .line-white-seats-type-tickets-bomboniere-payment {
@@ -487,6 +492,8 @@
   font-size: 14px;
   gap: 2px;
   border-top: 1px solid rgb(102, 102, 102);
+  padding: 5px 0px;
+
 }
 
 .span-tickets-name {
@@ -498,6 +505,18 @@
   display: flex;
   justify-content: space-between;
   font-size: 14px;
+}
+
+.container-what-type-payment-click {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  border-top: 1px solid rgb(102, 102, 102);
+  padding: 5px 0px;
+
+  >span:first-child {
+    font-weight: 600;
+  }
 }
 
 .container-product-bomboniere {
@@ -844,7 +863,8 @@
   }
 }
 
-.container-clube-uol-to-payment {
+.container-clube-uol-to-payment,
+.ticket-gift-card-info-inner {
   overflow: hidden;
   max-height: 0px;
   transition: max-height 0.5s ease-in-out 0s;
@@ -1095,6 +1115,7 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  z-index: 11;
 }
 
 .span-clube-uol-learn-more {
@@ -1115,7 +1136,8 @@
   }
 }
 
-.container-input-cpf-cnpj-button-apply {
+.container-input-cpf-cnpj-button-apply,
+.container-input-cpf-cnpj-button-apply-ticket-gift-card {
   display: flex;
   gap: 10px;
 
@@ -1145,6 +1167,10 @@
   }
 }
 
+.container-input-cpf-cnpj-button-apply-ticket-gift-card {
+  padding-top: 15px;
+}
+
 .container-svg-warning-span-cpf-or-cnpj-clube-uol {
   /* position: absolute; */
   /* bottom: -24px; */
@@ -1162,8 +1188,6 @@
 .span-cpf-or-cnpj-invalid-clube-uol {
   font-size: 12px;
   color: #F44336;
-
-
 }
 
 .container-img-clube-uol-payment {
@@ -1173,6 +1197,7 @@
   justify-content: center;
   background: #fff;
   border-radius: 3px;
+  pointer-events: none;
 
   >img {
     width: 90%;
@@ -1180,7 +1205,10 @@
   }
 }
 
-.container-svg-arrow-down-up {
+.container-svg-arrow-down-up,
+.container-svg-arrow-down-up-tickets-gift-card {
+  pointer-events: none;
+
   >svg {
     width: 25px;
     fill: rgb(152, 170, 236);
@@ -1200,9 +1228,9 @@
 
 .container-ticket-gift-card-and-arrow {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 0px 15px 17px 15px;
+  padding: 7px 15px 13px 15px;
   background: rgb(33, 38, 45);
   height: 70px;
 }
@@ -1221,6 +1249,7 @@
   align-items: center;
   gap: 10px;
   color: rgb(152, 170, 236);
+  pointer-events: none;
 }
 
 .container-svg-tickets {

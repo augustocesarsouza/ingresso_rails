@@ -261,6 +261,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     const functionClickContainerSpanNumber = (containerSpanNumber) => {
+      if(containerSpanNumber.style.background === "transparent") return;
+
       if(arrayAllSeats.includes(containerSpanNumber.firstChild.textContent)){
         arrayAllSeats = arrayAllSeats.filter((el) => el !== containerSpanNumber.firstChild.textContent);
 
