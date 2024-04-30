@@ -1193,6 +1193,7 @@ let containerDebitCardMain = null;
 let containerPixMain = null;
 let containerGooglePayMain = null;
 let containerClubeUolPayment = null;
+let containerTicketGiftCardForInsert = null;
 let containerLestChildSpanSubscriber = null;
 let element_cpf_cnpj = null;
 
@@ -1230,6 +1231,12 @@ let containerClubeUolToPayment = document.querySelector(".container-clube-uol-to
 
 if(containerClubeUolToPayment){
   containerClubeUolToPayment.remove();
+}
+
+let containerTicketGiftCardInfoInner = document.querySelector(".ticket-gift-card-info-inner");
+
+if(containerTicketGiftCardInfoInner){
+  containerTicketGiftCardInfoInner.remove();
 }
 
 const clickPayment = () => {
@@ -1285,6 +1292,7 @@ const clickPayment = () => {
     containerPixMain = document.querySelector(".container-pix-main");
     containerGooglePayMain = document.querySelector(".container-google-pay-main");
     containerClubeUolPayment = document.querySelector(".container-clube-uol-payment");
+    containerTicketGiftCardForInsert = document.querySelector(".container-ticket-gift-card-and-arrow");
 
     // ESSA PARTE DO CARTÃO DE CREDITO CRIAÇÃO DA DIV QUE DESCE PARA A PESSOA COLOCAR AS INFORMAÇÃO \\
 
@@ -1483,6 +1491,8 @@ const clickPayment = () => {
       containerLestChildSpanSubscriber = containerClubeUolPayment.querySelector(".span-subscriber-uol");
       containerClubeUolPayment.insertBefore(containerClubeUolToPayment, containerLestChildSpanSubscriber);
     }
+
+    containerTicketGiftCardForInsert.appendChild(containerTicketGiftCardInfoInner);
 
     element_cpf_cnpj = document.getElementsByClassName("input-cpf-cnpj");
     const im_cnpj = new Inputmask({
@@ -1710,10 +1720,12 @@ const clickGooglePay = () => {
 }
 
 let alreadyClickClubeUolAndTicketsGiftCard = 0;
-let clickedContainerClubeUolAndTicketsGiftCard = "";
-// let buttonApplyClubeUol = null;
+let alreadyClickTicketGiftCard = 0;
+
+// containerChoseSeatNumberResumeOrderMain.marginBottom = "60px";
 
 const clickClubeUol = (e) => {
+  console.log("click clubeUol");
   const containerSvgArrowDownUp = e.srcElement.querySelector(".container-svg-arrow-down-up");
   let svgArrowDownUp = containerSvgArrowDownUp.firstChild.nextSibling;
   let containerSvgWarningSpanCpfOrCnpjClubeUol = document.querySelector(".container-svg-warning-span-cpf-or-cnpj-clube-uol");
@@ -1721,12 +1733,10 @@ const clickClubeUol = (e) => {
   if(containerSvgWarningSpanCpfOrCnpjClubeUol){
     containerSvgWarningSpanCpfOrCnpjClubeUol.remove();
   }
-
+  // pointer-events: none;
   let buttonApplyClubeUol = document.querySelector(".button-apply-clube-uol");
-  
-  clickedContainerClubeUolAndTicketsGiftCard = "clubeUol";
 
-  if(alreadyClickClubeUolAndTicketsGiftCard === 0 && clickedContainerClubeUolAndTicketsGiftCard === "clubeUol"){
+  if(alreadyClickClubeUolAndTicketsGiftCard === 0){
     alreadyClickClubeUolAndTicketsGiftCard = 1;
     svgArrowDownUp.style = "transform: rotate(0deg)";
 
@@ -1762,21 +1772,52 @@ const clickClubeUol = (e) => {
     containerClubeUolToPayment.style.maxHeight = "100vh"; 
     containerClubeUolToPayment.style.paddingBottom = "15px";
     containerLestChildSpanSubscriber.remove();
-  }else if(alreadyClickClubeUolAndTicketsGiftCard === 1 && clickedContainerClubeUolAndTicketsGiftCard === "clubeUol"){
+  }else if(alreadyClickClubeUolAndTicketsGiftCard === 1){
     alreadyClickClubeUolAndTicketsGiftCard = 0;
     svgArrowDownUp.style = "transform: rotate(180deg)";
-    
+
     containerClubeUolPayment.appendChild(containerLestChildSpanSubscriber);
 
     containerClubeUolToPayment.style.maxHeight = "0px";
     containerClubeUolToPayment.style.paddingBottom = "0px";
     containerClubeUolPayment.style.paddingBottom = "15px";
   }
+
+  if(alreadyClickClubeUolAndTicketsGiftCard === 1 && alreadyClickTicketGiftCard === 1){
+    containerChoseSeatNumberResumeOrderMain.style.marginBottom = "60px";
+  }else {
+    containerChoseSeatNumberResumeOrderMain.style.marginBottom = "0px";
+  }
 }
 
-const clickTicketGiftCard = () => {
-  clickedContainerClubeUolAndTicketsGiftCard = "ticketGiftCard";
-  console.log("ticket gift card");
+const clickTicketGiftCard = (e) => {
+  const containerSvgArrowDownUp = e.target.querySelector(".container-svg-arrow-down-up-tickets-gift-card");
+  let svgArrowDownUp = containerSvgArrowDownUp.firstChild.nextSibling;
+
+  if(alreadyClickTicketGiftCard === 0){
+    svgArrowDownUp.style = "transform: rotate(0deg)";
+    alreadyClickTicketGiftCard = 1;
+
+    containerTicketGiftCardForInsert.style.height = "auto";
+    containerTicketGiftCardInfoInner.style.maxHeight = "100vh"; 
+    containerTicketGiftCardInfoInner.style.paddingTop = "8px";
+
+  }else if(alreadyClickTicketGiftCard === 1){
+    svgArrowDownUp.style = "transform: rotate(180deg)";
+    alreadyClickTicketGiftCard = 0;
+
+    containerTicketGiftCardInfoInner.style.maxHeight = "0px";
+    containerTicketGiftCardInfoInner.style.paddingTop = "0px";
+  }
+
+  console.log(alreadyClickClubeUolAndTicketsGiftCard);
+  console.log(alreadyClickTicketGiftCard);
+
+  if(alreadyClickClubeUolAndTicketsGiftCard === 1 && alreadyClickTicketGiftCard === 1){
+    containerChoseSeatNumberResumeOrderMain.style.marginBottom = "60px";
+  }else {
+    containerChoseSeatNumberResumeOrderMain.style.marginBottom = "0px";
+  }
 }
 
 
