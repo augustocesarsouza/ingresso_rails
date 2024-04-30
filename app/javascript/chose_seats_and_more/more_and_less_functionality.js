@@ -20,6 +20,7 @@ const containerButtonSkip = document.querySelector(".container-button-skip");
 const spanTypesTickets = document.querySelector(".span-types-tickets");
 const spanChoseOfSeats = document.querySelector('.span-chose-ofseats');
 const spanBomboniere = document.querySelector('.span-bomboniere');
+const spanPayment = document.querySelector('.span-payment');
 
 const containerOrderSummary = document.querySelector('.container-order-summary');
 const containerSvgBomboniere = document.querySelector('.div-svg-bomboniere');
@@ -31,8 +32,6 @@ const containerPix = document.querySelector('.container-pix');
 const containerGooglePay = document.querySelector('.container-google-pay');
 const containerClubeUol = document.querySelector('.container-img-clube-uol-button-arrow-down-arrow-up');
 const containerTicketGiftCard = document.querySelector('.container-tickets-arrow');
-
-let containerTicketsSvgAll = null;
 
 let whatButtonClickedSeatsTickets = "seats";
 let typePaymentAll = [];
@@ -63,6 +62,10 @@ if(containerTypesTickets){
 
 if(spanBomboniere){
   spanBomboniere.remove();
+}
+
+if(spanPayment){
+  spanPayment.remove();
 }
 
 const containerBomboniere = document.querySelector('.container-bomboniere');
@@ -475,359 +478,407 @@ const functionAddEventListernerContainerMoreAndLess = () => {
 
 let containerTicketsSvg1 = null;
 
+const functionClickTickets = () => {
+  containerTicketsSvg1 = document.querySelector(".container-all-tickets-svg-1");
+  const spanItensValuesSeatsAtt = document.querySelector(".span-itens-values-seats");
+
+  let containerWhatTypePaymentClickAlreadyExist = document.querySelector(".container-what-type-payment-click");
+
+  if(containerWhatTypePaymentClickAlreadyExist){
+    containerWhatTypePaymentClickAlreadyExist.remove();
+  }
+
+  if(containerTicketsSvg1){
+    containerTicketsSvg1.remove();
+  }
+
+  if(spanBomboniere){
+    spanBomboniere.remove();
+  }
+
+  if(containerPayment){
+    containerPayment.remove();
+  }
+
+  if(spanPayment){
+    spanPayment.remove();
+  }
+
+  if(whatButtonClickedSeatsTickets === "bomboniere"){
+    if(containerBomboniere){
+      containerBomboniere.remove();
+    }
+
+    containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
+  }
+
+  if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
+    containerBomboniere.style.background = "transparent";
+    containerBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerBomboniere.style.borderColor = "rgb(152, 170, 236)";
+
+    containerSvgPayment.style.background = "transparent";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
+
+    containerLineWhite2.style.background =  "rgb(52, 60, 70)";
+    containerLineWhite3.style.background =  "rgb(52, 60, 70)";
+
+    if(spanBomboniere){
+      spanBomboniere.remove();
+    }
+  }
+
+  if(Number(spanItensValuesSeatsAtt.textContent) > 0){
+    document.body.style.height = "100vh";
+    containerOrderSummary.style.height = "570px";
+    containerChoseSeatNumberResumeOrderMain.style.height = "100%";
+    whatButtonClickedSeatsTickets = "tickets";
+  }
+
+  spanItensValuesSeats = spanItensValuesSeatsAtt;
+
+  if(containerSvgPayment2 && containerBackSkipMain){
+    containerBackSkipMain.insertBefore(containerSvgPayment2, containerButtonSkip);
+  }else {
+    let containerTicketSvgNewClick = document.createElement("div");
+    containerTicketSvgNewClick.classList.add("container-all-tickets-svg-2");
+    containerSvgPayment2 = containerTicketSvgNewClick;
+
+    setTimeout(() => {
+      containerMoreAll.forEach((el) => {
+        const containerMoreLess = el.parentElement;
+        const containerMore = containerMoreLess.querySelector(".container-more-svg");
+      
+        containerMore.style.background = "rgb(152, 170, 236)";
+        containerMore.style.cursor = "pointer";
+      });
+    }, 20);
+  }
+
+  if(whatButtonClickedSeatsTickets === "tickets" && Number(spanItensValuesSeats.textContent) > 0){
+    containerLineWhite1.style.background =  "rgb(152, 170, 236)";
+    containerSvgTickets.style.borderColor = "transparent";
+    containerSvgTickets.style.background = "rgb(49, 85, 232)";
+    containerSvgTickets.firstChild.nextSibling.style.fill = "#fff";
+
+    containerSvgChoseOfSeats.style.background = "transparent";
+    containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgChoseOfSeats.style.borderColor = "rgb(152, 170, 236)";
+
+    containerSeatsTypeTicketsBombonierePayment.appendChild(spanTypesTickets);
+    spanChoseOfSeats.remove();
+
+    buttonBack.style.border = "2px solid rgb(152, 170, 236)";
+    buttonBack.style.color = "rgb(152, 170, 236)";
+
+    containerLineWhite2.style.background =  "rgb(52, 60, 70)";
+
+    if(varivelHelpForSumIfAlreadyTicketChose > 0){
+      containerSvgBomboniere.style.background = "transparent";
+      containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+      containerSvgBomboniere.style.borderColor = "rgb(152, 170, 236)";
+    }
+
+    functionDefineColorForMoreAndLess();
+  }
+
+  if(whatButtonClickedSeatsTickets === "tickets"){
+    isReleasedForHoverMouseButtonBack = true;
+  }else {
+    isReleasedForHoverMouseButtonBack = false;
+  }
+
+  if(whatButtonClickedSeatsTickets === "tickets"){
+    containerChoseSeatNumber.remove();
+
+    containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
+  }
+
+  functionAddEventListernerContainerMoreAndLess();
+}
+
 if(containerSvgTickets){
   containerSvgTickets.addEventListener("click", () => {
-    containerTicketsSvg1 = document.querySelector(".container-all-tickets-svg-1");
-    const spanItensValuesSeatsAtt = document.querySelector(".span-itens-values-seats");
+    functionClickTickets();
+  });
+}
 
-    if(containerTicketsSvg1){
-      containerTicketsSvg1.remove();
+const functionClickChoseOfSeats = () => {
+  containerSvgPayment2 = null;
+  typePaymentAll = [];
+  varivelHelpForSumIfAlreadyTicketChose = 0;
+  spanTotalValueOrderSummary.textContent = `R$ 0,00`;
+
+  let containerWhatTypePaymentClickAlreadyExist = document.querySelector(".container-what-type-payment-click");
+
+  if(containerWhatTypePaymentClickAlreadyExist){
+    containerWhatTypePaymentClickAlreadyExist.remove();
+  }
+
+  if(spanPayment){
+    spanPayment.remove();
+  }
+
+  const containerProductBomboniereBefore = document.querySelector(".container-product-bomboniere");
+
+  if(containerProductBomboniereBefore){
+    containerProductBomboniereBefore.remove();
+  }
+
+  if(whatButtonClickedSeatsTickets === "bomboniere"){
+    containerLineWhite2.style.background =  "rgb(52, 60, 70)";
+    containerSvgBomboniere.style.background = "transparent";
+    containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+    containerSvgBomboniere.style.borderColor = "rgb(52, 60, 70)";
+
+    if(containerBomboniere){
+      containerBomboniere.remove();
     }
 
     if(spanBomboniere){
       spanBomboniere.remove();
     }
+  }
 
-    if(containerPayment){
-      containerPayment.remove();
-    }
+  if(containerPayment){
+    containerPayment.remove();
+  }
 
-    if(whatButtonClickedSeatsTickets === "bomboniere"){
-      if(containerBomboniere){
-        containerBomboniere.remove();
-      }
+  whatButtonClickedSeatsTickets = "seats";
+  containerOrderSummary.style.height = "97%";
+  document.body.style.height = "100%";
+  containerChoseSeatNumberResumeOrderMain.style.height = "64rem";
+
+  containerSvgBomboniere.style.borderColor = "rgb(52, 60, 70)";
+  containerSvgBomboniere.style.background = "transparent";
+  containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+
+  containerSvgPayment.style.borderColor = "rgb(52, 60, 70)";
+  containerSvgPayment.style.background = "transparent";
+  containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
+
+  containerLineWhite2.style.background =  "rgb(52, 60, 70)";
+  containerLineWhite3.style.background =  "rgb(52, 60, 70)";
+
+  if(containerBomboniere){
+    containerBomboniere.remove();
+  }
   
-      containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
-    }
+  const containerTicketsSvgCurrent2 = document.querySelector(".container-all-tickets-svg-2");
 
-    if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
-      containerBomboniere.style.background = "transparent";
-      containerBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
-      containerBomboniere.style.borderColor = "rgb(152, 170, 236)";
+  if(containerTicketsSvgCurrent2){
+    containerTicketsSvgCurrent2.remove();
+  }
 
-      containerSvgPayment.style.background = "transparent";
-      containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
-      containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
+  if(containerBackSkipMain && containerTicketsSvg1){
+    containerBackSkipMain.insertBefore(containerTicketsSvg1, containerButtonSkip);  
+  }
 
-      containerLineWhite2.style.background =  "rgb(52, 60, 70)";
-      containerLineWhite3.style.background =  "rgb(52, 60, 70)";
-
-      if(spanBomboniere){
-        spanBomboniere.remove();
-      }
-    }
-
-    if(Number(spanItensValuesSeatsAtt.textContent) > 0){
-      document.body.style.height = "100vh";
-      containerOrderSummary.style.height = "570px";
-      containerChoseSeatNumberResumeOrderMain.style.height = "100%";
-      whatButtonClickedSeatsTickets = "tickets";
-    }
-
-    spanItensValuesSeats = spanItensValuesSeatsAtt;
-
-    if(containerSvgPayment2 && containerBackSkipMain){
-      containerBackSkipMain.insertBefore(containerSvgPayment2, containerButtonSkip);
-    }else {
-      let containerTicketSvgNewClick = document.createElement("div");
-      containerTicketSvgNewClick.classList.add("container-all-tickets-svg-2");
-      containerSvgPayment2 = containerTicketSvgNewClick;
-
-      setTimeout(() => {
-        containerMoreAll.forEach((el) => {
-          const containerMoreLess = el.parentElement;
-          const containerMore = containerMoreLess.querySelector(".container-more-svg");
-        
-          containerMore.style.background = "rgb(152, 170, 236)";
-          containerMore.style.cursor = "pointer";
-        });
-      }, 20);
-    }
-
-    if(whatButtonClickedSeatsTickets === "tickets" && Number(spanItensValuesSeats.textContent) > 0){
-      containerLineWhite1.style.background =  "rgb(152, 170, 236)";
-      containerSvgTickets.style.borderColor = "transparent";
-      containerSvgTickets.style.background = "rgb(49, 85, 232)";
-      containerSvgTickets.firstChild.nextSibling.style.fill = "#fff";
-
-      containerSvgChoseOfSeats.style.background = "transparent";
-      containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
-      containerSvgChoseOfSeats.style.borderColor = "rgb(152, 170, 236)";
-
-      containerSeatsTypeTicketsBombonierePayment.appendChild(spanTypesTickets);
-      spanChoseOfSeats.remove();
-
-      buttonBack.style.border = "2px solid rgb(152, 170, 236)";
-      buttonBack.style.color = "rgb(152, 170, 236)";
-
-      containerLineWhite2.style.background =  "rgb(52, 60, 70)";
-
-      if(varivelHelpForSumIfAlreadyTicketChose > 0){
-        containerSvgBomboniere.style.background = "transparent";
-        containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
-        containerSvgBomboniere.style.borderColor = "rgb(152, 170, 236)";
-      }
-
-      functionDefineColorForMoreAndLess();
-    }
-
-    if(whatButtonClickedSeatsTickets === "tickets"){
-      isReleasedForHoverMouseButtonBack = true;
-    }else {
-      isReleasedForHoverMouseButtonBack = false;
-    }
-
-    if(whatButtonClickedSeatsTickets === "tickets"){
-      containerChoseSeatNumber.remove();
-
-      containerChoseSeatNumberResumeOrderMain.insertBefore(containerTypesTickets, containerChoseSeatNumberResumeOrderMain.firstChild);
-    }
-
-    functionAddEventListernerContainerMoreAndLess();
+  containerMoreAll.forEach((containerMore) => {
+    const containerMoreLess = containerMore.parentElement;
+    const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
+    spanNumberTickets.textContent = 0;
   });
+
+  functionRemoveEventListernerContainerMoreAndLess();
+  
+  if(whatButtonClickedSeatsTickets === "seats" && Number(spanItensValuesSeats.textContent) > 0){
+
+    containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
+    containerSvgTickets.style.background = "transparent";
+    containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+
+    containerSvgChoseOfSeats.style.borderColor = "transparent";
+    containerSvgChoseOfSeats.style.background = "rgb(49, 85, 232)";
+    containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "#fff";
+    containerLineWhite1.style.background =  "rgb(52, 60, 70)";
+  }
+
+  containerChoseSeatNumberResumeOrderMain.insertBefore(containerChoseSeatNumber, containerChoseSeatNumberResumeOrderMain.firstChild);
+
+  containerSeatsTypeTicketsBombonierePayment.appendChild(spanChoseOfSeats);
+  spanTypesTickets.remove();
+
+  if(containerTypesTickets){
+    containerTypesTickets.remove();
+  }
+
+  const containerTicketsPaymentPriceAll = document.querySelector(".container-tickets-payment-price-all");
+
+  if(containerTicketsPaymentPriceAll){
+    containerTicketsPaymentPriceAll.remove();
+  }
 }
 
 if(containerSvgChoseOfSeats){
   containerSvgChoseOfSeats.addEventListener("click", () => {
-    containerSvgPayment2 = null;
-    typePaymentAll = [];
-    varivelHelpForSumIfAlreadyTicketChose = 0;
-    spanTotalValueOrderSummary.textContent = `R$ 0,00`;
-
-    if(whatButtonClickedSeatsTickets === "bomboniere"){
-      containerLineWhite2.style.background =  "rgb(52, 60, 70)";
-      containerSvgBomboniere.style.background = "transparent";
-      containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
-      containerSvgBomboniere.style.borderColor = "rgb(52, 60, 70)";
-
-      if(containerBomboniere){
-        containerBomboniere.remove();
-      }
-
-      if(spanBomboniere){
-        spanBomboniere.remove();
-      }
-    }
-
-    if(containerPayment){
-      containerPayment.remove();
-    }
-
-    whatButtonClickedSeatsTickets = "seats";
-    containerOrderSummary.style.height = "97%";
-    document.body.style.height = "100%";
-    containerChoseSeatNumberResumeOrderMain.style.height = "64rem";
-
-    containerSvgBomboniere.style.borderColor = "rgb(52, 60, 70)";
-    containerSvgBomboniere.style.background = "transparent";
-    containerSvgBomboniere.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
-
-    containerSvgPayment.style.borderColor = "rgb(52, 60, 70)";
-    containerSvgPayment.style.background = "transparent";
-    containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(52, 60, 70)";
-
-    containerLineWhite2.style.background =  "rgb(52, 60, 70)";
-    containerLineWhite3.style.background =  "rgb(52, 60, 70)";
-
-    if(containerBomboniere){
-      containerBomboniere.remove();
-    }
-    
-    const containerTicketsSvgCurrent2 = document.querySelector(".container-all-tickets-svg-2");
-
-    if(containerTicketsSvgCurrent2){
-      containerTicketsSvgCurrent2.remove();
-    }
-
-    if(containerBackSkipMain && containerTicketsSvg1){
-      containerBackSkipMain.insertBefore(containerTicketsSvg1, containerButtonSkip);  
-    }
-
-    containerMoreAll.forEach((containerMore) => {
-      const containerMoreLess = containerMore.parentElement;
-      const spanNumberTickets = containerMoreLess.querySelector(".count-number-tickets");
-      spanNumberTickets.textContent = 0;
-    });
-
-    functionRemoveEventListernerContainerMoreAndLess();
-    
-    if(whatButtonClickedSeatsTickets === "seats" && Number(spanItensValuesSeats.textContent) > 0){
-
-      containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
-      containerSvgTickets.style.background = "transparent";
-      containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
-
-      containerSvgChoseOfSeats.style.borderColor = "transparent";
-      containerSvgChoseOfSeats.style.background = "rgb(49, 85, 232)";
-      containerSvgChoseOfSeats.firstChild.nextSibling.style.fill = "#fff";
-      containerLineWhite1.style.background =  "rgb(52, 60, 70)";
-    }
-
-    containerChoseSeatNumberResumeOrderMain.insertBefore(containerChoseSeatNumber, containerChoseSeatNumberResumeOrderMain.firstChild);
-
-    containerSeatsTypeTicketsBombonierePayment.appendChild(spanChoseOfSeats);
-    spanTypesTickets.remove();
-
-    if(containerTypesTickets){
-      containerTypesTickets.remove();
-    }
-
-    const containerTicketsPaymentPriceAll = document.querySelector(".container-tickets-payment-price-all");
-
-    if(containerTicketsPaymentPriceAll){
-      containerTicketsPaymentPriceAll.remove();
-    }
+    functionClickChoseOfSeats();
   });
 }
 
 let containerBodyChoseSeatsAndMore = document.querySelector(".container-body-chose-seats-and-more");
 let svgWarn = document.querySelector(".svg-warning");
 
+const functionClickBomboniere = () => {
+  let sumQuantityPaymentSelected = 0;
+
+  let containerWhatTypePaymentClickAlreadyExist = document.querySelector(".container-what-type-payment-click");
+
+  if(containerWhatTypePaymentClickAlreadyExist){
+    containerWhatTypePaymentClickAlreadyExist.remove();
+  }
+
+  if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
+    containerSvgPayment.style.background = "transparent";
+    containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+    containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
+
+    containerLineWhite3.style.background =  "rgb(52, 60, 70)";
+  }
+
+  if(containerPayment){
+    containerPayment.remove();
+  }
+
+  if(spanPayment){
+    spanPayment.remove();
+  }
+
+  typePaymentAll.forEach((elPayment) => {
+    sumQuantityPaymentSelected += Number(elPayment.quantity);
+  });
+
+  if(sumQuantityPaymentSelected === 0) return;
+
+  if(sumQuantityPaymentSelected < Number(spanItensValuesSeats.textContent)){
+    const containerWarnNotAllSeatsWereSelected = document.createElement("div");
+    containerWarnNotAllSeatsWereSelected.classList.add("container-warn-not-all-seats-were-selected");
+
+    const containerWarn = document.createElement("div");
+    containerWarn.classList.add("container-warn");
+
+    const containerImgBackgroundDark = document.createElement("div");
+    containerImgBackgroundDark.classList.add("container-img-background-dark");
+
+    const containerCutImg = document.createElement("div");
+    containerCutImg.classList.add("container-cut-img");
+
+    const containerSvgWarn = document.createElement("div");
+    containerSvgWarn.classList.add("container-svg-warn");
+
+    containerSvgWarn.appendChild(svgWarn);
+
+    let svgExitWarning = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgExitWarning.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svgExitWarning.setAttribute("viewBox", "0 0 24 24");
+    svgExitWarning.setAttribute("fill", "none");
+    svgExitWarning.setAttribute("class", "svg-exit-warning");
+
+    let group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    group.setAttribute("id", "Icon / Simple / Close");
+
+    let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("fill-rule", "evenodd");
+    path.setAttribute("clip-rule", "evenodd");
+    path.setAttribute("d", "M6.93848 5.83769C6.2573 5.15677 5.15833 6.26932 5.83952 6.95024L11.133 12.2467L5.91671 17.4402C5.23553 18.1211 6.2573 19.216 6.93848 18.5351L12.2678 13.2078L17.4768 18.4147C18.1579 19.0957 19.2107 18.0297 18.5295 17.3487L13.5114 12.2767L18.5295 7.03493C19.2107 6.35401 18.1579 5.27714 17.4768 5.95806L12.2678 11.165L6.93848 5.83769Z");
+    path.setAttribute("fill", "#98AAEC");
+
+    group.appendChild(path);
+    svgExitWarning.appendChild(group);
+
+    const containerSvgExitWarning = document.createElement("div");
+    containerSvgExitWarning.classList.add("container-svg-exit-warning");
+
+    containerSvgExitWarning.appendChild(svgExitWarning);
+
+    containerImgBackgroundDark.appendChild(containerCutImg);
+    containerImgBackgroundDark.appendChild(containerSvgWarn);
+    containerImgBackgroundDark.appendChild(containerSvgExitWarning);
+
+    const containerSpanOpsAndWarnButtonContinue = document.createElement("div");
+    containerSpanOpsAndWarnButtonContinue.classList.add("container-spans-and-warn-button-continue");
+
+    const containerSpanOpsAndWarn = document.createElement("div");
+    containerSpanOpsAndWarn.classList.add("container-span-ops-and-warn");
+
+    const spanOps = document.createElement("span");
+    spanOps.classList.add("span-ops");
+    spanOps.textContent = "Ops!";
+
+    const spanWarn = document.createElement("span");
+    spanWarn.classList.add("span-warn");
+    spanWarn.textContent = "Escolha os Tipos de Ingresso para todos os assentos selecionados no Mapa de Assentos. Caso queria remover assentos, volte ao passo anterior.";
+
+    containerSpanOpsAndWarn.appendChild(spanOps);
+    containerSpanOpsAndWarn.appendChild(spanWarn);
+
+    const buttonContinue = document.createElement("button");
+    buttonContinue.classList.add("button-continue");
+    buttonContinue.textContent = "Continuar";
+
+    containerSpanOpsAndWarnButtonContinue.appendChild(containerSpanOpsAndWarn);
+    containerSpanOpsAndWarnButtonContinue.appendChild(buttonContinue);
+
+    containerWarn.appendChild(containerImgBackgroundDark);
+    containerWarn.appendChild(containerSpanOpsAndWarnButtonContinue);
+
+    containerWarnNotAllSeatsWereSelected.appendChild(containerWarn);
+    
+    containerBodyChoseSeatsAndMore.appendChild(containerWarnNotAllSeatsWereSelected);
+
+    functionDefineColorForMoreAndLess();
+
+    containerSvgExitWarning.addEventListener("click", () => {
+      functionDefineColorForMoreAndLess();
+      functionAddEventListernerContainerMoreAndLess();
+      containerWarnNotAllSeatsWereSelected.remove();
+    });
+
+    buttonContinue.addEventListener("click", () => {
+      functionDefineColorForMoreAndLess();
+      functionAddEventListernerContainerMoreAndLess();
+      containerWarnNotAllSeatsWereSelected.remove();
+    });
+  }else {
+    whatButtonClickedSeatsTickets = "bomboniere"
+
+    if(containerTypesTickets){
+      containerTypesTickets.remove();
+    }
+
+    if(containerSvgPayment2){
+      containerSvgPayment2.remove();
+    }
+
+    if(spanTypesTickets){
+      spanTypesTickets.remove();
+    }
+    
+    containerSeatsTypeTicketsBombonierePayment.appendChild(spanBomboniere);
+    containerChoseSeatNumberResumeOrderMain.insertBefore(containerBomboniere, containerChoseSeatNumberResumeOrderMain.firstChild);
+    
+    containerOrderSummary.style.height = "auto";
+    containerOrderSummary.style.marginBottom = "0px";
+    
+    containerSvgBomboniere.style.borderColor = "transparent";
+    containerSvgBomboniere.style.background = "rgb(49, 85, 232)";
+    containerSvgBomboniere.firstChild.nextSibling.style.fill = "#fff";
+
+    containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
+    containerSvgTickets.style.background = "transparent";
+    containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
+
+    containerLineWhite2.style.background =  "rgb(152, 170, 236)";
+    eventosMoreAndLessBomboniere();
+  }
+
+  functionRemoveEventListernerContainerMoreAndLess();
+}
+
 if(containerSvgBomboniere){
   containerSvgBomboniere.addEventListener("click", () => {
-    let sumQuantityPaymentSelected = 0;
-
-    if(whatButtonClickedSeatsTickets === "payment" && varivelHelpForSumIfAlreadyTicketChose > 0){
-      containerSvgPayment.style.background = "transparent";
-      containerSvgPayment.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
-      containerSvgPayment.style.borderColor = "rgb(152, 170, 236)";
-
-      containerLineWhite3.style.background =  "rgb(52, 60, 70)";
-    }
-
-    if(containerPayment){
-      containerPayment.remove();
-    }
-  
-    typePaymentAll.forEach((elPayment) => {
-      sumQuantityPaymentSelected += Number(elPayment.quantity);
-    });
-  
-    if(sumQuantityPaymentSelected === 0) return;
-  
-    if(sumQuantityPaymentSelected < Number(spanItensValuesSeats.textContent)){
-      const containerWarnNotAllSeatsWereSelected = document.createElement("div");
-      containerWarnNotAllSeatsWereSelected.classList.add("container-warn-not-all-seats-were-selected");
-  
-      const containerWarn = document.createElement("div");
-      containerWarn.classList.add("container-warn");
-  
-      const containerImgBackgroundDark = document.createElement("div");
-      containerImgBackgroundDark.classList.add("container-img-background-dark");
-  
-      const containerCutImg = document.createElement("div");
-      containerCutImg.classList.add("container-cut-img");
-  
-      const containerSvgWarn = document.createElement("div");
-      containerSvgWarn.classList.add("container-svg-warn");
-  
-      containerSvgWarn.appendChild(svgWarn);
-  
-      let svgExitWarning = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      svgExitWarning.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-      svgExitWarning.setAttribute("viewBox", "0 0 24 24");
-      svgExitWarning.setAttribute("fill", "none");
-      svgExitWarning.setAttribute("class", "svg-exit-warning");
-  
-      let group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      group.setAttribute("id", "Icon / Simple / Close");
-  
-      let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute("fill-rule", "evenodd");
-      path.setAttribute("clip-rule", "evenodd");
-      path.setAttribute("d", "M6.93848 5.83769C6.2573 5.15677 5.15833 6.26932 5.83952 6.95024L11.133 12.2467L5.91671 17.4402C5.23553 18.1211 6.2573 19.216 6.93848 18.5351L12.2678 13.2078L17.4768 18.4147C18.1579 19.0957 19.2107 18.0297 18.5295 17.3487L13.5114 12.2767L18.5295 7.03493C19.2107 6.35401 18.1579 5.27714 17.4768 5.95806L12.2678 11.165L6.93848 5.83769Z");
-      path.setAttribute("fill", "#98AAEC");
-  
-      group.appendChild(path);
-      svgExitWarning.appendChild(group);
-  
-      const containerSvgExitWarning = document.createElement("div");
-      containerSvgExitWarning.classList.add("container-svg-exit-warning");
-  
-      containerSvgExitWarning.appendChild(svgExitWarning);
-  
-      containerImgBackgroundDark.appendChild(containerCutImg);
-      containerImgBackgroundDark.appendChild(containerSvgWarn);
-      containerImgBackgroundDark.appendChild(containerSvgExitWarning);
-  
-      const containerSpanOpsAndWarnButtonContinue = document.createElement("div");
-      containerSpanOpsAndWarnButtonContinue.classList.add("container-spans-and-warn-button-continue");
-  
-      const containerSpanOpsAndWarn = document.createElement("div");
-      containerSpanOpsAndWarn.classList.add("container-span-ops-and-warn");
-  
-      const spanOps = document.createElement("span");
-      spanOps.classList.add("span-ops");
-      spanOps.textContent = "Ops!";
-  
-      const spanWarn = document.createElement("span");
-      spanWarn.classList.add("span-warn");
-      spanWarn.textContent = "Escolha os Tipos de Ingresso para todos os assentos selecionados no Mapa de Assentos. Caso queria remover assentos, volte ao passo anterior.";
-  
-      containerSpanOpsAndWarn.appendChild(spanOps);
-      containerSpanOpsAndWarn.appendChild(spanWarn);
-  
-      const buttonContinue = document.createElement("button");
-      buttonContinue.classList.add("button-continue");
-      buttonContinue.textContent = "Continuar";
-  
-      containerSpanOpsAndWarnButtonContinue.appendChild(containerSpanOpsAndWarn);
-      containerSpanOpsAndWarnButtonContinue.appendChild(buttonContinue);
-  
-      containerWarn.appendChild(containerImgBackgroundDark);
-      containerWarn.appendChild(containerSpanOpsAndWarnButtonContinue);
-  
-      containerWarnNotAllSeatsWereSelected.appendChild(containerWarn);
-      
-      containerBodyChoseSeatsAndMore.appendChild(containerWarnNotAllSeatsWereSelected);
-  
-      functionDefineColorForMoreAndLess();
-  
-      containerSvgExitWarning.addEventListener("click", () => {
-        functionDefineColorForMoreAndLess();
-        functionAddEventListernerContainerMoreAndLess();
-        containerWarnNotAllSeatsWereSelected.remove();
-      });
-  
-      buttonContinue.addEventListener("click", () => {
-        functionDefineColorForMoreAndLess();
-        functionAddEventListernerContainerMoreAndLess();
-        containerWarnNotAllSeatsWereSelected.remove();
-      });
-    }else {
-      whatButtonClickedSeatsTickets = "bomboniere"
-
-      if(containerTypesTickets){
-        containerTypesTickets.remove();
-      }
-
-      if(containerSvgPayment2){
-        containerSvgPayment2.remove();
-      }
-
-      if(spanTypesTickets){
-        spanTypesTickets.remove();
-      }
-      
-      containerSeatsTypeTicketsBombonierePayment.appendChild(spanBomboniere);
-      containerChoseSeatNumberResumeOrderMain.insertBefore(containerBomboniere, containerChoseSeatNumberResumeOrderMain.firstChild);
-      
-      containerOrderSummary.style.height = "auto";
-      containerOrderSummary.style.marginBottom = "0px";
-      
-      containerSvgBomboniere.style.borderColor = "transparent";
-      containerSvgBomboniere.style.background = "rgb(49, 85, 232)";
-      containerSvgBomboniere.firstChild.nextSibling.style.fill = "#fff";
-  
-      containerSvgTickets.style.borderColor = "rgb(152, 170, 236)";
-      containerSvgTickets.style.background = "transparent";
-      containerSvgTickets.firstChild.nextSibling.style.fill = "rgb(152, 170, 236)";
-  
-      containerLineWhite2.style.background =  "rgb(152, 170, 236)";
-      eventosMoreAndLessBomboniere();
-    }
-  
-    functionRemoveEventListernerContainerMoreAndLess();
+    functionClickBomboniere();
   });
 }
 
@@ -1239,7 +1290,7 @@ if(containerTicketGiftCardInfoInner){
   containerTicketGiftCardInfoInner.remove();
 }
 
-const clickPayment = () => {
+const functionClickPayment = () => {
   alreadyClickCardCredit = 0
   if(whatButtonClickedSeatsTickets === "tickets" && varivelHelpForSumIfAlreadyTicketChose > 0){
     containerSvgTickets.style.background = "transparent";
@@ -1284,6 +1335,17 @@ const clickPayment = () => {
     if(containerBomboniere){
       containerBomboniere.remove();
     }
+
+    containerSeatsTypeTicketsBombonierePayment.appendChild(spanPayment);
+
+    if(spanBomboniere){
+      spanBomboniere.remove();
+    }
+
+    if(spanTypesTickets){
+      spanTypesTickets.remove();
+    }
+    
 
     containerChoseSeatNumberResumeOrderMain.insertBefore(containerPayment, containerChoseSeatNumberResumeOrderMain.firstChild);
 
@@ -1509,7 +1571,37 @@ const clickPayment = () => {
   }
 }
 
-const clickCardCredit = () => {
+const clickPayment = () => {
+  functionClickPayment();
+}
+
+const clickCardCredit = (e) => {
+  let spanNameCard = e.target;
+  const containerSeatsChosenAndTickets = document.querySelector(".container-seats-chosen-and-tickets"); 
+
+  let containerWhatTypePaymentClickAlreadyExist = document.querySelector(".container-what-type-payment-click");
+
+  let containerWhatTypePaymentClick = document.createElement("div");
+  containerWhatTypePaymentClick.classList.add("container-what-type-payment-click");
+
+  let spanPaymentTitle = document.createElement("span");
+  spanPaymentTitle.classList.add("span-payment-title");
+  spanPaymentTitle.textContent = "Pagamento";
+
+  let spanPaymentClicked = document.createElement("span");
+  spanPaymentClicked.classList.add("span-payment-clicked");
+  spanPaymentClicked.textContent = spanNameCard.textContent;
+
+  containerWhatTypePaymentClick.appendChild(spanPaymentTitle);
+  containerWhatTypePaymentClick.appendChild(spanPaymentClicked);
+
+  if(containerWhatTypePaymentClickAlreadyExist === null){
+    containerSeatsChosenAndTickets.appendChild(containerWhatTypePaymentClick);
+  }else {
+    containerWhatTypePaymentClickAlreadyExist.remove();
+    containerSeatsChosenAndTickets.appendChild(containerWhatTypePaymentClick);
+  }
+
   if(clickedContainerMethodPayment !== "cardCredit") {
     alreadyClickCardCredit = 0;
     containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
@@ -1541,7 +1633,33 @@ const clickCardCredit = () => {
   }
 }
 
-const clickDebitCard = () => {
+const clickDebitCard = (e) => {
+  let spanNameCard = e.target;
+  const containerSeatsChosenAndTickets = document.querySelector(".container-seats-chosen-and-tickets"); 
+  
+  let containerWhatTypePaymentClickAlreadyExist = document.querySelector(".container-what-type-payment-click");
+
+  let containerWhatTypePaymentClick = document.createElement("div");
+  containerWhatTypePaymentClick.classList.add("container-what-type-payment-click");
+
+  let spanPaymentTitle = document.createElement("span");
+  spanPaymentTitle.classList.add("span-payment-title");
+  spanPaymentTitle.textContent = "Pagamento";
+
+  let spanPaymentClicked = document.createElement("span");
+  spanPaymentClicked.classList.add("span-payment-clicked");
+  spanPaymentClicked.textContent = spanNameCard.textContent;
+
+  containerWhatTypePaymentClick.appendChild(spanPaymentTitle);
+  containerWhatTypePaymentClick.appendChild(spanPaymentClicked);
+
+  if(containerWhatTypePaymentClickAlreadyExist === null){
+    containerSeatsChosenAndTickets.appendChild(containerWhatTypePaymentClick);
+  }else {
+    containerWhatTypePaymentClickAlreadyExist.remove();
+    containerSeatsChosenAndTickets.appendChild(containerWhatTypePaymentClick);
+  }
+
   if(clickedContainerMethodPayment !== "debitCard") {
     alreadyClickCardCredit = 0;
     containerInfoBottomGooglePayForPayment.style.maxHeight = "0px";
@@ -1575,7 +1693,33 @@ const clickDebitCard = () => {
   }
 }
 
-const clickPix = () => {
+const clickPix = (e) => {
+  let spanNameCard = e.target;
+  const containerSeatsChosenAndTickets = document.querySelector(".container-seats-chosen-and-tickets");
+
+  let containerWhatTypePaymentClickAlreadyExist = document.querySelector(".container-what-type-payment-click");
+
+  let containerWhatTypePaymentClick = document.createElement("div");
+  containerWhatTypePaymentClick.classList.add("container-what-type-payment-click");
+
+  let spanPaymentTitle = document.createElement("span");
+  spanPaymentTitle.classList.add("span-payment-title");
+  spanPaymentTitle.textContent = "Pagamento";
+
+  let spanPaymentClicked = document.createElement("span");
+  spanPaymentClicked.classList.add("span-payment-clicked");
+  spanPaymentClicked.textContent = spanNameCard.textContent;
+
+  containerWhatTypePaymentClick.appendChild(spanPaymentTitle);
+  containerWhatTypePaymentClick.appendChild(spanPaymentClicked);
+
+  if(containerWhatTypePaymentClickAlreadyExist === null){
+    containerSeatsChosenAndTickets.appendChild(containerWhatTypePaymentClick);
+  }else {
+    containerWhatTypePaymentClickAlreadyExist.remove();
+    containerSeatsChosenAndTickets.appendChild(containerWhatTypePaymentClick);
+  }
+
   if(clickedContainerMethodPayment !== "pix"){
     alreadyClickCardCredit = 0;
     containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "0px";
@@ -1679,6 +1823,12 @@ const putGooglePayForRun = () => {
 }
 
 const clickGooglePay = () => {
+  let containerWhatTypePaymentClickAlreadyExist = document.querySelector(".container-what-type-payment-click");
+
+  if(containerWhatTypePaymentClickAlreadyExist){
+    containerWhatTypePaymentClickAlreadyExist.remove();
+  }
+  
   if(clickedContainerMethodPayment !== "googlePay"){
     alreadyClickCardCredit = 0;
     containerNumberCardExpirationDateSecurityCodeNameCardForDebitCard.style.maxHeight = "0px";
@@ -1725,7 +1875,6 @@ let alreadyClickTicketGiftCard = 0;
 // containerChoseSeatNumberResumeOrderMain.marginBottom = "60px";
 
 const clickClubeUol = (e) => {
-  console.log("click clubeUol");
   const containerSvgArrowDownUp = e.srcElement.querySelector(".container-svg-arrow-down-up");
   let svgArrowDownUp = containerSvgArrowDownUp.firstChild.nextSibling;
   let containerSvgWarningSpanCpfOrCnpjClubeUol = document.querySelector(".container-svg-warning-span-cpf-or-cnpj-clube-uol");
@@ -1809,9 +1958,6 @@ const clickTicketGiftCard = (e) => {
     containerTicketGiftCardInfoInner.style.maxHeight = "0px";
     containerTicketGiftCardInfoInner.style.paddingTop = "0px";
   }
-
-  console.log(alreadyClickClubeUolAndTicketsGiftCard);
-  console.log(alreadyClickTicketGiftCard);
 
   if(alreadyClickClubeUolAndTicketsGiftCard === 1 && alreadyClickTicketGiftCard === 1){
     containerChoseSeatNumberResumeOrderMain.style.marginBottom = "60px";
@@ -1917,8 +2063,24 @@ if(buttonBack){
   });
   
   buttonBack.addEventListener("click", () => {
-    if(isReleasedForHoverMouseButtonBack){
+    if(whatButtonClickedSeatsTickets === "payment"){
+      functionClickBomboniere();
+    }else if(whatButtonClickedSeatsTickets === "bomboniere"){
+      functionClickTickets();
+    }else if(whatButtonClickedSeatsTickets === "tickets"){
+      functionClickChoseOfSeats();
     }
   });
 }
 
+if(containerButtonSkip){
+  containerButtonSkip.addEventListener("click", () => {
+    if(whatButtonClickedSeatsTickets === "seats"){
+      functionClickTickets();
+    }else if(whatButtonClickedSeatsTickets === "tickets"){
+      functionClickBomboniere();
+    }else if(whatButtonClickedSeatsTickets === "bomboniere"){
+      functionClickPayment();
+    }
+  });
+}

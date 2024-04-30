@@ -63,7 +63,8 @@
 
 .span-chose-ofseats,
 .span-types-tickets,
-.span-bomboniere {
+.span-bomboniere,
+.span-payment {
   font-size: 12px;
   color: rgb(173, 182, 194);
   position: absolute;
@@ -80,6 +81,10 @@
 
 .span-bomboniere {
   left: 332px;
+}
+
+.span-payment {
+  left: 511px;
 }
 
 .line-white-seats-type-tickets-bomboniere-payment {
@@ -487,6 +492,8 @@
   font-size: 14px;
   gap: 2px;
   border-top: 1px solid rgb(102, 102, 102);
+  padding: 5px 0px;
+
 }
 
 .span-tickets-name {
@@ -498,6 +505,18 @@
   display: flex;
   justify-content: space-between;
   font-size: 14px;
+}
+
+.container-what-type-payment-click {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  border-top: 1px solid rgb(102, 102, 102);
+  padding: 5px 0px;
+
+  >span:first-child {
+    font-weight: 600;
+  }
 }
 
 .container-product-bomboniere {
