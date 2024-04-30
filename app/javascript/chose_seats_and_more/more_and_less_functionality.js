@@ -1654,10 +1654,9 @@ const putGooglePayForRun = () => {
               paymentsClient.loadPaymentData(paymentDataRequest)
                   .then(function(paymentData) {
                       // Processar o pagamento
-                      console.log(paymentData);
                   })
                   .catch(function(error) {
-                      // console.error(error);
+                    // Error
                   });
           });
       } else {
@@ -1766,7 +1765,7 @@ const clickClubeUol = (e) => {
   }else if(alreadyClickClubeUolAndTicketsGiftCard === 1 && clickedContainerClubeUolAndTicketsGiftCard === "clubeUol"){
     alreadyClickClubeUolAndTicketsGiftCard = 0;
     svgArrowDownUp.style = "transform: rotate(180deg)";
-    console.log(containerLestChildSpanSubscriber);
+    
     containerClubeUolPayment.appendChild(containerLestChildSpanSubscriber);
 
     containerClubeUolToPayment.style.maxHeight = "0px";
