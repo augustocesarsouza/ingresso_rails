@@ -1,6 +1,5 @@
 module ScheduleTimeBuyHelper
   def render_time_buy_container(schedule_parts, movie, cinema)
-    puts movie.inspect
     rendered_content = ''.html_safe
     schedule_parts.each do |schedule_part|
       schedule_part_split_spaces = schedule_part.split(" ")
