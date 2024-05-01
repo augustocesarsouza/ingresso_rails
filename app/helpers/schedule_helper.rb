@@ -16,6 +16,23 @@ module ScheduleHelper
     return nil
   end
 
+  def render_legendado_container(schedule_parts)
+    rendered_once = false
+    schedule_parts.each do |schedule_part|
+      schedule_part_split_spaces1 = schedule_part.split(" ")
+      if schedule_part_split_spaces1.include?("l")
+        if !rendered_once
+          rendered_once = true
+          return content_tag(:div, class: "container-span-telasgigantesplf-dublado") do
+            content_tag(:span, "LEGENDADO")
+          end
+        end
+      end
+    end
+    # Retornar nil se não houver nada a ser renderizado
+    return nil
+  end
+
   def render_vip_dublado_container(schedule_parts)
     rendered_once = false
     schedule_parts.each do |schedule_part|

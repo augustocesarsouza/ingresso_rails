@@ -60,38 +60,44 @@
             </div>
           </div>
           <div class="container-line-between-svgs-schedule"></div>
-          <% cinema_movies = CinemaMovie.select(:screening_schedule).where(movie_id: @movie.id, cinema_id: cinema.id, region_id: @region_city_id.id) %>
+          <% cinema_movies = CinemaMovie.select(:screening_schedule, :room).where(movie_id: @movie.id, cinema_id: cinema.id, region_id: @region_city_id.id) %>
           <div class="container-schedule-movie-theater">
             <% cinema_movies.each do |cinema_movie| %>
               <% schedule_parts = cinema_movie.screening_schedule.split(",") %>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_container(schedule_parts, @movie, cinema) %>
+                  <%= render_time_buy_container("d", schedule_parts, @movie, cinema, cinema_movie.room) %>
+                </div>
+              </div>
+              <div class="container-telasgigantesplg-dublado">
+                <%= render_legendado_container(schedule_parts) %>
+                <div class="container-p-schedule-all">
+                  <%= render_time_buy_container("l", schedule_parts, @movie, cinema, cinema_movie.room) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_vip_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_vip_dublado_container(schedule_parts, @movie, cinema) %>
+                  <%= render_time_buy_container("v-d", schedule_parts, @movie, cinema, cinema_movie.room) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_vip_3d_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_vip_3d_dublado_container(schedule_parts, @movie, cinema) %>
+                  <%= render_time_buy_container("v-3d-d", schedule_parts, @movie, cinema, cinema_movie.room) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_3d_dbox_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_3d_dbox_dublado_container(schedule_parts, @movie, cinema) %>
+                  <%= render_time_buy_container("3d-db-d", schedule_parts, @movie, cinema, cinema_movie.room) %>
                 </div>
               </div>
               <div class="container-telasgigantesplg-dublado">
                 <%= render_telasgigantes_dublado_container(schedule_parts) %>
                 <div class="container-p-schedule-all">
-                  <%= render_time_buy_telasgigantes_dublado_container(schedule_parts, @movie, cinema) %>
+                  <%= render_time_buy_container("tg-d", schedule_parts, @movie, cinema, cinema_movie.room) %>
                 </div>
               </div>
             <% end %>
