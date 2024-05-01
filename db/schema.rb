@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_22_164657) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_01_112126) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_164657) do
     t.string "screening_schedule", limit: 100, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "room", null: false
     t.index ["cinema_id"], name: "index_cinema_movies_on_cinema_id"
     t.index ["movie_id"], name: "index_cinema_movies_on_movie_id"
     t.index ["region_id"], name: "index_cinema_movies_on_region_id"
