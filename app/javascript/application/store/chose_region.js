@@ -44,6 +44,28 @@ const clickContainerChoseRegion = () => {
 
 const clickContainerLastPlace = (e) => {
   paragraphRegionChose.textContent = e.target.textContent;
+
+  const region = e.target.textContent;
+  
+  // Enviar o valor para o controlador Rails usando AJAX
+  fetch('/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+    },
+    body: JSON.stringify({ region: region })
+  }).then(response => {
+    if (response.ok) {
+      // Atualizar a página ou fazer qualquer outra coisa necessária
+      // window.location.reload();
+
+    } else {
+      console.error('Erro ao enviar a região para o servidor');
+    }
+  }).catch(error => {
+    console.error('Erro de rede:', error);
+  });
 }
 
 const clickButtonChangeCity = () => {

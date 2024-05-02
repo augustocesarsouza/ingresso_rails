@@ -12,14 +12,14 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.persisted?
         resource.additional_info_user.user_id = resource.id
         if resource.additional_info_user.save
-          puts 'User and additional info created successfully.'
+          # puts 'User and additional info created successfully.'
         else
-          puts "Error creating additional info: #{resource.additional_info_user.errors.full_messages.join(', ')}"
+          # puts "Error creating additional info: #{resource.additional_info_user.errors.full_messages.join(', ')}"
         end
       else
         clean_up_passwords resource
         set_minimum_password_length
-        puts "Error creating user: #{resource.errors.full_messages.join(', ')}"
+        # puts "Error creating user: #{resource.errors.full_messages.join(', ')}"
       end
     end
   end

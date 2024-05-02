@@ -28,7 +28,12 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <h1 class="h1-custom" >Em Alta</h1>
-        <div class="ms-2 me-2 carousel-custom">
+        <div class="ms-2 me-2 carousel-custom" id="movies-container">
+          <% if @movies == nil %>
+            <div>
+              <h1>NULL</h1>
+            </div>
+          <% end %>
           <% @movies.each_with_index do |movie, index| %>
             <% if user_signed_in? %>
               <div class="col-custom col-custom<%= index + 1 %>" data-route="<%= chose_movie_theater_index_path(id: movie.id) %>">
