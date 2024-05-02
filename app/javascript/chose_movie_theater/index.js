@@ -33,9 +33,19 @@ const clickSecondLi = () => {
 }
 
 if(window.location.pathname === "/chose_movie_theater"){
-  liChoseSessions.addEventListener("click", clickFirstLi);
-  liChoseAbountTheFilm.addEventListener("click", clickSecondLi);
+  if(liChoseSessions){
+    liChoseSessions.addEventListener("click", clickFirstLi);
+  }
+
+  if(liChoseAbountTheFilm){
+    liChoseAbountTheFilm.addEventListener("click", clickSecondLi);
+  }
 }else if(window.location.pathname !== "/chose_movie_theater"){
-  liChoseSessions.removeEventListener("click", clickFirstLi);
-  liChoseAbountTheFilm.removeEventListener("click", clickSecondLi);
+  if(liChoseSessions){
+    liChoseSessions.removeEventListener("click", clickFirstLi);
+  }
+
+  if(liChoseAbountTheFilm){
+    liChoseAbountTheFilm.removeEventListener("click", clickSecondLi);
+  }
 }

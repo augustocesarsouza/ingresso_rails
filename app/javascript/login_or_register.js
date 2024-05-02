@@ -48,12 +48,14 @@ const CaptureEventClickLogOut = () => {
   }else{
     containerLoggout.style.display = 'none';
   }
-
-  if(divUserLoggedin){
-    divUserLoggedin.removeEventListener('click', CaptureEventClickLogOut);
-  }
 }
 
 if(divUserLoggedin){
   divUserLoggedin.addEventListener('click', CaptureEventClickLogOut);
+}
+
+if(window.location.pathname === "/chose_seats_and_more"){
+  if(divUserLoggedin){
+    divUserLoggedin.removeEventListener('click', CaptureEventClickLogOut);
+  }
 }
