@@ -14,27 +14,43 @@ const functionGetClickKeyboard = (event) => {
     const textInputPassword = event.target.value;
     
     if(regUppercase.test(textInputPassword)){
-      spanMinimumOneLowerCase.style.color = '#00c300';
+      if(spanMinimumOneLowerCase){
+        spanMinimumOneLowerCase.style.color = '#00c300';
+      }
     }else{
-      spanMinimumOneLowerCase.style.color = '#00000054';
+      if(spanMinimumOneLowerCase){
+        spanMinimumOneLowerCase.style.color = '#00000054';
+      }
     }
 
     if(regLowercase.test(textInputPassword)){
-      spanMinimumOneUpperCase.style.color = '#00c300';
+      if(spanMinimumOneUpperCase){
+        spanMinimumOneUpperCase.style.color = '#00c300';
+      }
     }else{
-      spanMinimumOneUpperCase.style.color = '#00000054';
+      if(spanMinimumOneUpperCase){
+        spanMinimumOneUpperCase.style.color = '#00000054';
+      }
     }
 
     if(regNumber.test(textInputPassword)){
-      spanMinimumOneNumber.style.color = '#00c300';
+      if(spanMinimumOneNumber){
+        spanMinimumOneNumber.style.color = '#00c300';
+      }
     }else{
-      spanMinimumOneNumber.style.color = '#00000054';
+      if(spanMinimumOneNumber){
+        spanMinimumOneNumber.style.color = '#00000054';
+      }
     }
 
     if(textInputPassword.length >= 8){
-      spanMinimumEightCharacter.style.color = '#00c300';
+      if(spanMinimumEightCharacter){
+        spanMinimumEightCharacter.style.color = '#00c300';
+      }
     }else{
-      spanMinimumEightCharacter.style.color = '#00000054';
+      if(spanMinimumEightCharacter){
+        spanMinimumEightCharacter.style.color = '#00000054';
+      }
     }
   }, 10);
 
@@ -104,47 +120,54 @@ document.addEventListener('DOMContentLoaded', function() {
     inputElement.style.borderLeft = "none";
   }
 
-  buttonRedirect.addEventListener('click', () => {
-    cep(inputCep.value)
-    .then((resp) => {
-      const inputBairro = document.querySelector('.input-bairro');
-      const inputCidade = document.querySelector('.input-cidade');
-      const inputEstado = document.querySelector('.input-estado');
+  if(buttonRedirect){
+    buttonRedirect.addEventListener('click', () => {
+      cep(inputCep.value)
+      .then((resp) => {
+        const inputBairro = document.querySelector('.input-bairro');
+        const inputCidade = document.querySelector('.input-cidade');
+        const inputEstado = document.querySelector('.input-estado');
+        cepInvalid = false;
+        onlyGray = true;
+  
+        updateInputField(inputLogradouro, resp.street);
+        updateInputField(inputBairro, resp.neighborhood);
+        updateInputField(inputCidade, resp.city);
+        updateInputField(inputEstado, resp.state);
+      })  
+      .catch(() => {
+        const containerMainCep = document.querySelector('.container-cep-custom');
+
+        if(containerMainCep){
+          containerMainCep.style.marginBottom = "25px";
+        }
+
+        cepInvalid = true;
+        spanCepError.style.display = "flex";
+        svgSortUp.style.display = "flex";
+        inputCep.style.border = "1px solid rgb(217, 83, 79)";
+        inputCep.style.borderLeft = "4px solid rgb(217 83 79)";
+      })
+    });
+  }
+
+  if(inputCep){
+    inputCep.addEventListener('blur', () => {
+      inputCep.style.border = "1px solid #bdbdbd";
+      inputCep.style.borderLeft = "4px solid #bdbdbd";
       cepInvalid = false;
-      onlyGray = true;
-
-      updateInputField(inputLogradouro, resp.street);
-      updateInputField(inputBairro, resp.neighborhood);
-      updateInputField(inputCidade, resp.city);
-      updateInputField(inputEstado, resp.state);
-    })  
-    .catch(() => {
-      const containerMainCep = document.querySelector('.container-cep-custom');
-      containerMainCep.style.marginBottom = "25px";
-
-      cepInvalid = true;
-      spanCepError.style.display = "flex";
-      svgSortUp.style.display = "flex";
-      inputCep.style.border = "1px solid rgb(217, 83, 79)";
-      inputCep.style.borderLeft = "4px solid rgb(217 83 79)";
-    })
-  });
-
-  inputCep.addEventListener('blur', () => {
-    inputCep.style.border = "1px solid #bdbdbd";
-    inputCep.style.borderLeft = "4px solid #bdbdbd";
-    cepInvalid = false;
-  });
-
-  inputCep.addEventListener('focus', () => {
-    if(cepInvalid){
-      inputCep.style.border = "1px solid rgb(217, 83, 79)";
-      inputCep.style.borderLeft = "4px solid rgb(217 83 79)";
-    }else{
-      inputCep.style.border = "1px solid rgb(5 118 202)";
-      inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
-    }
-  });
+    });
+  
+    inputCep.addEventListener('focus', () => {
+      if(cepInvalid){
+        inputCep.style.border = "1px solid rgb(217, 83, 79)";
+        inputCep.style.borderLeft = "4px solid rgb(217 83 79)";
+      }else{
+        inputCep.style.border = "1px solid rgb(5 118 202)";
+        inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
+      }
+    });
+  }
 
   const containerButtonContinue = document.querySelector('.container-button');
 
@@ -167,13 +190,23 @@ document.addEventListener('keydown', (e) => {
   const inputCep = document.getElementById('user_additional_info_user_attributes_cep');
   const containerMainCep = document.querySelector('.container-cep-custom');
 
-  containerMainCep.style.marginBottom = "0px";
-  spanCepError.style.display = "none";
-  svgSortUp.style.display = "none";
-  inputCep.style.border = "1px solid rgb(5 118 202)";
-  inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
-  
+  if(containerMainCep){
+    containerMainCep.style.marginBottom = "0px";
+  }
 
+  if(spanCepError){
+    spanCepError.style.display = "none";
+  }
+
+  if(svgSortUp){
+    svgSortUp.style.display = "none";
+  }
+
+  if(inputCep){
+    inputCep.style.border = "1px solid rgb(5 118 202)";
+    inputCep.style.borderLeft = "4px solid rgb(5 118 202)";
+  }
+  
   const insertValueInput = (inputElement) => {
     inputElement.style.cursor = 'auto';
     inputElement.disabled = false;
