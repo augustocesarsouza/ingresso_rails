@@ -31,7 +31,7 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "casa123456Mudar"
     ports:
-      - "5435:5432"
+      - "5432:5432"
     networks:
       - ingresso_network
 
