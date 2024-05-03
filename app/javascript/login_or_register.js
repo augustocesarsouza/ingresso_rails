@@ -1,17 +1,17 @@
 const divLoginOrRegister = document.querySelector('.container-login-logout');
 const containerRegisterLogin = document.querySelector('.container-choose-register-login');
 
-containerRegisterLogin.style.display = 'none';
+if(containerRegisterLogin){
+  containerRegisterLogin.style.display = 'none';
+}
+
 
 const CaptureEventClickLoginOrRegister = () => {
+  console.log(containerRegisterLogin.style.display);
   if(containerRegisterLogin.style.display === 'none') {
     containerRegisterLogin.style.display = 'flex';
   }else{
     containerRegisterLogin.style.display = 'none';
-  }
-
-  if(divLoginOrRegister){
-    divLoginOrRegister.removeEventListener('click', CaptureEventClickLoginOrRegister);
   }
 }
 
@@ -48,12 +48,18 @@ const CaptureEventClickLogOut = () => {
   }else{
     containerLoggout.style.display = 'none';
   }
-
-  if(divUserLoggedin){
-    divUserLoggedin.removeEventListener('click', CaptureEventClickLogOut);
-  }
 }
 
 if(divUserLoggedin){
   divUserLoggedin.addEventListener('click', CaptureEventClickLogOut);
+}
+
+if(window.location.pathname === "/chose_seats_and_more"){
+  if(divUserLoggedin){
+    divUserLoggedin.removeEventListener('click', CaptureEventClickLogOut);
+  }
+
+  if(divLoginOrRegister){
+    divLoginOrRegister.removeEventListener('click', CaptureEventClickLoginOrRegister);
+  }
 }

@@ -55,7 +55,7 @@ module Admin
       end
   
       def cinema_movie_params
-        params.require(:cinema_movie).permit(:movie_id, :cinema_id, :region_id, :screening_schedule)
+        params.require(:cinema_movie).permit(:movie_id, :cinema_id, :region_id, :screening_schedule, :room)
       end
   end
 end
